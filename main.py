@@ -1,2 +1,14 @@
 print("Hello World")
-trtyu
+input()
+
+rgrggrg
+
+
+
+rgrgr
+
+
+rgrgrg
+g
+raise grg
+rg
