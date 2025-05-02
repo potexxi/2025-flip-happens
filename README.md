@@ -1,2 +1,3 @@
-# 2025-gamename-project
- Pygame Project, Yamen Chihade, Maximilian Schreiter
+# gamename
+PyGame 2025 \
+by Maximilian Schreiter, Yamen Chihade
