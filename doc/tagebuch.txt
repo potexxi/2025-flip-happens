@@ -1,4 +1,4 @@
 -
-DO,08.05,1.5h,Max
-    Ordnerstruktur und Dokumentation
+DO,08.05,2.5h,Max
+    Ordnerstruktur, Dokumentation und main.py angefangen
 -
