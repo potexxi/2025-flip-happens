@@ -1,3 +1,3 @@
-# gamename
+# Flip Happens
 PyGame 2025 \
-by Maximilian Schreiter, Yamen Chihade
+by Maximilian Schreiter, Yamen Chihadeh
