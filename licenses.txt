@@ -1,0 +1,13 @@
+# Licenses
+last save: 08.05.2025
+
+
+# # Pictures
+
+- player1.png by davilj:
+    - Link: <https://opengameart.org/content/skateboard-1>
+    - License: GNU General Public License, Version 2 <https://www.gnu.org/licenses/old-licenses/gpl-2.0.html>
+
+- player2 by overcrafted:
+    - Link: <https://opengameart.org/content/skater-girl-2d-game-character-demo>
+    - License: Attribution 4.0 International <https://creativecommons.org/licenses/by/4.0/>
