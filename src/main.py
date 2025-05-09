@@ -1,23 +1,39 @@
 import pygame
 import submodule.globals as g
+import submodule.menu as menu
 
 
 def main():
     """
     Main-funktion
     """
-
-    # Initialization
+    # Init-PyGame
     pygame.init()
 
     # Screen and Caption
-    screen = pygame.display.set_mode((g.WIDTH, g.HEIGHT))
     pygame.display.set_caption("Flip Happens")
+    screen = pygame.display.set_mode((g.WIDTH, g.HEIGHT))
+
+
+    # Initialization
+    menu.init_background()
+
+
+    mode = "menu"
 
     running = True
     while running:
-        pass
-        # Todo: weitermachen
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        if mode == "menu":
+            menu.menu(screen)
+
+
+        # Update the display
+        pygame.display.flip()
+        pygame.display.update()
 
 
 
