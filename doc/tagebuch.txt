@@ -2,3 +2,6 @@
 DO,08.05,2.5h,Max
     Ordnerstruktur, Dokumentation und main.py angefangen
 -
+FR,09.05,3.5h,Max
+    Hauptmenü und licences.txt
+-

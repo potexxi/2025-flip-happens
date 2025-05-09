@@ -1,5 +1,6 @@
 import pygame
 import submodule.menu as menu
+import submodule.globals as g
 
 
 def main():
@@ -12,6 +13,8 @@ def main():
     # Screen and Caption
     pygame.display.set_caption("Flip Happens")
     screen = pygame.display.set_mode((0, 0))
+
+    clock = pygame.time.Clock()
 
 
     # Initialization
@@ -37,7 +40,8 @@ def main():
 
         # Update the display
         pygame.display.flip()
-        pygame.display.update()
+
+        clock.tick(g.FPS)
 
 
 
