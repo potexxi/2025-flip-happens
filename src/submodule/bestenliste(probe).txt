@@ -1,0 +1,4 @@
+Max;1000
+Michael;250
+Yamen;-50
+Karim;-2500

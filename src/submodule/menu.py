@@ -9,11 +9,21 @@ def init_background() -> None:
     Load the background-picture from the "assets/menu-background/city-background.png" path.
     """
     global background
-    background = pygame.image.load("assets/menu-background/city-background.png").convert_alpha()
+    background = pygame.image.load("assets/menu-background/blue_unsharp.png").convert_alpha()
     background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
 
 
-def draw_button(screen: pygame.Surface, text: str, button: tuple[float, float, float, float], text_size, color: str) -> None:
+def draw_button(screen: pygame.Surface, text: str, button: tuple[float, float, float, float],
+                text_size, color: int or str) -> None:
+    """
+    Draw a button
+    :param screen: pygame.Surface -> where the button should be drawn
+    :param text: text, which is on the button
+    :param button:  with all the information about the button(x_position, y_position, width and height)
+    :param text_size: the size of the text on the button
+    :param color: the color of the button
+    :return: None
+    """
     font = pygame.font.SysFont("Verdana", text_size)
     text = font.render(f"{text}", True, "black")
     # KI-Anfang
@@ -22,11 +32,21 @@ def draw_button(screen: pygame.Surface, text: str, button: tuple[float, float, f
     text_rect = text.get_rect()
     text_rect.center = (int(button[0] + button[2] / 2), int(button[1] + button[3] / 2))
     # KI-Ende
-    pygame.draw.rect(screen, color, button)
+    pygame.draw.rect(screen, color, button, border_radius=10)
     screen.blit(text, text_rect)
 
 
-def check_button_collide(screen: pygame.Surface, text: str, button: tuple[float, float, float, float], text_size, color: str) -> bool:
+def check_button_collide(screen: pygame.Surface, text: str, button: tuple[float, float, float, float],
+                         text_size, color: int or str) -> bool:
+    """
+    Check if the player clicks on a button or just hovers it.
+    :param screen: pygame.Surface -> where the new button (different color) should be drawn
+    :param text: text, which is on the new button (different color)
+    :param button:  with all the information about the new button(x_position, y_position, width and height)(different color)
+    :param text_size: the size of the text on the new button (different color)
+    :param color: the color of the new button (different color)
+    :return: True, if the button gets clicked. False, if the button only gets hovered
+    """
     mouse_pos = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()[0]
 
@@ -55,7 +75,7 @@ def draw_flip_happens(screen: pygame.Surface) -> None:
     size = g.HEIGHT // 8
     font = pygame.font.SysFont("Impact", size, False, False)
 
-    text_surface = font.render("FLIP HAPPENS!", False, 'white')
+    text_surface = font.render("FLIP HAPPENS!", True, 'white')
     text_surface = pygame.transform.rotate(text_surface, 90)
 
     text_width, text_height = text_surface.get_size()
@@ -66,16 +86,95 @@ def draw_flip_happens(screen: pygame.Surface) -> None:
     screen.blit(text_surface, (x, y))
 
 
-def menu(screen: pygame.Surface) -> None:
+
+
+def draw_ranked(screen: pygame.Surface) -> None:
+    # Read the list from the .txt file
+    content_dict = {}
+    with open("submodule/bestenliste(probe).txt", "r", encoding="utf-8") as file:
+        content = file.readlines()
+    for line in content:
+        line = line.strip()
+        line_content = line.split(";")
+        content_dict[line_content[0]] = int(line_content[1])
+
+    box_rect = [g.WIDTH - g.WIDTH / 6 + 10, g.HEIGHT - g.HEIGHT / 5 + 10, g.WIDTH / 6, g.HEIGHT / 5, g.HEIGHT // 100]
+    box_surface = pygame.Surface((box_rect[2], box_rect[3]), pygame.SRCALPHA)
+    pygame.draw.rect(box_surface, (0, 0, 139, 100), (0, 0, box_rect[2], box_rect[3]), border_radius=15)
+    screen.blit(box_surface, (box_rect[0], box_rect[1]))
+
+    font_top = pygame.font.SysFont("Verdana", box_rect[4]+10, True)
+    font_down = pygame.font.SysFont("Verdana", box_rect[4])
+    msg1 = font_top.render("FLIP-HAPPENS Bestenliste", False, (255, 215, 0))
+    text = ""
+    for key in content_dict:
+        text = text + f"{key}: {content_dict[key]}\n"
+    msg2 = font_down.render(text, False,(255, 215, 0))
+    screen.blit(msg1, (box_rect[0]+10, box_rect[1]+5))
+
+
+
+
+
+def menu(screen: pygame.Surface) -> str:
+    """
+    Make the menu -> in the game: select between PLAY, ERKLÄRUNG or STOP
+    :param screen: pygame.Surface -> the Surface where the menu should be drawn
+    :return: str -> the mode in which the game is right now, play, menu or explain
+    """
     screen.blit(background, (0,0))
     draw_flip_happens(screen)
 
-    exit_button = [g.WIDTH-g.WIDTH/50,0,g.WIDTH/50,g.WIDTH/50,g.HEIGHT//40]
-    draw_button(screen, "X", (exit_button[0],exit_button[1],exit_button[2],exit_button[3]), exit_button[4], "grey")
+    # KI-Anfang
+    # KI: ChatGPT
+    # prompt: gebe mir die Positionen und Größen von folgenden Buttons: exit_button (ganz oben rechts), start_button
+    # (in der Mitte eher oben), explain_button (unter start button), stop_button (unter explain button)
+    exit_button = [g.WIDTH - g.WIDTH / 50, 0, g.WIDTH / 50, g.WIDTH / 50, g.HEIGHT // 40]
+    start_button = [g.WIDTH / 2 - g.WIDTH / 12 / 2, g.HEIGHT / 3, g.WIDTH / 8, g.HEIGHT / 12, g.HEIGHT // 40]
+    explain_button = [g.WIDTH / 2 - g.WIDTH / 12 / 2, g.HEIGHT / 3 + g.HEIGHT / 15 + g.HEIGHT / 20, g.WIDTH / 8,
+                      g.HEIGHT / 12, g.HEIGHT // 40]
+    stop_button = [g.WIDTH / 2 - g.WIDTH / 12 / 2, g.HEIGHT / 3 + 2 * (g.HEIGHT / 15 + g.HEIGHT / 20), g.WIDTH / 8,
+                   g.HEIGHT / 12, g.HEIGHT // 40]
+    # KI-Ende
 
-    if check_button_collide(screen, "X",
-                            (exit_button[0],exit_button[1],exit_button[2],exit_button[3]), exit_button[4], "red"):
-        exit()
+    # Draw the buttons
+    draw_button(screen, "X", (exit_button[0],exit_button[1],exit_button[2],exit_button[3]),
+                exit_button[4], "grey")
 
+    draw_button(screen, "START", (start_button[0],start_button[1],start_button[2],start_button[3]), start_button[4],
+                (255, 160, 122))
 
-    return None
+    draw_button(screen, "STOP", (stop_button[0], stop_button[1], stop_button[2], stop_button[3]), stop_button[4],
+                (255, 160, 122))
+
+    draw_button(screen, "ERKLÄRUNG", (explain_button[0], explain_button[1], explain_button[2], explain_button[3])
+                , explain_button[4],(255, 160, 122))
+
+    # Draw the ranked list
+    draw_ranked(screen)
+
+    # Check for button collision:
+    if check_button_collide(screen,
+                            "X",
+                            (exit_button[0],exit_button[1],exit_button[2],exit_button[3]), exit_button[4],
+                            "red"):
+        exit("FLIP HAPPENS!")
+
+    if check_button_collide(screen,
+                            "START",
+                            (start_button[0], start_button[1], start_button[2], start_button[3]), start_button[4],
+                            (255, 215, 0)):
+        return "play"
+
+    if check_button_collide(screen,
+                            "ERKLÄRUNG",
+                            (explain_button[0], explain_button[1], explain_button[2], explain_button[3]), explain_button[4],
+                            (255, 215, 0)):
+        return "explain"
+
+    if check_button_collide(screen,
+                            "STOP",
+                            (stop_button[0], stop_button[1], stop_button[2], stop_button[3]),stop_button[4],
+                            (255, 215, 0)):
+        exit("FLIP HAPPENS!")
+    return "menu"

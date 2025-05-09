@@ -1,5 +1,4 @@
 import pygame
-import submodule.globals as g
 import submodule.menu as menu
 
 
@@ -18,7 +17,6 @@ def main():
     # Initialization
     menu.init_background()
 
-
     mode = "menu"
 
     running = True
@@ -29,6 +27,12 @@ def main():
 
         if mode == "menu":
             menu.menu(screen)
+
+        if mode == "play":
+            screen.fill("white")
+
+        if mode == "explain":
+            screen.fill("white")
 
 
         # Update the display

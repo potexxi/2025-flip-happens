@@ -12,6 +12,6 @@ last save: 09.05.2025
     - Link: <https://opengameart.org/content/skater-girl-2d-game-character-demo>
     - License: Attribution 4.0 International <https://creativecommons.org/licenses/by/4.0/>
 
-- city-background.png by CraftPix.net 2D Game Assets
-    - Link: <https://opengameart.org/content/city-parallax-background-with-buildings-pixel-art>
-    - License: OGA-BY 3.0 <https://static.opengameart.org/OGA-BY-3.0.txt>
+- blue.png and blue_unsharp.png:
+    - Link: <https://craftpix.net/freebies/free-city-backgrounds-pixel-art/>
+    - License: FILE LICENSES <https://craftpix.net/file-licenses/>
