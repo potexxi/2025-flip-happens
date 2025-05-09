@@ -12,7 +12,7 @@ def main():
 
     # Screen and Caption
     pygame.display.set_caption("Flip Happens")
-    screen = pygame.display.set_mode((g.WIDTH, g.HEIGHT))
+    screen = pygame.display.set_mode((0, 0))
 
 
     # Initialization
