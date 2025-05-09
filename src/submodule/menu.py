@@ -29,10 +29,23 @@ def draw_button(screen: pygame.Surface, text: str, button: tuple[float, float, f
 
 
 def draw_flip_happens(screen: pygame.Surface, size: int, position: tuple[float, float]) -> None:
+    # KI-Anfang
+    # KI: ChatGPT
+    # prompt: ich mache in pygame ein menü, das auf der linken seite Flip Happens hat
+    # und die position ist abhängig von der grösse des Fensters, der text soll schön in der mitte des linken drittels
+    # platziert sein. gebe mir die berechnung für die variablen size, x position und y position
+    size = g.HEIGHT // 8
     font = pygame.font.SysFont("Impact", size, False, False)
-    text = font.render("FLIP HAPPENS!", False, 'black')
-    text = pygame.transform.rotate(text, 90)
-    screen.blit(text, position)
+
+    text_surface = font.render("FLIP HAPPENS!", False, 'black')
+    text_surface = pygame.transform.rotate(text_surface, 90)
+
+    text_width, text_height = text_surface.get_size()
+
+    x = g.WIDTH // 6 - text_width // 2
+    y = g.HEIGHT // 2 - text_height // 2
+    # KI-Ende
+    screen.blit(text_surface, (x, y))
 
 
 def menu(screen: pygame.Surface) -> None:
