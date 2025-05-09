@@ -1,11 +1,7 @@
-from xml.sax.saxutils import prepare_input_source
-
 import pygame
 import src.submodule.globals as g
 
 background: pygame.Surface = None
-buttons: dict = {}
-button_count: int = 0
 
 
 def init_background() -> None:
@@ -17,18 +13,40 @@ def init_background() -> None:
     background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
 
 
-def draw_button(screen: pygame.Surface, text: str, button: tuple[float, float, float, float]) -> None:
-    global button_count
-    button_count += 1
-
-    font = pygame.font.SysFont("Verdana", 50)
+def draw_button(screen: pygame.Surface, text: str, button: tuple[float, float, float, float], text_size, color: str) -> None:
+    font = pygame.font.SysFont("Verdana", text_size)
     text = font.render(f"{text}", True, "black")
+    # KI-Anfang
+    # KI: ChatGPT
+    # prompt: zentriere den Text abhängig vom Button
+    text_rect = text.get_rect()
+    text_rect.center = (int(button[0] + button[2] / 2), int(button[1] + button[3] / 2))
+    # KI-Ende
+    pygame.draw.rect(screen, color, button)
+    screen.blit(text, text_rect)
 
-    pygame.draw.rect(screen, (200,200,200), button)
-    screen.blit(text, (button[0], button[1]))
+
+def check_button_collide(screen: pygame.Surface, text: str, button: tuple[float, float, float, float], text_size, color: str) -> bool:
+    mouse_pos = pygame.mouse.get_pos()
+    click = pygame.mouse.get_pressed()[0]
+
+    rect = pygame.Rect(button)
+    true_or_false = rect.collidepoint(mouse_pos)
+    if true_or_false:
+        draw_button(screen, text, button, text_size, color)
+        if click:
+            return True
+    return False
 
 
-def draw_flip_happens(screen: pygame.Surface, size: int, position: tuple[float, float]) -> None:
+
+
+def draw_flip_happens(screen: pygame.Surface) -> None:
+    """
+    Draw the "Flip Happens" text on left side of the menu
+    :param screen: pygame.Surface -> the Surface on which the text should be written
+    :return None
+    """
     # KI-Anfang
     # KI: ChatGPT
     # prompt: ich mache in pygame ein menü, das auf der linken seite Flip Happens hat
@@ -37,7 +55,7 @@ def draw_flip_happens(screen: pygame.Surface, size: int, position: tuple[float, 
     size = g.HEIGHT // 8
     font = pygame.font.SysFont("Impact", size, False, False)
 
-    text_surface = font.render("FLIP HAPPENS!", False, 'black')
+    text_surface = font.render("FLIP HAPPENS!", False, 'white')
     text_surface = pygame.transform.rotate(text_surface, 90)
 
     text_width, text_height = text_surface.get_size()
@@ -50,8 +68,14 @@ def draw_flip_happens(screen: pygame.Surface, size: int, position: tuple[float, 
 
 def menu(screen: pygame.Surface) -> None:
     screen.blit(background, (0,0))
-    draw_flip_happens(screen, 100, (100, 500))
-    draw_button(screen, "Hallo", (g.WIDTH/2-100,g.HEIGHT/3,g.WIDTH/10,g.HEIGHT/10)) # Todo: Buttons machen
+    draw_flip_happens(screen)
+
+    exit_button = [g.WIDTH-g.WIDTH/50,0,g.WIDTH/50,g.WIDTH/50,g.HEIGHT//40]
+    draw_button(screen, "X", (exit_button[0],exit_button[1],exit_button[2],exit_button[3]), exit_button[4], "grey")
+
+    if check_button_collide(screen, "X",
+                            (exit_button[0],exit_button[1],exit_button[2],exit_button[3]), exit_button[4], "red"):
+        exit()
 
 
     return None
