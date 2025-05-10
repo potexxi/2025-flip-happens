@@ -103,9 +103,9 @@ def draw_ranked(screen: pygame.Surface) -> None:
     pygame.draw.rect(box_surface, (0, 0, 139, 100), (0, 0, box_rect[2], box_rect[3]), border_radius=15)
     screen.blit(box_surface, (box_rect[0], box_rect[1]))
 
-    font_top = pygame.font.SysFont("Verdana", box_rect[4]+10, True)
+    font_top = pygame.font.SysFont("Verdana", box_rect[4]+g.HEIGHT//115, True)
     font_down = pygame.font.SysFont("Verdana", box_rect[4])
-    msg1 = font_top.render("FLIP-HAPPENS Bestenliste", False, (255, 215, 0))
+    msg1 = font_top.render("FLIP-HAPPENS Bestenliste", True, (255, 215, 0))
     text = ""
     for key in content_dict:
         text = text + f"{key}: {content_dict[key]}\n"
