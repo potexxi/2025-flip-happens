@@ -59,8 +59,6 @@ def check_button_collide(screen: pygame.Surface, text: str, button: tuple[float,
     return False
 
 
-
-
 def draw_flip_happens(screen: pygame.Surface) -> None:
     """
     Draw the "Flip Happens" text on left side of the menu
@@ -86,9 +84,11 @@ def draw_flip_happens(screen: pygame.Surface) -> None:
     screen.blit(text_surface, (x, y))
 
 
-
-
 def draw_ranked(screen: pygame.Surface) -> None:
+    """
+    Draw the ranked-list in the downer-right corner of the pygame.Surface
+    :param screen: pygame.Surface -> where the list should be drawn
+    """
     # Read the list from the .txt file
 
     box_rect = [g.WIDTH - g.WIDTH / 6 + 10, g.HEIGHT - g.HEIGHT / 5 + 10, g.WIDTH / 6, g.HEIGHT / 5, g.HEIGHT // 100]
@@ -110,10 +110,6 @@ def draw_ranked(screen: pygame.Surface) -> None:
         text_width, text_height = msg2.get_size()
         screen.blit(msg2, ((box_rect[0] + 10), (box_rect[1] + 5) + (counter * text_height + 10)))
         counter += 1
-
-
-
-
 
 
 def menu(screen: pygame.Surface) -> str:
@@ -142,13 +138,13 @@ def menu(screen: pygame.Surface) -> str:
                 exit_button[4], "grey")
 
     draw_button(screen, "START", (start_button[0],start_button[1],start_button[2],start_button[3]), start_button[4],
-                (255, 160, 122))
+                (211, 211, 211))
 
     draw_button(screen, "STOP", (stop_button[0], stop_button[1], stop_button[2], stop_button[3]), stop_button[4],
-                (255, 160, 122))
+                (211, 211, 211))
 
     draw_button(screen, "ERKLÄRUNG", (explain_button[0], explain_button[1], explain_button[2], explain_button[3])
-                , explain_button[4],(255, 160, 122))
+                , explain_button[4],	(211, 211, 211))
 
     # Draw the ranked list
     draw_ranked(screen)
