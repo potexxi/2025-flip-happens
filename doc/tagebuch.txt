@@ -5,3 +5,6 @@ DO,08.05,2.5h,Max
 FR,09.05,3.5h,Max
     Hauptmenü und licences.txt
 -
+SA,10.05,1.5h,Max
+    Hauptmenü bug gefixt und level1 begonnen
+-

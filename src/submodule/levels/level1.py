@@ -4,6 +4,7 @@ import src.submodule.globals as g
 background: pygame.Surface = None
 brick: pygame.Surface = None
 
+
 def init_level1() -> None:
     global background, brick
     # Background:

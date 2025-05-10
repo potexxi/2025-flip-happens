@@ -106,7 +106,7 @@ def draw_ranked(screen: pygame.Surface) -> None:
     for line in content:
         line = line.strip()
         line_content = line.split(";")
-        msg2 = font_down.render(f"{counter}. {line_content[0]}:{line_content[1]}", True, (255, 215, 0))
+        msg2 = font_down.render(f"{counter}. {line_content[0]}: {line_content[1]}", True, (255, 215, 0))
         text_width, text_height = msg2.get_size()
         screen.blit(msg2, ((box_rect[0] + 10), (box_rect[1] + 5) + (counter * text_height + 10)))
         counter += 1
