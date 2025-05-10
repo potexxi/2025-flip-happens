@@ -1,6 +1,8 @@
 import pygame
 import submodule.menu as menu
 import submodule.globals as g
+import submodule.explain_menu as explain
+import submodule.levels.level1 as level1
 
 
 def main():
@@ -19,6 +21,7 @@ def main():
 
     # Initialization
     menu.init_background()
+    level1.init_level1()
 
     mode = "menu"
 
@@ -29,13 +32,13 @@ def main():
                 running = False
 
         if mode == "menu":
-            menu.menu(screen)
+            mode = menu.menu(screen)
 
         if mode == "play":
-            screen.fill("white")
+            mode = level1.level1(screen)
 
         if mode == "explain":
-            screen.fill("white")
+            explain.explain_menu(screen)
 
 
         # Update the display

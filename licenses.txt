@@ -15,3 +15,11 @@ last save: 10.05.2025
 - blue_unsharp.png:
     - Link: <https://craftpix.net/freebies/free-city-backgrounds-pixel-art/>
     - License: FILE LICENSES <https://craftpix.net/file-licenses/>
+
+- level1/background.png:
+    - link: <https://craftpix.net/freebies/free-steampunk-cityscape-pixel-backgrounds/>
+    - license: FILE LICENSE <https://craftpix.net/file-licenses/>
+
+- level1/BrickTiles.png by SpinachChicken:
+    - link: <https://opengameart.org/content/pixel-art-brick-tiles>
+    - license: CC0 1.0 UNIVERSAL <https://creativecommons.org/publicdomain/zero/1.0/>
