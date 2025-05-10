@@ -135,7 +135,7 @@ def menu(screen: pygame.Surface) -> str:
 
     # Draw the buttons
     draw_button(screen, "X", (exit_button[0],exit_button[1],exit_button[2],exit_button[3]),
-                exit_button[4], "grey")
+                exit_button[4], (211, 211, 211))
 
     draw_button(screen, "START", (start_button[0],start_button[1],start_button[2],start_button[3]), start_button[4],
                 (211, 211, 211))

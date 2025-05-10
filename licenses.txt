@@ -1,5 +1,5 @@
 # Licenses
-last save: 09.05.2025
+last save: 10.05.2025
 
 
 # # Pictures
@@ -12,6 +12,6 @@ last save: 09.05.2025
     - Link: <https://opengameart.org/content/skater-girl-2d-game-character-demo>
     - License: Attribution 4.0 International <https://creativecommons.org/licenses/by/4.0/>
 
-- blue.png and blue_unsharp.png:
+- blue_unsharp.png:
     - Link: <https://craftpix.net/freebies/free-city-backgrounds-pixel-art/>
     - License: FILE LICENSES <https://craftpix.net/file-licenses/>
