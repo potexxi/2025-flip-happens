@@ -90,13 +90,6 @@ def draw_flip_happens(screen: pygame.Surface) -> None:
 
 def draw_ranked(screen: pygame.Surface) -> None:
     # Read the list from the .txt file
-    content_dict = {}
-    with open("submodule/bestenliste(probe).txt", "r", encoding="utf-8") as file:
-        content = file.readlines()
-    for line in content:
-        line = line.strip()
-        line_content = line.split(";")
-        content_dict[line_content[0]] = int(line_content[1])
 
     box_rect = [g.WIDTH - g.WIDTH / 6 + 10, g.HEIGHT - g.HEIGHT / 5 + 10, g.WIDTH / 6, g.HEIGHT / 5, g.HEIGHT // 100]
     box_surface = pygame.Surface((box_rect[2], box_rect[3]), pygame.SRCALPHA)
@@ -104,13 +97,20 @@ def draw_ranked(screen: pygame.Surface) -> None:
     screen.blit(box_surface, (box_rect[0], box_rect[1]))
 
     font_top = pygame.font.SysFont("Verdana", box_rect[4]+g.HEIGHT//115, True)
-    font_down = pygame.font.SysFont("Verdana", box_rect[4])
+    font_down = pygame.font.SysFont("Verdana", box_rect[4]+g.HEIGHT//200)
     msg1 = font_top.render("FLIP-HAPPENS Bestenliste", True, (255, 215, 0))
-    text = ""
-    for key in content_dict:
-        text = text + f"{key}: {content_dict[key]}\n"
-    msg2 = font_down.render(text, False,(255, 215, 0))
-    screen.blit(msg1, (box_rect[0]+10, box_rect[1]+5))
+    screen.blit(msg1, (box_rect[0] + 10, box_rect[1] + 5))
+    with open("submodule/bestenliste(probe).txt", "r", encoding="utf-8") as file:
+        content = file.readlines()
+    counter = 1
+    for line in content:
+        line = line.strip()
+        line_content = line.split(";")
+        msg2 = font_down.render(f"{counter}. {line_content[0]}:{line_content[1]}", True, (255, 215, 0))
+        text_width, text_height = msg2.get_size()
+        screen.blit(msg2, ((box_rect[0] + 10), (box_rect[1] + 5) + (counter * text_height + 10)))
+        counter += 1
+
 
 
 
