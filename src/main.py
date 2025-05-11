@@ -40,6 +40,10 @@ def main():
         if mode == "explain":
             explain.explain_menu(screen)
 
+        if mode == "pause":
+            # TODO:Pause
+            pass
+
 
         # Update the display
         pygame.display.flip()

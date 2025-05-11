@@ -23,3 +23,7 @@ last save: 10.05.2025
 - level1/BrickTiles.png by SpinachChicken:
     - link: <https://opengameart.org/content/pixel-art-brick-tiles>
     - license: CC0 1.0 UNIVERSAL <https://creativecommons.org/publicdomain/zero/1.0/>
+
+- ui-controls by Cookie:
+    - link: <https://opengameart.org/content/ui-buttons-0>
+    - license: ATTRIBUTION 3.0 UNPORTED <https://creativecommons.org/licenses/by/3.0/>
