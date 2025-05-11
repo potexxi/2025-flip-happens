@@ -54,7 +54,7 @@ def level1(screen: pygame.Surface) -> str:
     # Bricks:
     # Floor:
     for t in range(g.WIDTH//g.ASSETS_SIZE + 1):
-        screen.blit(brick, (0 + g.ASSETS_SIZE * t - 30,g.HEIGHT - 40))
+        screen.blit(brick, (0 + g.ASSETS_SIZE * t - 30,g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE//2)))
     # Pause - button
     mode = check_menu_button_pressed(screen)
     return mode
