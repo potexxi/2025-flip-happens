@@ -5,7 +5,8 @@ from src.submodule.menu import draw_button, check_button_collide
 background: pygame.Surface = None
 brick: pygame.Surface = None
 ui_pause: pygame.Surface = None
-halfpipe: pygame.Surface = None
+halfpipe_left: pygame.Surface = None
+halfpipe_right: pygame.Surface = None
 mode: str = "play"
 pause_button = [g.WIDTH - g.WIDTH / 50 -5, 5, g.WIDTH / 50, g.WIDTH / 50]
 
@@ -15,20 +16,24 @@ def init_level1() -> None:
     """
     Init all the pictures the level 1 needs
     """
-    global background, brick, ui_pause, halfpipe
+    global background, brick, ui_pause, halfpipe_left, halfpipe_right
     # Background:
     background = pygame.image.load("assets/level1/background.png").convert_alpha()
     background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
+
     # Brick:
     brick = pygame.image.load("assets/level1/BrickTiles.png").convert_alpha()
     brick = brick.subsurface((0,0,16,16))
     brick = pygame.transform.scale(brick, (g.ASSETS_SIZE,g.ASSETS_SIZE))
+
     # Pause Button:
     ui_pause = pygame.image.load("assets/ui-controls/menu.png").convert_alpha()
     ui_pause = pygame.transform.scale(ui_pause, (pause_button[2],pause_button[3]))
+
     # Halfpipe:
-    halfpipe = pygame.image.load("assets/level1/halfpipe.png")
-    halfpipe = pygame.transform.scale(halfpipe, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+    halfpipe_left = pygame.image.load("assets/level1/halfpipe.png")
+    halfpipe_left = pygame.transform.scale(halfpipe_left, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+    halfpipe_right = pygame.transform.flip(halfpipe_left, True,False)
 
 
 def check_menu_button_pressed(screen: pygame.Surface) -> str:
@@ -47,19 +52,30 @@ def check_menu_button_pressed(screen: pygame.Surface) -> str:
 
 
 def place_bricks(screen: pygame.Surface) -> None:
+    """
+    Draw the bricks on the screen
+    :param screen: pygame.Surface -> where the bricks should be drawn
+    """
     # Floor:
     for t in range(g.WIDTH // g.ASSETS_SIZE + 1):
         screen.blit(brick, (g.ASSETS_SIZE * t - 30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
         if t == 15:
-            for y in range(4):
+            for y in range(3):
                 screen.blit(brick, ((g.ASSETS_SIZE * t - 30) + y*g.ASSETS_SIZE,
                                     g.HEIGHT - g.ASSETS_SIZE - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
 
 
 def place_elements(screen: pygame.Surface) -> None:
+    """
+    Draw the elements (ramps, coins, letters etc.) on the screen
+    :param screen: pygame.Surface -> where the elements should be drawn
+    """
     # Ramps:
-    screen.blit(halfpipe, ((g.ASSETS_SIZE * 15 - 30) - g.ASSETS_SIZE,
+    screen.blit(halfpipe_left, ((g.ASSETS_SIZE * 15 - 30) - g.ASSETS_SIZE,
                            g.HEIGHT - g.ASSETS_SIZE - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
+    screen.blit(halfpipe_right, ((g.ASSETS_SIZE * 19 - 30) - g.ASSETS_SIZE,
+                           g.HEIGHT - g.ASSETS_SIZE - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
+
 
 
 def level1(screen: pygame.Surface) -> str:

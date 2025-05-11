@@ -8,3 +8,6 @@ FR,09.05,3.5h,Max
 SA,10.05,1.5h,Max
     Hauptmenü bug gefixt und level1 begonnen
 -
+SO,11.05,2h,Max
+    Level 1 weitergemacht
+-
