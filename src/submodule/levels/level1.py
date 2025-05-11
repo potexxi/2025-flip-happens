@@ -21,7 +21,7 @@ def init_level1() -> None:
     # Brick:
     brick = pygame.image.load("assets/level1/BrickTiles.png").convert_alpha()
     brick = brick.subsurface((0,0,16,16))
-    brick = pygame.transform.scale(brick, (64,64))
+    brick = pygame.transform.scale(brick, (g.ASSETS_SIZE,g.ASSETS_SIZE))
     # Pause Button:
     ui_pause = pygame.image.load("assets/ui-controls/menu.png").convert_alpha()
     ui_pause = pygame.transform.scale(ui_pause, (pause_button[2],pause_button[3]))
@@ -53,8 +53,8 @@ def level1(screen: pygame.Surface) -> str:
     screen.blit(background, (0,0))
     # Bricks:
     # Floor:
-    for t in range(g.WIDTH//64 + 1):
-        screen.blit(brick, (0 + 64 * t - 30,g.HEIGHT - 40))
+    for t in range(g.WIDTH//g.ASSETS_SIZE + 1):
+        screen.blit(brick, (0 + g.ASSETS_SIZE * t - 30,g.HEIGHT - 40))
     # Pause - button
     mode = check_menu_button_pressed(screen)
     return mode
