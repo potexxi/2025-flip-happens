@@ -49,7 +49,7 @@ def check_menu_button_pressed(screen: pygame.Surface) -> str:
 def place_bricks(screen: pygame.Surface) -> None:
     # Floor:
     for t in range(g.WIDTH // g.ASSETS_SIZE + 1):
-        screen.blit(brick, (0 + g.ASSETS_SIZE * t - 30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
+        screen.blit(brick, (g.ASSETS_SIZE * t - 30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
         if t == 15:
             for y in range(4):
                 screen.blit(brick, ((g.ASSETS_SIZE * t - 30) + y*g.ASSETS_SIZE,
@@ -58,7 +58,8 @@ def place_bricks(screen: pygame.Surface) -> None:
 
 def place_elements(screen: pygame.Surface) -> None:
     # Ramps:
-    screen.blit(halfpipe, ((g.ASSETS_SIZE * 15 - 30) - g.ASSETS_SIZE, g.HEIGHT - g.ASSETS_SIZE - 36))
+    screen.blit(halfpipe, ((g.ASSETS_SIZE * 15 - 30) - g.ASSETS_SIZE,
+                           g.HEIGHT - g.ASSETS_SIZE - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
 
 
 def level1(screen: pygame.Surface) -> str:
