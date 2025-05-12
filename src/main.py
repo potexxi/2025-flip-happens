@@ -5,9 +5,9 @@ import submodule.explain_menu as explain
 import submodule.levels.level1 as level1
 
 
-def main():
+def main() -> None:
     """
-    Main-funktion
+    Main-funktion and entrance of the game
     """
     # Init-PyGame
     pygame.init()
