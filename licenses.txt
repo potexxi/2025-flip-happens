@@ -27,3 +27,10 @@ last save: 12.05.2025
 - ui-controls by Cookie:
     - link: <https://opengameart.org/content/ui-buttons-0>
     - license: ATTRIBUTION 3.0 UNPORTED <https://creativecommons.org/licenses/by/3.0/>
+
+- halfpipe.png by ChatGPT:
+    - prompt: erstelle ein bild von einer 2d pixel art halfpipe, ich brauche das bild für mein pygame projekt,
+    also mache die Halfpipe von der seitenansicht und in einfarbiger hintergrund
+
+- ramp.png by ChatGPT:
+    - prompt: mache mir im gleichen stil eine normale rampe
