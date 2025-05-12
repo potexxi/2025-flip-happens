@@ -47,7 +47,7 @@ def main() -> None:
 
         # Update the display
         pygame.display.flip()
-
+        # FPS begrenzen
         clock.tick(g.FPS)
 
 
