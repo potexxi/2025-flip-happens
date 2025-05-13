@@ -16,7 +16,7 @@ last save: 12.05.2025
     - Link: <https://craftpix.net/freebies/free-city-backgrounds-pixel-art/>
     - License: FILE LICENSES <https://craftpix.net/file-licenses/>
 
-- level1/background.png:
+- level1/background_unsharp.png:
     - link: <https://craftpix.net/freebies/free-steampunk-cityscape-pixel-backgrounds/>
     - license: FILE LICENSE <https://craftpix.net/file-licenses/>
 

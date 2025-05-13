@@ -1,7 +1,8 @@
 import pygame
 import submodule.menu.menu as menu
 import submodule.globals as g
-import submodule.level1.level1 as level1
+from src.submodule.level1.level1 import init_level1
+import src.submodule.level1 as level1
 
 
 def main() -> None:
@@ -20,7 +21,7 @@ def main() -> None:
 
     # Initialization
     menu.init_background()
-    level1.init_level1()
+    init_level1()
 
     mode = "menu"
 
@@ -34,7 +35,7 @@ def main() -> None:
             mode = menu.menu(screen)
 
         if mode == "play":
-            mode = level1.level1(screen)
+            mode = level1.level1.level1(screen)
 
         if mode == "explain":
             # Todo: Explain
@@ -42,6 +43,7 @@ def main() -> None:
 
         if mode == "pause":
             # TODO:Pause
+            screen.fill("white")
             pass
 
 
@@ -49,6 +51,7 @@ def main() -> None:
         pygame.display.flip()
 
         clock.tick(g.FPS)
+    pygame.quit()
 
 
 
