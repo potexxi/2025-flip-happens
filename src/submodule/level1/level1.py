@@ -58,7 +58,7 @@ def place_bricks(screen: pygame.Surface) -> None:
     Draw the bricks on the screen
     :param screen: pygame.Surface -> where the bricks should be drawn
     """
-    # Floor:
+    # Floor: .
     for t in range(g.WIDTH // g.ASSETS_SIZE + 1):
         screen.blit(brick, (g.ASSETS_SIZE * t - 30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
         if t == 15:
