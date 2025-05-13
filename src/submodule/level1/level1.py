@@ -1,16 +1,14 @@
-from typing import Optional
-
 import pygame
 import src.submodule.globals as g
 
-background: pygame.Surface = None
-brick: pygame.Surface = None
-ui_pause: pygame.Surface = None
-halfpipe_left: pygame.Surface = None
-halfpipe_right: pygame.Surface = None
+background: pygame.Surface = ...
+brick: pygame.Surface = ...
+ui_pause: pygame.Surface = ...
+halfpipe_left: pygame.Surface = ...
+halfpipe_right: pygame.Surface = ...
 mode: str = "play"
-pause_button = [g.WIDTH - g.WIDTH / 50 -5, 5, g.WIDTH / 50, g.WIDTH / 50]
-first_block_floor = ( - 30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2) - g.ASSETS_SIZE)
+pause_button: tuple[float,float,float,float] = (g.WIDTH - g.WIDTH / 50 -5, 5, g.WIDTH / 50, g.WIDTH / 50)
+first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2) - g.ASSETS_SIZE)
 
 
 
@@ -69,20 +67,24 @@ def place_bricks(screen: pygame.Surface) -> None:
     for t in range(4):
         screen.blit(brick, (first_block_floor[0] + t*g.ASSETS_SIZE,
                             first_block_floor[1] - 2*g.ASSETS_SIZE))
-    for t in range(3):
+    for t in range(4):
         screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE + 3*g.ASSETS_SIZE,
                             first_block_floor[1] - g.ASSETS_SIZE))
-    for t in range(4):
-        screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE + 4 * g.ASSETS_SIZE,
+    for t in range(5):
+        screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE + 3 * g.ASSETS_SIZE,
                             first_block_floor[1] - 5 * g.ASSETS_SIZE))
     screen.blit(brick, (first_block_floor[0] + g.ASSETS_SIZE + 4 * g.ASSETS_SIZE,
                             first_block_floor[1] - 6 * g.ASSETS_SIZE))
-    for t in range(3):
+    for t in range(4):
         screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE,
-                            first_block_floor[1] - 9 * g.ASSETS_SIZE))
+                            first_block_floor[1] - 8 * g.ASSETS_SIZE))
     for t in range(2):
         screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE,
-                            first_block_floor[1] - 10 * g.ASSETS_SIZE))
+                            first_block_floor[1] - 9 * g.ASSETS_SIZE))
+    for t in range(3):
+        screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE + 9 * g.ASSETS_SIZE,
+                            first_block_floor[1] - 2 * g.ASSETS_SIZE))
+
 
 
 def place_elements(screen: pygame.Surface) -> None:
@@ -90,11 +92,20 @@ def place_elements(screen: pygame.Surface) -> None:
     Draw the elements (ramps, coins, letters etc.) on the screen
     :param screen: pygame.Surface -> where the elements should be drawn
     """
-    # Ramps:
+    # Halfpipes:
     screen.blit(halfpipe_left, ((g.ASSETS_SIZE * 15 - 30) - g.ASSETS_SIZE,
                            g.HEIGHT - g.ASSETS_SIZE - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
     screen.blit(halfpipe_right, ((g.ASSETS_SIZE * 19 - 30) - g.ASSETS_SIZE,
                            g.HEIGHT - g.ASSETS_SIZE - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
+    screen.blit(halfpipe_right, (first_block_floor[0] + 4 * g.ASSETS_SIZE,
+                                 first_block_floor[1] - 2 * g.ASSETS_SIZE))
+    screen.blit(halfpipe_right, (first_block_floor[0] + 6 * g.ASSETS_SIZE,
+                                 first_block_floor[1] - 6 * g.ASSETS_SIZE))
+    screen.blit(halfpipe_left, (first_block_floor[0] + 4 * g.ASSETS_SIZE,
+                                 first_block_floor[1] - 6 * g.ASSETS_SIZE))
+    screen.blit(halfpipe_right, (first_block_floor[0] + 2 * g.ASSETS_SIZE,
+                                 first_block_floor[1] - 9 * g.ASSETS_SIZE))
+
 
 
 def level1(screen: pygame.Surface) -> str:

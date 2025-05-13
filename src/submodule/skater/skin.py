@@ -13,8 +13,8 @@ def init():
     global images # Hier globale Bildliste verwenden
     image = pygame.image.load('player1.png').convert_alpha() # Bild laden
     for i in range(3):
-        sub_image = image.subsurface((s.ASSETS_SIZE * i, 192, s.ASSETS_SIZE, s.ASSETS_SIZE))
-        sub_image = pygame.transform.scale(sub_image, (s.SCREEN_SIZE, s.SCREEN_SIZE))
+        sub_image = image.subsurface((59 * i, 192, 59, 65))
+        sub_image = pygame.transform.scale(sub_image, (s.ASSETS_SIZE, s.ASSETS_SIZE))
         #image = pygame.image.load(f"assets/player/player{i +1}.png").convert_alpha() # Hier Bilder dynamisch laden(player1, player2,....)
         images.append(sub_image) # Bild Hinzufügen
 
@@ -44,6 +44,7 @@ def draw(screen: pygame.Surface):
     global image_counter, x_position, y_position
     frame = images[image_counter % len(images)]  # Aktuelles Bild aus der Liste
     screen.blit(frame, (x_position, y_position)) # Bild zeichnen
+
 if __name__ == '__main__':
     pygame.init()
     timestamp_ms = pygame.time.get_ticks()

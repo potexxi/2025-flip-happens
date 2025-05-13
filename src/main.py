@@ -1,8 +1,7 @@
 import pygame
 import submodule.menu.menu as menu
 import submodule.globals as g
-from src.submodule.level1.level1 import init_level1
-import src.submodule.level1 as level1
+import src.submodule.level1.level1 as level1
 
 
 def main() -> None:
@@ -21,7 +20,7 @@ def main() -> None:
 
     # Initialization
     menu.init_background()
-    init_level1()
+    level1.init_level1()
 
     mode = "menu"
 
@@ -35,7 +34,7 @@ def main() -> None:
             mode = menu.menu(screen)
 
         if mode == "play":
-            mode = level1.level1.level1(screen)
+            mode = level1.level1(screen)
 
         if mode == "explain":
             # Todo: Explain
@@ -49,8 +48,9 @@ def main() -> None:
 
         # Update the display
         pygame.display.flip()
-
+        # An die FPS anpassen
         clock.tick(g.FPS)
+    # Pygame immer sauber beenden
     pygame.quit()
 
 

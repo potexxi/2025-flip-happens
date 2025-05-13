@@ -11,9 +11,9 @@ SA,10.05,1.5h,Max
 SO,11.05,2h,Max
     Level 1 weitergemacht
 -
-MO, 12.05.2025,Yamen
+MO,12.05,Yamen
     skater_bewegung angefangen
 -
-DI, 13.05.2025,Max und Yamen
+DI,13.05.2025,Max|Yamen
     level1 und skater
-    -
+-
