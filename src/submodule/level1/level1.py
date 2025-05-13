@@ -1,6 +1,6 @@
 import pygame
 import src.submodule.globals as g
-from src.submodule.menu import draw_button, check_button_collide
+from src.submodule.menu.menu import draw_button, check_button_collide
 
 background: pygame.Surface = None
 brick: pygame.Surface = None

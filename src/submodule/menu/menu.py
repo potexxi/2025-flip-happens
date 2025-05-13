@@ -100,7 +100,7 @@ def draw_ranked(screen: pygame.Surface) -> None:
     font_down = pygame.font.SysFont("Verdana", box_rect[4]+g.HEIGHT//200)
     msg1 = font_top.render("FLIP-HAPPENS Bestenliste", True, (255, 215, 0))
     screen.blit(msg1, (box_rect[0] + 10, box_rect[1] + 5))
-    with open("submodule/bestenliste(probe).txt", "r", encoding="utf-8") as file:
+    with open("submodule/menu/bestenliste(probe).txt", "r", encoding="utf-8") as file:
         content = file.readlines()
     counter = 1
     for line in content:
