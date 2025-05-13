@@ -3,16 +3,20 @@ import src.submodule.globals as s
 
 images: list[pygame.Surface] = [] # Hier ist Bildliste für Animation
 image_counter = 0 # Hier Bildindex für Animation
-x_position = 25
-y_position = 25
+x_position = 0
+y_position = 0
+time_stamp: float = None
 
 
+# 59 x 65px = skin
 def init():
     global images # Hier globale Bildliste verwenden
-    image = pygame.image.load('assets/player/player1.png').convert_alpha() # Bild laden
-    for i in range(5):
-        image = pygame.image.load(f"assets/player/player{i +1}.png").convert_alpha() # Hier Bilder dynamisch laden(player1, player2,....)
-        images.append(image) # Bild Hinzufügen
+    image = pygame.image.load('player1.png').convert_alpha() # Bild laden
+    for i in range(3):
+        sub_image = image.subsurface((s.ASSETS_SIZE * i, 192, s.ASSETS_SIZE, s.ASSETS_SIZE))
+        sub_image = pygame.transform.scale(sub_image, (s.SCREEN_SIZE, s.SCREEN_SIZE))
+        #image = pygame.image.load(f"assets/player/player{i +1}.png").convert_alpha() # Hier Bilder dynamisch laden(player1, player2,....)
+        images.append(sub_image) # Bild Hinzufügen
 
 
 def move(x_position, y_position):
@@ -20,7 +24,7 @@ def move(x_position, y_position):
     -	Springen: Space
     -	Links: A
     -	Rechts: D
-    -	Pause: ESC
+    -	Pause ESC
     """
     pressed_keys = pygame.key.get_pressed()
     if pressed_keys[pygame.K_SPACE]:
@@ -30,10 +34,29 @@ def move(x_position, y_position):
             x_position -= 1 # ( größer = Schneller)
             print("user pressed A ")
     elif pressed_keys[pygame.K_d]: # ( D Taste nach rechts gehen)
-        if y_position > 0:
-            y_position += 1
+        if x_position > 0:
+            x_position += 1
             print("user pressed D ") # (größer = Schneller)
     elif pressed_keys[pygame.K_ESCAPE]:
         pass
+
+def draw(screen: pygame.Surface):
+    global image_counter, x_position, y_position
+    frame = images[image_counter % len(images)]  # Aktuelles Bild aus der Liste
+    screen.blit(frame, (x_position, y_position)) # Bild zeichnen
+if __name__ == '__main__':
+    pygame.init()
+    timestamp_ms = pygame.time.get_ticks()
+    while True:
+        global time_stamp_ms
+        screen = pygame.display.set_mode((s.WIDTH, s.HEIGHT))
+        pygame.display.set_caption('Skin Flip')
+        init()
+        draw(screen)
+        pygame.display.flip()
+        if (time_stamp == None or (timestamp_ms - time_stamp > 100)):
+            image_counter = (image_counter + 1) % 4
+            time_stamp = timestamp_ms
+
 
 

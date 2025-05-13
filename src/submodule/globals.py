@@ -9,4 +9,8 @@ WIDTH = int(pygame.display.Info(). current_w)
 # Size of ASSETS
 ASSETS_SIZE = int(pygame.display.Info().current_h // 16)
 
+SCREEN_SIZE = 128
+
+
+
 FPS = 65
