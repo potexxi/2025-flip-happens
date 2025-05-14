@@ -18,4 +18,5 @@ DI,13.05,3h,Max|Yamen
     level1 und skater
 -
 MI,14.05,2h,Max
-    level1 weiter gemacht
+    level1 fertig gemacht
+-

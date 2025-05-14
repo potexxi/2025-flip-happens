@@ -1,5 +1,5 @@
 # Licenses
-last save: 12.05.2025
+last save: 14.05.2025
 
 
 # # Pictures
@@ -32,8 +32,11 @@ last save: 12.05.2025
     - prompt: erstelle ein bild von einer 2d pixel art halfpipe, ich brauche das bild für mein pygame projekt,
     also mache die Halfpipe von der seitenansicht und in einfarbiger hintergrund
 
-- ramp.png by ChatGPT:
+- high_ramp_left.png and high_ramp_right.png by ChatGPT:
     - prompt: mache mir im gleichen stil eine normale rampe
 
 - pipe.png by ChatGPT:
     - prompt: erstelle im gleichen stil ein rohr, auf dem man skatet und slides macht
+
+- wide_ramp:
+    - selber aus high_ramp_right.png in Paint erstellt
