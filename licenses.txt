@@ -34,3 +34,6 @@ last save: 12.05.2025
 
 - ramp.png by ChatGPT:
     - prompt: mache mir im gleichen stil eine normale rampe
+
+- pipe.png by ChatGPT:
+    - prompt: erstelle im gleichen stil ein rohr, auf dem man skatet und slides macht

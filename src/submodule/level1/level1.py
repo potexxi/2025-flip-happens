@@ -6,6 +6,10 @@ brick: pygame.Surface = ...
 ui_pause: pygame.Surface = ...
 halfpipe_left: pygame.Surface = ...
 halfpipe_right: pygame.Surface = ...
+pipe: pygame.Surface = ...
+wide_ramp: pygame.Surface = ...
+high_ramp_left: pygame.Surface = ...
+high_ramp_right: pygame.Surface = ...
 mode: str = "play"
 pause_button: tuple[float,float,float,float] = (g.WIDTH - g.WIDTH / 50 -5, 5, g.WIDTH / 50, g.WIDTH / 50)
 first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2) - g.ASSETS_SIZE)
@@ -16,7 +20,7 @@ def init_level1() -> None:
     """
     Init all the pictures the level 1 needs
     """
-    global background, brick, ui_pause, halfpipe_left, halfpipe_right
+    global background, brick, ui_pause, halfpipe_left, halfpipe_right, pipe, high_ramp_left, wide_ramp, high_ramp_right
     # Background:
     background = pygame.image.load("assets/level1/background_unsharp.png").convert_alpha()
     background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
@@ -34,6 +38,19 @@ def init_level1() -> None:
     halfpipe_left = pygame.image.load("assets/level1/halfpipe.png")
     halfpipe_left = pygame.transform.scale(halfpipe_left, (g.ASSETS_SIZE, g.ASSETS_SIZE))
     halfpipe_right = pygame.transform.flip(halfpipe_left, True,False)
+
+    # Pipe:
+    pipe = pygame.image.load("assets/level1/pipe.png").convert_alpha()
+    pipe = pygame.transform.scale(pipe, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+
+    # Ramps:
+    high_ramp_left = pygame.image.load("assets/level1/high_ramp_left.png").convert_alpha()
+    high_ramp_left = pygame.transform.scale(high_ramp_left, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+    high_ramp_right = pygame.image.load("assets/level1/high_ramp_right.png").convert_alpha()
+    high_ramp_right = pygame.transform.scale(high_ramp_right, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+    wide_ramp = pygame.image.load("assets/level1/wide_ramp.png").convert_alpha()
+    wide_ramp = pygame.transform.scale(wide_ramp, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+
 
 
 def check_menu_button_pressed(screen: pygame.Surface) -> str:
@@ -59,21 +76,21 @@ def place_bricks(screen: pygame.Surface) -> None:
     # Floor: .
     for t in range(g.WIDTH // g.ASSETS_SIZE + 1):
         screen.blit(brick, (g.ASSETS_SIZE * t - 30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
-        if t == 15:
-            # unterer Berg beim Boden
+        if t == 9:
             for y in range(3):
                 screen.blit(brick, ((g.ASSETS_SIZE * t - 30) + y*g.ASSETS_SIZE,
                                     g.HEIGHT - g.ASSETS_SIZE - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
-    for t in range(4):
-        screen.blit(brick, (first_block_floor[0] + t*g.ASSETS_SIZE,
-                            first_block_floor[1] - 2*g.ASSETS_SIZE))
-    for t in range(4):
-        screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE + 3*g.ASSETS_SIZE,
-                            first_block_floor[1] - g.ASSETS_SIZE))
     for t in range(5):
-        screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE + 3 * g.ASSETS_SIZE,
-                            first_block_floor[1] - 5 * g.ASSETS_SIZE))
-    screen.blit(brick, (first_block_floor[0] + g.ASSETS_SIZE + 4 * g.ASSETS_SIZE,
+        screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE,
+                            first_block_floor[1] - 4 * g.ASSETS_SIZE))
+    for t in range(10):
+        screen.blit(brick, (first_block_floor[0] + 8 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
+                            first_block_floor[1] - 4 * g.ASSETS_SIZE))
+    for t in range(3):
+        screen.blit(brick, (first_block_floor[0] + 18 * g.ASSETS_SIZE,
+                            first_block_floor[1] - 4 * g.ASSETS_SIZE - t * g.ASSETS_SIZE))
+    for t in range(3):
+        screen.blit(brick, (first_block_floor[0] + 19 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
                             first_block_floor[1] - 6 * g.ASSETS_SIZE))
     for t in range(4):
         screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE,
@@ -83,7 +100,10 @@ def place_bricks(screen: pygame.Surface) -> None:
                             first_block_floor[1] - 9 * g.ASSETS_SIZE))
     for t in range(3):
         screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE + 9 * g.ASSETS_SIZE,
-                            first_block_floor[1] - 2 * g.ASSETS_SIZE))
+                            first_block_floor[1] - g.ASSETS_SIZE))
+    for t in range(2):
+        screen.blit(brick, (first_block_floor[0] + 27 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
+                           first_block_floor[1] - 4 * g.ASSETS_SIZE))
 
 
 
@@ -93,18 +113,39 @@ def place_elements(screen: pygame.Surface) -> None:
     :param screen: pygame.Surface -> where the elements should be drawn
     """
     # Halfpipes:
-    screen.blit(halfpipe_left, ((g.ASSETS_SIZE * 15 - 30) - g.ASSETS_SIZE,
-                           g.HEIGHT - g.ASSETS_SIZE - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
-    screen.blit(halfpipe_right, ((g.ASSETS_SIZE * 19 - 30) - g.ASSETS_SIZE,
-                           g.HEIGHT - g.ASSETS_SIZE - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
-    screen.blit(halfpipe_right, (first_block_floor[0] + 4 * g.ASSETS_SIZE,
-                                 first_block_floor[1] - 2 * g.ASSETS_SIZE))
-    screen.blit(halfpipe_right, (first_block_floor[0] + 6 * g.ASSETS_SIZE,
-                                 first_block_floor[1] - 6 * g.ASSETS_SIZE))
-    screen.blit(halfpipe_left, (first_block_floor[0] + 4 * g.ASSETS_SIZE,
-                                 first_block_floor[1] - 6 * g.ASSETS_SIZE))
+    screen.blit(halfpipe_left, (first_block_floor[0] + 8 * g.ASSETS_SIZE,
+                                 first_block_floor[1]))
+    screen.blit(halfpipe_right, (first_block_floor[0] + 12 * g.ASSETS_SIZE,
+                                 first_block_floor[1]))
     screen.blit(halfpipe_right, (first_block_floor[0] + 2 * g.ASSETS_SIZE,
                                  first_block_floor[1] - 9 * g.ASSETS_SIZE))
+    screen.blit(halfpipe_left, (first_block_floor[0] + 17 * g.ASSETS_SIZE,
+                                 first_block_floor[1] - 5 * g.ASSETS_SIZE))
+    # Pipes:
+    for t in range(3):
+        screen.blit(pipe, (first_block_floor[0] + 5 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
+                            first_block_floor[1] - 4 * g.ASSETS_SIZE))
+    for t in range(6):
+        screen.blit(pipe, (first_block_floor[0] + t*g.ASSETS_SIZE,
+                            first_block_floor[1] - g.ASSETS_SIZE))
+    for t in range(6):
+        screen.blit(pipe, (first_block_floor[0] + 14 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
+                            first_block_floor[1] - g.ASSETS_SIZE))
+    for t in range(4):
+        screen.blit(pipe, (first_block_floor[0] + 20 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
+                            first_block_floor[1] - 2 * g.ASSETS_SIZE))
+    for t in range(3):
+        screen.blit(pipe, (first_block_floor[0] + 24 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
+                            first_block_floor[1] - 3 * g.ASSETS_SIZE))
+    for t in range(3):
+        screen.blit(pipe, (first_block_floor[0] + 23 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
+                           first_block_floor[1] - 5 * g.ASSETS_SIZE))
+    # Ramps:
+    screen.blit(wide_ramp, (first_block_floor[0] + 11 * g.ASSETS_SIZE,
+                                first_block_floor[1] - 5 * g.ASSETS_SIZE))
+    screen.blit(high_ramp_left, (first_block_floor[0] + 4 * g.ASSETS_SIZE,
+                            first_block_floor[1] - 5 * g.ASSETS_SIZE))
+
 
 
 
