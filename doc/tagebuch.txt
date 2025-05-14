@@ -11,11 +11,11 @@ SA,10.05,1.5h,Max
 SO,11.05,2h,Max
     Level 1 weitergemacht
 -
-MO,12.05,Yamen
+MO,12.05,0.5h,Yamen
     skater_bewegung angefangen
 -
-DI,13.05,Max|Yamen
+DI,13.05,3h,Max|Yamen
     level1 und skater
 -
-MI,14.05,Max
+MI,14.05,2h,Max
     level1 weiter gemacht
