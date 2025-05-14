@@ -5,7 +5,7 @@ images: list[pygame.Surface] = [] # Hier ist Bildliste für Animation
 image_counter = 0 # Hier Bildindex für Animation
 x_position = 0
 y_position = 0
-time_stamp: float = None
+time_stamp: float = ...
 
 
 # 59 x 65px = skin
