@@ -19,4 +19,3 @@ DI,13.05,Max|Yamen
 -
 MI,14.05,Max
     level1 weiter gemacht
--
