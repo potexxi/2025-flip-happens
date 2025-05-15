@@ -40,3 +40,20 @@ last save: 14.05.2025
 
 - wide_ramp:
     - selber aus high_ramp_right.png in Paint erstellt
+
+
+
+
+
+
+
+
+# # Fonts
+
+- LowresPixel-Regular.otf by IbraCreative:
+    - linke: <https://www.1001fonts.com/lower-pixel-font.html>
+    - license: <https://www.1001fonts.com/licenses/ffp.html>
+
+- Born2bSportyFS.otf by UkiyoMoji:
+    - link: <https://www.1001fonts.com/born2bsporty-fs-font.html>
+    - license: <https://openfontlicense.org>

@@ -1,15 +1,15 @@
 import pygame
 import src.submodule.globals as g
 
-background: pygame.Surface = None
+background: pygame.Surface = ...
 
 
 def init_background() -> None:
     """
-    Load the background-picture from the "assets/menu-background/city-background.png" path.
+    Load the background-picture from the "assets/menu/city-background.png" path.
     """
     global background
-    background = pygame.image.load("assets/menu-background/blue_unsharp.png").convert_alpha()
+    background = pygame.image.load("assets/menu/blue_unsharp.png").convert_alpha()
     background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
 
 
@@ -24,7 +24,7 @@ def draw_button(screen: pygame.Surface, text: str, button: tuple[float, float, f
     :param color: the color of the button
     :return: None
     """
-    font = pygame.font.SysFont("Verdana", text_size)
+    font = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", text_size)
     text = font.render(f"{text}", True, "black")
     # KI-Anfang
     # KI: ChatGPT
@@ -70,8 +70,8 @@ def draw_flip_happens(screen: pygame.Surface) -> None:
     # prompt: ich mache in pygame ein menü, das auf der linken seite Flip Happens hat
     # und die position ist abhängig von der grösse des Fensters, der text soll schön in der mitte des linken drittels
     # platziert sein. gebe mir die berechnung für die variablen size, x position und y position
-    size = g.HEIGHT // 8
-    font = pygame.font.SysFont("Impact", size, False, False)
+    size = g.HEIGHT // 6
+    font = pygame.font.Font("assets/fonts/Born2bSportyFS.otf", size)
 
     text_surface = font.render("FLIP HAPPENS!", True, 'white')
     text_surface = pygame.transform.rotate(text_surface, 90)
@@ -96,8 +96,8 @@ def draw_ranked(screen: pygame.Surface) -> None:
     pygame.draw.rect(box_surface, (0, 0, 139, 100), (0, 0, box_rect[2], box_rect[3]), border_radius=15)
     screen.blit(box_surface, (box_rect[0], box_rect[1]))
 
-    font_top = pygame.font.SysFont("Verdana", box_rect[4]+g.HEIGHT//115, True)
-    font_down = pygame.font.SysFont("Verdana", box_rect[4]+g.HEIGHT//200)
+    font_top = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", box_rect[4]+g.HEIGHT//100)
+    font_down = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", box_rect[4]+g.HEIGHT//185)
     msg1 = font_top.render("FLIP-HAPPENS Bestenliste", True, (255, 215, 0))
     screen.blit(msg1, (box_rect[0] + 10, box_rect[1] + 5))
     with open("submodule/menu/bestenliste(probe).txt", "r", encoding="utf-8") as file:
@@ -108,7 +108,8 @@ def draw_ranked(screen: pygame.Surface) -> None:
         line_content = line.split(";")
         msg2 = font_down.render(f"{counter}. {line_content[0]}: {line_content[1]}", True, (255, 215, 0))
         text_width, text_height = msg2.get_size()
-        screen.blit(msg2, ((box_rect[0] + 10), (box_rect[1] + 5) + (counter * text_height + 10)))
+        screen.blit(msg2, ((box_rect[0] + 10), (box_rect[1] + 5) + (counter * (text_height + g.HEIGHT / 200)
+                                                                    + g.HEIGHT//100)))
         counter += 1
 
 
@@ -125,26 +126,26 @@ def menu(screen: pygame.Surface) -> str:
     # KI: ChatGPT
     # prompt: gebe mir die Positionen und Größen von folgenden Buttons: exit_button (ganz oben rechts), start_button
     # (in der Mitte eher oben), explain_button (unter start button), stop_button (unter explain button)
-    exit_button = [g.WIDTH - g.WIDTH / 50, 0, g.WIDTH / 50, g.WIDTH / 50, g.HEIGHT // 40]
-    start_button = [g.WIDTH / 2 - g.WIDTH / 12 / 2, g.HEIGHT / 3, g.WIDTH / 8, g.HEIGHT / 12, g.HEIGHT // 40]
+    exit_button = [g.WIDTH - g.WIDTH / 50, 0, g.WIDTH / 50, g.WIDTH / 50, g.HEIGHT // 35]
+    start_button = [g.WIDTH / 2 - g.WIDTH / 12 / 2, g.HEIGHT / 3, g.WIDTH / 8, g.HEIGHT / 12, g.HEIGHT // 35]
     explain_button = [g.WIDTH / 2 - g.WIDTH / 12 / 2, g.HEIGHT / 3 + g.HEIGHT / 15 + g.HEIGHT / 20, g.WIDTH / 8,
-                      g.HEIGHT / 12, g.HEIGHT // 40]
+                      g.HEIGHT / 12, g.HEIGHT // 35]
     stop_button = [g.WIDTH / 2 - g.WIDTH / 12 / 2, g.HEIGHT / 3 + 2 * (g.HEIGHT / 15 + g.HEIGHT / 20), g.WIDTH / 8,
-                   g.HEIGHT / 12, g.HEIGHT // 40]
+                   g.HEIGHT / 12, g.HEIGHT // 35]
     # KI-Ende
 
     # Draw the buttons
     draw_button(screen, "X", (exit_button[0],exit_button[1],exit_button[2],exit_button[3]),
                 exit_button[4], (211, 211, 211))
 
-    draw_button(screen, "START", (start_button[0],start_button[1],start_button[2],start_button[3]), start_button[4],
+    draw_button(screen, "START", (start_button[0],start_button[1],start_button[2],start_button[3]), g.HEIGHT // 40,
                 (211, 211, 211))
 
-    draw_button(screen, "STOP", (stop_button[0], stop_button[1], stop_button[2], stop_button[3]), stop_button[4],
+    draw_button(screen, "STOP", (stop_button[0], stop_button[1], stop_button[2], stop_button[3]), g.HEIGHT // 40,
                 (211, 211, 211))
 
     draw_button(screen, "ERKLÄRUNG", (explain_button[0], explain_button[1], explain_button[2], explain_button[3])
-                , explain_button[4],	(211, 211, 211))
+                , g.HEIGHT // 40,	(211, 211, 211))
 
     # Draw the ranked list
     draw_ranked(screen)

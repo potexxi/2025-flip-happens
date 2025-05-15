@@ -3,7 +3,17 @@ import src.submodule.globals as g
 from src.submodule.menu.menu import draw_button, check_button_collide
 
 
-def draw(screen: pygame.Surface) -> None:
+def draw(screen: pygame.Surface) -> str:
+    """
+    Draw the explain-menu
+    :param screen: pygame.Surface -> where the elements of the explain-menu should be drawn
+    :return: the mode in which the game is right now
+    """
+    # Background nochmal laden, dass alles schön ist
+    background = pygame.image.load("assets/menu/blue_unsharp.png").convert_alpha()
+    background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
+    screen.blit(background, (0,0))
+    # Exit Button oben rechts
     exit_button = [g.WIDTH - g.WIDTH / 50, 0, g.WIDTH / 50, g.WIDTH / 50, g.HEIGHT // 40]
     draw_button(screen, "X", (exit_button[0], exit_button[1], exit_button[2], exit_button[3]),
                 exit_button[4], (211, 211, 211))
@@ -19,12 +29,43 @@ def draw(screen: pygame.Surface) -> None:
     surface_x = (g.WIDTH - g.WIDTH // 1.2) // 2
     surface_y = (g.HEIGHT - g.HEIGHT // 1.2) // 2
     # KI-Ende
+    # Menü Hintergrund
     pygame.draw.rect(screen, (200, 220, 255, 230)
-                     ,(surface_x, surface_y, g.WIDTH // 1.2, g.HEIGHT // 1.2), border_radius=15)
+                     ,(surface_x, surface_y, g.WIDTH // 1.2, g.HEIGHT // 1.2), border_radius=10)
+    back_button = (surface_x + g.WIDTH // 1.2 - g.WIDTH//14.2, surface_y , g.HEIGHT / 8, g.HEIGHT // 25)
+    draw_button(screen, "Zurück", back_button, g.HEIGHT//45, "white")
+    if check_button_collide(screen,"Zurück",back_button, g.HEIGHT//40, (255, 215, 0)):
+        return "menu"
+    explain_text = [
+        "1. Ziel  des  Spiels:", "   Meistere  das  Level  mit  deinem  Skater  –  so  schnell,  so  stylisch  wie  möglich!",
+        "2. Level  abschließen:", "   Sammle  alle  Buchstaben  in  der  richtigen  Reihenfolge,  um  das  Level  zu  bezwingen.",
+        "3. Features  im  Level:", "   Bezwinge  Rampen,  grinde  Slides  und  nutze  jede  Chance  für  Tempo  und  Flow!",
+        "4. Coins  sammeln:", "   Jeder  Coin  zählt  –  je  mehr  du  hast,  desto  höher  dein  Ruhm.",
+        "5. Bestenliste:", "   Nur  die  mit  den  meisten  Coins  thronen  an  der  Spitze  der  Rangliste.",
+        "6. Shop:", "   Tausch  Reichtum  gegen  Skill  –  doch  sei  bereit,  im  Ranking  zu  fallen.",
+        "7. Taktik  zählt:", "   Wähle  deinen  Weg:  Ewiger  Ruhm  oder  krasse  Extras  –  du  entscheidest!",
+    ]
+    font = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", g.HEIGHT // 45)
+    counter = 0
+    distance = g.HEIGHT // 20
+    for idx, entry in enumerate(explain_text):
+        if idx % 2 == 0:
+            surface = font.render(entry, True, "black")
+            counter += 1
+        else:
+            surface = font.render(entry, True, "black")
+        surface_width, surface_height = surface.get_size()
+        screen.blit(surface, (surface_x+g.WIDTH//100, surface_y +  idx * surface_height + counter * distance))
+    return "explain"
 
 
 def menu(screen: pygame.Surface) -> str:
+    """
+    Runs the explain-menu
+    :param screen: pygame.Surface -> where the explain-menu should be drawn
+    :return: the mode in which the game is in right now
+    """
     surface_explain = pygame.Surface((g.WIDTH, g.HEIGHT), pygame.SRCALPHA).convert_alpha()
-    draw(surface_explain)
+    mode = draw(surface_explain)
     screen.blit(surface_explain, (0,0))
-    return "explain"
+    return mode

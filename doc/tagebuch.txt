@@ -20,6 +20,6 @@ DI,13.05,3h,Max|Yamen
 MI,14.05,2h,Max
     level1 fertig gemacht
 -
-DO,15.05,2h,Max
+DO,15.05,4h,Max
     explain-menu gemacht
 -
