@@ -2,6 +2,7 @@ import pygame
 import submodule.menu.menu as menu
 import submodule.globals as g
 import src.submodule.level1.level1 as level1
+import src.submodule.explain_menu.explain_menu as explain
 
 
 def main() -> None:
@@ -37,8 +38,7 @@ def main() -> None:
             mode = level1.level1(screen)
 
         if mode == "explain":
-            # Todo: Explain
-            pass
+            mode = explain.menu(screen)
 
         if mode == "pause":
             # TODO:Pause
