@@ -1,5 +1,6 @@
 import pygame
 import src.submodule.globals as g
+import src.submodule.level1.place_assets as assets
 
 background: pygame.Surface = ...
 brick: pygame.Surface = ...
@@ -50,7 +51,6 @@ def init_level1() -> None:
     high_ramp_right = pygame.transform.scale(high_ramp_right, (g.ASSETS_SIZE, g.ASSETS_SIZE))
     wide_ramp = pygame.image.load("assets/level1/wide_ramp.png").convert_alpha()
     wide_ramp = pygame.transform.scale(wide_ramp, (g.ASSETS_SIZE, g.ASSETS_SIZE))
-
 
 
 def check_menu_button_pressed(screen: pygame.Surface) -> str:
@@ -212,7 +212,7 @@ def place_elements(screen: pygame.Surface) -> None:
                                   first_block_floor[1] - 9 * g.ASSETS_SIZE))
 
 
-def level1(screen: pygame.Surface) -> str:
+def draw(screen: pygame.Surface) -> str:
     """
     level1 of the game
     :param screen: pygame.Surface -> where the level should be drawn
@@ -224,6 +224,8 @@ def level1(screen: pygame.Surface) -> str:
     # Elements:
     place_bricks(screen)
     place_elements(screen)
+    assets.draw_coins(screen)
+
 
     # Pause-Button:
     if check_menu_button_pressed(screen) == "pause":

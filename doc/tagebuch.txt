@@ -23,3 +23,6 @@ MI,14.05,2h,Max
 DO,15.05,4h,Max
     explain-menu gemacht
 -
+FR,16.05,2h,Max
+    Coins begonnen
+-

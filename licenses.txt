@@ -41,6 +41,10 @@ last save: 14.05.2025
 - wide_ramp:
     - selber aus high_ramp_right.png in Paint erstellt
 
+- coin_strip.png by truezipp:
+    - link: <https://opengameart.org/content/pixel-coins-asset>
+    - license: CC0 1.0 Universal <https://creativecommons.org/publicdomain/zero/1.0/>
+
 
 
 
