@@ -23,7 +23,7 @@ def init_level1() -> None:
     """
     global background, brick, ui_pause, halfpipe_left, halfpipe_right, pipe, high_ramp_left, wide_ramp, high_ramp_right
     # Background:
-    background = pygame.image.load("assets/level1/background_unsharp.png").convert_alpha()
+    background = pygame.image.load("assets/level1/background.png").convert_alpha()
     background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
 
     # Brick:
@@ -225,6 +225,8 @@ def draw(screen: pygame.Surface) -> str:
     place_bricks(screen)
     place_elements(screen)
     assets.draw_coins(screen)
+    assets.draw_letters(screen)
+    assets.draw_power_ups(screen)
 
 
     # Pause-Button:

@@ -45,6 +45,13 @@ last save: 14.05.2025
     - link: <https://opengameart.org/content/pixel-coins-asset>
     - license: CC0 1.0 Universal <https://creativecommons.org/publicdomain/zero/1.0/>
 
+- letter.png by Puddin:
+    - link: <https://opengameart.org/content/8-bit-personalized-alphabet-only-letters>
+    - license: CC0 1.0 Universal <https://creativecommons.org/publicdomain/zero/1.0/>
+
+- power_up_sprite.png and coin_sprite.png by La Red Games:
+    - link: <https://laredgames.itch.io/gems-coins-free>
+    - license: steht direkt auf der seite <https://laredgames.itch.io/gems-coins-free>
 
 
 

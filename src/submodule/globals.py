@@ -8,7 +8,7 @@ WIDTH = int(pygame.display.Info(). current_w)
 
 # Size of ASSETS
 ASSETS_SIZE = int(pygame.display.Info().current_h // 16)
-POWER_UPS_SIZE = int(ASSETS_SIZE//2.5)
+POWER_UPS_SIZE = int(ASSETS_SIZE//2.7)
 
 SCREEN_SIZE = 128
 
