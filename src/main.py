@@ -40,7 +40,8 @@ def main() -> None:
 
         if mode == "play":
             mode = level1.draw(screen)
-            player.draw(screen)
+            player.draw(screen, "push")
+            # Todo: Zeit
 
         if mode == "explain":
             mode = explain.menu(screen)
