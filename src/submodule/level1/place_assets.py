@@ -11,7 +11,7 @@ last_timestamp_power: int = None
 first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2) - g.ASSETS_SIZE)
 first_asset: tuple[float,float] = (first_block_floor[0] + (g.ASSETS_SIZE - g.POWER_UPS_SIZE) / 2,
     first_block_floor[1] + (g.ASSETS_SIZE//2.5))
-first_power_up: tuple[float,float] = (first_asset[0] - g.POWER_UPS_SIZE//3, first_asset[1] - g.POWER_UPS_SIZE//2)
+first_power_up: tuple[float,float] = (first_asset[0] - g.POWER_UPS_SIZE//4, first_asset[1] - g.POWER_UPS_SIZE//2)
 
 
 
@@ -55,12 +55,49 @@ def draw_coins(screen: pygame.Surface) -> None:
     for t in range(1, 5):
         screen.blit(image, (first_asset[0] + t * g.ASSETS_SIZE,
                         first_asset[1]))
-    for t in range(1, 7):
+    for t in range(1, 4):
         screen.blit(image, (first_asset[0] + t * g.ASSETS_SIZE + 15 * g.ASSETS_SIZE,
+                        first_asset[1]))
+    for t in range(1, 4):
+        screen.blit(image, (first_asset[0] + t * g.ASSETS_SIZE + 19 * g.ASSETS_SIZE,
                         first_asset[1]))
     for t in range(3):
         screen.blit(image, (first_asset[0] + t * g.ASSETS_SIZE + 3 * g.ASSETS_SIZE,
                             first_asset[1] - 2 * g.ASSETS_SIZE))
+    for t in range(3):
+        screen.blit(image, (first_asset[0] + t * g.ASSETS_SIZE + 2 * g.ASSETS_SIZE,
+                            first_asset[1] - 12 * g.ASSETS_SIZE))
+    screen.blit(image, (first_asset[0] + 13 * g.ASSETS_SIZE,
+                        first_asset[1] - 5 * g.ASSETS_SIZE))
+    screen.blit(image, (first_asset[0] + 15 * g.ASSETS_SIZE,
+                        first_asset[1] - 5 * g.ASSETS_SIZE))
+    for t in range(2):
+        screen.blit(image, (first_asset[0] + 8 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
+                            first_asset[1] - 5 * g.ASSETS_SIZE))
+    for t in range(2):
+        screen.blit(image, (first_asset[0] + 2 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
+                        first_asset[1] - 5 * g.ASSETS_SIZE))
+    screen.blit(image, (first_asset[0] + 3 * g.ASSETS_SIZE,
+                        first_asset[1] - 9 * g.ASSETS_SIZE))
+    for t in range(3):
+        screen.blit(image, (first_asset[0] + 18 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
+                            first_asset[1] - 9 * g.ASSETS_SIZE))
+    for t in range(1, 4):
+        screen.blit(image, (first_asset[0] + t * g.ASSETS_SIZE + 13 * g.ASSETS_SIZE,
+                        first_asset[1] - 2 * g.ASSETS_SIZE))
+    for t in range(1, 4):
+        screen.blit(image, (first_asset[0] + t * g.ASSETS_SIZE + 15 * g.ASSETS_SIZE,
+                        first_asset[1] - 13 * g.ASSETS_SIZE))
+    for t in range(3):
+        screen.blit(image, (first_asset[0] + 23 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
+                        first_asset[1] - 6 * g.ASSETS_SIZE))
+    screen.blit(image, (first_asset[0] + 27 * g.ASSETS_SIZE,
+                        first_asset[1] - 5 * g.ASSETS_SIZE))
+    screen.blit(image, (first_asset[0] + 26 * g.ASSETS_SIZE,
+                        first_asset[1] - 13 * g.ASSETS_SIZE))#
+    for t in range(2):
+        screen.blit(image, (first_asset[0] + 12 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
+                            first_asset[1] - 9 * g.ASSETS_SIZE))
     # make the timestamp for the animation
     if last_timestamp is None or timestamp - last_timestamp > 150:
         coins_counter += 1
@@ -103,8 +140,12 @@ def draw_power_ups(screen: pygame.Surface) -> None:
     image = power_up[power_counter]
 
     # blit all the coin - images at all the destinations
-    screen.blit(image, (first_power_up[0] + 15 * g.ASSETS_SIZE,
+    screen.blit(image, (first_power_up[0] + 19 * g.ASSETS_SIZE,
                             first_power_up[1]))
+    screen.blit(image, (first_power_up[0] + 14 * g.ASSETS_SIZE,
+                            first_power_up[1] - 5 * g.ASSETS_SIZE))
+    screen.blit(image, (first_power_up[0] + 11 * g.ASSETS_SIZE,
+                        first_power_up[1] - 14 * g.ASSETS_SIZE))
     # make the timestamp for the animation
     if last_timestamp_power is None or timestamp - last_timestamp_power > 200:
         power_counter += 1

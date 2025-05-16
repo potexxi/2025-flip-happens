@@ -4,6 +4,7 @@ import submodule.globals as g
 import src.submodule.level1.draw as level1
 import src.submodule.explain_menu.explain_menu as explain
 import src.submodule.level1.place_assets as assets
+import src.submodule.skater.skin as player
 
 
 def main() -> None:
@@ -24,6 +25,7 @@ def main() -> None:
     menu.init_background()
     level1.init_level1()
     assets.init_assets()
+    player.init()
 
     mode = "menu"
 
@@ -38,6 +40,7 @@ def main() -> None:
 
         if mode == "play":
             mode = level1.draw(screen)
+            player.draw(screen)
 
         if mode == "explain":
             mode = explain.menu(screen)

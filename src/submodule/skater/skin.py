@@ -5,15 +5,15 @@ images: list[pygame.Surface] = [] # Hier ist Bildliste für Animation
 image_counter = 0 # Hier Bildindex für Animation
 x_position = 0
 y_position = 0
-time_stamp: float = ...
+last_timestamp: float = None
 
 
 # 59 x 65px = skin
 def init():
     global images # Hier globale Bildliste verwenden
-    image = pygame.image.load('player1.png').convert_alpha() # Bild laden
-    for i in range(3):
-        sub_image = image.subsurface((59 * i, 192, 59, 65))
+    image = pygame.image.load('assets/player/player1.png').convert_alpha() # Bild laden
+    for i in range(9):
+        sub_image = image.subsurface((64 * i, 135, 60, 60))
         sub_image = pygame.transform.scale(sub_image, (s.ASSETS_SIZE, s.ASSETS_SIZE))
         #image = pygame.image.load(f"assets/player/player{i +1}.png").convert_alpha() # Hier Bilder dynamisch laden(player1, player2,....)
         images.append(sub_image) # Bild Hinzufügen
@@ -41,13 +41,19 @@ def move(x_position, y_position):
         pass
 
 def draw(screen: pygame.Surface):
-    global image_counter, x_position, y_position
-    frame = images[image_counter % len(images)]  # Aktuelles Bild aus der Liste
-    screen.blit(frame, (x_position, y_position)) # Bild zeichnen
+    global image_counter, x_position, y_position, last_timestamp
+    timestamp = pygame.time.get_ticks()
+    image = images[image_counter]
+    screen.blit(image, (0,0))
+    if last_timestamp is None or timestamp - last_timestamp > 100:
+        image_counter += 1
+        if image_counter >= 9:
+            image_counter = 0
+        last_timestamp = timestamp
+
 
 if __name__ == '__main__':
     pygame.init()
-    timestamp_ms = pygame.time.get_ticks()
     while True:
         global time_stamp_ms
         screen = pygame.display.set_mode((s.WIDTH, s.HEIGHT))
@@ -55,9 +61,6 @@ if __name__ == '__main__':
         init()
         draw(screen)
         pygame.display.flip()
-        if (time_stamp == None or (timestamp_ms - time_stamp > 100)):
-            image_counter = (image_counter + 1) % 4
-            time_stamp = timestamp_ms
 
 
 
