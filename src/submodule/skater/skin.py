@@ -54,7 +54,11 @@ def draw(screen: pygame.Surface, mode: str):
     else:
         image = images_drive[image_counter]
     screen.blit(image, (0,0))
-    if last_timestamp is None or timestamp - last_timestamp > 100:
+    if mode == "push":
+        speed = 100
+    else:
+        speed = 250
+    if last_timestamp is None or timestamp - last_timestamp > speed:
         image_counter += 1
         if mode == "push":
             if image_counter >= 9:

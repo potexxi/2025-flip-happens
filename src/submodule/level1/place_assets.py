@@ -6,8 +6,10 @@ letters: list[pygame.Surface] = []
 power_up: list[pygame.Surface] = []
 coins_counter: int = 0
 power_counter: int = 0
-last_timestamp: int = None
+last_timestamp_coins: int = None
 last_timestamp_power: int = None
+last_timestamp_clock: int = 0
+time: int = 120
 first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2) - g.ASSETS_SIZE)
 first_asset: tuple[float,float] = (first_block_floor[0] + (g.ASSETS_SIZE - g.POWER_UPS_SIZE) / 2,
     first_block_floor[1] + (g.ASSETS_SIZE//2.5))
@@ -46,7 +48,7 @@ def draw_coins(screen: pygame.Surface) -> None:
     Draw the coins
     :param screen: pygame.Surface: where the coins should be drawn
     """
-    global last_timestamp, coins_counter
+    global last_timestamp_coins, coins_counter
     # get timestamp and the image
     timestamp = pygame.time.get_ticks()
     image = coins[coins_counter]
@@ -99,11 +101,11 @@ def draw_coins(screen: pygame.Surface) -> None:
         screen.blit(image, (first_asset[0] + 12 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
                             first_asset[1] - 9 * g.ASSETS_SIZE))
     # make the timestamp for the animation
-    if last_timestamp is None or timestamp - last_timestamp > 150:
+    if last_timestamp_coins is None or timestamp - last_timestamp_coins > 150:
         coins_counter += 1
         if coins_counter >= 5:
             coins_counter = 0
-        last_timestamp = timestamp
+        last_timestamp_coins = timestamp
 
 
 def draw_letters(screen: pygame.Surface) -> None:
@@ -152,3 +154,23 @@ def draw_power_ups(screen: pygame.Surface) -> None:
         if power_counter >= 4:
             power_counter = 0
         last_timestamp_power = timestamp
+
+
+def draw_clock(screen: pygame.Surface) -> None:
+    global last_timestamp_clock, time
+    timestamp = pygame.time.get_ticks()
+
+    font = pygame.font.Font("assets/fonts/clock.otf", g.HEIGHT//30)
+    time_min = time//60
+    time_sek = time-time_min*60
+    if time < 0:
+        time_min, time_sek = 0,0
+    if time_sek//10 > 0:
+        text = font.render(f"0{time_min}:{time_sek}", False, "black")
+    else:
+        text = font.render(f"0{time_min}:0{time_sek}", False, "black")
+    text_width, text_height = text.get_size()
+    screen.blit(text, (g.WIDTH // 2 - text_width//2, 0))
+    if timestamp - last_timestamp_clock >= 1000:
+        time -= 1
+        last_timestamp_clock = timestamp

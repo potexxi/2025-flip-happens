@@ -227,6 +227,7 @@ def draw(screen: pygame.Surface) -> str:
     assets.draw_coins(screen)
     assets.draw_letters(screen)
     assets.draw_power_ups(screen)
+    assets.draw_clock(screen)
 
 
     # Pause-Button:

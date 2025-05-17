@@ -68,3 +68,7 @@ last save: 14.05.2025
 - Born2bSportyFS.otf by UkiyoMoji:
     - link: <https://www.1001fonts.com/born2bsporty-fs-font.html>
     - license: <https://openfontlicense.org>
+
+- ka1.ttf by Vic Fieger:
+    - link: <https://www.1001fonts.com/karmatic-arcade-font.html>
+    - license: 1001Fonts Free For Commercial Use License (FFC) <https://www.1001fonts.com/licenses/ffc.html>
