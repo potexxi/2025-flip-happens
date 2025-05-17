@@ -97,7 +97,7 @@ def draw_ranked(screen: pygame.Surface) -> None:
     screen.blit(box_surface, (box_rect[0], box_rect[1]))
 
     font_top = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", box_rect[4]+g.HEIGHT//100)
-    font_down = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", box_rect[4]+g.HEIGHT//185)
+    font_down = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", box_rect[4]+g.HEIGHT//140)
     msg1 = font_top.render("FLIP-HAPPENS Bestenliste", True, (255, 215, 0))
     screen.blit(msg1, (box_rect[0] + 10, box_rect[1] + 5))
     with open("submodule/menu/bestenliste(probe).txt", "r", encoding="utf-8") as file:
