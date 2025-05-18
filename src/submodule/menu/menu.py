@@ -104,6 +104,12 @@ def draw_ranked(screen: pygame.Surface) -> None:
         content = file.readlines()
     counter = 1
     for line in content:
+        if counter > 6:
+            msg2 = font_down.render(". . .", True, (255, 215, 0))
+            text_width, text_height = msg2.get_size()
+            screen.blit(msg2, ((box_rect[0] + 10), (box_rect[1] + 5) + (counter * (text_height + g.HEIGHT / 200)
+                                                                        + g.HEIGHT // 100)))
+            return None
         line = line.strip()
         line_content = line.split(";")
         msg2 = font_down.render(f"{counter}. {line_content[0]}: {line_content[1]}", True, (255, 215, 0))
@@ -111,6 +117,7 @@ def draw_ranked(screen: pygame.Surface) -> None:
         screen.blit(msg2, ((box_rect[0] + 10), (box_rect[1] + 5) + (counter * (text_height + g.HEIGHT / 200)
                                                                     + g.HEIGHT//100)))
         counter += 1
+    return None
 
 
 def menu(screen: pygame.Surface) -> str:
