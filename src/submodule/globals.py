@@ -14,6 +14,8 @@ WORLD_MOVE_X_PX = 0.3
 
 SCREEN_SIZE = 128
 
+SPEED = 2
+
 
 
 FPS = 65

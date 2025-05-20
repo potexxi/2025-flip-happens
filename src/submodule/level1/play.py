@@ -10,17 +10,11 @@ def play(screen: pygame.Surface) -> str:
     """
     Play level1
     :param screen: pygame.Surface -> where the game should be drawn
-    :return: str -> in which mode the game is
+    :return: str -> in which mode the game is in
     """
-    global last_timestamp, mode
+    global mode
     mode = draw_level.draw(screen)
-    print(mode)
-    timestamp = pygame.time.get_ticks()
-    player_mode = "drive"
-    if last_timestamp is None or timestamp - last_timestamp > 500:
-        player_mode = "drive"
-        last_timestamp = timestamp
-    player.draw(screen, player_mode)
-
+    player.move()
+    player.draw(screen)
 
     return mode

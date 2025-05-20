@@ -35,6 +35,8 @@ def main() -> None:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == pygame.K_a:
+                direction = "left"
 
         if mode == "menu":
             mode = menu.menu(screen)
