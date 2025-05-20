@@ -1,6 +1,6 @@
 import pygame
-import src.submodule.level1.draw as draw_level
-import src.submodule.skater.skin as player
+import src.submodule.level1.place_blocks as draw_level
+import src.submodule.skater.skater as player
 
 last_timestamp: int = None
 mode: str = "play"

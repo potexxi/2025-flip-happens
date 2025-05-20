@@ -14,7 +14,8 @@ high_ramp_right: pygame.Surface = ...
 mode: str = "play"
 pause_button: tuple[float,float,float,float] = (g.WIDTH - g.WIDTH / 50 -5, 5, g.WIDTH / 50, g.WIDTH / 50)
 first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2) - g.ASSETS_SIZE)
-
+blocks: list[tuple] = []
+append_blocks: bool = True
 
 
 def init_level1() -> None:
@@ -73,72 +74,155 @@ def place_bricks(screen: pygame.Surface) -> None:
     Draw the bricks on the screen
     :param screen: pygame.Surface -> where the bricks should be drawn
     """
-    # Floor: .
+    global append_blocks
     for t in range(g.WIDTH // g.ASSETS_SIZE + 1):
-        screen.blit(brick, (g.ASSETS_SIZE * t - 30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
+        x = g.ASSETS_SIZE * t - 30
+        y = g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
         if t == 9:
-            for y in range(3):
-                screen.blit(brick, ((g.ASSETS_SIZE * t - 30) + y*g.ASSETS_SIZE,
-                                    g.HEIGHT - g.ASSETS_SIZE - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)))
+            for z in range(3):
+                x2 = x + z * g.ASSETS_SIZE
+                y2 = g.HEIGHT - g.ASSETS_SIZE - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2)
+                screen.blit(brick, (x2, y2))
+                if append_blocks:
+                    blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x2, y2))
+
     for t in range(5):
-        screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE,
-                            first_block_floor[1] - 4 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 4 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(10):
-        screen.blit(brick, (first_block_floor[0] + 8 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                            first_block_floor[1] - 4 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 8 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 4 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(3):
-        screen.blit(brick, (first_block_floor[0] + 18 * g.ASSETS_SIZE,
-                            first_block_floor[1] - 4 * g.ASSETS_SIZE - t * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 18 * g.ASSETS_SIZE
+        y = first_block_floor[1] - 4 * g.ASSETS_SIZE - t * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(3):
-        screen.blit(brick, (first_block_floor[0] + 19 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                            first_block_floor[1] - 6 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 19 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 6 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(4):
-        screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE,
-                            first_block_floor[1] - 8 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 8 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(2):
-        screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE,
-                            first_block_floor[1] - 9 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 9 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(3):
-        screen.blit(brick, (first_block_floor[0] + t * g.ASSETS_SIZE + 9 * g.ASSETS_SIZE,
-                            first_block_floor[1] - g.ASSETS_SIZE))
+        x = first_block_floor[0] + t * g.ASSETS_SIZE + 9 * g.ASSETS_SIZE
+        y = first_block_floor[1] - g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(2):
-        screen.blit(brick, (first_block_floor[0] + 27 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                           first_block_floor[1] - 4 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 27 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 4 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(2):
-        screen.blit(brick, (first_block_floor[0] + 9 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                           first_block_floor[1] - 8 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 9 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 8 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(2):
-        screen.blit(brick, (first_block_floor[0] + 8 * g.ASSETS_SIZE,
-                           first_block_floor[1] - 9 * g.ASSETS_SIZE + t * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 8 * g.ASSETS_SIZE
+        y = first_block_floor[1] - 9 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(2):
-        screen.blit(brick, (first_block_floor[0] + 7 * g.ASSETS_SIZE,
-                           first_block_floor[1] - 10 * g.ASSETS_SIZE + t * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 7 * g.ASSETS_SIZE
+        y = first_block_floor[1] - 10 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(3):
-        screen.blit(brick, (first_block_floor[0] + -1 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                           first_block_floor[1] - 12 * g.ASSETS_SIZE))
+        x = first_block_floor[0] - 1 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 12 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(3):
-        screen.blit(brick, (first_block_floor[0] + 11 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                           first_block_floor[1] - 8 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 11 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 8 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(3):
-        screen.blit(brick, (first_block_floor[0] + 13 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                           first_block_floor[1] - 7 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 13 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 7 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(8):
-        screen.blit(brick, (first_block_floor[0] + 21 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                           first_block_floor[1] - 9 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 21 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 9 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for x in range(2):
         for t in range(6):
-            screen.blit(brick, (first_block_floor[0] + 23 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                               first_block_floor[1] - 10 * g.ASSETS_SIZE - x * g.ASSETS_SIZE))
-    for t in range(5):
-        screen.blit(brick, (first_block_floor[0] + 24 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                            first_block_floor[1] - 12 * g.ASSETS_SIZE))
-    for t in range(3):
-        screen.blit(brick, (first_block_floor[0] + 7 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                           first_block_floor[1] - 13 * g.ASSETS_SIZE))
-    for t in range(2):
-        screen.blit(brick, (first_block_floor[0] + 7 * g.ASSETS_SIZE,
-                           first_block_floor[1] - 14 * g.ASSETS_SIZE - t * g.ASSETS_SIZE))
+            x1 = first_block_floor[0] + 23 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+            y1 = first_block_floor[1] - 10 * g.ASSETS_SIZE - x * g.ASSETS_SIZE
+            screen.blit(brick, (x1, y1))
+            if append_blocks:
+                blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
+    for t in range(5):
+        x = first_block_floor[0] + 24 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 12 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
+    for t in range(3):
+        x = first_block_floor[0] + 7 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 13 * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
+    for t in range(2):
+        x = first_block_floor[0] + 7 * g.ASSETS_SIZE
+        y = first_block_floor[1] - 14 * g.ASSETS_SIZE - t * g.ASSETS_SIZE
+        screen.blit(brick, (x, y))
+        if append_blocks:
+            blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+    append_blocks = False
 
 
 def place_elements(screen: pygame.Surface) -> None:
