@@ -198,11 +198,11 @@ def place_bricks(screen: pygame.Surface) -> None:
         if append_blocks:
             blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
-    for x in range(2):
-        for t in range(6):
-            x1 = first_block_floor[0] + 23 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
-            y1 = first_block_floor[1] - 10 * g.ASSETS_SIZE - x * g.ASSETS_SIZE
-            screen.blit(brick, (x1, y1))
+    for t in range(2):
+        for z in range(6):
+            x = first_block_floor[0] + 23 * g.ASSETS_SIZE + z * g.ASSETS_SIZE
+            y = first_block_floor[1] - 10 * g.ASSETS_SIZE - t * g.ASSETS_SIZE
+            screen.blit(brick, (x, y))
             if append_blocks:
                 blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 

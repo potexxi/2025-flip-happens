@@ -9,13 +9,13 @@ WIDTH = int(pygame.display.Info(). current_w)
 # Size of ASSETS
 ASSETS_SIZE = int(pygame.display.Info().current_h // 16)
 POWER_UPS_SIZE = int(ASSETS_SIZE//2.7)
-PLAYER_SIZE = ASSETS_SIZE + ASSETS_SIZE//5
+PLAYER_SIZE = ASSETS_SIZE
 
-# How fast the World moves in the start menu
-WORLD_MOVE_X_PX = 0.3
+# On which position the background-picture is
+POSITION_WORLD = [0,0]
 
 # The speed of the player in px
-SPEED = HEIGHT//(HEIGHT//2)
+SPEED = 4
 
 # Gravity
 GRAVITATION = 0.5

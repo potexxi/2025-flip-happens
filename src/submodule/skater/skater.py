@@ -54,12 +54,30 @@ def move() -> None:
         jump = True
     speed = g.SPEED
 
-    # Todo: fix the for loop
+    # Check if the player drives in a block or a pole
     for block in blocks:
         block_rect = pygame.Rect(block[2], block[3], block[0], block[1])
         if skater_rect.colliderect(block_rect):
-            speed = 0
-            break
+            if direction == "right":
+                if skater_rect.right <= block_rect.left + 2:
+                    speed = 0
+                    break
+            if direction == "left":
+                if skater_rect.left >= block_rect.right - 2:
+                    speed = 0
+                    break
+    for pole in poles:
+        pole_rect = pygame.Rect(pole[2], pole[3], pole[0], pole[1])
+        if skater_rect.colliderect(pole_rect):
+            if direction == "right":
+                if skater_rect.right <= pole_rect.left + 2:
+                    speed = 0
+                    break
+            if direction == "left":
+                if skater_rect.left >= pole_rect.right - 2:
+                    speed = 0
+                    break
+
 
     # Moves the player automatically to the right or the left
     if direction == "right" and x_position <= g.WIDTH-g.ASSETS_SIZE:
@@ -88,7 +106,12 @@ def move() -> None:
         # Prüfe nur Boden-Kollision (unter dem Spieler)
         if skater_rect.colliderect(block_rect):
             # Prüfe, ob Spieler genau auf dem Block steht (z. B. Kollision von unten)
-            if y_position + g.ASSETS_SIZE <= block[3] + 10 and velocity[1] >= 0:
+            # Spieler muss sich von oben nähern und darf nicht weit rechts/links daneben sein
+            if (    block_rect.top <= skater_rect.bottom and
+                    skater_rect.bottom <= block_rect.top + 10 and
+                    velocity[1] >= 0 and
+                    skater_rect.right > block_rect.left + 5 and
+                    skater_rect.left < block_rect.right - 5):
                 on_platform = True
                 y_position = block[3] - g.PLAYER_SIZE # Position korrigieren
                 velocity[1] = 0
@@ -99,7 +122,7 @@ def move() -> None:
         # Prüfe nur Boden-Kollision (unter dem Spieler)
         if skater_rect.colliderect(pole_rect):
             # Prüfe, ob Spieler genau auf dem Block steht (z. B. Kollision von unten)
-            if y_position + g.ASSETS_SIZE <= pole[3] + 10 and velocity[1] >= 0:
+            if y_position + g.PLAYER_SIZE <= pole[3] + 10 and velocity[1] >= 0:
                 on_pole = True
                 y_position = pole[3] - g.PLAYER_SIZE  # Position korrigieren
                 velocity[1] = 0

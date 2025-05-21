@@ -1,6 +1,6 @@
 import pygame
 import src.submodule.globals as g
-from src.submodule.menu.menu import draw_button, check_button_collide
+from src.submodule.menu.menu import draw_button, check_button_collide, move_background
 
 
 def draw(screen: pygame.Surface) -> str:
@@ -9,10 +9,13 @@ def draw(screen: pygame.Surface) -> str:
     :param screen: pygame.Surface -> where the elements of the explain-menu should be drawn
     :return: the mode in which the game is right now
     """
-    # Background nochmal laden, dass alles schön ist
+    # Background zeichnen
     background = pygame.image.load("assets/menu/blue_unsharp.png").convert_alpha()
     background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
-    screen.blit(background, (0,0))
+    move_background("explain")
+    screen.blit(background, g.POSITION_WORLD)
+    screen.blit(background, (g.POSITION_WORLD[0] + screen.get_width(), g.POSITION_WORLD[1]))
+
     # Exit Button oben rechts
     exit_button = [g.WIDTH - g.WIDTH / 50, 0, g.WIDTH / 50, g.WIDTH / 50, g.HEIGHT // 40]
     draw_button(screen, "X", (exit_button[0], exit_button[1], exit_button[2], exit_button[3]),

@@ -2,7 +2,6 @@ import pygame
 import src.submodule.globals as g
 
 background: pygame.Surface = ...
-position_background: list[float] = [0,0]
 
 
 def init_background() -> None:
@@ -121,15 +120,19 @@ def draw_ranked(screen: pygame.Surface) -> None:
     return None
 
 
-def move_background() -> None:
+def move_background(menu_type: str) -> None:
     """
     Move the background x-pixel to the left
+    :param menu_type: which type the menu is (start menu or explain menu)
     :return: None
     """
-    global position_background
-    position_background[0] -= g.WORLD_MOVE_X_PX
-    if position_background[0] < -g.WIDTH:
-        position_background[0] = 0
+    if menu_type == "explain":
+        speed = 1.3
+    else:
+        speed = 0.3
+    g.POSITION_WORLD[0] -= speed
+    if g.POSITION_WORLD[0] < -g.WIDTH:
+        g.POSITION_WORLD[0] = 0
 
 
 def menu(screen: pygame.Surface) -> str:
@@ -139,9 +142,9 @@ def menu(screen: pygame.Surface) -> str:
     :return: str -> the mode in which the game is right now, play, menu or explain
     """
     # Move the background and blit it
-    move_background()
-    screen.blit(background, position_background)
-    screen.blit(background, (position_background[0] + screen.get_width(), position_background[1]))
+    move_background("start")
+    screen.blit(background, g.POSITION_WORLD)
+    screen.blit(background, (g.POSITION_WORLD[0] + screen.get_width(), g.POSITION_WORLD[1]))
     draw_flip_happens(screen)
 
     # KI-Anfang

@@ -26,6 +26,9 @@ DO,15.05,4h,Max
 FR,16.05,2h,Max
     Coins begonnen
 -
-DI,21.05,3h,Max
+DI,20.05,3h,Max
+    Spiellogik
+-
+MI,21.05,2h,Max
     Spiellogik
 -
