@@ -8,7 +8,7 @@ images_left: list[pygame.Surface] = []
 images_right: list[pygame.Surface] = []
 image_counter = 0
 x_position = 0
-y_position = 0
+y_position = g.HEIGHT - 2 * g.PLAYER_SIZE
 last_timestamp = None
 last_direction: str = "right"
 velocity: list[float] = [0,0]
@@ -29,7 +29,7 @@ def init():
     image = pygame.image.load('assets/player/player1.png').convert_alpha()  # Bild laden
     for i in range(9):
         sub_image = image.subsurface((64 * i, 135, 60, 60))
-        sub_image = pygame.transform.scale(sub_image, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+        sub_image = pygame.transform.scale(sub_image, (g.PLAYER_SIZE, g.PLAYER_SIZE))
         # image = pygame.image.load(f"assets/player/player{i +1}.png").convert_alpha() # Hier Bilder dynamisch laden(player1, player2,....)
         images_left.append(sub_image)  # Bild Hinzufügen
     for image in images_left:
@@ -42,7 +42,7 @@ def move() -> None:
     Moves the player and checks if the player dashes in something
     """
     global x_position, y_position, last_direction, velocity
-    skater_rect = pygame.Rect(x_position, y_position, g.ASSETS_SIZE, g.ASSETS_SIZE)
+    skater_rect = pygame.Rect(x_position, y_position, g.PLAYER_SIZE, g.PLAYER_SIZE)
     pressed_keys = pygame.key.get_pressed()
     direction = last_direction
     jump = False
@@ -95,7 +95,7 @@ def move() -> None:
             # Prüfe, ob Spieler genau auf dem Block steht (z. B. Kollision von unten)
             if y_position + g.ASSETS_SIZE <= block[3] + 10 and velocity[1] >= 0:
                 on_platform = True
-                y_position = block[3] - g.ASSETS_SIZE  # Position korrigieren
+                y_position = block[3] - g.PLAYER_SIZE # Position korrigieren
                 velocity[1] = 0
                 break
     # Springen nur, wenn auf Plattform
@@ -107,8 +107,6 @@ def move() -> None:
         velocity[1] = min(velocity[1] + g.GRAVITATION, g.MAX_FALL_SPEED)
         y_position += velocity[1]
     # KI-Ende
-
-
 
 
 def draw(screen: pygame.Surface):
