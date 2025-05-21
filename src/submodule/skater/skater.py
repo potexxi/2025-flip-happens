@@ -52,12 +52,20 @@ def move() -> None:
         direction = "right"
     if pressed_keys[pygame.K_SPACE] or pressed_keys[pygame.K_UP]:
         jump = True
+    speed = g.SPEED
+
+    # Todo: fix the for loop
+    for block in blocks:
+        block_rect = pygame.Rect(block[2], block[3], block[0], block[1])
+        if skater_rect.colliderect(block_rect):
+            speed = 0
+            break
 
     # Moves the player automatically to the right or the left
     if direction == "right" and x_position <= g.WIDTH-g.ASSETS_SIZE:
-        x_position += g.SPEED
+        x_position += speed
     if direction == "left" and x_position >= 0:
-        x_position -= g.SPEED
+        x_position -= speed
     last_direction = direction
 
     # KI-Anfang:
@@ -92,16 +100,16 @@ def move() -> None:
         if skater_rect.colliderect(pole_rect):
             # Prüfe, ob Spieler genau auf dem Block steht (z. B. Kollision von unten)
             if y_position + g.ASSETS_SIZE <= pole[3] + 10 and velocity[1] >= 0:
-                on_platform = True
+                on_pole = True
                 y_position = pole[3] - g.PLAYER_SIZE  # Position korrigieren
                 velocity[1] = 0
                 break
     # Springen nur, wenn auf Plattform
-    if on_platform and jump:
+    if (on_platform or on_pole) and jump:
         velocity[1] = -g.JUMP
 
     # Schwerkraft anwenden
-    if not on_platform:
+    if not on_platform and not on_pole:
         velocity[1] = min(velocity[1] + g.GRAVITATION, g.MAX_FALL_SPEED)
         y_position += velocity[1]
     # KI-Ende
