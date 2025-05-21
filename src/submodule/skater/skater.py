@@ -1,6 +1,6 @@
 import pygame
 import src.submodule.globals as g
-from src.submodule.level1.place_blocks import blocks
+from src.submodule.level1.place_blocks import blocks, poles
 
 images_drive_left: list[pygame.Surface] = []
 images_drive_right: list[pygame.Surface] = []
@@ -8,7 +8,7 @@ images_left: list[pygame.Surface] = []
 images_right: list[pygame.Surface] = []
 image_counter = 0
 x_position = 0
-y_position = g.HEIGHT - 2 * g.PLAYER_SIZE
+y_position = 0#g.HEIGHT - 2 * g.PLAYER_SIZE
 last_timestamp = None
 last_direction: str = "right"
 velocity: list[float] = [0,0]
@@ -60,19 +60,6 @@ def move() -> None:
         x_position -= g.SPEED
     last_direction = direction
 
-    platform_collide = False
-    # Check if the player is on a platform
-    for block in blocks:
-        if pygame.Rect(skater_rect).colliderect(pygame.Rect((block[0], block[1], block[2], block[3]))):
-            platform_collide = True
-
-    # Gravity
-    if not(platform_collide):
-        velocity[1] += g.GRAVITATION
-        if jump:
-            velocity[1] = -g.JUMP
-        y_position += velocity[1]
-
     # KI-Anfang:
     # KI: ChatGPT
     # prompt: fixe die Funktion: platform_collide = False
@@ -96,6 +83,17 @@ def move() -> None:
             if y_position + g.ASSETS_SIZE <= block[3] + 10 and velocity[1] >= 0:
                 on_platform = True
                 y_position = block[3] - g.PLAYER_SIZE # Position korrigieren
+                velocity[1] = 0
+                break
+    on_pole = False
+    for pole in poles:
+        pole_rect = pygame.Rect(pole[2], pole[3], pole[0], pole[1])
+        # Prüfe nur Boden-Kollision (unter dem Spieler)
+        if skater_rect.colliderect(pole_rect):
+            # Prüfe, ob Spieler genau auf dem Block steht (z. B. Kollision von unten)
+            if y_position + g.ASSETS_SIZE <= pole[3] + 10 and velocity[1] >= 0:
+                on_platform = True
+                y_position = pole[3] - g.PLAYER_SIZE  # Position korrigieren
                 velocity[1] = 0
                 break
     # Springen nur, wenn auf Plattform

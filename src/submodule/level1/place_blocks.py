@@ -232,6 +232,7 @@ def place_elements(screen: pygame.Surface) -> None:
     Draw the elements (ramps, coins, letters etc.) on the screen
     :param screen: pygame.Surface -> where the elements should be drawn
     """
+    global append_poles
     # Halfpipes:
     screen.blit(halfpipe_left, (first_block_floor[0] + 8 * g.ASSETS_SIZE,
                                  first_block_floor[1]))
@@ -252,70 +253,115 @@ def place_elements(screen: pygame.Surface) -> None:
         x = first_block_floor[0] + 5 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
         y = first_block_floor[1] - 4 * g.ASSETS_SIZE
         screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
     for t in range(6):
         x = first_block_floor[0] + t*g.ASSETS_SIZE
         y = first_block_floor[1] - g.ASSETS_SIZE
         screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
     for t in range(6):
         x = first_block_floor[0] + 14 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
         y = first_block_floor[1] - g.ASSETS_SIZE
         screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
     for t in range(4):
         x = first_block_floor[0] + 20 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
         y = first_block_floor[1] - 2 * g.ASSETS_SIZE
         screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
     for t in range(3):
         x = first_block_floor[0] + 24 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
         y = first_block_floor[1] - 3 * g.ASSETS_SIZE
         screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
     for t in range(3):
         x = first_block_floor[0] + 23 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
         y = first_block_floor[1] - 5 * g.ASSETS_SIZE
         screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
     for t in range(2):
         x = first_block_floor[0] + 5 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
         y = first_block_floor[1] - 10 * g.ASSETS_SIZE
         screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
     for t in range(3):
         x = first_block_floor[0] + 2 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
         y = first_block_floor[1] - 11 * g.ASSETS_SIZE
         screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
     for t in range(2):
         x = first_block_floor[0] + 6 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
         y = first_block_floor[1] - 6 * g.ASSETS_SIZE
         screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
     for t in range(3):
         x = first_block_floor[0] + 18 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
         y = first_block_floor[1] - 8 * g.ASSETS_SIZE
         screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
     for t in range(2):
-        screen.blit(pipe, (first_block_floor[0] + 15 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                           first_block_floor[1] - 9 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 15 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 9 * g.ASSETS_SIZE
+        screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(6):
-        screen.blit(pipe, (first_block_floor[0] + 15 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                           first_block_floor[1] - 12 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 15 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 12 * g.ASSETS_SIZE
+        screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
     for t in range(4):
-        screen.blit(pipe, (first_block_floor[0] + 10 * g.ASSETS_SIZE + t * g.ASSETS_SIZE,
-                           first_block_floor[1] - 13 * g.ASSETS_SIZE))
-    screen.blit(pipe, (first_block_floor[0] + 4 * g.ASSETS_SIZE,
-                       first_block_floor[1] - 7 * g.ASSETS_SIZE))
+        x = first_block_floor[0] + 10 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
+        y = first_block_floor[1] - 13 * g.ASSETS_SIZE
+        screen.blit(pipe, (x,y))
+        if append_poles:
+            poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+
+    x = first_block_floor[0] + 4 * g.ASSETS_SIZE
+    y = first_block_floor[1] - 7 * g.ASSETS_SIZE
+    screen.blit(pipe, (x,y))
+    if append_poles:
+        poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
+    append_poles = False
+
     # Ramps:
     screen.blit(wide_ramp, (first_block_floor[0] + 11 * g.ASSETS_SIZE,
                                 first_block_floor[1] - 5 * g.ASSETS_SIZE))
+    screen.blit(wide_ramp, (first_block_floor[0] + 11 * g.ASSETS_SIZE,
+                            first_block_floor[1] - 9 * g.ASSETS_SIZE))
     screen.blit(high_ramp_right, (first_block_floor[0] + 24 * g.ASSETS_SIZE,
                                 first_block_floor[1] - 13 * g.ASSETS_SIZE))
-    screen.blit(wide_ramp, (first_block_floor[0] + 11 * g.ASSETS_SIZE,
-                                  first_block_floor[1] - 9 * g.ASSETS_SIZE))
+
+    x = first_block_floor[0] + 11 * g.ASSETS_SIZE
+    y = first_block_floor[1] - 2 * g.ASSETS_SIZE
+    screen.blit(high_ramp_left, (x,y))
+
+    x = first_block_floor[0] + 9 * g.ASSETS_SIZE
+    y = first_block_floor[1] - 2 * g.ASSETS_SIZE
+    screen.blit(high_ramp_right, (x, y))
 
 
 def draw(screen: pygame.Surface) -> str:
