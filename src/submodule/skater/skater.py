@@ -37,7 +37,7 @@ def init():
         images_right.append(image)
 
 
-def move() -> None:
+def move() -> str:
     """
     Moves the player and checks if the player dashes in something
     """
@@ -52,6 +52,8 @@ def move() -> None:
         direction = "right"
     if pressed_keys[pygame.K_SPACE] or pressed_keys[pygame.K_UP]:
         jump = True
+    if pressed_keys[pygame.K_ESCAPE]:
+        return "pause"
     speed = g.SPEED
 
     # Check if the player drives in a block or a pole
@@ -136,6 +138,7 @@ def move() -> None:
         velocity[1] = min(velocity[1] + g.GRAVITATION, g.MAX_FALL_SPEED)
         y_position += velocity[1]
     # KI-Ende
+    return "play"
 
 
 def draw(screen: pygame.Surface):

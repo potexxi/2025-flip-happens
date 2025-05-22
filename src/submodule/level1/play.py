@@ -14,7 +14,7 @@ def play(screen: pygame.Surface) -> str:
     """
     global mode
     mode = draw_level.draw(screen)
-    player.move()
+    mode = player.move()
     player.draw(screen)
 
     return mode
