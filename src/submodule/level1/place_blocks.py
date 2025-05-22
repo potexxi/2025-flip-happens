@@ -58,10 +58,11 @@ def init_blocks() -> None:
     wide_ramp = pygame.transform.scale(wide_ramp, (g.ASSETS_SIZE, g.ASSETS_SIZE))
 
 
-def check_menu_button_pressed(screen: pygame.Surface) -> str:
+def check_menu_button_pressed(screen: pygame.Surface, pause: bool) -> str:
     """
     Check if the user presses the menu-button
-    :param screen:
+    :param screen: pygame.Surface -> where the icon should be drawn
+    :param pause: if the player is currently in the pause menu
     :return: str -> which mode the game is in
     """
     screen.blit(ui_pause, (pause_button[0], pause_button[1]))
@@ -69,8 +70,11 @@ def check_menu_button_pressed(screen: pygame.Surface) -> str:
     mouse_pos = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()[0]
     if rect.collidepoint(mouse_pos) and click:
-        return "pause"
-    return "play"
+        if pause: return "play"
+        else: return "pause"
+
+    if pause: return "pause"
+    else: return "play"
 
 
 def place_bricks(screen: pygame.Surface) -> None:
@@ -398,7 +402,7 @@ def draw(screen: pygame.Surface) -> str:
 
 
     # Pause-Button:
-    if check_menu_button_pressed(screen) == "pause":
+    if check_menu_button_pressed(screen, False) == "pause":
         return "pause"
 
     return "play"

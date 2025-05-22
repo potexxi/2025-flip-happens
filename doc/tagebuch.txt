@@ -32,3 +32,6 @@ DI,20.05,3h,Max
 MI,21.05,2h,Max
     Spiellogik
 -
+DO,22.05,2h,Max
+    Pause menu
+-

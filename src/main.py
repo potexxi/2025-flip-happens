@@ -4,6 +4,7 @@ import submodule.globals as g
 import src.submodule.explain_menu.explain_menu as explain
 import src.submodule.level1.play as level1
 import src.submodule.skater.skater as player
+import src.submodule.pause_menu.pause as pause
 from src.submodule.level1.place_blocks import init_blocks
 from src.submodule.level1.place_assets import init_assets
 
@@ -30,13 +31,21 @@ def main() -> None:
 
     mode = "menu"
 
+    esc_pressed = True
+    esc_was_pressed = False
+
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == pygame.K_a:
-                direction = "left"
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    esc_pressed = True
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_ESCAPE:
+                    esc_pressed = False
+
 
         if mode == "menu":
             mode = menu.menu(screen)
@@ -47,10 +56,15 @@ def main() -> None:
         if mode == "explain":
             mode = explain.menu(screen)
 
+        # KI-Anfang
+        # KI: ChatGPT
+        # prompt: wie mache ich, dass esc_now nur dann True ist, wenn ich die Taste einmal drücke und nicht gedrückt
+        # halte <der code ohne diese zeile>
+        esc_now = esc_pressed and not esc_was_pressed
+        # KI-Ende
         if mode == "pause":
-            # TODO:Pause
-            screen.fill("white")
-            pass
+            mode = pause.pause(screen, esc_now)
+        esc_was_pressed = esc_pressed
 
 
         # Update the display

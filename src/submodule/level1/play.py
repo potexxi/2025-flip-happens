@@ -13,8 +13,11 @@ def play(screen: pygame.Surface) -> str:
     :return: str -> in which mode the game is in
     """
     global mode
+    pressed_keys = pygame.key.get_pressed()
+    if pressed_keys[pygame.K_ESCAPE]:
+        return "pause"
     mode = draw_level.draw(screen)
-    mode = player.move()
+    player.move()
     player.draw(screen)
 
     return mode
