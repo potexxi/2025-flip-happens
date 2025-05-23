@@ -29,8 +29,10 @@ def main() -> None:
     init_blocks()
     init_assets()
     player.init()
+    start.init()
 
     mode = "start"
+    animation = True
 
     esc_pressed = True
     esc_was_pressed = False
@@ -40,15 +42,21 @@ def main() -> None:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     esc_pressed = True
+                if mode == "start":
+                    if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
+                        mode = "menu"
+
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_ESCAPE:
                     esc_pressed = False
 
+
         if mode == "start":
-            mode = start.animation(screen)
+            animation, mode = start.animation(screen, animation)
 
         if mode == "menu":
             mode = menu.menu(screen)

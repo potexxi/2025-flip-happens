@@ -35,3 +35,6 @@ MI,21.05,2h,Max
 DO,22.05,2h,Max
     Pause menu
 -
+FR,23.05,1.5h,Max
+    Start-Animation
+-
