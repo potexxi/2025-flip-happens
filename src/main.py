@@ -34,25 +34,20 @@ def main() -> None:
     mode = "start"
     animation = True
 
-    esc_pressed = True
-    esc_was_pressed = False
+    esc_pressed = False
 
     running = True
     while running:
-        for event in pygame.event.get():
+        events = pygame.event.get()
+        for event in events:
             if event.type == pygame.QUIT:
                 running = False
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     esc_pressed = True
-                if mode == "start":
-                    if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
-                        mode = "menu"
-
-            elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_ESCAPE:
-                    esc_pressed = False
+                if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
+                    mode = "menu"
 
 
         if mode == "start":
@@ -62,20 +57,18 @@ def main() -> None:
             mode = menu.menu(screen)
 
         if mode == "play":
-            mode = level1.play(screen)
+            mode = level1.play(screen, events)
+            if mode == "pause":
+                esc_pressed = False
+                clock.tick(g.FPS)
+                pygame.display.flip()
+                continue
 
         if mode == "explain":
             mode = explain.menu(screen)
 
-        # KI-Anfang
-        # KI: ChatGPT
-        # prompt: wie mache ich, dass esc_now nur dann True ist, wenn ich die Taste einmal drücke und nicht gedrückt
-        # halte <der code ohne diese zeile>
-        esc_now = esc_pressed and not esc_was_pressed
-        # KI-Ende
         if mode == "pause":
-            mode = pause.pause(screen, esc_now)
-        esc_was_pressed = esc_pressed
+            mode = pause.pause(screen, esc_pressed, events)
 
 
         # Update the display

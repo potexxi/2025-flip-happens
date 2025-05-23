@@ -1,4 +1,5 @@
 import pygame
+import math
 
 pygame.init()
 
@@ -15,11 +16,11 @@ PLAYER_SIZE = ASSETS_SIZE
 POSITION_WORLD = [0,0]
 
 # The speed of the player in px
-SPEED = 4
+SPEED = (3.5 * ASSETS_SIZE) / 65
 
 # Gravity
 GRAVITATION = 0.5
-JUMP = ASSETS_SIZE//6.5
+JUMP = math.sqrt(2 * GRAVITATION * ASSETS_SIZE) + 1
 MAX_FALL_SPEED = 10
 
 

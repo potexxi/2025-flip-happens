@@ -1,6 +1,5 @@
 import pygame
 import src.submodule.globals as g
-import src.submodule.level1.place_assets as assets
 
 background: pygame.Surface = ...
 brick: pygame.Surface = ...
@@ -56,25 +55,6 @@ def init_blocks() -> None:
     high_ramp_right = pygame.transform.scale(high_ramp_right, (g.ASSETS_SIZE, g.ASSETS_SIZE))
     wide_ramp = pygame.image.load("assets/level1/wide_ramp.png").convert_alpha()
     wide_ramp = pygame.transform.scale(wide_ramp, (g.ASSETS_SIZE, g.ASSETS_SIZE))
-
-
-def check_menu_button_pressed(screen: pygame.Surface, pause: bool) -> str:
-    """
-    Check if the user presses the menu-button
-    :param screen: pygame.Surface -> where the icon should be drawn
-    :param pause: if the player is currently in the pause menu
-    :return: str -> which mode the game is in
-    """
-    screen.blit(ui_pause, (pause_button[0], pause_button[1]))
-    rect = pygame.Rect(pause_button)
-    mouse_pos = pygame.mouse.get_pos()
-    click = pygame.mouse.get_pressed()[0]
-    if rect.collidepoint(mouse_pos) and click:
-        if pause: return "play"
-        else: return "pause"
-
-    if pause: return "pause"
-    else: return "play"
 
 
 def place_bricks(screen: pygame.Surface) -> None:
@@ -381,28 +361,3 @@ def place_elements(screen: pygame.Surface) -> None:
     x = first_block_floor[0] + 9 * g.ASSETS_SIZE
     y = first_block_floor[1] - 2 * g.ASSETS_SIZE
     screen.blit(high_ramp_right, (x, y))
-
-
-def draw(screen: pygame.Surface) -> str:
-    """
-    level1 of the game
-    :param screen: pygame.Surface -> where the level should be drawn
-    :return: str -> which mode the game is in
-    """
-    global mode
-    # Background:
-    screen.blit(background, (0,0))
-    # Elements:
-    place_bricks(screen)
-    place_elements(screen)
-    assets.draw_coins(screen)
-    assets.draw_letters(screen)
-    assets.draw_power_ups(screen)
-    assets.draw_clock(screen)
-
-
-    # Pause-Button:
-    if check_menu_button_pressed(screen, False) == "pause":
-        return "pause"
-
-    return "play"
