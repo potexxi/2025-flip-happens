@@ -53,6 +53,10 @@ last save: 14.05.2025
     - link: <https://laredgames.itch.io/gems-coins-free>
     - license: steht direkt auf der seite <https://laredgames.itch.io/gems-coins-free>
 
+- logo.png by ChatGPT:
+    - prompt: Erstelle mir ein cooles, simples pixel art logo für ein video spiel,
+            ich mache das spiel Flip Happens und es handelt vom skateboarden
+
 
 
 

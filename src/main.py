@@ -5,6 +5,7 @@ import src.submodule.explain_menu.explain_menu as explain
 import src.submodule.level1.play as level1
 import src.submodule.skater.skater as player
 import src.submodule.pause_menu.pause as pause
+import src.submodule.start_animation.start_animation as start
 from src.submodule.level1.place_blocks import init_blocks
 from src.submodule.level1.place_assets import init_assets
 
@@ -29,7 +30,7 @@ def main() -> None:
     init_assets()
     player.init()
 
-    mode = "menu"
+    mode = "start"
 
     esc_pressed = True
     esc_was_pressed = False
@@ -46,6 +47,8 @@ def main() -> None:
                 if event.key == pygame.K_ESCAPE:
                     esc_pressed = False
 
+        if mode == "start":
+            mode = start.animation(screen)
 
         if mode == "menu":
             mode = menu.menu(screen)
