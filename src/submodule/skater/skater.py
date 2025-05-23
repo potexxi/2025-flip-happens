@@ -59,22 +59,22 @@ def move() -> None:
         block_rect = pygame.Rect(block[2], block[3], block[0], block[1])
         if skater_rect.colliderect(block_rect):
             if direction == "right":
-                if skater_rect.right <= block_rect.left + 2:
+                if skater_rect.right <= block_rect.left + 10:
                     speed = 0
                     break
             if direction == "left":
-                if skater_rect.left >= block_rect.right - 2:
+                if skater_rect.left >= block_rect.right - 10:
                     speed = 0
                     break
     for pole in poles:
         pole_rect = pygame.Rect(pole[2], pole[3], pole[0], pole[1])
         if skater_rect.colliderect(pole_rect):
             if direction == "right":
-                if skater_rect.right <= pole_rect.left + 2:
+                if skater_rect.right <= pole_rect.left + 10:
                     speed = 0
                     break
             if direction == "left":
-                if skater_rect.left >= pole_rect.right - 2:
+                if skater_rect.left >= pole_rect.right - 10:
                     speed = 0
                     break
 
@@ -107,7 +107,7 @@ def move() -> None:
         if skater_rect.colliderect(block_rect):
             # Prüfe, ob Spieler genau auf dem Block steht (z. B. Kollision von unten)
             # Spieler muss sich von oben nähern und darf nicht weit rechts/links daneben sein
-            if (    block_rect.top <= skater_rect.bottom and
+            if (block_rect.top <= skater_rect.bottom and
                     skater_rect.bottom <= block_rect.top + 10 and
                     velocity[1] >= 0 and
                     skater_rect.right > block_rect.left + 5 and
