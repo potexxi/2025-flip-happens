@@ -30,6 +30,7 @@ def main() -> None:
     init_assets()
     player.init()
     start.init()
+    pause.init()
 
     mode = "start"
     animation = True
@@ -46,8 +47,9 @@ def main() -> None:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     esc_pressed = True
-                if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
-                    mode = "menu"
+                if mode == "start":
+                    if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
+                        mode = "menu"
 
 
         if mode == "start":

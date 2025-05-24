@@ -16,6 +16,8 @@ first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSE
 blocks: list[tuple] = []
 poles: list[tuple] = []
 fast_ramp: list[tuple] = []
+halfpipes_right: list[tuple] = []
+halfpipes_left: list[tuple] = []
 append_blocks: bool = True
 append_poles: bool = True
 append_ramps: bool = True
@@ -220,20 +222,48 @@ def place_elements(screen: pygame.Surface) -> None:
     """
     global append_poles
     # Halfpipes:
-    screen.blit(halfpipe_left, (first_block_floor[0] + 8 * g.ASSETS_SIZE,
-                                 first_block_floor[1]))
-    screen.blit(halfpipe_right, (first_block_floor[0] + 12 * g.ASSETS_SIZE,
-                                 first_block_floor[1]))
-    screen.blit(halfpipe_right, (first_block_floor[0] + 2 * g.ASSETS_SIZE,
-                                 first_block_floor[1] - 9 * g.ASSETS_SIZE))
-    screen.blit(halfpipe_left, (first_block_floor[0] + 17 * g.ASSETS_SIZE,
-                                 first_block_floor[1] - 5 * g.ASSETS_SIZE))
-    screen.blit(halfpipe_right, (first_block_floor[0] + 9 * g.ASSETS_SIZE,
-                        first_block_floor[1] - 9 * g.ASSETS_SIZE))
-    screen.blit(halfpipe_left, (first_block_floor[0] + 4 * g.ASSETS_SIZE,
-                                 first_block_floor[1] - 5 * g.ASSETS_SIZE))
-    screen.blit(halfpipe_left, (first_block_floor[0] + 22 * g.ASSETS_SIZE,
-                                first_block_floor[1] - 10 * g.ASSETS_SIZE))
+    x = first_block_floor[0] + 12 * g.ASSETS_SIZE
+    y = first_block_floor[1]
+    screen.blit(halfpipe_right, (x,y))
+    if append_ramps:
+        halfpipes_right.append((x, y))
+
+    x = first_block_floor[0] + 2 * g.ASSETS_SIZE
+    y = first_block_floor[1] - 9 * g.ASSETS_SIZE
+    screen.blit(halfpipe_right, (x, y))
+    if append_ramps:
+        halfpipes_right.append((x, y))
+
+    x = first_block_floor[0] + 9 * g.ASSETS_SIZE
+    y = first_block_floor[1] - 9 * g.ASSETS_SIZE
+    screen.blit(halfpipe_right, (x, y))
+    if append_ramps:
+        halfpipes_right.append((x, y))
+
+    x = first_block_floor[0] + 4 * g.ASSETS_SIZE
+    y = first_block_floor[1] - 5 * g.ASSETS_SIZE
+    screen.blit(halfpipe_left, (x, y))
+    if append_ramps:
+        halfpipes_left.append((x, y))
+
+    x = first_block_floor[0] + 22 * g.ASSETS_SIZE
+    y = first_block_floor[1] - 10 * g.ASSETS_SIZE
+    screen.blit(halfpipe_left, (x, y))
+    if append_ramps:
+        halfpipes_left.append((x, y))
+
+    x = first_block_floor[0] + 8 * g.ASSETS_SIZE
+    y = first_block_floor[1]
+    screen.blit(halfpipe_left, (x,y))
+    if append_ramps:
+        halfpipes_left.append((x, y))
+
+    x = first_block_floor[0] + 17 * g.ASSETS_SIZE
+    y = first_block_floor[1] - 5 * g.ASSETS_SIZE
+    screen.blit(halfpipe_left, (x, y))
+    if append_ramps:
+        halfpipes_left.append((x, y))
+
     # Pipes:
     for t in range(3):
         x = first_block_floor[0] + 5 * g.ASSETS_SIZE + t * g.ASSETS_SIZE

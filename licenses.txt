@@ -1,4 +1,4 @@
-# Licenses
+ Licenses
 last save: 14.05.2025
 
 
@@ -56,6 +56,10 @@ last save: 14.05.2025
 - logo.png by ChatGPT:
     - prompt: Erstelle mir ein cooles, simples pixel art logo für ein video spiel,
             ich mache das spiel Flip Happens und es handelt vom skateboarden
+
+- keys_letters.png and keys_special.png by Dream Mix:
+    - link: <https://dreammix.itch.io/keyboard-keys-for-ui>
+    - license: not found
 
 
 

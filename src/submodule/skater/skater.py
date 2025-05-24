@@ -1,6 +1,6 @@
 import pygame
 import src.submodule.globals as g
-from src.submodule.level1.place_blocks import blocks, poles
+from src.submodule.level1.place_blocks import blocks, poles, fast_ramp, halfpipes_right, halfpipes_left
 
 images_drive_left: list[pygame.Surface] = []
 images_drive_right: list[pygame.Surface] = []
@@ -12,6 +12,9 @@ y_position = 0#g.HEIGHT - 2 * g.PLAYER_SIZE
 last_timestamp = None
 last_direction: str = "right"
 velocity: list[float] = [0,0]
+big_speed: bool = False
+big_jump: bool = False
+last_timestamp_speed: int = 0
 
 
 def init():
@@ -41,10 +44,11 @@ def move() -> None:
     """
     Moves the player and checks if the player dashes in something
     """
-    global x_position, y_position, last_direction, velocity
+    global x_position, y_position, last_direction, velocity, big_speed, last_timestamp_speed
     skater_rect = pygame.Rect(x_position, y_position, g.PLAYER_SIZE, g.PLAYER_SIZE)
     pressed_keys = pygame.key.get_pressed()
     direction = last_direction
+    timestamp = pygame.time.get_ticks()
     jump = False
     if pressed_keys[pygame.K_a] or pressed_keys[pygame.K_LEFT]:
         direction = "left"
@@ -52,7 +56,10 @@ def move() -> None:
         direction = "right"
     if pressed_keys[pygame.K_SPACE] or pressed_keys[pygame.K_UP]:
         jump = True
-    speed = g.SPEED
+    if big_speed:
+        speed = g.RAMP_SPEED
+    else:
+        speed = g.SPEED
 
     # Check if the player drives in a block or a pole
     for block in blocks:
@@ -66,6 +73,7 @@ def move() -> None:
                 if skater_rect.left >= block_rect.right - 10:
                     speed = 0
                     break
+
     for pole in poles:
         pole_rect = pygame.Rect(pole[2], pole[3], pole[0], pole[1])
         if skater_rect.colliderect(pole_rect):
@@ -77,6 +85,23 @@ def move() -> None:
                 if skater_rect.left >= pole_rect.right - 10:
                     speed = 0
                     break
+
+    # Check if the player drives on a ramp
+    if not big_speed:
+        for ramp in fast_ramp:
+            ramp_rect = pygame.Rect(ramp[2], ramp[3], ramp[0], ramp[1])
+            if skater_rect.colliderect(ramp_rect):
+                if g.RAMP_SPEED == g.SPEED:
+                    g.RAMP_SPEED += 5
+                big_speed = True
+                speed = g.RAMP_SPEED
+                last_timestamp_speed = timestamp
+                break
+
+    if direction == "left":
+        for halfpipe in halfpipes_left:
+            ramp_rect = pygame.Rect(halfpipe[2], halfpipe[3], halfpipe[0], halfpipe[1])
+            if skater_rect.colliderect(ramp_rect):
 
 
     # Moves the player automatically to the right or the left
@@ -107,10 +132,8 @@ def move() -> None:
         if skater_rect.colliderect(block_rect):
             # Prüfe, ob Spieler genau auf dem Block steht (z. B. Kollision von unten)
             # Spieler muss sich von oben nähern und darf nicht weit rechts/links daneben sein
-            if (block_rect.top <= skater_rect.bottom and
-                    skater_rect.bottom <= block_rect.top + 10 and
-                    velocity[1] >= 0 and
-                    skater_rect.right > block_rect.left + 5 and
+            if (block_rect.top <= skater_rect.bottom and skater_rect.bottom <= block_rect.top + 10 and
+                    velocity[1] >= 0 and skater_rect.right > block_rect.left + 5 and
                     skater_rect.left < block_rect.right - 5):
                 on_platform = True
                 y_position = block[3] - g.PLAYER_SIZE # Position korrigieren
@@ -122,7 +145,9 @@ def move() -> None:
         # Prüfe nur Boden-Kollision (unter dem Spieler)
         if skater_rect.colliderect(pole_rect):
             # Prüfe, ob Spieler genau auf dem Block steht (z. B. Kollision von unten)
-            if y_position + g.PLAYER_SIZE <= pole[3] + 10 and velocity[1] >= 0:
+            if (pole_rect.top <= skater_rect.bottom and skater_rect.bottom <= pole_rect.top + 10 and
+                    velocity[1] >= 0 and skater_rect.right > pole_rect.left + 5 and
+                    skater_rect.left < pole_rect.right - 5):
                 on_pole = True
                 y_position = pole[3] - g.PLAYER_SIZE  # Position korrigieren
                 velocity[1] = 0
@@ -136,6 +161,9 @@ def move() -> None:
         velocity[1] = min(velocity[1] + g.GRAVITATION, g.MAX_FALL_SPEED)
         y_position += velocity[1]
     # KI-Ende
+    if big_speed:
+        if timestamp - last_timestamp_speed > 200:
+            big_speed = False
 
 
 def draw(screen: pygame.Surface):
