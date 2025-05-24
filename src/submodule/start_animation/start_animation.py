@@ -20,9 +20,9 @@ def init() -> None:
 def animation(screen: pygame.Surface, _animation: bool) -> tuple[bool,str]:
     """
     Animation for the game start
-    :param screen: pygame.Surface -> where the animation should be drawn
+    :param screen: pygame.Surface -> where the animation shall be drawn
     :param _animation: if the animation is currently running
-    :return: tuple[bool,str] bool: if the animation is still running, str: in which mode the games is in right now
+    :return: tuple[bool,str] bool: if the animation is still running, str: current game mode
     """
     global logo_size, original_logo
     if _animation is True:

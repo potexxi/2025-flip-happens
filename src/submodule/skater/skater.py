@@ -14,7 +14,10 @@ last_direction: str = "right"
 velocity: list[float] = [0,0]
 big_speed: bool = False
 big_jump: bool = False
+speed = g.SPEED
+jump_px = g.JUMP
 last_timestamp_speed: int = 0
+last_timestamp_jump: int = 0
 
 
 def init():
@@ -44,12 +47,13 @@ def move() -> None:
     """
     Moves the player and checks if the player dashes in something
     """
-    global x_position, y_position, last_direction, velocity, big_speed, last_timestamp_speed
+    global x_position, y_position, last_direction, velocity, big_speed, last_timestamp_speed, speed
     skater_rect = pygame.Rect(x_position, y_position, g.PLAYER_SIZE, g.PLAYER_SIZE)
     pressed_keys = pygame.key.get_pressed()
     direction = last_direction
     timestamp = pygame.time.get_ticks()
     jump = False
+    speed = g.SPEED
     if pressed_keys[pygame.K_a] or pressed_keys[pygame.K_LEFT]:
         direction = "left"
     if pressed_keys[pygame.K_d] or pressed_keys[pygame.K_RIGHT]:
@@ -58,8 +62,6 @@ def move() -> None:
         jump = True
     if big_speed:
         speed = g.RAMP_SPEED
-    else:
-        speed = g.SPEED
 
     # Check if the player drives in a block or a pole
     for block in blocks:
@@ -100,8 +102,19 @@ def move() -> None:
 
     if direction == "left":
         for halfpipe in halfpipes_left:
-            ramp_rect = pygame.Rect(halfpipe[2], halfpipe[3], halfpipe[0], halfpipe[1])
+            ramp_rect = pygame.Rect(halfpipe[2], halfpipe[3]
+                                    ,halfpipe[0] - g.PLAYER_SIZE//1.5, halfpipe[1])
             if skater_rect.colliderect(ramp_rect):
+                velocity[1] = -g.RAMP_JUMP
+                break
+    if direction == "right":
+        for halfpipe in halfpipes_right:
+            ramp_rect = pygame.Rect(halfpipe[2] + g.PLAYER_SIZE//1.5, halfpipe[3],
+                                    halfpipe[0] - g.PLAYER_SIZE//1.5, halfpipe[1])
+            if skater_rect.colliderect(ramp_rect):
+                velocity[1] = -g.RAMP_JUMP
+                break
+
 
 
     # Moves the player automatically to the right or the left
@@ -166,7 +179,7 @@ def move() -> None:
             big_speed = False
 
 
-def draw(screen: pygame.Surface):
+def draw(screen: pygame.Surface) -> None:
     global image_counter, last_timestamp
     timestamp = pygame.time.get_ticks()
     if last_direction == "right":

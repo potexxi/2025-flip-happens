@@ -19,7 +19,7 @@ POSITION_WORLD = [0,0]
 # The speed of the player in px
 SPEED = (3.5 * ASSETS_SIZE) / 65
 RAMP_SPEED = SPEED
-RAMP_JUMP =
+RAMP_JUMP = math.sqrt(2 * 0.5 * ASSETS_SIZE) + 3
 
 # Gravity
 GRAVITATION = 0.5

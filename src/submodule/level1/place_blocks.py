@@ -220,49 +220,49 @@ def place_elements(screen: pygame.Surface) -> None:
     Draw the elements (ramps, coins, letters etc.) on the screen
     :param screen: pygame.Surface -> where the elements should be drawn
     """
-    global append_poles
+    global append_poles, append_ramps
     # Halfpipes:
     x = first_block_floor[0] + 12 * g.ASSETS_SIZE
     y = first_block_floor[1]
     screen.blit(halfpipe_right, (x,y))
     if append_ramps:
-        halfpipes_right.append((x, y))
+        halfpipes_left.append((g.ASSETS_SIZE, g.ASSETS_SIZE,x, y))
 
     x = first_block_floor[0] + 2 * g.ASSETS_SIZE
     y = first_block_floor[1] - 9 * g.ASSETS_SIZE
     screen.blit(halfpipe_right, (x, y))
     if append_ramps:
-        halfpipes_right.append((x, y))
+        halfpipes_left.append((g.ASSETS_SIZE, g.ASSETS_SIZE,x, y))
 
     x = first_block_floor[0] + 9 * g.ASSETS_SIZE
     y = first_block_floor[1] - 9 * g.ASSETS_SIZE
     screen.blit(halfpipe_right, (x, y))
     if append_ramps:
-        halfpipes_right.append((x, y))
+        halfpipes_left.append((g.ASSETS_SIZE, g.ASSETS_SIZE,x, y))
 
     x = first_block_floor[0] + 4 * g.ASSETS_SIZE
     y = first_block_floor[1] - 5 * g.ASSETS_SIZE
     screen.blit(halfpipe_left, (x, y))
     if append_ramps:
-        halfpipes_left.append((x, y))
+        halfpipes_right.append((g.ASSETS_SIZE, g.ASSETS_SIZE,x, y))
 
     x = first_block_floor[0] + 22 * g.ASSETS_SIZE
     y = first_block_floor[1] - 10 * g.ASSETS_SIZE
     screen.blit(halfpipe_left, (x, y))
     if append_ramps:
-        halfpipes_left.append((x, y))
+        halfpipes_right.append((g.ASSETS_SIZE, g.ASSETS_SIZE,x, y))
 
     x = first_block_floor[0] + 8 * g.ASSETS_SIZE
     y = first_block_floor[1]
     screen.blit(halfpipe_left, (x,y))
     if append_ramps:
-        halfpipes_left.append((x, y))
+        halfpipes_right.append((g.ASSETS_SIZE, g.ASSETS_SIZE,x, y))
 
     x = first_block_floor[0] + 17 * g.ASSETS_SIZE
     y = first_block_floor[1] - 5 * g.ASSETS_SIZE
     screen.blit(halfpipe_left, (x, y))
     if append_ramps:
-        halfpipes_left.append((x, y))
+        halfpipes_right.append((g.ASSETS_SIZE, g.ASSETS_SIZE,x, y))
 
     # Pipes:
     for t in range(3):
@@ -362,6 +362,7 @@ def place_elements(screen: pygame.Surface) -> None:
     if append_poles:
         poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
     append_poles = False
+    append_ramps = False
 
     # # Ramps:
     # fast ramps (ramps goes up and down, you get faster for a moment)

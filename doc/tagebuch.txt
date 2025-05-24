@@ -38,3 +38,6 @@ DO,22.05,2h,Max
 FR,23.05,5h,Max
     Start-Animation, Bugs und Pausierungsmenu
 -
+SA,24.05,3.5h,Max
+    Spiellogik
+-
