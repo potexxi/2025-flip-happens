@@ -218,7 +218,7 @@ def place_bricks(screen: pygame.Surface) -> None:
 def place_elements(screen: pygame.Surface) -> None:
     """
     Draw the elements (ramps, coins, letters etc.) on the screen
-    :param screen: pygame.Surface -> where the elements should be drawn
+    :param screen: pygame.Surface -> where the elements are drawn
     """
     global append_poles, append_ramps
     # Halfpipes:
