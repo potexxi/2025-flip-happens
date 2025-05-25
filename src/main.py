@@ -32,7 +32,7 @@ def main() -> None:
     start.init()
     pause.init()
 
-    mode = "play"
+    mode = "start"
     animation = True
 
     esc_pressed = False
