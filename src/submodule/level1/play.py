@@ -5,8 +5,9 @@ import src.submodule.pause_menu.pause as pause
 import src.submodule.level1.place_assets as assets
 import src.submodule.skater.skater as player
 
-letters_collected: int = 0
+letters_collected: int = 9
 coins_collected: int = 0
+end: bool = False
 
 def reset_stats() -> None:
     """
@@ -51,32 +52,57 @@ def draw_letter_percentage(screen: pygame.Surface) -> None:
     screen.blit(text, (g.WIDTH//13 + 10, 5))
 
 
+def draw_lose(screen: pygame.Surface) -> None:
+    pygame.draw.rect(screen, (85, 85, 85), (g.WIDTH//2 - (g.WIDTH//4),g.WIDTH//2, g.WIDTH//2))
+    screen.blit(assets.you_lost, (0,0))
+
+
+def draw_win(screen: pygame.Surface) -> None:
+    screen.blit(assets.you_won, (0,0))
+
+
+
+def check_for_win(screen: pygame.Surface) -> bool:
+    if assets.time <= 0:
+        draw_lose(screen)
+        return True
+
+
+    if letters_collected == 9 and assets.time > 0:
+        draw_win(screen)
+        return True
+    return False
+
+
 def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     """
     Play level1
     :param screen: pygame.Surface -> where the game should be drawn
     :return: str -> in which mode the game is in
     """
-    player_rect = pygame.Rect((player.x_position, player.y_position, g.PLAYER_SIZE, g.PLAYER_SIZE))
-    screen.blit(draw_level.background, (0, 0))
-    player.move()
-    draw_level.place_elements(screen)
-    draw_level.place_bricks(screen)
-    assets.draw_coins(screen, player_rect)
-    assets.draw_letters(screen, player_rect)
-    assets.draw_power_ups(screen)
-    assets.draw_clock(screen)
-    player.draw(screen)
-    pygame.draw.rect(screen, (59, 59, 59), (-10,-10,g.WIDTH//8.5,g.HEIGHT//15), border_radius=5)
-    draw_coins_collected(screen)
-    draw_letter_percentage(screen)
+    global end
+    if end is False:
+        player_rect = pygame.Rect((player.x_position, player.y_position, g.PLAYER_SIZE, g.PLAYER_SIZE))
+        screen.blit(draw_level.background, (0, 0))
+        player.move()
+        draw_level.place_elements(screen)
+        draw_level.place_bricks(screen)
+        assets.draw_coins(screen, player_rect)
+        assets.draw_letters(screen, player_rect)
+        assets.draw_power_ups(screen)
+        assets.draw_clock(screen)
+        player.draw(screen)
+        pygame.draw.rect(screen, (59, 59, 59), (-10,-10,g.WIDTH//8.5,g.HEIGHT//15), border_radius=5)
+        draw_coins_collected(screen)
+        draw_letter_percentage(screen)
+        for event in events:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    return "pause"
+        if pause.check_menu_button_pressed(screen, events, False):
+            return "pause"
 
-    for event in events:
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                return "pause"
+    end = check_for_win(screen)
 
-    if pause.check_menu_button_pressed(screen, events, False):
-        return "pause"
 
     return "play"

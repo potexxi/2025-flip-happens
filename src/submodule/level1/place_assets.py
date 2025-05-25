@@ -5,6 +5,8 @@ import src.submodule.level1.play as play
 coins: list[pygame.Surface] = []
 letters: list[pygame.Surface] = []
 power_up: list[pygame.Surface] = []
+you_won: pygame.Surface = ...
+you_lost: pygame.Surface = ...
 coins_counter: int = 0
 power_counter: int = 0
 last_timestamp_coins: int = None
@@ -75,11 +77,12 @@ letters_position: list[tuple] = [
 ]
 next_letter_idx: int = 0
 
+
 def init_assets() -> None:
     """
     Load all the assets-images and scale them
     """
-    global coins, letters, power_up
+    global coins, letters, power_up, you_won, you_lost
     # Coins:
     image = pygame.image.load("assets/level1/coin_sprite.png").convert_alpha()
     for i in range(5):
@@ -99,6 +102,10 @@ def init_assets() -> None:
         sub_image = pygame.transform.scale(sub_image, (g.POWER_UPS_SIZE + g.POWER_UPS_SIZE//2,
                                                        g.POWER_UPS_SIZE+ g.POWER_UPS_SIZE//2))
         power_up.append(sub_image)
+    # Won and Lose Picture:
+    you_won = pygame.image.load("assets/level1/you_won.png").convert_alpha()
+    you_won = pygame.transform.scale(you_won, (g.WIDTH // 2, g.WIDTH//2))
+    you_lost = pygame.image.load("assets/level1/you_lost.png").convert_alpha()
 
 
 def draw_coins(screen: pygame.Surface, player_rect: pygame.Rect) -> None:

@@ -61,6 +61,13 @@ last save: 14.05.2025
     - link: <https://dreammix.itch.io/keyboard-keys-for-ui>
     - license: not found
 
+- you_lost.png by ChatGPT:
+    - prompt: erstelle mir jetzt im gleichen style ein bild, auf dem bild steht groß you lost,
+    lasse auf dem bild noch etwas platz für einen button, in dem videospiel geht es um skateboarding
+
+- you_won.png by ChatGPT:
+    - prompt: erstelle jetzt noch ein bild mit you won
+
 
 
 
