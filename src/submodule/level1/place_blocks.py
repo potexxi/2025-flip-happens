@@ -266,7 +266,7 @@ def place_elements(screen: pygame.Surface) -> None:
     if append_ramps:
         halfpipes_right.append((g.ASSETS_SIZE, g.ASSETS_SIZE,x, y))
 
-    # Pipes:
+    # Poles:
     for t in range(3):
         x = first_block_floor[0] + 5 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
         y = first_block_floor[1] - 4 * g.ASSETS_SIZE
@@ -274,7 +274,7 @@ def place_elements(screen: pygame.Surface) -> None:
         if append_poles:
             poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
-    for t in range(6):
+    for t in range(7):
         x = first_block_floor[0] + t*g.ASSETS_SIZE
         y = first_block_floor[1] - g.ASSETS_SIZE
         screen.blit(pipe, (x,y))
@@ -332,7 +332,7 @@ def place_elements(screen: pygame.Surface) -> None:
 
     for t in range(3):
         x = first_block_floor[0] + 18 * g.ASSETS_SIZE + t * g.ASSETS_SIZE
-        y = first_block_floor[1] - 8 * g.ASSETS_SIZE
+        y = first_block_floor[1] - 9 * g.ASSETS_SIZE
         screen.blit(pipe, (x,y))
         if append_poles:
             poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
@@ -397,5 +397,11 @@ def place_elements(screen: pygame.Surface) -> None:
     screen.blit(high_ramp_right, (x, y))
     if append_ramps:
         high_ramps_right.append((g.ASSETS_SIZE,g.ASSETS_SIZE,x,y))
+
+    x = first_block_floor[0] + 18 * g.ASSETS_SIZE
+    y = first_block_floor[1] - 7 * g.ASSETS_SIZE
+    screen.blit(high_ramp_right, (x, y))
+    if append_ramps:
+        high_ramps_right.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
 
     append_ramps = False

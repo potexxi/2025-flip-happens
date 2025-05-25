@@ -79,7 +79,7 @@ def move() -> None:
                     break
 
     for pole in poles:
-        pole_rect = pygame.Rect(pole[2], pole[3], pole[0], pole[1])
+        pole_rect = pygame.Rect(pole[2], pole[3], pole[0], pole[1]//2)
         if skater_rect.colliderect(pole_rect):
             if direction == "right":
                 if skater_rect.right <= pole_rect.left + 10:
@@ -138,8 +138,6 @@ def move() -> None:
                 last_timestamp_speed = timestamp
                 break
 
-
-
     # Moves the player automatically to the right or the left
     if direction == "right" and x_position <= g.WIDTH-g.ASSETS_SIZE:
         x_position += speed
@@ -197,9 +195,22 @@ def move() -> None:
         velocity[1] = min(velocity[1] + g.GRAVITATION, g.MAX_FALL_SPEED)
         y_position += velocity[1]
     # KI-Ende
+    # disable the big speed, when the time is over
     if big_speed:
         if timestamp - last_timestamp_speed > 200:
             big_speed = False
+    # check, if above the player a block or pole is
+    skater_top_rect = pygame.Rect(x_position, y_position, g.PLAYER_SIZE, 5)
+    for block in blocks:
+        block_rect = pygame.Rect(block[2] + (block[0] - block[0]/1.5)/2, block[3], block[0]/1.5, block[1])
+        if skater_top_rect.colliderect(block_rect) and velocity[1] < 0:
+            velocity[1] = 0
+            break
+    for pole in poles:
+        pole_rect = pygame.Rect(pole[2], pole[3], pole[0], pole[1]//2)
+        if skater_top_rect.colliderect(pole_rect) and velocity[1] < 0:
+            velocity[1] = 0
+            break
 
 
 def draw(screen: pygame.Surface) -> None:
