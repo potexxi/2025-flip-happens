@@ -60,10 +60,11 @@ def main() -> None:
 
         if mode == "play":
             mode = level1.play(screen, events)
-            if mode == "pause":
+            if mode == "pause" or mode == "menu":
                 esc_pressed = False
                 clock.tick(g.FPS)
                 pygame.display.flip()
+                pygame.time.wait(100)
                 continue
 
         if mode == "explain":

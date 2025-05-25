@@ -41,3 +41,6 @@ FR,23.05,5h,Max
 SA,24.05,3.5h,Max
     Spiellogik
 -
+SO,25.05,3h,Max
+    Spiellogik
+-

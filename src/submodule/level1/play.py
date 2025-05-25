@@ -4,8 +4,9 @@ import src.submodule.level1.place_blocks as draw_level
 import src.submodule.pause_menu.pause as pause
 import src.submodule.level1.place_assets as assets
 import src.submodule.skater.skater as player
+from src.submodule.menu.menu import draw_button, check_button_collide
 
-letters_collected: int = 9
+letters_collected: int = 0
 coins_collected: int = 0
 end: bool = False
 
@@ -52,24 +53,22 @@ def draw_letter_percentage(screen: pygame.Surface) -> None:
     screen.blit(text, (g.WIDTH//13 + 10, 5))
 
 
-def draw_lose(screen: pygame.Surface) -> None:
-    pygame.draw.rect(screen, (85, 85, 85), (g.WIDTH//2 - (g.WIDTH//4),g.WIDTH//2, g.WIDTH//2))
-    screen.blit(assets.you_lost, (0,0))
-
-
-def draw_win(screen: pygame.Surface) -> None:
-    screen.blit(assets.you_won, (0,0))
-
-
-
-def check_for_win(screen: pygame.Surface) -> bool:
-    if assets.time <= 0:
-        draw_lose(screen)
-        return True
-
-
-    if letters_collected == 9 and assets.time > 0:
-        draw_win(screen)
+def check_for_win_lose(screen: pygame.Surface) -> bool:
+    """
+    Check if the player won/lost the game and draw it
+    :param screen: pygame.Surface -> where the pictures shall be drawn
+    :return: True -> the player lost/won, False -> the game continues
+    """
+    if (assets.time <= 0) or (letters_collected == 9 and assets.time > 0):
+        picture = assets.you_won
+        if assets.time <= 0:
+            picture = assets.you_lost
+        if letters_collected == 9 and assets.time > 0:
+            picture = assets.you_won
+        pygame.draw.rect(screen, (85, 85, 85),
+                         (g.WIDTH // 2 - (g.WIDTH // 4), g.HEIGHT // 2 - (g.WIDTH // 4), g.WIDTH // 2, g.WIDTH // 3))
+        picture_width, picture_height = picture.get_size()
+        screen.blit(picture, (g.WIDTH//2 - picture_width//2, 0))
         return True
     return False
 
@@ -101,8 +100,14 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
                     return "pause"
         if pause.check_menu_button_pressed(screen, events, False):
             return "pause"
-
-    end = check_for_win(screen)
-
+    end = check_for_win_lose(screen)
+    if end:
+        button = [g.WIDTH // 2 - (g.WIDTH / 8)//2, g.HEIGHT / 2,
+                       g.WIDTH / 8, g.HEIGHT / 12, g.HEIGHT // 35]
+        draw_button(screen, "Hauptmenü",
+                    (button[0], button[1], button[2], button[3]), button[4], (211, 211, 211))
+        if check_button_collide(screen, "Hauptmenü",
+                             (button[0], button[1], button[2], button[3]), button[4]+5, (255, 215, 0)):
+            return "menu"
 
     return "play"
