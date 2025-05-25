@@ -1,5 +1,6 @@
 import pygame
 import src.submodule.globals as g
+import src.submodule.level1.play as play
 
 coins: list[pygame.Surface] = []
 letters: list[pygame.Surface] = []
@@ -116,6 +117,7 @@ def draw_coins(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
         coin_rect = pygame.Rect((coin[0], coin[1], g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
 
         if player_rect.colliderect(coin_rect):
+            play.coins_collected += 1
             coins_remove.append(coin)
     # make the timestamp for the animation
     if last_timestamp_coins is None or timestamp - last_timestamp_coins > 150:
@@ -139,6 +141,7 @@ def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
 
         letter_rect = pygame.Rect((letter_position[0], letter_position[1], g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
         if player_rect.colliderect(letter_rect) and idx == next_letter_idx:
+            play.letters_collected += 1
             next_letter_idx += 1
 
 

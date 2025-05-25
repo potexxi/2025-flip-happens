@@ -1,6 +1,7 @@
 import pygame
 import src.submodule.globals as g
-from src.submodule.level1.place_blocks import blocks, poles, fast_ramp, halfpipes_right, halfpipes_left
+from src.submodule.level1.place_blocks import blocks, poles, fast_ramp, halfpipes_right, halfpipes_left, \
+    high_ramps_right, high_ramps_left
 
 images_drive_left: list[pygame.Surface] = []
 images_drive_right: list[pygame.Surface] = []
@@ -53,7 +54,6 @@ def move() -> None:
     direction = last_direction
     timestamp = pygame.time.get_ticks()
     jump = False
-    speed = g.SPEED
     if pressed_keys[pygame.K_a] or pressed_keys[pygame.K_LEFT]:
         direction = "left"
     if pressed_keys[pygame.K_d] or pressed_keys[pygame.K_RIGHT]:
@@ -62,6 +62,8 @@ def move() -> None:
         jump = True
     if big_speed:
         speed = g.RAMP_SPEED
+    else:
+        speed = g.SPEED
 
     # Check if the player drives in a block or a pole
     for block in blocks:
@@ -107,12 +109,33 @@ def move() -> None:
             if skater_rect.colliderect(ramp_rect):
                 velocity[1] = -g.RAMP_JUMP
                 break
+        for ramp in high_ramps_right:
+            ramp_rect = pygame.Rect(ramp[2], ramp[3], ramp[0], ramp[1])
+            if skater_rect.colliderect(ramp_rect):
+                velocity[1] = -g.RAMP_JUMP2
+                if g.RAMP_SPEED == g.SPEED:
+                    g.RAMP_SPEED += 10
+                big_speed = True
+                speed = g.RAMP_SPEED
+                last_timestamp_speed = timestamp
+                break
+
     if direction == "right":
         for halfpipe in halfpipes_right:
             ramp_rect = pygame.Rect(halfpipe[2] + g.PLAYER_SIZE//1.5, halfpipe[3],
                                     halfpipe[0] - g.PLAYER_SIZE//1.5, halfpipe[1])
             if skater_rect.colliderect(ramp_rect):
                 velocity[1] = -g.RAMP_JUMP
+                break
+        for ramp in high_ramps_left:
+            ramp_rect = pygame.Rect(ramp[2], ramp[3], ramp[0], ramp[1])
+            if skater_rect.colliderect(ramp_rect):
+                velocity[1] = -g.RAMP_JUMP2
+                if g.RAMP_SPEED == g.SPEED:
+                    g.RAMP_SPEED += 10
+                big_speed = True
+                speed = g.RAMP_SPEED
+                last_timestamp_speed = timestamp
                 break
 
 

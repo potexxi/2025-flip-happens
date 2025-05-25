@@ -18,6 +18,8 @@ poles: list[tuple] = []
 fast_ramp: list[tuple] = []
 halfpipes_right: list[tuple] = []
 halfpipes_left: list[tuple] = []
+high_ramps_right: list[tuple] = []
+high_ramps_left: list[tuple] = []
 append_blocks: bool = True
 append_poles: bool = True
 append_ramps: bool = True
@@ -362,7 +364,6 @@ def place_elements(screen: pygame.Surface) -> None:
     if append_poles:
         poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x, y))
     append_poles = False
-    append_ramps = False
 
     # # Ramps:
     # fast ramps (ramps goes up and down, you get faster for a moment)
@@ -378,17 +379,23 @@ def place_elements(screen: pygame.Surface) -> None:
     if append_ramps:
         fast_ramp.append((g.ASSETS_SIZE,g.ASSETS_SIZE,x,y))
 
+    # high ramps (you jump in the front)
     x = first_block_floor[0] + 24 * g.ASSETS_SIZE
     y = first_block_floor[1] - 13 * g.ASSETS_SIZE
     screen.blit(high_ramp_right, (x,y))
     if append_ramps:
-        fast_ramp.append((g.ASSETS_SIZE,g.ASSETS_SIZE,x,y))
+        high_ramps_right.append((g.ASSETS_SIZE,g.ASSETS_SIZE,x,y))
 
-    # high ramps (you jump in the front)
     x = first_block_floor[0] + 11 * g.ASSETS_SIZE
     y = first_block_floor[1] - 2 * g.ASSETS_SIZE
     screen.blit(high_ramp_left, (x,y))
+    if append_ramps:
+        high_ramps_left.append((g.ASSETS_SIZE,g.ASSETS_SIZE,x,y))
 
     x = first_block_floor[0] + 9 * g.ASSETS_SIZE
     y = first_block_floor[1] - 2 * g.ASSETS_SIZE
     screen.blit(high_ramp_right, (x, y))
+    if append_ramps:
+        high_ramps_right.append((g.ASSETS_SIZE,g.ASSETS_SIZE,x,y))
+
+    append_ramps = False
