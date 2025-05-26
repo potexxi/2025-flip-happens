@@ -12,7 +12,7 @@ power_counter: int = 0
 last_timestamp_coins: int = None
 last_timestamp_power: int = None
 last_timestamp_clock: int = 0
-time: int = 120
+time: int = 5
 first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2) - g.ASSETS_SIZE)
 first_asset: tuple[float,float] = (first_block_floor[0] + (g.ASSETS_SIZE - g.POWER_UPS_SIZE) / 2,
     first_block_floor[1] + (g.ASSETS_SIZE//2.5))
@@ -106,6 +106,7 @@ def init_assets() -> None:
     you_won = pygame.image.load("assets/level1/you_won.png").convert_alpha()
     you_won = pygame.transform.scale(you_won, (g.WIDTH // 2, g.WIDTH//2))
     you_lost = pygame.image.load("assets/level1/you_lost.png").convert_alpha()
+    you_lost = pygame.transform.scale(you_lost, (g.WIDTH // 2, g.WIDTH // 2))
 
 
 def draw_coins(screen: pygame.Surface, player_rect: pygame.Rect) -> None:

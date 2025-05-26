@@ -18,7 +18,7 @@ def reset_stats() -> None:
     assets.time = 120
     assets.coins_position = assets.coins_position_original.copy()
     player.x_position = 0
-    player.y_position = 0
+    player.y_position = g.HEIGHT - 2 * g.PLAYER_SIZE
     player.last_direction = "right"
     coins_collected = 0
     letters_collected = 0
@@ -108,6 +108,7 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
                     (button[0], button[1], button[2], button[3]), button[4], (211, 211, 211))
         if check_button_collide(screen, "Hauptmenü",
                              (button[0], button[1], button[2], button[3]), button[4]+5, (255, 215, 0)):
+            reset_stats()
             return "menu"
 
     return "play"

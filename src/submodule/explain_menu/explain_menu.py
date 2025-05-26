@@ -33,7 +33,7 @@ def draw(screen: pygame.Surface) -> str:
     surface_y = (g.HEIGHT - g.HEIGHT // 1.2) // 2
     # KI-Ende
     # Menü Hintergrund
-    pygame.draw.rect(screen, (200, 220, 255, 230)
+    pygame.draw.rect(screen, (200, 220, 255)
                      ,(surface_x, surface_y, g.WIDTH // 1.2, g.HEIGHT // 1.2), border_radius=10)
     back_button = (surface_x + g.WIDTH // 1.2 - g.WIDTH//14.2, surface_y , g.HEIGHT / 8, g.HEIGHT // 25)
     draw_button(screen, "Zurück", back_button, g.HEIGHT//45, "white")
