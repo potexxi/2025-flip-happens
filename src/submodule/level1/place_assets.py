@@ -12,11 +12,34 @@ power_counter: int = 0
 last_timestamp_coins: int = None
 last_timestamp_power: int = None
 last_timestamp_clock: int = 0
-time: int = 30
+time: int = 120
 first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2) - g.ASSETS_SIZE)
 first_asset: tuple[float,float] = (first_block_floor[0] + (g.ASSETS_SIZE - g.POWER_UPS_SIZE) / 2,
     first_block_floor[1] + (g.ASSETS_SIZE//2.5))
 first_power_up: tuple[float,float] = (first_asset[0] - g.POWER_UPS_SIZE//4, first_asset[1] - g.POWER_UPS_SIZE//2)
+
+
+collectables = [
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,2,1,1,1,1,0,0,0],
+]
+collectables.reverse()
 
 coins_position_original: list[tuple] = [
     (first_asset[0] + 1 * g.ASSETS_SIZE,first_asset[1]),
@@ -77,6 +100,13 @@ letters_position: list[tuple] = [
 ]
 next_letter_idx: int = 0
 
+power_ups_position_original: list[tuple] = [
+    (first_power_up[0] + 11 * g.ASSETS_SIZE, first_power_up[1] - 14 * g.ASSETS_SIZE),
+    (first_power_up[0] + 14 * g.ASSETS_SIZE, first_power_up[1] - 5 * g.ASSETS_SIZE),
+    (first_power_up[0] + 19 * g.ASSETS_SIZE, first_power_up[1])
+]
+power_ups_position = power_ups_position_original.copy()
+
 
 def init_assets() -> None:
     """
@@ -107,6 +137,30 @@ def init_assets() -> None:
     you_won = pygame.transform.scale(you_won, (g.WIDTH // 2, g.WIDTH//2))
     you_lost = pygame.image.load("assets/level1/you_lost.png").convert_alpha()
     you_lost = pygame.transform.scale(you_lost, (g.WIDTH // 2, g.WIDTH // 2))
+
+
+def draw_collectables(screen: pygame.Surface) -> None:
+    global last_timestamp_coins, last_timestamp_power, coins_counter, power_counter
+    timestamp = pygame.time.get_ticks()
+    for y, line in enumerate(collectables):
+        for x, item in enumerate(line):
+            if item == 1:
+                screen.blit(coins[coins_counter], (first_asset[0] + x * g.ASSETS_SIZE, first_asset[1] - y * g.ASSETS_SIZE))
+            elif item == 2:
+                screen.blit(power_up[power_counter], (first_asset[0] + x * g.ASSETS_SIZE, first_asset[1] - y * g.ASSETS_SIZE))
+    if last_timestamp_coins is None or timestamp - last_timestamp_coins > 150:
+        coins_counter += 1
+        if coins_counter >= 5:
+            coins_counter = 0
+        last_timestamp_coins = timestamp
+    if last_timestamp_power is None or timestamp - last_timestamp_power > 200:
+        power_counter += 1
+        if power_counter >= 4:
+            power_counter = 0
+        last_timestamp_power = timestamp
+
+
+
 
 
 def draw_coins(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
@@ -160,20 +214,12 @@ def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
 
 
 def draw_power_ups(screen: pygame.Surface) -> None:
-    #screen.blit(power_up, (first_asset[0] + 3 * g.ASSETS_SIZE,
-                          # first_asset[1] - 10 * g.ASSETS_SIZE))
     global last_timestamp_power, power_counter
     # get timestamp and the image
     timestamp = pygame.time.get_ticks()
     image = power_up[power_counter]
-
-    # blit all the coin - images at all the destinations
-    screen.blit(image, (first_power_up[0] + 19 * g.ASSETS_SIZE,
-                            first_power_up[1]))
-    screen.blit(image, (first_power_up[0] + 14 * g.ASSETS_SIZE,
-                            first_power_up[1] - 5 * g.ASSETS_SIZE))
-    screen.blit(image, (first_power_up[0] + 11 * g.ASSETS_SIZE,
-                        first_power_up[1] - 14 * g.ASSETS_SIZE))
+    for t in power_ups_position:
+        screen.blit(image, t)
     # make the timestamp for the animation
     if last_timestamp_power is None or timestamp - last_timestamp_power > 200:
         power_counter += 1
@@ -183,9 +229,13 @@ def draw_power_ups(screen: pygame.Surface) -> None:
 
 
 def draw_clock(screen: pygame.Surface) -> None:
+    """
+    Draw the left time on the screen (up, middle)
+    :param screen: pygame.Surface -> where the clock shall be drawn
+    """
     global last_timestamp_clock, time
-    timestamp = pygame.time.get_ticks()
 
+    timestamp = pygame.time.get_ticks()
     font = pygame.font.Font("assets/fonts/clock.otf", g.HEIGHT//30)
     time_min = time//60
     time_sek = time-time_min*60

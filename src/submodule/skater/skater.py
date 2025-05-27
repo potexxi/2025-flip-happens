@@ -227,7 +227,3 @@ def draw(screen: pygame.Surface) -> None:
         if image_counter >= len(images_right):
             image_counter = 0
         last_timestamp = timestamp
-
-
-
-
