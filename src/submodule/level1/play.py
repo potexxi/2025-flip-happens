@@ -1,4 +1,5 @@
 import pygame
+import copy
 import src.submodule.globals as g
 import src.submodule.level1.place_blocks as draw_level
 import src.submodule.pause_menu.pause as pause
@@ -10,13 +11,15 @@ letters_collected: int = 0
 coins_collected: int = 0
 end: bool = False
 
+
 def reset_stats() -> None:
     """
     Reset the stats of the player (coins, letters, time...)
     """
     global coins_collected, letters_collected
     assets.time = 120
-    assets.coins_position = assets.coins_position_original.copy()
+    assets.collectables = copy.deepcopy(assets.collectables_original)
+    assets.collectables.reverse()
     player.x_position = 0
     player.y_position = g.HEIGHT - 2 * g.PLAYER_SIZE
     player.last_direction = "right"
@@ -67,9 +70,10 @@ def check_for_win_lose(screen: pygame.Surface) -> bool:
         if letters_collected == 9 and assets.time > 0:
             picture = assets.you_won
         pygame.draw.rect(screen, (85, 85, 85),
-                         (g.WIDTH // 2 - (g.WIDTH // 4), g.HEIGHT // 2 - (g.WIDTH // 4), g.WIDTH // 2, g.WIDTH // 3))
+                         (g.WIDTH // 2 - (g.WIDTH // 4), g.HEIGHT // 2 - (g.WIDTH//3) / 2, g.WIDTH // 2, g.WIDTH // 3),
+                         border_radius=5)
         picture_width, picture_height = picture.get_size()
-        screen.blit(picture, (g.WIDTH//2 - picture_width//2, 0))
+        screen.blit(picture, (g.WIDTH//2 - picture_width//2, g.HEIGHT//7))
         return True
     return False
 
@@ -83,19 +87,24 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     global end
     if end is False:
         player_rect = pygame.Rect((player.x_position, player.y_position, g.PLAYER_SIZE, g.PLAYER_SIZE))
+        # background
         screen.blit(draw_level.background, (0, 0))
+        # Move the player
         player.move()
+        # draw the level and place blocks, poles...
         draw_level.place_elements(screen)
         draw_level.place_bricks(screen)
-        #assets.draw_coins(screen, player_rect)
+        # draw the collectables
         assets.draw_letters(screen, player_rect)
-        #assets.draw_power_ups(screen)
-        assets.draw_collectables(screen)
+        assets.draw_collectables(screen, player_rect)
         assets.draw_clock(screen)
+        # draw the player
         player.draw(screen)
+        # draw the fortschritt and collected coins
         pygame.draw.rect(screen, (59, 59, 59), (-10,-10,g.WIDTH//8.5,g.HEIGHT//15), border_radius=5)
         draw_coins_collected(screen)
         draw_letter_percentage(screen)
+        # check for esc pressing or button pressing
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
@@ -104,7 +113,7 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
             return "pause"
     end = check_for_win_lose(screen)
     if end:
-        button = [g.WIDTH // 2 - (g.WIDTH / 8)//2, g.HEIGHT / 2,
+        button = [g.WIDTH // 2 - (g.WIDTH / 8)//2, g.HEIGHT / 1.5,
                        g.WIDTH / 8, g.HEIGHT / 12, g.HEIGHT // 35]
         draw_button(screen, "Hauptmenü",
                     (button[0], button[1], button[2], button[3]), button[4], (211, 211, 211))

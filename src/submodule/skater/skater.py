@@ -7,18 +7,20 @@ images_drive_left: list[pygame.Surface] = []
 images_drive_right: list[pygame.Surface] = []
 images_left: list[pygame.Surface] = []
 images_right: list[pygame.Surface] = []
-image_counter = 0
-x_position = 0
-y_position = g.HEIGHT - 2 * g.PLAYER_SIZE
-last_timestamp = None
+image_counter: int = 0
+x_position: float = 0
+y_position: float = g.HEIGHT - 2 * g.PLAYER_SIZE
+last_timestamp: int = None
 last_direction: str = "right"
 velocity: list[float] = [0,0]
 big_speed: bool = False
 big_jump: bool = False
-speed = g.SPEED
-jump_px = g.JUMP
+speed: int = g.SPEED
+jump_px: int = g.JUMP
 last_timestamp_speed: int = 0
 last_timestamp_jump: int = 0
+power_up_start_time: int = 0
+power_up: bool = False
 
 
 def init():
@@ -48,7 +50,8 @@ def move() -> None:
     """
     Moves the player and checks if the player dashes in something
     """
-    global x_position, y_position, last_direction, velocity, big_speed, last_timestamp_speed, speed
+    global x_position, y_position, last_direction, velocity, big_speed, last_timestamp_speed, speed, power_up
+    global power_up_start_time
     skater_rect = pygame.Rect(x_position, y_position, g.PLAYER_SIZE, g.PLAYER_SIZE)
     pressed_keys = pygame.key.get_pressed()
     direction = last_direction
@@ -64,6 +67,12 @@ def move() -> None:
         speed = g.RAMP_SPEED
     else:
         speed = g.SPEED
+
+    # Check if the player has a power up
+    if power_up:
+        speed += 5
+        if timestamp - power_up_start_time > 5000:
+            power_up = False
 
     # Check if the player drives in a block or a pole
     for block in blocks:
@@ -128,7 +137,7 @@ def move() -> None:
                 velocity[1] = -g.RAMP_JUMP
                 break
         for ramp in high_ramps_left:
-            ramp_rect = pygame.Rect(ramp[2], ramp[3], ramp[0], ramp[1])
+            ramp_rect = pygame.Rect(ramp[2], ramp[3] + (ramp[1]//2), ramp[0], ramp[1]//2)
             if skater_rect.colliderect(ramp_rect):
                 velocity[1] = -g.RAMP_JUMP2
                 if g.RAMP_SPEED == g.SPEED:
@@ -199,6 +208,7 @@ def move() -> None:
     if big_speed:
         if timestamp - last_timestamp_speed > 200:
             big_speed = False
+
     # check, if above the player a block or pole is
     skater_top_rect = pygame.Rect(x_position, y_position, g.PLAYER_SIZE, 5)
     for block in blocks:
@@ -207,7 +217,7 @@ def move() -> None:
             velocity[1] = 0
             break
     for pole in poles:
-        pole_rect = pygame.Rect(pole[2], pole[3], pole[0], pole[1]//2)
+        pole_rect = pygame.Rect(pole[2] + (pole[0] - pole[0]/1.5)/2, pole[3], pole[0]/1.5, pole[1]//2)
         if skater_top_rect.colliderect(pole_rect) and velocity[1] < 0:
             velocity[1] = 0
             break

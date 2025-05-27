@@ -1,6 +1,9 @@
+import copy
+
 import pygame
 import src.submodule.globals as g
 import src.submodule.level1.play as play
+import src.submodule.skater.skater as player
 
 coins: list[pygame.Surface] = []
 letters: list[pygame.Surface] = []
@@ -19,73 +22,25 @@ first_asset: tuple[float,float] = (first_block_floor[0] + (g.ASSETS_SIZE - g.POW
 first_power_up: tuple[float,float] = (first_asset[0] - g.POWER_UPS_SIZE//4, first_asset[1] - g.POWER_UPS_SIZE//2)
 
 
-collectables = [
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,2,1,1,1,1,0,0,0],
+collectables_original = [
+    [0,0,0,0,0,0,0,0,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,1,1,0,0],
+    [0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,1,1,0,2,0,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0],
+    [0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,2,1,1,1,1,0,0,0,0,0,0],
 ]
+collectables = copy.deepcopy(collectables_original)
 collectables.reverse()
-
-coins_position_original: list[tuple] = [
-    (first_asset[0] + 1 * g.ASSETS_SIZE,first_asset[1]),
-    (first_asset[0] + 2 * g.ASSETS_SIZE,first_asset[1]),
-    (first_asset[0] + 3 * g.ASSETS_SIZE, first_asset[1]),
-    (first_asset[0] + 4 * g.ASSETS_SIZE, first_asset[1]),
-    (first_asset[0] + 1 * g.ASSETS_SIZE + 14 * g.ASSETS_SIZE, first_asset[1]),
-    (first_asset[0] + 2 * g.ASSETS_SIZE + 14 * g.ASSETS_SIZE, first_asset[1]),
-    (first_asset[0] + 3 * g.ASSETS_SIZE + 14 * g.ASSETS_SIZE, first_asset[1]),
-    (first_asset[0] + 4 * g.ASSETS_SIZE + 14 * g.ASSETS_SIZE, first_asset[1]),
-    (first_asset[0] + 1 * g.ASSETS_SIZE + 19 * g.ASSETS_SIZE, first_asset[1]),
-    (first_asset[0] + 2 * g.ASSETS_SIZE + 19 * g.ASSETS_SIZE, first_asset[1]),
-    (first_asset[0] + 3 * g.ASSETS_SIZE + 19 * g.ASSETS_SIZE, first_asset[1]),
-    (first_asset[0] + 4 * g.ASSETS_SIZE + 19 * g.ASSETS_SIZE, first_asset[1]),
-    (first_asset[0] + 0 * g.ASSETS_SIZE + 3 * g.ASSETS_SIZE, first_asset[1] - 2 * g.ASSETS_SIZE),
-    (first_asset[0] + 1 * g.ASSETS_SIZE + 3 * g.ASSETS_SIZE, first_asset[1] - 2 * g.ASSETS_SIZE),
-    (first_asset[0] + 2 * g.ASSETS_SIZE + 3 * g.ASSETS_SIZE, first_asset[1] - 2 * g.ASSETS_SIZE),
-    (first_asset[0] + 0 * g.ASSETS_SIZE + 2 * g.ASSETS_SIZE, first_asset[1] - 12 * g.ASSETS_SIZE),
-    (first_asset[0] + 1 * g.ASSETS_SIZE + 2 * g.ASSETS_SIZE, first_asset[1] - 12 * g.ASSETS_SIZE),
-    (first_asset[0] + 2 * g.ASSETS_SIZE + 2 * g.ASSETS_SIZE, first_asset[1] - 12 * g.ASSETS_SIZE),
-    (first_asset[0] + 13 * g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
-    (first_asset[0] + 15 * g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
-    (first_asset[0] + 8 * g.ASSETS_SIZE + 0 * g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
-    (first_asset[0] + 8 * g.ASSETS_SIZE + 1 * g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
-    (first_asset[0] + 2 * g.ASSETS_SIZE + 0 * g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
-    (first_asset[0] + 2 * g.ASSETS_SIZE + 1 * g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
-    (first_asset[0] + 3 * g.ASSETS_SIZE, first_asset[1] - 9 * g.ASSETS_SIZE),
-    (first_asset[0] + 18 * g.ASSETS_SIZE + 0 * g.ASSETS_SIZE, first_asset[1] - 10 * g.ASSETS_SIZE),
-    (first_asset[0] + 18 * g.ASSETS_SIZE + 1 * g.ASSETS_SIZE, first_asset[1] - 10 * g.ASSETS_SIZE),
-    (first_asset[0] + 18 * g.ASSETS_SIZE + 2 * g.ASSETS_SIZE, first_asset[1] - 10 * g.ASSETS_SIZE),
-    (first_asset[0] + 1 * g.ASSETS_SIZE + 13 * g.ASSETS_SIZE, first_asset[1] - 2 * g.ASSETS_SIZE),
-    (first_asset[0] + 2 * g.ASSETS_SIZE + 13 * g.ASSETS_SIZE, first_asset[1] - 2 * g.ASSETS_SIZE),
-    (first_asset[0] + 3 * g.ASSETS_SIZE + 13 * g.ASSETS_SIZE, first_asset[1] - 2 * g.ASSETS_SIZE),
-    (first_asset[0] + 1 * g.ASSETS_SIZE + 15 * g.ASSETS_SIZE, first_asset[1] - 13 * g.ASSETS_SIZE),
-    (first_asset[0] + 2 * g.ASSETS_SIZE + 15 * g.ASSETS_SIZE, first_asset[1] - 13 * g.ASSETS_SIZE),
-    (first_asset[0] + 3 * g.ASSETS_SIZE + 15 * g.ASSETS_SIZE, first_asset[1] - 13 * g.ASSETS_SIZE),
-    (first_asset[0] + 23 * g.ASSETS_SIZE + 0 * g.ASSETS_SIZE, first_asset[1] - 6 * g.ASSETS_SIZE),
-    (first_asset[0] + 23 * g.ASSETS_SIZE + 1 * g.ASSETS_SIZE, first_asset[1] - 6 * g.ASSETS_SIZE),
-    (first_asset[0] + 23 * g.ASSETS_SIZE + 2 * g.ASSETS_SIZE, first_asset[1] - 6 * g.ASSETS_SIZE),
-    (first_asset[0] + 27 * g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
-    (first_asset[0] + 26 * g.ASSETS_SIZE, first_asset[1] - 13 * g.ASSETS_SIZE),
-    (first_asset[0] + 12 * g.ASSETS_SIZE + 0 * g.ASSETS_SIZE, first_asset[1] - 9 * g.ASSETS_SIZE),
-    (first_asset[0] + 12 * g.ASSETS_SIZE + 1 * g.ASSETS_SIZE, first_asset[1] - 9 * g.ASSETS_SIZE)
-]
-coins_position: list[tuple] = coins_position_original.copy()
-coins_remove: list[tuple] = []
 
 letters_position: list[tuple] = [
     (first_asset[0] + g.ASSETS_SIZE,first_asset[1] - 2 *  g.ASSETS_SIZE),
@@ -99,13 +54,6 @@ letters_position: list[tuple] = [
     (first_asset[0] + 10 * g.ASSETS_SIZE, first_asset[1] - 2 * g.ASSETS_SIZE)
 ]
 next_letter_idx: int = 0
-
-power_ups_position_original: list[tuple] = [
-    (first_power_up[0] + 11 * g.ASSETS_SIZE, first_power_up[1] - 14 * g.ASSETS_SIZE),
-    (first_power_up[0] + 14 * g.ASSETS_SIZE, first_power_up[1] - 5 * g.ASSETS_SIZE),
-    (first_power_up[0] + 19 * g.ASSETS_SIZE, first_power_up[1])
-]
-power_ups_position = power_ups_position_original.copy()
 
 
 def init_assets() -> None:
@@ -139,15 +87,54 @@ def init_assets() -> None:
     you_lost = pygame.transform.scale(you_lost, (g.WIDTH // 2, g.WIDTH // 2))
 
 
-def draw_collectables(screen: pygame.Surface) -> None:
+def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: int, y_position: int) -> bool:
+    """
+    Check if a coin or power ups gets collected by the player
+    :param type_: 1 -> Coin, 2 -> Power Up
+    :param player_rect: the pygame.Rect of the player
+    :param x_position: the x-koordinate of the collectable
+    :param y_position: the y-koordinate of the collectable
+    :return: True -> the player collects, False -> the player doesn't collect
+    """
+    if type_ == 1:
+        coin_rect = pygame.Rect((x_position, y_position, g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
+        if player_rect.colliderect(coin_rect):
+            play.coins_collected += 1
+            return True
+    if type_ == 2:
+        power_rect = pygame.Rect((x_position, y_position, g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
+        if player_rect.colliderect(power_rect):
+            player.power_up = True
+            player.power_up_start_time = pygame.time.get_ticks()
+            return True
+    return False
+
+
+def draw_collectables(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
+    """
+    Draw the collectables
+    :param screen: pygame.Surface -> where the collectables shall be drawn
+    :param player_rect: the pygame.Rect of the player
+    """
     global last_timestamp_coins, last_timestamp_power, coins_counter, power_counter
     timestamp = pygame.time.get_ticks()
     for y, line in enumerate(collectables):
         for x, item in enumerate(line):
             if item == 1:
-                screen.blit(coins[coins_counter], (first_asset[0] + x * g.ASSETS_SIZE, first_asset[1] - y * g.ASSETS_SIZE))
+                x_position = first_asset[0] + x * g.ASSETS_SIZE
+                y_position = first_asset[1] - y * g.ASSETS_SIZE
+                screen.blit(coins[coins_counter], (x_position, y_position))
+                if check_for_collect(item, player_rect, x_position, y_position):
+                    collectables[y][x] = 0
+
             elif item == 2:
-                screen.blit(power_up[power_counter], (first_asset[0] + x * g.ASSETS_SIZE, first_asset[1] - y * g.ASSETS_SIZE))
+                x_position = first_power_up[0] + x * g.ASSETS_SIZE
+                y_position = first_power_up[1] - y * g.ASSETS_SIZE
+                screen.blit(power_up[power_counter], (x_position, y_position))
+                if check_for_collect(item, player_rect, x_position, y_position):
+                    collectables[y][x] = 0
+
+    # Doing the sprite stuff for the next pictures
     if last_timestamp_coins is None or timestamp - last_timestamp_coins > 150:
         coins_counter += 1
         if coins_counter >= 5:
@@ -158,41 +145,6 @@ def draw_collectables(screen: pygame.Surface) -> None:
         if power_counter >= 4:
             power_counter = 0
         last_timestamp_power = timestamp
-
-
-
-
-
-def draw_coins(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
-    """
-    Draw the coins
-    :param screen: pygame.Surface: where the coins should be drawn
-    :param player_rect: pygame.Rect -> the rect of the player
-    """
-    global last_timestamp_coins, coins_counter
-    # get timestamp and the image
-    timestamp = pygame.time.get_ticks()
-    image = coins[coins_counter]
-
-    # remove the coins, that are collected
-    for coin in coins_remove:
-        coins_position.remove(coin)
-    coins_remove.clear()
-
-    # blit the coins at their destinations
-    for coin in coins_position:
-        screen.blit(image, coin)
-        coin_rect = pygame.Rect((coin[0], coin[1], g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
-
-        if player_rect.colliderect(coin_rect):
-            play.coins_collected += 1
-            coins_remove.append(coin)
-    # make the timestamp for the animation
-    if last_timestamp_coins is None or timestamp - last_timestamp_coins > 150:
-        coins_counter += 1
-        if coins_counter >= 5:
-            coins_counter = 0
-        last_timestamp_coins = timestamp
 
 
 def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
@@ -211,21 +163,6 @@ def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
         if player_rect.colliderect(letter_rect) and idx == next_letter_idx:
             play.letters_collected += 1
             next_letter_idx += 1
-
-
-def draw_power_ups(screen: pygame.Surface) -> None:
-    global last_timestamp_power, power_counter
-    # get timestamp and the image
-    timestamp = pygame.time.get_ticks()
-    image = power_up[power_counter]
-    for t in power_ups_position:
-        screen.blit(image, t)
-    # make the timestamp for the animation
-    if last_timestamp_power is None or timestamp - last_timestamp_power > 200:
-        power_counter += 1
-        if power_counter >= 4:
-            power_counter = 0
-        last_timestamp_power = timestamp
 
 
 def draw_clock(screen: pygame.Surface) -> None:
