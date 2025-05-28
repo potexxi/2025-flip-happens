@@ -1,15 +1,15 @@
 import pygame
 import copy
 import src.submodule.globals as g
-import src.submodule.level1.place_blocks as draw_level
 import src.submodule.pause_menu.pause as pause
 import src.submodule.level1.place_assets as assets
 import src.submodule.skater.skater as player
 from src.submodule.menu.menu import draw_button, check_button_collide
 
-letters_collected: int = 0
-coins_collected: int = 0
+letters_collected: int = 9
+coins_collected: int = 150
 end: bool = False
+win: bool = False
 
 
 def reset_stats() -> None:
@@ -23,9 +23,58 @@ def reset_stats() -> None:
     player.x_position = 0
     player.y_position = g.HEIGHT - 2 * g.PLAYER_SIZE
     player.last_direction = "right"
-    coins_collected = 0
-    letters_collected = 0
+    coins_collected = 150
+    letters_collected = 9
     assets.next_letter_idx = 0
+
+# KI-Anfang:
+# KI: ChatGPT
+# prompt:programmiere mir eine sortier funktion, dass ich eine liste mit users sortieren kann, die liste ist wie folgt aufgebaut:
+# ['EXAMPLE1', '1000']
+# ['EXAMPLE2', '1000000']
+# ['EXAMPLE3', '100000']
+# ['EXAMPLE4', '10000']
+# ['EXAMPLE5', '1040']
+# ['EXAMPLE6', '14000040']
+#
+# sortiere nach dem zweiten eintrag der listen in der liste
+def sort_users_by_score(users: list[list[str]]) -> list[list[str]]:
+    """
+    Sort the users list from the score of the users
+    :param users: the list with all users and their coins
+    :return: the sorted list
+    """
+    return sorted(users, key=lambda x: int(x[1]), reverse=True)
+# KI-Ende
+
+
+def save_stats(username) -> None:
+    users = []
+    # open the file and safe the entry in users
+    with open("submodule/level1/ranked.txt", "r", encoding="utf-8") as file:
+        content = file.readlines()
+    for line in content:
+        lines_content = line.strip().split(";")
+        users.append([lines_content[0], int(lines_content[1])])
+
+    # clear the file
+    with open("submodule/level1/ranked.txt", "w", encoding="utf-8") as file:
+        file.write("")
+
+    # Check if the user is already in the file and when not then append him
+    append = True
+    for entry in users:
+        if username == entry[0]:
+            append = False
+            entry[1] += coins_collected
+    if append:
+        users.append([f'{username}', f'{coins_collected}'])
+    # sort users:
+    users = sort_users_by_score(users)
+    # write the file
+    for entry in users:
+        with open("submodule/level1/ranked.txt", "a", encoding="utf-8") as file:
+            file.write(f"{entry[0]};{entry[1]}\n")
 
 
 def draw_coins_collected(screen: pygame.Surface) -> None:
@@ -63,11 +112,13 @@ def check_for_win_lose(screen: pygame.Surface) -> bool:
     :param screen: pygame.Surface -> where the pictures shall be drawn
     :return: True -> the player lost/won, False -> the game continues
     """
+    global win
     if (assets.time <= 0) or (letters_collected == 9 and assets.time > 0):
         picture = assets.you_won
         if assets.time <= 0:
             picture = assets.you_lost
         if letters_collected == 9 and assets.time > 0:
+            win = True
             picture = assets.you_won
         pygame.draw.rect(screen, (85, 85, 85),
                          (g.WIDTH // 2 - (g.WIDTH // 4), g.HEIGHT // 2 - (g.WIDTH//3) / 2, g.WIDTH // 2, g.WIDTH // 3),
@@ -88,15 +139,10 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     if end is False:
         player_rect = pygame.Rect((player.x_position, player.y_position, g.PLAYER_SIZE, g.PLAYER_SIZE))
         # background
-        screen.blit(draw_level.background, (0, 0))
-        # Move the player
-        player.move()
-        # draw the level and place blocks, poles...
-        draw_level.place_elements(screen)
-        draw_level.place_bricks(screen)
-        # draw the collectables
+        screen.blit(assets.background, (0, 0))
+        # draw the level
         assets.draw_letters(screen, player_rect)
-        assets.draw_collectables(screen, player_rect)
+        assets.draw_assets(screen, player_rect)
         assets.draw_clock(screen)
         # draw the player
         player.draw(screen)
@@ -104,6 +150,8 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
         pygame.draw.rect(screen, (59, 59, 59), (-10,-10,g.WIDTH//8.5,g.HEIGHT//15), border_radius=5)
         draw_coins_collected(screen)
         draw_letter_percentage(screen)
+        # Move the player
+        player.move()
         # check for esc pressing or button pressing
         for event in events:
             if event.type == pygame.KEYDOWN:
@@ -119,6 +167,8 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
                     (button[0], button[1], button[2], button[3]), button[4], (211, 211, 211))
         if check_button_collide(screen, "Hauptmenü",
                              (button[0], button[1], button[2], button[3]), button[4]+5, (255, 215, 0)):
+            if win:
+                save_stats(g.USERNAME)
             reset_stats()
             return "menu"
 

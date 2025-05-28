@@ -5,6 +5,14 @@ import src.submodule.globals as g
 import src.submodule.level1.play as play
 import src.submodule.skater.skater as player
 
+
+background: pygame.Surface = ...
+brick: pygame.Surface = ...
+ui_pause: pygame.Surface = ...
+halfpipes: list[pygame.Surface] = []
+pipe: pygame.Surface = ...
+fast_ramp: pygame.Surface = ...
+high_ramps: list[pygame.Surface] = []
 coins: list[pygame.Surface] = []
 letters: list[pygame.Surface] = []
 power_up: list[pygame.Surface] = []
@@ -20,28 +28,28 @@ first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSE
 first_asset: tuple[float,float] = (first_block_floor[0] + (g.ASSETS_SIZE - g.POWER_UPS_SIZE) / 2,
     first_block_floor[1] + (g.ASSETS_SIZE//2.5))
 first_power_up: tuple[float,float] = (first_asset[0] - g.POWER_UPS_SIZE//4, first_asset[1] - g.POWER_UPS_SIZE//2)
-
-
+append_elements: bool = True
 collectables_original = [
-    [0,0,0,0,0,0,0,0,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,1,1,0,0],
-    [0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,1,1,1,0,2,0,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0],
-    [0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,2,1,1,1,1,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,3,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,3,3,3,4,4,4,4,0,0,1,1,1,0,0,0,0,0,8,1,1,0,0],
+    [3,3,1,1,1,0,0,0,0,0,0,0,0,0,0,4,4,4,4,4,4,0,0,0,3,3,3,3,3],
+    [0,0,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3],
+    [0,0,0,0,0,4,4,3,0,0,0,0,0,0,0,0,0,0,1,1,1,0,5,3,3,3,3,3,3],
+    [3,3,6,0,0,0,0,3,3,6,0,7,0,0,0,4,4,0,4,4,4,3,3,3,3,3,3,3,3],
+    [3,3,3,3,0,0,0,0,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,4,0,0,0,0,0,0,0,0,3,3,3,0,0,8,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,0,3,3,3,3,0,0,0,0,0,0,0],
+    [0,0,0,0,0,5,0,0,1,1,1,7,2,0,1,1,1,5,3,0,0,0,0,4,4,4,0,1,0],
+    [3,3,3,3,3,4,4,4,3,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,3,3],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,4,4,4,0,0],
+    [0,0,1,1,1,1,0,0,0,8,0,9,0,0,1,1,1,1,0,0,4,4,4,4,0,0,0,0,0],
+    [4,4,4,4,4,4,4,0,0,3,3,3,0,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0],
+    [0,0,1,1,1,0,0,0,5,3,3,3,6,0,1,1,1,1,2,1,1,1,1,0,0,0,0,0,0],
+    [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ]
 collectables = copy.deepcopy(collectables_original)
 collectables.reverse()
-
 letters_position: list[tuple] = [
     (first_asset[0] + g.ASSETS_SIZE,first_asset[1] - 2 *  g.ASSETS_SIZE),
     (first_asset[0] + 20 *  g.ASSETS_SIZE, first_asset[1] - 7 * g.ASSETS_SIZE),
@@ -58,21 +66,23 @@ next_letter_idx: int = 0
 
 def init_assets() -> None:
     """
-    Load all the assets-images and scale them
+    Load all the assets-images which the level1 needs
     """
-    global coins, letters, power_up, you_won, you_lost
+    global coins, letters, power_up, you_won, you_lost, background, brick, halfpipes, fast_ramp, high_ramps, pipe
     # Coins:
     image = pygame.image.load("assets/level1/coin_sprite.png").convert_alpha()
     for i in range(5):
         sub_image = image.subsurface((16 * i, 0, 16, 16))
         sub_image = pygame.transform.scale(sub_image, (g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
         coins.append(sub_image)
+
     # Letters:
     image = pygame.image.load("assets/level1/letters.png").convert_alpha()
     for i in range(9):
         sub_image = image.subsurface((16 * i + 3 + i, 0, 16, 28))
         sub_image = pygame.transform.scale(sub_image, (g.POWER_UPS_SIZE, g.POWER_UPS_SIZE +g.POWER_UPS_SIZE // 4))
         letters.append(sub_image)
+
     # Power-Up:
     image = pygame.image.load("assets/level1/power_up_sprite.png").convert_alpha()
     for i in range(4):
@@ -80,11 +90,42 @@ def init_assets() -> None:
         sub_image = pygame.transform.scale(sub_image, (g.POWER_UPS_SIZE + g.POWER_UPS_SIZE//2,
                                                        g.POWER_UPS_SIZE+ g.POWER_UPS_SIZE//2))
         power_up.append(sub_image)
+
     # Won and Lose Picture:
     you_won = pygame.image.load("assets/level1/you_won.png").convert_alpha()
     you_won = pygame.transform.scale(you_won, (g.WIDTH // 2, g.WIDTH//2))
     you_lost = pygame.image.load("assets/level1/you_lost.png").convert_alpha()
     you_lost = pygame.transform.scale(you_lost, (g.WIDTH // 2, g.WIDTH // 2))
+
+    # Background:
+    background = pygame.image.load("assets/level1/background.png").convert_alpha()
+    background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
+
+    # Brick:
+    brick = pygame.image.load("assets/level1/BrickTiles.png").convert_alpha()
+    brick = brick.subsurface((0, 0, 16, 16))
+    brick = pygame.transform.scale(brick, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+
+    # Halfpipe:
+    halfpipe_left = pygame.image.load("assets/level1/halfpipe.png")
+    halfpipe_left = pygame.transform.scale(halfpipe_left, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+    halfpipes.append(halfpipe_left)
+    halfpipe_right = pygame.transform.flip(halfpipe_left, True, False)
+    halfpipes.append(halfpipe_right)
+
+    # Pipe:
+    pipe = pygame.image.load("assets/level1/pipe.png").convert_alpha()
+    pipe = pygame.transform.scale(pipe, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+
+    # Ramps:
+    high_ramp_left = pygame.image.load("assets/level1/high_ramp_left.png").convert_alpha()
+    high_ramp_left = pygame.transform.scale(high_ramp_left, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+    high_ramps.append(high_ramp_left)
+    high_ramp_right = pygame.image.load("assets/level1/high_ramp_right.png").convert_alpha()
+    high_ramp_right = pygame.transform.scale(high_ramp_right, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+    high_ramps.append(high_ramp_right)
+    fast_ramp = pygame.image.load("assets/level1/wide_ramp.png").convert_alpha()
+    fast_ramp = pygame.transform.scale(fast_ramp, (g.ASSETS_SIZE, g.ASSETS_SIZE))
 
 
 def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: int, y_position: int) -> bool:
@@ -110,29 +151,68 @@ def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: int, y_p
     return False
 
 
-def draw_collectables(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
+def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
     """
     Draw the collectables
     :param screen: pygame.Surface -> where the collectables shall be drawn
     :param player_rect: the pygame.Rect of the player
     """
-    global last_timestamp_coins, last_timestamp_power, coins_counter, power_counter
+    global last_timestamp_coins, last_timestamp_power, coins_counter, power_counter, append_elements
     timestamp = pygame.time.get_ticks()
     for y, line in enumerate(collectables):
         for x, item in enumerate(line):
+            x_position = first_block_floor[0] + x * g.ASSETS_SIZE
+            y_position = (first_block_floor[1] + g.ASSETS_SIZE) - y * g.ASSETS_SIZE
             if item == 1:
                 x_position = first_asset[0] + x * g.ASSETS_SIZE
-                y_position = first_asset[1] - y * g.ASSETS_SIZE
+                y_position = first_asset[1] - (y-1) * g.ASSETS_SIZE
                 screen.blit(coins[coins_counter], (x_position, y_position))
                 if check_for_collect(item, player_rect, x_position, y_position):
                     collectables[y][x] = 0
 
             elif item == 2:
                 x_position = first_power_up[0] + x * g.ASSETS_SIZE
-                y_position = first_power_up[1] - y * g.ASSETS_SIZE
+                y_position = first_power_up[1] - (y-1) * g.ASSETS_SIZE
                 screen.blit(power_up[power_counter], (x_position, y_position))
                 if check_for_collect(item, player_rect, x_position, y_position):
                     collectables[y][x] = 0
+
+            if item == 3:
+                screen.blit(brick, (x_position, y_position))
+                if append_elements:
+                    player.blocks.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x_position, y_position))
+
+            if item == 4:
+                screen.blit(pipe, (x_position, y_position))
+                if append_elements:
+                    player.poles.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x_position, y_position))
+
+            if item == 5:
+                screen.blit(halfpipes[0], (x_position, y_position))
+                if append_elements:
+                    player.halfpipes_right.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x_position, y_position))
+
+            if item == 6:
+                screen.blit(halfpipes[1], (x_position, y_position))
+                if append_elements:
+                    player.halfpipes_left.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x_position, y_position))
+
+            if item == 7:
+                screen.blit(fast_ramp, (x_position, y_position))
+                if append_elements:
+                    player.fast_ramp.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x_position, y_position))
+
+            if item == 8:
+                screen.blit(high_ramps[1], (x_position, y_position))
+                if append_elements:
+                    player.high_ramps_right.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x_position, y_position))
+
+            if item == 9:
+                screen.blit(high_ramps[0], (x_position, y_position))
+                if append_elements:
+                    player.high_ramps_left.append((g.ASSETS_SIZE, g.ASSETS_SIZE, x_position, y_position))
+
+    append_elements = False
 
     # Doing the sprite stuff for the next pictures
     if last_timestamp_coins is None or timestamp - last_timestamp_coins > 150:

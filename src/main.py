@@ -6,7 +6,6 @@ import src.submodule.level1.play as level1
 import src.submodule.skater.skater as player
 import src.submodule.pause_menu.pause as pause
 import src.submodule.start_animation.start_animation as start
-from src.submodule.level1.place_blocks import init_blocks
 from src.submodule.level1.place_assets import init_assets
 
 
@@ -26,14 +25,12 @@ def main() -> None:
 
     # Initialization
     menu.init_background()
-    init_blocks()
     init_assets()
     player.init()
     start.init()
     pause.init()
 
-    mode = "play"
-    animation = True
+    mode = "start"
 
     esc_pressed = False
 
@@ -47,13 +44,10 @@ def main() -> None:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     esc_pressed = True
-                if mode == "start":
-                    if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
-                        mode = "menu"
 
 
         if mode == "start":
-            animation, mode = start.animation(screen, animation)
+            mode = start.animation(screen, events)
 
         if mode == "menu":
             mode = menu.menu(screen)

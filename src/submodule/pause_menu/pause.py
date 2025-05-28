@@ -1,6 +1,5 @@
 import pygame
 import src.submodule.globals as g
-import src.submodule.level1.place_blocks as level
 import src.submodule.level1.play as play
 from src.submodule.menu.menu import draw_button, check_button_collide
 
@@ -13,13 +12,15 @@ d_key: pygame.Surface = ...
 s_key: pygame.Surface = ...
 space_key: pygame.Surface = ...
 esc_key: pygame.Surface = ...
+ui_pause: pygame.Surface = ...
+pause_button: tuple[float,float,float,float] = (g.WIDTH - g.WIDTH / 50 -5, 5, g.WIDTH / 50, g.WIDTH / 50)
 
 
 def init() -> None:
     """
     Init the pictures , which are use for the pause-menu
     """
-    global esc_key, a_key, d_key, w_key, s_key, space_key
+    global esc_key, a_key, d_key, w_key, s_key, space_key, ui_pause
     # Load the big images
     image_letters = pygame.image.load("assets/ui-controls/keys_letters.png")
     image_specials = pygame.image.load("assets/ui-controls/keys_special.png")
@@ -41,6 +42,9 @@ def init() -> None:
     # A:
     a_key = image_letters.subsurface((0 * 16, 2 * 16, 16, 16))
     a_key = pygame.transform.scale(a_key, (g.KEY_SIZE, g.KEY_SIZE))
+    # Pause Button:
+    ui_pause = pygame.image.load("assets/ui-controls/menu.png").convert_alpha()
+    ui_pause = pygame.transform.scale(ui_pause, (pause_button[2], pause_button[3]))
 
 
 def draw(screen: pygame.Surface) -> str:
@@ -119,8 +123,8 @@ def check_menu_button_pressed(screen: pygame.Surface, events: list[pygame.event.
     :return: bool -> if the button gets pressed
     """
     if not pause:
-        screen.blit(level.ui_pause, (level.pause_button[0], level.pause_button[1]))
-    rect = pygame.Rect(level.pause_button)
+        screen.blit(ui_pause, (pause_button[0], pause_button[1]))
+    rect = pygame.Rect(pause_button)
 
     for event in events:
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
@@ -140,7 +144,7 @@ def pause(screen: pygame.Surface, esc: bool, events: list[pygame.event.Event]) -
     # Draw the menu icon in time difference, so the icon doesn't get drawn too often
     timestamp = pygame.time.get_ticks()
     if timestamp - last_timestamp > 500:
-        screen.blit(level.ui_pause, (level.pause_button[0], level.pause_button[1]))
+        screen.blit(ui_pause, (pause_button[0], pause_button[1]))
     last_timestamp = timestamp
 
     # Draw the menu
@@ -159,5 +163,3 @@ def pause(screen: pygame.Surface, esc: bool, events: list[pygame.event.Event]) -
         return "play"
 
     return "pause"
-
-

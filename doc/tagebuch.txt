@@ -47,3 +47,6 @@ SO,25.05,3h,Max
 DI,27.05,3h,Max
     Spiellogik
 -
+MI,28.05,4h,Max
+    Username und Code Umstrukturierung
+-

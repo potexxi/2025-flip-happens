@@ -1,7 +1,5 @@
 import pygame
 import src.submodule.globals as g
-from src.submodule.level1.place_blocks import blocks, poles, fast_ramp, halfpipes_right, halfpipes_left, \
-    high_ramps_right, high_ramps_left
 
 images_drive_left: list[pygame.Surface] = []
 images_drive_right: list[pygame.Surface] = []
@@ -21,6 +19,13 @@ last_timestamp_speed: int = 0
 last_timestamp_jump: int = 0
 power_up_start_time: int = 0
 power_up: bool = False
+blocks: list[tuple] = []
+poles: list[tuple] = []
+halfpipes_right: list[tuple] = []
+halfpipes_left: list[tuple] = []
+fast_ramp: list[tuple] = []
+high_ramps_right: list[tuple] = []
+high_ramps_left: list[tuple] = []
 
 
 def init():
@@ -70,7 +75,7 @@ def move() -> None:
 
     # Check if the player has a power up
     if power_up:
-        speed += 5
+        speed = speed * 2
         if timestamp - power_up_start_time > 5000:
             power_up = False
 
