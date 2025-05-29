@@ -6,8 +6,8 @@ import src.submodule.level1.place_assets as assets
 import src.submodule.skater.skater as player
 from src.submodule.menu.menu import draw_button, check_button_collide
 
-letters_collected: int = 9
-coins_collected: int = 150
+letters_collected: int = 0
+coins_collected: int = 0
 end: bool = False
 win: bool = False
 
@@ -23,9 +23,11 @@ def reset_stats() -> None:
     player.x_position = 0
     player.y_position = g.HEIGHT - 2 * g.PLAYER_SIZE
     player.last_direction = "right"
-    coins_collected = 150
-    letters_collected = 9
+    coins_collected = 0
+    letters_collected = 0
     assets.next_letter_idx = 0
+    assets.append_elements = True
+    player.blocks = []
 
 # KI-Anfang:
 # KI: ChatGPT
@@ -51,14 +53,14 @@ def sort_users_by_score(users: list[list[str]]) -> list[list[str]]:
 def save_stats(username) -> None:
     users = []
     # open the file and safe the entry in users
-    with open("submodule/level1/ranked.txt", "r", encoding="utf-8") as file:
+    with open("submodule/menu/ranked.txt", "r", encoding="utf-8") as file:
         content = file.readlines()
     for line in content:
         lines_content = line.strip().split(";")
         users.append([lines_content[0], int(lines_content[1])])
 
     # clear the file
-    with open("submodule/level1/ranked.txt", "w", encoding="utf-8") as file:
+    with open("submodule/menu/ranked.txt", "w", encoding="utf-8") as file:
         file.write("")
 
     # Check if the user is already in the file and when not then append him
@@ -73,7 +75,7 @@ def save_stats(username) -> None:
     users = sort_users_by_score(users)
     # write the file
     for entry in users:
-        with open("submodule/level1/ranked.txt", "a", encoding="utf-8") as file:
+        with open("submodule/menu/ranked.txt", "a", encoding="utf-8") as file:
             file.write(f"{entry[0]};{entry[1]}\n")
 
 
@@ -172,4 +174,4 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
             reset_stats()
             return "menu"
 
-    return "play"
+    return "level1"

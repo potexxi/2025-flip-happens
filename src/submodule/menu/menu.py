@@ -2,6 +2,7 @@ import pygame
 import src.submodule.globals as g
 
 background: pygame.Surface = ...
+ask_for_level_: bool = False
 
 
 def init_background() -> None:
@@ -14,7 +15,7 @@ def init_background() -> None:
 
 
 def draw_button(screen: pygame.Surface, text: str, button: tuple[float, float, float, float],
-                text_size, color: int or str) -> None:
+                text_size: int, color: int or str) -> None:
     """
     Draw a button
     :param screen: pygame.Surface -> where the button should be drawn
@@ -37,7 +38,7 @@ def draw_button(screen: pygame.Surface, text: str, button: tuple[float, float, f
 
 
 def check_button_collide(screen: pygame.Surface, text: str, button: tuple[float, float, float, float],
-                         text_size, color: int or str) -> bool:
+                         text_size: int, color: int or str) -> bool:
     """
     Check if the player clicks on a button or just hovers it.
     :param screen: pygame.Surface -> where the new button (different color) should be drawn
@@ -100,7 +101,7 @@ def draw_ranked(screen: pygame.Surface) -> None:
     font_down = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", box_rect[4]+g.HEIGHT//140)
     msg1 = font_top.render("FLIP-HAPPENS Bestenliste", True, (255, 215, 0))
     screen.blit(msg1, (box_rect[0] + 10, box_rect[1] + 5))
-    with open("submodule/level1/ranked.txt", encoding="utf-8") as file:
+    with open("submodule/menu/ranked.txt", encoding="utf-8") as file:
         content = file.readlines()
     counter = 1
     for line in content:
@@ -135,16 +136,44 @@ def move_background(menu_type: str) -> None:
         g.POSITION_WORLD[0] = 0
 
 
+def ask_for_level(screen: pygame.Surface) -> str:
+    """
+    Ask the player which level he/she wants to play
+    :param screen: pygame.Surface -> where the buttons shall be drawn
+    :return: the current game mode
+    """
+    global ask_for_level_
+    level1_button = (g.WIDTH / 2 - g.WIDTH/5 /2, g.HEIGHT / 2 - g.HEIGHT/10, g.WIDTH/5, g.HEIGHT/10)
+    level2_button = (g.WIDTH / 2 - g.WIDTH/5 /2, g.HEIGHT / 2 + g.HEIGHT/10, g.WIDTH/5, g.HEIGHT/10)
+
+    draw_button(screen, "Level 1", level1_button, g.HEIGHT//50, (211, 211, 211))
+    draw_button(screen, "Level 2", level2_button, g.HEIGHT//50, (211, 211, 211))
+
+    if check_button_collide(screen,"Level 1", level1_button, g.HEIGHT//50 + 5, (255, 215, 0)):
+        ask_for_level_ = False
+        return "level1"
+    if check_button_collide(screen,"Level 2", level2_button, g.HEIGHT//50 + 5, (255, 215, 0)):
+        ask_for_level_ = False
+        return "level2"
+    return "menu"
+
+
 def menu(screen: pygame.Surface) -> str:
     """
     Make the menu -> in the game: select between PLAY, ERKLÄRUNG or STOP
     :param screen: pygame.Surface -> the Surface where the menu should be drawn
     :return: str -> the mode in which the game is right now, play, menu or explain
     """
+    global ask_for_level_
     # Move the background and blit it
     move_background("start")
     screen.blit(background, g.POSITION_WORLD)
     screen.blit(background, (g.POSITION_WORLD[0] + screen.get_width(), g.POSITION_WORLD[1]))
+
+    if ask_for_level_:
+        return ask_for_level(screen)
+
+    # ranked list
     draw_flip_happens(screen)
 
     # KI-Anfang
@@ -186,7 +215,7 @@ def menu(screen: pygame.Surface) -> str:
                             "START",
                             (start_button[0], start_button[1], start_button[2], start_button[3]), start_button[4],
                             (255, 215, 0)):
-        return "play"
+        ask_for_level_ = True
 
     if check_button_collide(screen,
                             "ERKLÄRUNG",

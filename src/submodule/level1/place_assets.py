@@ -128,7 +128,7 @@ def init_assets() -> None:
     fast_ramp = pygame.transform.scale(fast_ramp, (g.ASSETS_SIZE, g.ASSETS_SIZE))
 
 
-def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: int, y_position: int) -> bool:
+def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y_position: float) -> bool:
     """
     Check if a coin or power ups gets collected by the player
     :param type_: 1 -> Coin, 2 -> Power Up

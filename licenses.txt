@@ -1,5 +1,5 @@
  Licenses
-last save: 27.05.2025
+last save: 29.05.2025
 
 
 # # Pictures
@@ -16,7 +16,7 @@ last save: 27.05.2025
     - Link: <https://craftpix.net/freebies/free-city-backgrounds-pixel-art/>
     - License: FILE LICENSES <https://craftpix.net/file-licenses/>
 
-- level1/background_unsharp.png:
+- level1/background_unsharp.png and level2/background.png:
     - link: <https://craftpix.net/freebies/free-steampunk-cityscape-pixel-backgrounds/>
     - license: FILE LICENSE <https://craftpix.net/file-licenses/>
 
@@ -67,6 +67,10 @@ last save: 27.05.2025
 
 - you_won.png by ChatGPT:
     - prompt: erstelle jetzt noch ein bild mit you won
+
+- level2/brick.png by Nimnon:
+    - link: <https://opengameart.org/content/blue-brick-tileset>
+    - license: CC0 1.0 Universal <https://creativecommons.org/publicdomain/zero/1.0/>
 
 
 

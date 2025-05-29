@@ -3,10 +3,12 @@ import submodule.menu.menu as menu
 import submodule.globals as g
 import src.submodule.explain_menu.explain_menu as explain
 import src.submodule.level1.play as level1
+import src.submodule.level2.play as level2
 import src.submodule.skater.skater as player
 import src.submodule.pause_menu.pause as pause
 import src.submodule.start_animation.start_animation as start
-from src.submodule.level1.place_assets import init_assets
+from src.submodule.level1.place_assets import init_assets as init_assets1
+from src.submodule.level2.place_assets import init_assets as init_assets2
 
 
 def main() -> None:
@@ -25,12 +27,13 @@ def main() -> None:
 
     # Initialization
     menu.init_background()
-    init_assets()
+    init_assets1()
+    init_assets2()
     player.init()
     start.init()
     pause.init()
 
-    mode = "start"
+    mode = "menu"
 
     esc_pressed = False
 
@@ -52,7 +55,7 @@ def main() -> None:
         if mode == "menu":
             mode = menu.menu(screen)
 
-        if mode == "play":
+        if mode == "level1":
             mode = level1.play(screen, events)
             if mode == "pause" or mode == "menu":
                 esc_pressed = False
@@ -60,6 +63,9 @@ def main() -> None:
                 pygame.display.flip()
                 pygame.time.wait(100)
                 continue
+
+        if mode == "level2":
+            level2.play(screen)
 
         if mode == "explain":
             mode = explain.menu(screen)
