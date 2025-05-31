@@ -28,6 +28,12 @@ def reset_stats() -> None:
     assets.next_letter_idx = 0
     assets.append_elements = True
     player.blocks = []
+    player.halfpipes_left = []
+    player.halfpipes_right = []
+    player.high_ramps_left = []
+    player.high_ramps_right = []
+    player.fast_ramp = []
+    player.poles = []
 
 # KI-Anfang:
 # KI: ChatGPT
@@ -145,7 +151,7 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
         # draw the level
         assets.draw_letters(screen, player_rect)
         assets.draw_assets(screen, player_rect)
-        assets.draw_clock(screen)
+        assets.draw_clock(screen, assets.time)
         # draw the player
         player.draw(screen)
         # draw the fortschritt and collected coins

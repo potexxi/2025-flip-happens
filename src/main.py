@@ -33,7 +33,7 @@ def main() -> None:
     start.init()
     pause.init()
 
-    mode = "menu"
+    mode = "level2"
 
     esc_pressed = False
 
@@ -65,7 +65,7 @@ def main() -> None:
                 continue
 
         if mode == "level2":
-            level2.play(screen)
+            mode = level2.play(screen)
 
         if mode == "explain":
             mode = explain.menu(screen)

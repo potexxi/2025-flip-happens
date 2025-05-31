@@ -245,18 +245,20 @@ def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
             next_letter_idx += 1
 
 
-def draw_clock(screen: pygame.Surface) -> None:
+def draw_clock(screen: pygame.Surface, _time: int) -> int:
     """
     Draw the left time on the screen (up, middle)
     :param screen: pygame.Surface -> where the clock shall be drawn
+    :param time: the left time in seconds
+    :return: how much time is left
     """
-    global last_timestamp_clock, time
+    global last_timestamp_clock
 
     timestamp = pygame.time.get_ticks()
     font = pygame.font.Font("assets/fonts/clock.otf", g.HEIGHT//30)
-    time_min = time//60
-    time_sek = time-time_min*60
-    if time < 0:
+    time_min = _time//60
+    time_sek = _time-time_min*60
+    if _time < 0:
         time_min, time_sek = 0,0
     if time_sek//10 > 0:
         text = font.render(f"0{time_min}:{time_sek}", False, "black")
@@ -265,5 +267,6 @@ def draw_clock(screen: pygame.Surface) -> None:
     text_width, text_height = text.get_size()
     screen.blit(text, (g.WIDTH // 2 - text_width//2, 0))
     if timestamp - last_timestamp_clock >= 1000:
-        time -= 1
+        _time -= 1
         last_timestamp_clock = timestamp
+    return _time
