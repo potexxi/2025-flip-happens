@@ -13,8 +13,8 @@ last_direction: str = "right"
 velocity: list[float] = [0,0]
 big_speed: bool = False
 big_jump: bool = False
-speed: int = g.SPEED
-jump_px: int = g.JUMP
+speed: float = g.SPEED
+jump_px: float = g.JUMP
 last_timestamp_speed: int = 0
 last_timestamp_jump: int = 0
 power_up_start_time: int = 0
@@ -28,7 +28,10 @@ high_ramps_right: list[tuple] = []
 high_ramps_left: list[tuple] = []
 
 
-def init():
+def init() -> None:
+    """
+    Init the pictures of the player out of the sprite
+    """
     # normal fahren
     #image = pygame.image.load('assets/player/player1.png').convert_alpha() # Bild laden
     #for i in range(3):
@@ -47,7 +50,7 @@ def init():
         # image = pygame.image.load(f"assets/player/player{i +1}.png").convert_alpha() # Hier Bilder dynamisch laden(player1, player2,....)
         images_left.append(sub_image)  # Bild Hinzufügen
     for image in images_left:
-        image = pygame.transform.flip(image, g.ASSETS_SIZE,0)
+        image = pygame.transform.flip(image, True,False)
         images_right.append(image)
 
 
@@ -229,6 +232,10 @@ def move() -> None:
 
 
 def draw(screen: pygame.Surface) -> None:
+    """
+    Draw the player pictures
+    :param screen: pygame.Surface -> where the pictures shall be drawn
+    """
     global image_counter, last_timestamp
     timestamp = pygame.time.get_ticks()
     if last_direction == "right":

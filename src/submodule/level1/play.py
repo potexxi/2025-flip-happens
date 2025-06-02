@@ -57,6 +57,10 @@ def sort_users_by_score(users: list[list[str]]) -> list[list[str]]:
 
 
 def save_stats(username) -> None:
+    """
+    Save the stats (coins, time...) of the player
+    :param username: the username of the player
+    """
     users = []
     # open the file and safe the entry in users
     with open("submodule/menu/ranked.txt", "r", encoding="utf-8") as file:
@@ -151,7 +155,7 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
         # draw the level
         assets.draw_letters(screen, player_rect)
         assets.draw_assets(screen, player_rect)
-        assets.draw_clock(screen, assets.time)
+        assets.time = assets.draw_clock(screen, assets.time)
         # draw the player
         player.draw(screen)
         # draw the fortschritt and collected coins

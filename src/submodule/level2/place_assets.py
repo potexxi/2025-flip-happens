@@ -41,6 +41,9 @@ append_elements = True
 
 
 def init_assets():
+    """
+    Init the assets and scale them.
+    """
     global background, brick
     # Background:
     background = pygame.image.load("assets/level2/background.png").convert_alpha()
@@ -53,6 +56,11 @@ def init_assets():
 
 
 def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
+    """
+    Draw the assets of the level2
+    :param screen: pygame.Surface -> where the assets shall be drawn
+    :param player_rect: pygame.Rect -> the rect of the player
+    """
     global append_elements, last_timestamp_power, last_timestamp_coins, coins_counter, power_counter, time
     # blit the background
     screen.blit(background, (0,0))

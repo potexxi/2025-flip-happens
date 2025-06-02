@@ -27,6 +27,12 @@ def init() -> None:
 
 
 def ask_for_username(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
+    """
+    Ask for the username
+    :param screen: pygame.Surface -> where the menu shall be drawn
+    :param events: the pressed keys of the player
+    :return: current game mode
+    """
     global button_activated, text
     for event in events:
         if event.type == pygame.KEYDOWN and button_activated:

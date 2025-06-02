@@ -33,7 +33,7 @@ def main() -> None:
     start.init()
     pause.init()
 
-    mode = "level2"
+    mode = "start"
 
     esc_pressed = False
 

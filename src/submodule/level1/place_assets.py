@@ -1,5 +1,4 @@
 import copy
-
 import pygame
 import src.submodule.globals as g
 import src.submodule.level1.play as play
@@ -249,7 +248,7 @@ def draw_clock(screen: pygame.Surface, _time: int) -> int:
     """
     Draw the left time on the screen (up, middle)
     :param screen: pygame.Surface -> where the clock shall be drawn
-    :param time: the left time in seconds
+    :param _time: the left time in seconds
     :return: how much time is left
     """
     global last_timestamp_clock
