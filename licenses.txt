@@ -1,5 +1,5 @@
- Licenses
-last save: 29.05.2025
+Licenses
+last save: 03.06.2025
 
 
 # # Pictures
@@ -71,6 +71,10 @@ last save: 29.05.2025
 - level2/brick.png by Nimnon:
     - link: <https://opengameart.org/content/blue-brick-tileset>
     - license: CC0 1.0 Universal <https://creativecommons.org/publicdomain/zero/1.0/>
+
+- whole rain-folder by AntumDeluge
+    - link: <https://opengameart.org/content/rain-animation>
+    - license: Attribution 4.0 International <https://creativecommons.org/licenses/by/4.0/>
 
 
 
