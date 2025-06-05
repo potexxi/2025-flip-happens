@@ -1,8 +1,9 @@
 import copy
 import pygame
 import src.submodule.globals as g
-import src.submodule.level1.play as play
+import src.submodule.level1.play as play1
 import src.submodule.skater.skater as player
+import src.submodule.level2.play as play2
 
 
 background: pygame.Surface = ...
@@ -127,7 +128,7 @@ def init_assets() -> None:
     fast_ramp = pygame.transform.scale(fast_ramp, (g.ASSETS_SIZE, g.ASSETS_SIZE))
 
 
-def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y_position: float) -> bool:
+def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y_position: float, activ_level: int) -> bool:
     """
     Check if a coin or power ups gets collected by the player
     :param type_: 1 -> Coin, 2 -> Power Up
@@ -139,7 +140,10 @@ def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y
     if type_ == 1:
         coin_rect = pygame.Rect((x_position, y_position, g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
         if player_rect.colliderect(coin_rect):
-            play.coins_collected += 1
+            if activ_level == 1:
+                play1.coins_collected += 1
+            elif activ_level == 2:
+                play2.coins_collected += 1
             return True
     if type_ == 2:
         power_rect = pygame.Rect((x_position, y_position, g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))

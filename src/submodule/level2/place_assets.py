@@ -4,6 +4,9 @@ import src.submodule.globals as g
 import src.submodule.skater.skater as player
 import src.submodule.level1.place_assets as level1
 
+
+
+
 background: pygame.Surface = ...
 brick: pygame.Surface = ...
 first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2) - g.ASSETS_SIZE)
@@ -17,7 +20,7 @@ last_timestamp_power: int = None
 last_timestamp_clock: int = 0
 time = 30
 assets_original = [
-    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1,1,1,1,1,4,4,0,4,4,4,1,1,1,1,1,1,1,1,1,1,1,1],
     [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
     [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1],
     [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,0,0,0,0,0,1,1,1],

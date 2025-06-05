@@ -89,7 +89,7 @@ def save_stats(username) -> None:
             file.write(f"{entry[0]};{entry[1]}\n")
 
 
-def draw_coins_collected(screen: pygame.Surface) -> None:
+def draw_coins_collected(screen: pygame.Surface, coins_collected) -> None:
     """
     Draw the collected coins on the screen
     :param screen: pygame.Surface -> Where the coins shall be drawn
@@ -160,7 +160,7 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
         player.draw(screen)
         # draw the fortschritt and collected coins
         pygame.draw.rect(screen, (59, 59, 59), (-10,-10,g.WIDTH//8.5,g.HEIGHT//15), border_radius=5)
-        draw_coins_collected(screen)
+        draw_coins_collected(screen, coins_collected)
         draw_letter_percentage(screen)
         # Move the player
         player.move()
