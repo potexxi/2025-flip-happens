@@ -15,12 +15,17 @@ def init():
     big = pygame.image.load(f"assets/rain/rain.png").convert_alpha()
     for number in range(16):
         drop = big.subsurface((number * 64, 0, 64,64))
-        drop = pygame.transform.scale(drop, (100,100))
+        drop = pygame.transform.scale(drop, (g.WIDTH/(g.WIDTH/150),g.HEIGHT/(g.HEIGHT/150)))
         drops.append(drop)
 
-def rain(screen,a,b):
+def rain(screen: pygame.Surface) -> None:
     global drop_counter, last_timestamp_drop
-    screen.blit(drops[drop_counter], (a*100,b*100))
+    line = int(g.WIDTH//(g.WIDTH/(g.WIDTH/150)))
+    height = int(g.HEIGHT//(g.HEIGHT/(g.HEIGHT/150)))
+    for x in range(height + 1):
+        for t in range(line):
+            screen.blit(drops[drop_counter], (t*150,x*150))
+
     timestamp = pygame.time.get_ticks()
     if timestamp - last_timestamp_drop > 40:
         drop_counter += 1
@@ -40,11 +45,8 @@ if __name__ == "__main__":
     from src.submodule.level1.place_assets import background
     while True:
         screen.blit(background, (0,0))
-        rain(screen,0,0)
-        rain(screen, 1, 0)
-        rain(screen, 2, 0)
-        rain(screen, 3, 0)
-        rain(screen, 4, 0)
+        rain(screen)
+
 
 
         pygame.display.flip()
