@@ -244,7 +244,7 @@ def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
 
         letter_rect = pygame.Rect((letter_position[0], letter_position[1], g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
         if player_rect.colliderect(letter_rect) and idx == next_letter_idx:
-            play.letters_collected += 1
+            play1.letters_collected += 1
             next_letter_idx += 1
 
 

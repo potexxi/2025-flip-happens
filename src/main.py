@@ -33,7 +33,7 @@ def main() -> None:
     start.init()
     pause.init()
 
-    mode = "menu"
+    mode = "start"
 
     esc_pressed = False
 

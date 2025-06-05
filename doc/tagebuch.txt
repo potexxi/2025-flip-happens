@@ -56,6 +56,11 @@ DO,29.05,1.5h,Max
 SA,31.05,0.5h,Max
     Level2 bug fixes
 -
-DI, 03.06.2025,Yamen und Max
-        Yamen Level 2
-        Max Dokumentation und Wetter begonnen
+DI,03.06,3h,Yamen|Max
+    Yamen Level 2
+    Max Dokumentation und Wetter begonnen
+-
+DO,05.06,1h,Yamen|Max
+    Yamen Level 2
+    Max Wetter
+-

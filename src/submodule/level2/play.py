@@ -1,10 +1,8 @@
 import pygame
+import src.submodule.level1.play as level1
 import src.submodule.globals as g
 import src.submodule.level2.place_assets as assets
 import src.submodule.skater.skater as player
-from src.submodule.level1.place_assets import draw_clock
-from src.submodule.level1.play import draw_coins_collected
-
 coins_collected: int = 0
 def play(screen: pygame.Surface) -> str:
     """
@@ -16,6 +14,6 @@ def play(screen: pygame.Surface) -> str:
     assets.draw_assets(screen, player_rect)
     player.draw(screen)
     player.move()
-    assets.time = draw_clock(screen, assets.time)
-    draw_coins_collected(screen, coins_collected)
+
+    level1.draw_coins_collected(screen, coins_collected)
     return "level2"

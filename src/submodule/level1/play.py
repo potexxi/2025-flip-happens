@@ -89,13 +89,14 @@ def save_stats(username) -> None:
             file.write(f"{entry[0]};{entry[1]}\n")
 
 
-def draw_coins_collected(screen: pygame.Surface, coins_collected) -> None:
+def draw_coins_collected(screen: pygame.Surface, _coins_collected) -> None:
     """
     Draw the collected coins on the screen
     :param screen: pygame.Surface -> Where the coins shall be drawn
+    :param _coins_collected: how many coins the player collected
     """
     font = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", g.HEIGHT//45)
-    text = font.render(f"Coins: {coins_collected}", False, (255, 215, 0))
+    text = font.render(f"Coins: {_coins_collected}", False, (255, 215, 0))
     screen.blit(text, (5, g.HEIGHT//50 + 10))
 
 
