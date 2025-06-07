@@ -1,4 +1,5 @@
 import pygame
+import random
 import src.submodule.globals as g
 
 images_drive_left: list[pygame.Surface] = []
@@ -35,12 +36,12 @@ def init() -> None:
     # normal fahren
     #image = pygame.image.load('assets/player/player1.png').convert_alpha() # Bild laden
     #for i in range(3):
-      #  sub_image = image.subsurface((64 * i, 195, 60, 60))
-     #   sub_image = pygame.transform.scale(sub_image, (g.ASSETS_SIZE, g.ASSETS_SIZE))
-     #   images_drive_left.append(sub_image) # Bild Hinzufügen
+        #sub_image = image.subsurface((64 * i, 195, 60, 60))
+        #sub_image = pygame.transform.scale(sub_image, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+        #images_drive_left.append(sub_image) # Bild Hinzufügen
     #for image in images_drive_left:
-       # image = pygame.transform.flip(image, g.ASSETS_SIZE,0)
-       # images_drive_right.append(image)
+        #image = pygame.transform.flip(image, True,False)
+        #images_drive_right.append(image)
 
     # mit anschubsen
     image = pygame.image.load('assets/player/player1.png').convert_alpha()  # Bild laden
@@ -54,9 +55,10 @@ def init() -> None:
         images_right.append(image)
 
 
-def move() -> None:
+def move(rain: bool) -> None:
     """
     Moves the player and checks if the player dashes in something
+    :param rain: True -> it is raining, False -> it is not raining
     """
     global x_position, y_position, last_direction, velocity, big_speed, last_timestamp_speed, speed, power_up
     global power_up_start_time
@@ -155,8 +157,22 @@ def move() -> None:
                 last_timestamp_speed = timestamp
                 break
 
+    # Regen machen
+    if rain:
+        if random.random() < 0.5: # yamen: hier mache ich mit 0,5 die 50 % wahrscheinlichkeit
+                                  # und random.random() gibt eine gleitkommazahl zwischen 0 und 1
+            jump = False
+            if random.random() < 0.01: # hier auch yamen, halt mit 1 % wahrscheinlichkeit
+                if random.randint(1,2) == 1:
+                    direction = "right"
+                else:
+                    direction = "left"
+        multiplier = random.uniform(0.5, 1.5) # yamen: uniform bedeutet, dass nicht wie bei random.randint
+                                                         # eine int zahl kommt, sondern eine float zahl
+        speed *= multiplier
+
     # Moves the player automatically to the right or the left
-    if direction == "right" and x_position <= g.WIDTH-g.ASSETS_SIZE:
+    if direction == "right" and x_position <= g.WIDTH - g.ASSETS_SIZE:
         x_position += speed
     if direction == "left" and x_position >= 0:
         x_position -= speed
@@ -212,6 +228,7 @@ def move() -> None:
         velocity[1] = min(velocity[1] + g.GRAVITATION, g.MAX_FALL_SPEED)
         y_position += velocity[1]
     # KI-Ende
+
     # disable the big speed, when the time is over
     if big_speed:
         if timestamp - last_timestamp_speed > 200:

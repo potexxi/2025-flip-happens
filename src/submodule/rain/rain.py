@@ -1,26 +1,29 @@
 import pygame
-from src.submodule.level1.place_assets import init_assets
 import src.submodule.globals as g
 
 drops = []
 drop_counter = 0
 last_timestamp_drop = 0
 
-def init():
-    # big = pygame.image.load(f"assets/rain/rain1.png").convert_alpha()
-    # for number in range(10):
-    #     drop = big.subsurface((number * 64, 0, 64,64))
-    #     drop = pygame.transform.scale(drop, (300,300))
-    #     drops.append(drop)
+
+def init() -> None:
+    """
+    Init the pictures of the rain-sprite
+    """
     big = pygame.image.load(f"assets/rain/rain.png").convert_alpha()
     for number in range(16):
         drop = big.subsurface((number * 64, 0, 64,64))
         drop = pygame.transform.scale(drop, (g.WIDTH/(g.WIDTH/150),g.HEIGHT/(g.HEIGHT/150)))
         drops.append(drop)
 
+
 def rain(screen: pygame.Surface) -> None:
+    """
+    Blit the rain-animation on the screen
+    :param screen: pygame.Surface -> where the rain shall be drawn
+    """
     global drop_counter, last_timestamp_drop
-    line = int(g.WIDTH//(g.WIDTH/(g.WIDTH/150)))
+    line = int(g.WIDTH//(g.WIDTH/(g.WIDTH/150))) + 3
     height = int(g.HEIGHT//(g.HEIGHT/(g.HEIGHT/150)))
     for x in range(height + 1):
         for t in range(line):
@@ -32,23 +35,3 @@ def rain(screen: pygame.Surface) -> None:
         if drop_counter >= 16:
             drop_counter = 0
         last_timestamp_drop = timestamp
-
-if __name__ == "__main__":
-    pygame.init()
-    pygame.display.set_caption("test")
-    screen = pygame.display.set_mode((0,0))
-    clock = pygame.time.Clock()
-
-    init_assets()
-    init()
-
-    from src.submodule.level1.place_assets import background
-    while True:
-        screen.blit(background, (0,0))
-        rain(screen)
-
-
-
-        pygame.display.flip()
-
-        clock.tick(g.FPS)

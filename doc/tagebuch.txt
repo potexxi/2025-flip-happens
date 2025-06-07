@@ -64,3 +64,6 @@ DO,05.06,1h,Yamen|Max
     Yamen Level 2
     Max Wetter
 -
+SA,07.06,1.5h,Max
+    Wetter
+-

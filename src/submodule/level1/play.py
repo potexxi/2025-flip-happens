@@ -1,3 +1,4 @@
+import random
 import pygame
 import copy
 import src.submodule.globals as g
@@ -5,18 +6,21 @@ import src.submodule.pause_menu.pause as pause
 import src.submodule.level1.place_assets as assets
 import src.submodule.skater.skater as player
 from src.submodule.menu.menu import draw_button, check_button_collide
+from src.submodule.rain.rain import rain
 
 letters_collected: int = 0
 coins_collected: int = 0
 end: bool = False
 win: bool = False
+begin: bool = True
+rain_bool: bool = False
 
 
 def reset_stats() -> None:
     """
     Reset the stats of the player (coins, letters, time...)
     """
-    global coins_collected, letters_collected
+    global coins_collected, letters_collected, rain_bool, begin
     assets.time = 120
     assets.collectables = copy.deepcopy(assets.collectables_original)
     assets.collectables.reverse()
@@ -34,6 +38,8 @@ def reset_stats() -> None:
     player.high_ramps_right = []
     player.fast_ramp = []
     player.poles = []
+    rain_bool = False
+    begin = True
 
 # KI-Anfang:
 # KI: ChatGPT
@@ -148,7 +154,10 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     :param screen: pygame.Surface -> where the game should be drawn
     :return: str -> in which mode the game is in
     """
-    global end
+    global end, rain_bool, begin
+    if begin:
+        if random.random() < 0.4:
+            rain_bool = True
     if end is False:
         player_rect = pygame.Rect((player.x_position, player.y_position, g.PLAYER_SIZE, g.PLAYER_SIZE))
         # background
@@ -157,14 +166,19 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
         assets.draw_letters(screen, player_rect)
         assets.draw_assets(screen, player_rect)
         assets.time = assets.draw_clock(screen, assets.time)
-        # draw the player
-        player.draw(screen)
         # draw the fortschritt and collected coins
         pygame.draw.rect(screen, (59, 59, 59), (-10,-10,g.WIDTH//8.5,g.HEIGHT//15), border_radius=5)
         draw_coins_collected(screen, coins_collected)
         draw_letter_percentage(screen)
+        # Rain:
+        if rain_bool:
+            rain(screen)
         # Move the player
-        player.move()
+        player.move(rain_bool)
+        # draw the player
+        player.draw(screen)
+        # Change, that begin is False
+        begin = False
         # check for esc pressing or button pressing
         for event in events:
             if event.type == pygame.KEYDOWN:

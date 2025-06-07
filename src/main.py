@@ -9,6 +9,7 @@ import src.submodule.pause_menu.pause as pause
 import src.submodule.start_animation.start_animation as start
 from src.submodule.level1.place_assets import init_assets as init_assets1
 from src.submodule.level2.place_assets import init_assets as init_assets2
+from src.submodule.rain.rain import init as init_rain
 
 
 def main() -> None:
@@ -32,8 +33,9 @@ def main() -> None:
     player.init()
     start.init()
     pause.init()
+    init_rain()
 
-    mode = "start"
+    mode = "menu"
 
     esc_pressed = False
 

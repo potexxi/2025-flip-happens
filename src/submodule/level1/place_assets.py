@@ -170,14 +170,14 @@ def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
                 x_position = first_asset[0] + x * g.ASSETS_SIZE
                 y_position = first_asset[1] - (y-1) * g.ASSETS_SIZE
                 screen.blit(coins[coins_counter], (x_position, y_position))
-                if check_for_collect(item, player_rect, x_position, y_position):
+                if check_for_collect(item, player_rect, x_position, y_position, 1):
                     collectables[y][x] = 0
 
             elif item == 2:
                 x_position = first_power_up[0] + x * g.ASSETS_SIZE
                 y_position = first_power_up[1] - (y-1) * g.ASSETS_SIZE
                 screen.blit(power_up[power_counter], (x_position, y_position))
-                if check_for_collect(item, player_rect, x_position, y_position):
+                if check_for_collect(item, player_rect, x_position, y_position, 1):
                     collectables[y][x] = 0
 
             if item == 3:
