@@ -7,6 +7,7 @@ import src.submodule.level2.play as level2
 import src.submodule.skater.skater as player
 import src.submodule.pause_menu.pause as pause
 import src.submodule.start_animation.start_animation as start
+import src.submodule.shop.shop as shop
 from src.submodule.level1.place_assets import init_assets as init_assets1
 from src.submodule.level2.place_assets import init_assets as init_assets2
 from src.submodule.rain.rain import init as init_rain
@@ -74,6 +75,9 @@ def main() -> None:
 
         if mode == "pause":
             mode = pause.pause(screen, esc_pressed, events)
+
+        if mode == "shop":
+            mode = shop.shop(screen)
 
 
         # Update the display

@@ -129,6 +129,8 @@ def move_background(menu_type: str) -> None:
     """
     if menu_type == "explain":
         speed = 1.3
+    elif menu_type == "start":
+        speed = 0.5
     else:
         speed = 0.3
     g.POSITION_WORLD[0] -= speed
@@ -166,7 +168,7 @@ def menu(screen: pygame.Surface) -> str:
     """
     global ask_for_level_
     # Move the background and blit it
-    move_background("start")
+    move_background("menu")
     screen.blit(background, g.POSITION_WORLD)
     screen.blit(background, (g.POSITION_WORLD[0] + screen.get_width(), g.POSITION_WORLD[1]))
 
@@ -195,7 +197,7 @@ def menu(screen: pygame.Surface) -> str:
     draw_button(screen, "START", (start_button[0],start_button[1],start_button[2],start_button[3]), g.HEIGHT // 40,
                 (211, 211, 211))
 
-    draw_button(screen, "STOP", (stop_button[0], stop_button[1], stop_button[2], stop_button[3]), g.HEIGHT // 40,
+    draw_button(screen, "SHOP", (stop_button[0], stop_button[1], stop_button[2], stop_button[3]), g.HEIGHT // 40,
                 (211, 211, 211))
 
     draw_button(screen, "ERKLÄRUNG", (explain_button[0], explain_button[1], explain_button[2], explain_button[3])
@@ -224,8 +226,8 @@ def menu(screen: pygame.Surface) -> str:
         return "explain"
 
     if check_button_collide(screen,
-                            "STOP",
+                            "SHOP",
                             (stop_button[0], stop_button[1], stop_button[2], stop_button[3]),stop_button[4],
                             (255, 215, 0)):
-        exit("FLIP HAPPENS!")
+        return "shop"
     return "menu"
