@@ -35,8 +35,9 @@ def main() -> None:
     start.init()
     pause.init()
     init_rain()
+    shop.init()
 
-    mode = "menu"
+    mode = "shop"
 
     esc_pressed = False
 

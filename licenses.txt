@@ -76,8 +76,17 @@ last save: 03.06.2025
     - link: <https://opengameart.org/content/rain-animation>
     - license: Attribution 4.0 International <https://creativecommons.org/licenses/by/4.0/>
 
+- weather_immun.png by ChatGPT:
+    - prompt: erstelle mir ein icon/bild für mein Pygame Projekt, also in Pixel art. das bild wird für meinen Shop
+    und man soll erkennen, dass das icon für einen Wetterimunität ist, also der 2d skater ist dann beim
+    Spielen gegen das Wetter immun
 
+- faster.png by ChatGPT:
+    - prompt: erstelle mir im gleichen stil ein icon auf dem man erkennt, dass der player schneller fährt
 
+- coins_multi.png by ChatGPT:
+    - prompt: erstelle mir im gleichen stil ein icon auf dem man erkennt, dass das Aufsammeln der münzen effektiever
+    ist, also dass man einen coins multiplier bekommt
 
 
 
