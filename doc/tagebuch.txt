@@ -67,6 +67,6 @@ DO,05.06,1h,Yamen|Max
 SA,07.06,1.5h,Max
     Wetter
 -
-S0,08.06,1h,Max
+S0,08.06,2h,Max
     Shop
 -

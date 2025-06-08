@@ -51,7 +51,7 @@ def ask_for_username(screen: pygame.Surface, events: list[pygame.event.Event]) -
     screen.blit(background, (g.POSITION_WORLD[0] + screen.get_width(), g.POSITION_WORLD[1]))
 
     # warning
-    font = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", g.HEIGHT//35)
+    font = pygame.font.Font("assets/fonts/normal.otf", g.HEIGHT//35)
     text_ = font.render(f"Der Username muss zwischen 3 und 15 Zeichen lang sein!", True, "white")
     text_width, text_height = text_.get_size()
     screen.blit(text_, (g.WIDTH//2 - text_width//2, g.HEIGHT - g.HEIGHT//1.2))
@@ -120,7 +120,7 @@ def animation(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
             animation_ = False
 
     if wait_screen is True:
-        font = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", g.HEIGHT//40)
+        font = pygame.font.Font("assets/fonts/normal.otf", g.HEIGHT//40)
         text = font.render("Drücke [ENTER] für den Spielstart", True, (255,255,255))
         screen.fill((0,0,0))
         logo = pygame.transform.scale(original_logo, (logo_size, logo_size))

@@ -86,7 +86,7 @@ def draw(screen: pygame.Surface) -> str:
     screen.blit(s_key, (g.WIDTH // 1.7, g.HEIGHT // 1.8))
     screen.blit(d_key, (g.WIDTH // 1.6, g.HEIGHT // 1.8))
     screen.blit(space_key, (g.WIDTH // 1.6, g.HEIGHT // 1.6))
-    font = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", g.HEIGHT//50)
+    font = pygame.font.Font("assets/fonts/normal.otf", g.HEIGHT//50)
 
     # A
     pygame.draw.line(screen, "white", (g.WIDTH//1.9, g.HEIGHT//1.6), (g.WIDTH//1.8, g.HEIGHT//1.7))

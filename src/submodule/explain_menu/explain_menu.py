@@ -48,7 +48,7 @@ def draw(screen: pygame.Surface) -> str:
         "6. Shop:", "   Tausch  Reichtum  gegen  Skill  –  doch  sei  bereit,  im  Ranking  zu  fallen.",
         "7. Taktik  zählt:", "   Wähle  deinen  Weg:  Ewiger  Ruhm  oder  krasse  Extras  –  du  entscheidest!",
     ]
-    font = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", g.HEIGHT // 45)
+    font = pygame.font.Font("assets/fonts/normal.otf", g.HEIGHT // 45)
     counter = 0
     distance = g.HEIGHT // 20
     for idx, entry in enumerate(explain_text):

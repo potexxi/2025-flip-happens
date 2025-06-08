@@ -101,7 +101,7 @@ def draw_coins_collected(screen: pygame.Surface, _coins_collected) -> None:
     :param screen: pygame.Surface -> Where the coins shall be drawn
     :param _coins_collected: how many coins the player collected
     """
-    font = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", g.HEIGHT//45)
+    font = pygame.font.Font("assets/fonts/normal.otf", g.HEIGHT//45)
     text = font.render(f"Coins: {_coins_collected}", False, (255, 215, 0))
     screen.blit(text, (5, g.HEIGHT//50 + 10))
 
@@ -120,7 +120,7 @@ def draw_letter_percentage(screen: pygame.Surface) -> None:
         color_percentage = (63, 197, 107)
     pygame.draw.rect(screen,	(85, 85, 85), (5,5,g.WIDTH//13, g.HEIGHT//50), border_radius=5)
     pygame.draw.rect(screen, color_percentage, (5,5,rect_width, g.HEIGHT//50), border_radius=5)
-    font = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", g.HEIGHT // 45)
+    font = pygame.font.Font("assets/fonts/normal.otf", g.HEIGHT // 45)
     text = font.render(f"{percentage:.0f}%", False, (192, 192, 192))
     screen.blit(text, (g.WIDTH//13 + 10, 5))
 

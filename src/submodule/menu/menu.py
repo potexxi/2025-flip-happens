@@ -25,7 +25,7 @@ def draw_button(screen: pygame.Surface, text: str, button: tuple[float, float, f
     :param color: the color of the button
     :return: None
     """
-    font = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", text_size)
+    font = pygame.font.Font("assets/fonts/normal.otf", text_size)
     text = font.render(f"{text}", True, "black")
     # KI-Anfang
     # KI: ChatGPT
@@ -97,8 +97,8 @@ def draw_ranked(screen: pygame.Surface) -> None:
     pygame.draw.rect(box_surface, (0, 0, 139, 100), (0, 0, box_rect[2], box_rect[3]), border_radius=15)
     screen.blit(box_surface, (box_rect[0], box_rect[1]))
 
-    font_top = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", box_rect[4]+g.HEIGHT//100)
-    font_down = pygame.font.Font("assets/fonts/LowresPixel-Regular.otf", box_rect[4]+g.HEIGHT//140)
+    font_top = pygame.font.Font("assets/fonts/normal.otf", box_rect[4]+g.HEIGHT//100)
+    font_down = pygame.font.Font("assets/fonts/normal.otf", box_rect[4]+g.HEIGHT//140)
     msg1 = font_top.render("FLIP-HAPPENS Bestenliste", True, (255, 215, 0))
     screen.blit(msg1, (box_rect[0] + 10, box_rect[1] + 5))
     with open("submodule/menu/ranked.txt", "r",encoding="utf-8") as file:
