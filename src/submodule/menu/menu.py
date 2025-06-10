@@ -178,6 +178,14 @@ def menu(screen: pygame.Surface) -> str:
     # ranked list
     draw_flip_happens(screen)
 
+    # Username and Coins:
+    font = pygame.font.Font("assets/fonts/normal.otf", g.HEIGHT//50)
+    text = font.render(f"Username: {g.USERNAME}", False, (255,215,0))
+    text_width, text_height = text.get_size()
+    screen.blit(text, (5,0))
+    text = font.render(f"Coins: {g.USERNAME}", False, (255,215,0))
+    screen.blit(text, (5, text_height * 1.5))
+
     # KI-Anfang
     # KI: ChatGPT
     # prompt: gebe mir die Positionen und Größen von folgenden Buttons: exit_button (ganz oben rechts), start_button
