@@ -5,13 +5,25 @@ background: pygame.Surface = ...
 ask_for_level_: bool = False
 
 
-def init_background() -> None:
+def init() -> None:
     """
     Load the background-picture from the "assets/menu/city-background.png" path.
     """
     global background
     background = pygame.image.load("assets/menu/blue_unsharp.png").convert_alpha()
     background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
+
+
+def read_coins() -> None:
+    """
+    Check if the player already exist and add the coins if the player exists
+    """
+    with open("submodule/menu/ranked.txt", "r", encoding='utf-8') as file:
+        content = file.readlines()
+    for line in content:
+        entrys = line.strip().split(';')
+        if entrys[0] == g.USERNAME:
+            g.COINS = int(entrys[1])
 
 
 def draw_button(screen: pygame.Surface, text: str, button: tuple[float, float, float, float],
@@ -56,6 +68,7 @@ def check_button_collide(screen: pygame.Surface, text: str, button: tuple[float,
     if true_or_false:
         draw_button(screen, text, button, text_size, color)
         if click:
+            pygame.time.wait(50)
             return True
     return False
 
@@ -183,7 +196,7 @@ def menu(screen: pygame.Surface) -> str:
     text = font.render(f"Username: {g.USERNAME}", False, (255,215,0))
     text_width, text_height = text.get_size()
     screen.blit(text, (5,0))
-    text = font.render(f"Coins: {g.USERNAME}", False, (255,215,0))
+    text = font.render(f"Coins: {g.COINS}", False, (255,215,0))
     screen.blit(text, (5, text_height * 1.5))
 
     # KI-Anfang

@@ -62,10 +62,10 @@ def sort_users_by_score(users: list[list[str]]) -> list[list[str]]:
 # KI-Ende
 
 
-def save_stats(username) -> None:
+def save_stats(_coins_collected: int) -> None: #TODO fix the funktion
     """
     Save the stats (coins, time...) of the player
-    :param username: the username of the player
+    :param _coins_collected: the coins the player collected
     """
     users = []
     # open the file and safe the entry in users
@@ -82,11 +82,12 @@ def save_stats(username) -> None:
     # Check if the user is already in the file and when not then append him
     append = True
     for entry in users:
-        if username == entry[0]:
+        if g.USERNAME == entry[0]:
             append = False
-            entry[1] += coins_collected
+            entry[1] += _coins_collected
+            g.COINS += _coins_collected
     if append:
-        users.append([f'{username}', f'{coins_collected}'])
+        users.append([f'{g.USERNAME}', f'{_coins_collected}'])
     # sort users:
     users = sort_users_by_score(users)
     # write the file
@@ -125,16 +126,17 @@ def draw_letter_percentage(screen: pygame.Surface) -> None:
     screen.blit(text, (g.WIDTH//13 + 10, 5))
 
 
-def check_for_win_lose(screen: pygame.Surface) -> bool:
+def check_for_win_lose(screen: pygame.Surface, time) -> bool:
     """
     Check if the player won/lost the game and draw it
     :param screen: pygame.Surface -> where the pictures shall be drawn
+    :param time: how much time is left
     :return: True -> the player lost/won, False -> the game continues
     """
     global win
-    if (assets.time <= 0) or (letters_collected == 9 and assets.time > 0):
+    if (time <= 0) or (letters_collected == 9 and time > 0):
         picture = assets.you_won
-        if assets.time <= 0:
+        if time <= 0:
             picture = assets.you_lost
         if letters_collected == 9 and assets.time > 0:
             win = True
@@ -152,6 +154,7 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     """
     Play level1
     :param screen: pygame.Surface -> where the game should be drawn
+    :param events: the keys the player pressed
     :return: str -> in which mode the game is in
     """
     global end, rain_bool, begin
@@ -186,7 +189,7 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
                     return "pause"
         if pause.check_menu_button_pressed(screen, events, False):
             return "pause"
-    end = check_for_win_lose(screen)
+    end = check_for_win_lose(screen, assets.time)
     if end:
         button = [g.WIDTH // 2 - (g.WIDTH / 8)//2, g.HEIGHT / 1.5,
                        g.WIDTH / 8, g.HEIGHT / 12, g.HEIGHT // 35]
@@ -195,7 +198,7 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
         if check_button_collide(screen, "Hauptmenü",
                              (button[0], button[1], button[2], button[3]), button[4]+5, (255, 215, 0)):
             if win:
-                save_stats(g.USERNAME)
+                save_stats(coins_collected)
             reset_stats()
             return "menu"
 

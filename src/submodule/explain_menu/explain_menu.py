@@ -41,12 +41,13 @@ def draw(screen: pygame.Surface) -> str:
         return "menu"
     explain_text = [
         "1. Ziel  des  Spiels:", "   Meistere  das  Level  mit  deinem  Skater  –  so  schnell,  so  stylisch  wie  möglich!",
-        "2. Level  abschließen:", "   Sammle  alle  Buchstaben  in  der  richtigen  Reihenfolge,  um  das  Level  zu  bezwingen.",
+        "2. Level  abschließen:", "   Sammle  alle  Buchstaben  in  der  richtigen  Reihenfolge (alphabetisch),  um  die  Coins  auf  das  Konto  gutgeschrieben  zu  bekommen.",
         "3. Features  im  Level:", "   Bezwinge  Rampen,  grinde  Slides  und  nutze  jede  Chance  für  Tempo  und  Flow!",
-        "4. Coins  sammeln:", "   Jeder  Coin  zählt  –  je  mehr  du  hast,  desto  höher  dein  Ruhm.",
+        "4. Coins  sammeln:", "   Jeder  Coin  zählt  –  je  mehr  du  hast,  desto  höher  dein  Rang  in  der  Rangliste.",
         "5. Bestenliste:", "   Nur  die  mit  den  meisten  Coins  thronen  an  der  Spitze  der  Rangliste.",
-        "6. Shop:", "   Tausch  Reichtum  gegen  Skill  –  doch  sei  bereit,  im  Ranking  zu  fallen.",
+        "6. Shop:", "   Tausch  Reichtum  gegen  Skill  –  doch  sei  bereit,  in  der  Rangliste  abzusteigen.",
         "7. Taktik  zählt:", "   Wähle  deinen  Weg:  Ewiger  Ruhm  oder  krasse  Extras  –  du  entscheidest!",
+        "8. Steuerung:", "   Drücke  ESC,  um  in  das  Pausemenü  zu  finden,  in  dem  du  auch  die  Tastenbelegung  findest."
     ]
     font = pygame.font.Font("assets/fonts/normal.otf", g.HEIGHT // 45)
     counter = 0

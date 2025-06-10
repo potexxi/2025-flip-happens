@@ -1,7 +1,7 @@
 import pygame
 import math
 import src.submodule.globals as g
-from src.submodule.menu.menu import check_button_collide, draw_button, move_background
+from src.submodule.menu.menu import check_button_collide, draw_button, move_background, read_coins
 
 original_logo: pygame.Surface = ...
 background: pygame.Surface = ...
@@ -88,10 +88,10 @@ def ask_for_username(screen: pygame.Surface, events: list[pygame.event.Event]) -
     if check_button_collide(screen, "Weiter", continue_button, g.HEIGHT//30 + 5, (255, 215, 0)):
         if 2 < len(text) < 16:
             g.USERNAME = text
+            read_coins()
             pygame.time.wait(100)
             return "menu"
     return "start"
-
 
 
 def animation(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
@@ -130,7 +130,7 @@ def animation(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
 
         # KI-Anfang
         # KI: ChatGPT
-        # prompt: wieso geht das nicht
+        # prompt: wieso geht das nicht:
         #         timestamp = pygame.time.get_ticks()
         #         up = False
         #         if timestamp-last_timestamp > 2000:

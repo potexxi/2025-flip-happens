@@ -28,7 +28,7 @@ def main() -> None:
 
 
     # Initialization
-    menu.init_background()
+    menu.init()
     init_assets1()
     init_assets2()
     player.init()
@@ -37,7 +37,7 @@ def main() -> None:
     init_rain()
     shop.init()
 
-    mode = "start"
+    mode = "menu"
 
     esc_pressed = False
 

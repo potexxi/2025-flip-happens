@@ -3,9 +3,7 @@ import copy
 import src.submodule.globals as g
 import src.submodule.skater.skater as player
 import src.submodule.level1.place_assets as level1
-
-
-
+import src.submodule.level1.play as play1
 
 
 background: pygame.Surface = ...
@@ -19,14 +17,14 @@ power_counter: int = 0
 last_timestamp_coins: int = None
 last_timestamp_power: int = None
 last_timestamp_clock: int = 0
-time = 30
+time = 3
 assets_original = [
-    [1,1,1,1,1,1,1,1,1,1,1,1,4,4,0,4,4,4,1,1,1,1,1,1,1,1,1,1,1,1],
-    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
+    [0,0,0,0,0,1,1,1,1,1,1,1,4,4,0,4,4,4,1,1,1,1,1,1,1,1,1,1,1,1],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
     [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1],
     [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,0,0,0,0,0,1,1,1],
     [1,0,0,4,0,0,0,2,2,0,0,2,2,0,0,2,2,0,1,1,0,0,0,0,0,0,0,0,0,1],
-    [1,2,2,2,5,0,0,4,4,0,0,4,4,0,0,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [1,2,2,0,5,0,0,4,4,0,0,4,4,0,0,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [1,6,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [1,1,4,4,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -42,10 +40,7 @@ assets_original = [
 assets = copy.deepcopy(assets_original)
 assets.reverse()
 append_elements = True
-
-
-
-letters2_position: list[tuple] = [
+letters_position: list[tuple] = [
     (first_asset[0] + 2 * g.ASSETS_SIZE,first_asset[1]  - 1 * g.ASSETS_SIZE),
     (first_asset[0] + 1 * g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
     (first_asset[0] + 17 * g.ASSETS_SIZE, first_asset[1]  - g.ASSETS_SIZE),
@@ -54,8 +49,9 @@ letters2_position: list[tuple] = [
     (first_asset[0] + 3 * g.ASSETS_SIZE, first_asset[1] - 10 * g.ASSETS_SIZE),
     (first_asset[0] + 20 * g.ASSETS_SIZE, first_asset[1] - 13 * g.ASSETS_SIZE),
     (first_asset[0] + 1 * g.ASSETS_SIZE, first_asset[1] - 13 * g.ASSETS_SIZE),
-    (first_asset[0] + 15 * g.ASSETS_SIZE, first_asset[1] + 10 * g.ASSETS_SIZE),
+    (first_asset[0] + 10 * g.ASSETS_SIZE, first_asset[1] - 2 * g.ASSETS_SIZE),
 ]
+
 
 def init_assets():
     """

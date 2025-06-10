@@ -1,7 +1,8 @@
 import pygame
 import src.submodule.globals as g
 import src.submodule.menu.menu as menu
-
+import src.submodule.level1.play as level1
+from src.submodule.level1.play import save_stats
 
 weather_immun: pygame.Surface = ...
 faster: pygame.Surface = ...
@@ -115,7 +116,7 @@ def draw(screen: pygame.Surface) -> None:
             , g.HEIGHT//22, (255, 215, 0)) and speed < 1.9 and g.COINS > price_speed[f"{speed + 0.2:.1f}"]:
         pygame.time.wait(50)
         speed += 0.2
-        g.COINS -= price_speed[f"{speed:.1f}"]
+        save_stats(-price_speed[f"{speed:.1f}"])
 
     # Button for the coin multiplier:
     if coinsm >= 1.9: text = "max."
@@ -126,7 +127,7 @@ def draw(screen: pygame.Surface) -> None:
             , g.HEIGHT//22, (255, 215, 0)) and coinsm < 1.9 and g.COINS > price_coinsm[f"{coinsm + 0.2:.1f}"]:
         pygame.time.wait(50)
         coinsm += 0.2
-        g.COINS -= price_coinsm[f"{coinsm:.1f}"]
+        save_stats(-price_coinsm[f"{coinsm:.1f}"])
 
     # Button for the immunity:
     if immunity:
@@ -142,7 +143,7 @@ def draw(screen: pygame.Surface) -> None:
     if menu.check_button_collide(screen, text, (icon_3[0]//1.05, icon_3[1]//0.65, g.WIDTH // 6, g.HEIGHT // 15)
             , text_size2, (255, 215, 0)) and not immunity and g.COINS > 1000:
         pygame.time.wait(50)
-        g.COINS -= 1000
+        save_stats(-1000)
         immunity = True
 
 

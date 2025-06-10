@@ -29,7 +29,7 @@ MAX_FALL_SPEED: int = 10
 
 # Username
 USERNAME: str = ...
-COINS: int = ...
+COINS: int = 0
 
 
 FPS = 65
