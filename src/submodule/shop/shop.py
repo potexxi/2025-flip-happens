@@ -7,7 +7,11 @@ weather_immun: pygame.Surface = ...
 faster: pygame.Surface = ...
 coins_multi: pygame.Surface = ...
 icon_size: tuple[float, float] = (g.ASSETS_SIZE*2.5, g.ASSETS_SIZE*2.5)
-
+username = "test"
+coins = 1000
+coinsm = 1.4
+speed = int(1.2)
+immunity = False
 
 def init() -> None:
     """
@@ -30,6 +34,7 @@ def draw(screen: pygame.Surface) -> None:
     Draw the shop on the screen
     :param screen: pygame.Surface -> where the shop shall be drawm
     """
+    global speed
     # Background:
     menu.move_background("start")
     background = pygame.image.load("assets/menu/blue_unsharp.png").convert_alpha()
@@ -70,10 +75,27 @@ def draw(screen: pygame.Surface) -> None:
     screen.blit(icon_text2, (icon_2[0] / 1.018, icon_2[1] / 1.13))
     screen.blit(icon_text3, (icon_3[0] / 1.007, icon_3[1] / 1.13))
 
+    # User stats
+    icon_text1 = font.render(f"Aktuell: {speed}x", False, (211,211,211))
+    icon_text2 = font.render(f"Aktuell: {coinsm}x", False, (211,211,211))
+    if immunity: icon_text3 = font.render("Wetter Immunität: aktiv", False, (211,211,211))
+    else: icon_text3 = font.render("Wetter Immunität: inaktiv", False, (211,211,211))
+    screen.blit(icon_text1, (icon_1[0] / 1.045, icon_1[1] / 0.7))
+    screen.blit(icon_text2, (icon_2[0] / 1.018, icon_2[1] / 0.7))
+    screen.blit(icon_text3, (icon_3[0] / 1.012, icon_3[1] / 0.7))
+
     # Buttons:
     # Exit
     menu.draw_button(screen, "Zurück", (g.WIDTH-g.WIDTH/17, 3 ,g.WIDTH/18, g.HEIGHT/35), 18,
                      (211,211,211))
+    # Button1:
+    if speed >= 2: text = "max."
+    else:
+        speed += 0.2
+        text = f"{speed}"
+    menu.draw_button(screen, text, icon_1, 40)
+
+
 
 
 def shop(screen: pygame.Surface) -> str:
