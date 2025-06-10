@@ -163,7 +163,7 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
         # background
         screen.blit(assets.background, (0, 0))
         # draw the level
-        assets.draw_letters(screen, player_rect)
+        assets.draw_letters(screen, player_rect, assets.letters_position)
         assets.draw_assets(screen, player_rect)
         assets.time = assets.draw_clock(screen, assets.time)
         # draw the fortschritt and collected coins

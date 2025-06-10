@@ -7,6 +7,7 @@ import src.submodule.level1.place_assets as level1
 
 
 
+
 background: pygame.Surface = ...
 brick: pygame.Surface = ...
 first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2) - g.ASSETS_SIZE)
@@ -42,6 +43,19 @@ assets = copy.deepcopy(assets_original)
 assets.reverse()
 append_elements = True
 
+
+
+letters2_position: list[tuple] = [
+    (first_asset[0] + 2 * g.ASSETS_SIZE,first_asset[1]  - 1 * g.ASSETS_SIZE),
+    (first_asset[0] + 1 * g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
+    (first_asset[0] + 17 * g.ASSETS_SIZE, first_asset[1]  - g.ASSETS_SIZE),
+    (first_asset[0] + 12 * g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
+    (first_asset[0] + 27 * g.ASSETS_SIZE,first_asset[1] - 4 * g.ASSETS_SIZE),
+    (first_asset[0] + 3 * g.ASSETS_SIZE, first_asset[1] - 10 * g.ASSETS_SIZE),
+    (first_asset[0] + 20 * g.ASSETS_SIZE, first_asset[1] - 13 * g.ASSETS_SIZE),
+    (first_asset[0] + 1 * g.ASSETS_SIZE, first_asset[1] - 13 * g.ASSETS_SIZE),
+    (first_asset[0] + 15 * g.ASSETS_SIZE, first_asset[1] + 10 * g.ASSETS_SIZE),
+]
 
 def init_assets():
     """
@@ -137,3 +151,4 @@ def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
         if power_counter >= 4:
             power_counter = 0
         last_timestamp_power = timestamp
+
