@@ -93,7 +93,7 @@ def draw(screen: pygame.Surface) -> None:
     else:
         speed += 0.2
         text = f"{speed}"
-    menu.draw_button(screen, text, icon_1, 40)
+    #menu.draw_button(screen, text, icon_1, 40)
 
 
 

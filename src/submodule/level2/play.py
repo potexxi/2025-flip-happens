@@ -5,6 +5,7 @@ import src.submodule.globals as g
 import src.submodule.level2.place_assets as assets
 import src.submodule.skater.skater as player
 from src.submodule.rain.rain import rain
+import src.submodule.level1.place_assets as asset
 
 coins_collected: int = 0#
 rain_bool: bool = False
@@ -29,6 +30,8 @@ def play(screen: pygame.Surface) -> str:
         rain(screen)
     # Move the player
     player.move(rain_bool)
+    # draw letters
+    asset.draw_letters(screen, player_rect)
 
     level1.draw_coins_collected(screen, coins_collected)
     return "level2"

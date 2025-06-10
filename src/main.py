@@ -37,7 +37,7 @@ def main() -> None:
     init_rain()
     shop.init()
 
-    mode = "shop"
+    mode = "level1"
 
     esc_pressed = False
 
