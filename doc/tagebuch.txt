@@ -70,3 +70,6 @@ SA,07.06,1.5h,Max
 S0,08.06,2h,Max
     Shop
 -
+DI,10.06,3h,Max|Yamen
+    Shop und Level2
+-
