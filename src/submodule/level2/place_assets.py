@@ -46,10 +46,15 @@ append_elements = True
 
 
 letters2_position: list[tuple] = [
-    (first_asset[0] + g.ASSETS_SIZE,first_asset[1]  + g.ASSETS_SIZE),
-    (first_asset[0] + g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
-    (first_asset[0] + 15 * g.ASSETS_SIZE, first_asset[1] * g.ASSETS_SIZE),
-    (first_asset[0] + 20 * g.ASSETS_SIZE, first_asset[1] * g.ASSETS_SIZE ),
+    (first_asset[0] + 2 * g.ASSETS_SIZE,first_asset[1]  - 1 * g.ASSETS_SIZE),
+    (first_asset[0] + 1 * g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
+    (first_asset[0] + 17 * g.ASSETS_SIZE, first_asset[1]  - g.ASSETS_SIZE),
+    (first_asset[0] + 12 * g.ASSETS_SIZE, first_asset[1] - 5 * g.ASSETS_SIZE),
+    (first_asset[0] + 27 * g.ASSETS_SIZE,first_asset[1] - 4 * g.ASSETS_SIZE),
+    (first_asset[0] + 3 * g.ASSETS_SIZE, first_asset[1] - 10 * g.ASSETS_SIZE),
+    (first_asset[0] + 20 * g.ASSETS_SIZE, first_asset[1] - 13 * g.ASSETS_SIZE),
+    (first_asset[0] + 1 * g.ASSETS_SIZE, first_asset[1] - 13 * g.ASSETS_SIZE),
+    (first_asset[0] + 15 * g.ASSETS_SIZE, first_asset[1] + 10 * g.ASSETS_SIZE),
 ]
 
 def init_assets():

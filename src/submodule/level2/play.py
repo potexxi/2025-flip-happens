@@ -31,7 +31,7 @@ def play(screen: pygame.Surface) -> str:
     # Move the player
     player.move(rain_bool)
     # draw letters
-    asset.draw_letters(screen, player_rect)
+    asset.draw_letters(screen, player_rect, assets.letters2_position)
 
     level1.draw_coins_collected(screen, coins_collected)
     return "level2"

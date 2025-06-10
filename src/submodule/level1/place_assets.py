@@ -230,7 +230,7 @@ def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
         last_timestamp_power = timestamp
 
 
-def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
+def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect, letters_position) -> None:
     """
     Draw the letters
     :param screen: pygame.Surface: where the letters should be drawn
