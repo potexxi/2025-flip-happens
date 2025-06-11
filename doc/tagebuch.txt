@@ -73,3 +73,6 @@ S0,08.06,2h,Max
 DI,10.06,3h,Max|Yamen
     Shop und Level2
 -
+MI,11.06,3h,Max
+    Bugs
+-

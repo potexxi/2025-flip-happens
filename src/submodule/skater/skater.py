@@ -80,7 +80,7 @@ def move(rain: bool) -> None:
 
     # Check if the player has a power up
     if power_up:
-        speed = speed * 2
+        speed += 4/g.SPEEDM
         if timestamp - power_up_start_time > 5000:
             power_up = False
 
@@ -115,7 +115,10 @@ def move(rain: bool) -> None:
             ramp_rect = pygame.Rect(ramp[2], ramp[3], ramp[0], ramp[1])
             if skater_rect.colliderect(ramp_rect):
                 if g.RAMP_SPEED == g.SPEED:
-                    g.RAMP_SPEED += 5
+                    if speed < 6:
+                        g.RAMP_SPEED += 6
+                    else:
+                        speed += 2
                 big_speed = True
                 speed = g.RAMP_SPEED
                 last_timestamp_speed = timestamp
@@ -133,7 +136,7 @@ def move(rain: bool) -> None:
             if skater_rect.colliderect(ramp_rect):
                 velocity[1] = -g.RAMP_JUMP2
                 if g.RAMP_SPEED == g.SPEED:
-                    g.RAMP_SPEED += 10
+                    g.RAMP_SPEED += 5
                 big_speed = True
                 speed = g.RAMP_SPEED
                 last_timestamp_speed = timestamp
@@ -151,27 +154,29 @@ def move(rain: bool) -> None:
             if skater_rect.colliderect(ramp_rect):
                 velocity[1] = -g.RAMP_JUMP2
                 if g.RAMP_SPEED == g.SPEED:
-                    g.RAMP_SPEED += 10
+                    g.RAMP_SPEED += 5
                 big_speed = True
                 speed = g.RAMP_SPEED
                 last_timestamp_speed = timestamp
                 break
 
     # Regen machen
-    if rain:
-        if random.random() < 0.5: # yamen: hier mache ich mit 0,5 die 50 % wahrscheinlichkeit
-                                  # und random.random() gibt eine gleitkommazahl zwischen 0 und 1
-            jump = False
-            if random.random() < 0.01: # hier auch yamen, halt mit 1 % wahrscheinlichkeit
-                if random.randint(1,2) == 1:
-                    direction = "right"
-                else:
-                    direction = "left"
-        multiplier = random.uniform(0.5, 1.5) # yamen: uniform bedeutet, dass nicht wie bei random.randint
-                                                         # eine int zahl kommt, sondern eine float zahl
-        speed *= multiplier
+    if not g.IMMUNITY:
+        if rain:
+            if random.random() < 0.5: # yamen: hier mache ich mit 0,5 die 50 % wahrscheinlichkeit
+                                      # und random.random() gibt eine gleitkommazahl zwischen 0 und 1
+                jump = False
+                if random.random() < 0.01: # hier auch yamen, halt mit 1 % wahrscheinlichkeit
+                    if random.randint(1,2) == 1:
+                        direction = "right"
+                    else:
+                        direction = "left"
+            multiplier = random.uniform(0.5, 1.5) # yamen: uniform bedeutet, dass nicht wie bei random.randint
+                                                             # eine int zahl kommt, sondern eine float zahl
+            speed *= multiplier
 
     # Moves the player automatically to the right or the left
+    speed *= g.SPEEDM
     if direction == "right" and x_position <= g.WIDTH - g.ASSETS_SIZE:
         x_position += speed
     if direction == "left" and x_position >= 0:

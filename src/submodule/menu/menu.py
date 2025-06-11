@@ -16,7 +16,7 @@ def init() -> None:
 
 def read_coins() -> None:
     """
-    Check if the player already exist and add the coins if the player exists
+    Read the coins of the user if he played before
     """
     with open("submodule/menu/ranked.txt", "r", encoding='utf-8') as file:
         content = file.readlines()
@@ -24,6 +24,12 @@ def read_coins() -> None:
         entrys = line.strip().split(';')
         if entrys[0] == g.USERNAME:
             g.COINS = int(entrys[1])
+            g.SPEEDM = float(entrys[2])
+            g.COINSM = float(entrys[3])
+            if entrys[4] == 'False':
+                g.IMMUNITY = False
+            else:
+                g.IMMUNITY = True
 
 
 def draw_button(screen: pygame.Surface, text: str, button: tuple[float, float, float, float],
@@ -68,7 +74,10 @@ def check_button_collide(screen: pygame.Surface, text: str, button: tuple[float,
     if true_or_false:
         draw_button(screen, text, button, text_size, color)
         if click:
-            pygame.time.wait(50)
+            if text == "START":
+                pygame.time.wait(100)
+            else:
+                pygame.time.wait(20)
             return True
     return False
 
@@ -144,6 +153,8 @@ def move_background(menu_type: str) -> None:
         speed = 1.3
     elif menu_type == "start":
         speed = 0.5
+    elif menu_type == "shop":
+        speed = 1.1
     else:
         speed = 0.3
     g.POSITION_WORLD[0] -= speed

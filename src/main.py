@@ -1,6 +1,6 @@
 import pygame
 import submodule.menu.menu as menu
-import submodule.globals as g
+import src.submodule.globals as g
 import src.submodule.explain_menu.explain_menu as explain
 import src.submodule.level1.play as level1
 import src.submodule.level2.play as level2
@@ -37,7 +37,7 @@ def main() -> None:
     init_rain()
     shop.init()
 
-    mode = "menu"
+    mode = "start"
 
     esc_pressed = False
 
@@ -60,6 +60,7 @@ def main() -> None:
             mode = menu.menu(screen)
 
         if mode == "level1":
+            g.LEVEL = "level1"
             mode = level1.play(screen, events)
             if mode == "pause" or mode == "menu":
                 esc_pressed = False
@@ -69,7 +70,14 @@ def main() -> None:
                 continue
 
         if mode == "level2":
-            mode = level2.play(screen)
+            g.LEVEL = "level2"
+            mode = level2.play(screen, events)
+            if mode == "pause" or mode == "menu":
+                esc_pressed = False
+                clock.tick(g.FPS)
+                pygame.display.flip()
+                pygame.time.wait(100)
+                continue
 
         if mode == "explain":
             mode = explain.menu(screen)

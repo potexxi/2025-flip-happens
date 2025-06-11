@@ -3,7 +3,6 @@ import copy
 import src.submodule.globals as g
 import src.submodule.skater.skater as player
 import src.submodule.level1.place_assets as level1
-import src.submodule.level1.play as play1
 
 
 background: pygame.Surface = ...
@@ -17,7 +16,7 @@ power_counter: int = 0
 last_timestamp_coins: int = None
 last_timestamp_power: int = None
 last_timestamp_clock: int = 0
-time = 3
+time = 180
 assets_original = [
     [0,0,0,0,0,1,1,1,1,1,1,1,4,4,0,4,4,4,1,1,1,1,1,1,1,1,1,1,1,1],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
@@ -32,7 +31,7 @@ assets_original = [
     [1,0,0,0,0,0,0,4,4,4,0,0,0,5,1,1,1,1,1,0,0,2,2,3,2,0,0,0,0,0],
     [1,1,2,2,2,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,4,4,4,4,0,0,0,2,0],
     [1,1,1,1,1,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1],
-    [0,0,0,0,0,4,4,0,8,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1,1,1,1],
+    [0,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1,1,1,1],
     [0,0,0,0,0,0,0,0,1,1,1,6,0,2,0,5,0,0,0,0,0,0,0,0,4,4,1,1,1,1],
     [0,0,0,2,2,2,0,5,1,1,1,1,4,4,4,1,0,2,2,2,0,5,1,1,0,0,1,0,0,0],
     [1,1,4,4,4,1,1,1,1,1,1,1,0,0,0,1,1,4,4,4,1,1,1,1,0,1,1,0,0,0],
@@ -94,14 +93,14 @@ def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
                 x_position = first_asset[0] + x * g.ASSETS_SIZE
                 y_position = first_asset[1] - (y-1) * g.ASSETS_SIZE
                 screen.blit(level1.coins[coins_counter], (x_position, y_position))
-                if level1.check_for_collect(1, player_rect, x_position, y_position, 2):
+                if level1.check_for_collect(1, player_rect, x_position, y_position):
                     assets[y][x] = 0
 
             elif item == 3:
                 x_position = first_power_up[0] + x * g.ASSETS_SIZE
                 y_position = first_power_up[1] - (y-1) * g.ASSETS_SIZE
                 screen.blit(level1.power_up[power_counter], (x_position, y_position))
-                if level1.check_for_collect(2, player_rect, x_position, y_position,2):
+                if level1.check_for_collect(2, player_rect, x_position, y_position):
                     assets[y][x] = 0
 
             if item == 4:

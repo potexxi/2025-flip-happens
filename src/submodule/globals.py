@@ -27,9 +27,15 @@ GRAVITATION: float = 0.5
 JUMP: float = math.sqrt(2 * GRAVITATION * ASSETS_SIZE) + 1
 MAX_FALL_SPEED: int = 10
 
-# Username
+# Shop details
 USERNAME: str = ...
 COINS: int = 0
+COINSM: float = 1.0
+SPEEDM: float = 1.0
+IMMUNITY: bool = False
+
+# Active level
+LEVEL = ...
 
 
 FPS = 65

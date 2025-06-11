@@ -128,7 +128,7 @@ def init_assets() -> None:
     fast_ramp = pygame.transform.scale(fast_ramp, (g.ASSETS_SIZE, g.ASSETS_SIZE))
 
 
-def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y_position: float, activ_level: int) -> bool:
+def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y_position: float) -> bool:
     """
     Check if a coin or power ups gets collected by the player
     :param type_: 1 -> Coin, 2 -> Power Up
@@ -140,9 +140,9 @@ def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y
     if type_ == 1:
         coin_rect = pygame.Rect((x_position, y_position, g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
         if player_rect.colliderect(coin_rect):
-            if activ_level == 1:
+            if g.LEVEL == "level1":
                 play1.coins_collected += 1
-            elif activ_level == 2:
+            if g.LEVEL == "level2":
                 play2.coins_collected += 1
             return True
     if type_ == 2:
@@ -170,14 +170,14 @@ def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
                 x_position = first_asset[0] + x * g.ASSETS_SIZE
                 y_position = first_asset[1] - (y-1) * g.ASSETS_SIZE
                 screen.blit(coins[coins_counter], (x_position, y_position))
-                if check_for_collect(item, player_rect, x_position, y_position, 1):
+                if check_for_collect(item, player_rect, x_position, y_position):
                     collectables[y][x] = 0
 
             elif item == 2:
                 x_position = first_power_up[0] + x * g.ASSETS_SIZE
                 y_position = first_power_up[1] - (y-1) * g.ASSETS_SIZE
                 screen.blit(power_up[power_counter], (x_position, y_position))
-                if check_for_collect(item, player_rect, x_position, y_position, 1):
+                if check_for_collect(item, player_rect, x_position, y_position):
                     collectables[y][x] = 0
 
             if item == 3:
@@ -230,21 +230,25 @@ def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
         last_timestamp_power = timestamp
 
 
-def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect, letters_position) -> None:
+def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect, _letters_position) -> None:
     """
     Draw the letters
     :param screen: pygame.Surface: where the letters should be drawn
     :param player_rect: pygame.Rect -> the rect of the player
+    :param _letters_position: letters position
     """
     global next_letter_idx
     # draw the letters which the player didn't collect and check for another collection
     for idx in range(next_letter_idx, len(letters)):
-        letter_position = letters_position[idx]
+        letter_position = _letters_position[idx]
         screen.blit(letters[idx], letter_position)
 
         letter_rect = pygame.Rect((letter_position[0], letter_position[1], g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
         if player_rect.colliderect(letter_rect) and idx == next_letter_idx:
-            play1.letters_collected += 1
+            if g.LEVEL == "level1":
+                play1.letters_collected += 1
+            else:
+                play2.letters_collected += 1
             next_letter_idx += 1
 
 

@@ -9,11 +9,7 @@ faster: pygame.Surface = ...
 coins_multi: pygame.Surface = ...
 icon_size: tuple[float, float] = (g.ASSETS_SIZE*2.5, g.ASSETS_SIZE*2.5)
 price_coinsm: dict = {"1.2": 50, "1.4": 100, "1.6": 250, "1.8": 500, "2.0": 1000}
-price_speed: dict = {"1.2": 25, "1.4": 50, "1.6": 150, "1.8": 350, "2.0": 750}
-username = "test"
-coinsm = 1.0
-speed = 1.0
-immunity = False
+price_speed: dict = {"1.1": 25, "1.2": 50, "1.3": 150, "1.4": 350, "1.5": 750}
 
 
 def init() -> None:
@@ -37,9 +33,8 @@ def draw(screen: pygame.Surface) -> None:
     Draw the shop on the screen
     :param screen: pygame.Surface -> where the shop shall be drawm
     """
-    global speed, coinsm, immunity, coins
     # Background:
-    menu.move_background("start")
+    menu.move_background("shop")
     background = pygame.image.load("assets/menu/blue_unsharp.png").convert_alpha()
     background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
     screen.blit(background, g.POSITION_WORLD)
@@ -79,25 +74,25 @@ def draw(screen: pygame.Surface) -> None:
     screen.blit(icon_text3, (icon_3[0] / 1.02, icon_3[1] / 1.13))
 
     # User stats
-    icon_text1 = font.render(f"Aktuell: {speed:.1f}x", False, (211,211,211))
-    icon_text2 = font.render(f"Aktuell: {coinsm:.1f}x", False, (211,211,211))
-    if immunity: icon_text3 = font.render("Aktuell: aktiv", False, (211,211,211))
+    icon_text1 = font.render(f"Aktuell: {g.SPEEDM:.1f}x", False, (211,211,211))
+    icon_text2 = font.render(f"Aktuell: {g.COINSM:.1f}x", False, (211,211,211))
+    if g.IMMUNITY: icon_text3 = font.render("Aktuell: aktiv", False, (211,211,211))
     else: icon_text3 = font.render("Aktuell: inaktiv", False, (211,211,211))
     screen.blit(icon_text1, (icon_1[0] / 1.045, icon_1[1] / 0.7))
     screen.blit(icon_text2, (icon_2[0] / 1.018, icon_2[1] / 0.7))
     screen.blit(icon_text3, (icon_3[0] / 1.012, icon_3[1] / 0.7))
 
     # Price
-    if speed < 1.9:
-        icon_text1 = font.render(f"Preis: {price_speed[f"{speed + 0.2:.1f}"]} Coins", False, (255,215,0))
-    if coinsm < 1.9:
-        icon_text2 = font.render(f"Preis: {price_coinsm[f"{coinsm + 0.2:.1f}"]} Coins", False, (255,215,0))
+    if g.SPEEDM < 1.45:
+        icon_text1 = font.render(f"Preis: {price_speed[f"{g.SPEEDM + 0.1:.1f}"]} Coins", False, (255,215,0))
+    if g.COINSM < 1.9:
+        icon_text2 = font.render(f"Preis: {price_coinsm[f"{g.COINSM + 0.2:.1f}"]} Coins", False, (255,215,0))
     icon_text3 = font.render("Preis: 1000 Coins", False, (255, 215, 0))
-    if speed < 1.9:
+    if g.SPEEDM < 1.45:
         screen.blit(icon_text1, (icon_1[0],icon_1[1]/0.58))
-    if coinsm < 1.9:
+    if g.COINSM < 1.9:
         screen.blit(icon_text2, (icon_2[0],icon_2[1]/0.58))
-    if not immunity:
+    if not g.IMMUNITY:
         screen.blit(icon_text3, (icon_3[0],icon_3[1]/0.58))
     text = font.render(f"Coins: {g.COINS}", False, (255,215,0))
     screen.blit(text, (0,0))
@@ -108,29 +103,29 @@ def draw(screen: pygame.Surface) -> None:
                      (211,211,211))
 
     # Button for the speed multiplier:
-    if speed >= 1.9: text = "max."
-    else: text = f"Kaufe {speed + 0.2:.1f}x"
+    if g.SPEEDM >= 1.45: text = "max."
+    else: text = f"Kaufe {g.SPEEDM + 0.1:.1f}x"
     menu.draw_button(screen, text, (icon_1[0]//1.25, icon_1[1]//0.65, g.WIDTH//6, g.HEIGHT//15)
                      , g.HEIGHT//24, (211,211,211))
     if menu.check_button_collide(screen, text, (icon_1[0]//1.25, icon_1[1]//0.65, g.WIDTH//6, g.HEIGHT//15)
-            , g.HEIGHT//22, (255, 215, 0)) and speed < 1.9 and g.COINS > price_speed[f"{speed + 0.2:.1f}"]:
+            , g.HEIGHT//22, (255, 215, 0)) and g.SPEEDM < 1.45 and g.COINS >= price_speed[f"{g.SPEEDM + 0.1:.1f}"]:
         pygame.time.wait(50)
-        speed += 0.2
-        save_stats(-price_speed[f"{speed:.1f}"])
+        g.SPEEDM += 0.1
+        save_stats(-price_speed[f"{g.SPEEDM:.1f}"])
 
     # Button for the coin multiplier:
-    if coinsm >= 1.9: text = "max."
-    else: text = f"Kaufe {coinsm + 0.2:.1f}x"
+    if g.COINSM >= 1.9: text = "max."
+    else: text = f"Kaufe {g.COINSM + 0.2:.1f}x"
     menu.draw_button(screen, text, (icon_2[0]//1.1, icon_2[1]//0.65, g.WIDTH//6, g.HEIGHT//15)
                      , g.HEIGHT//24, (211,211,211))
     if menu.check_button_collide(screen, text, (icon_2[0]//1.1, icon_2[1]//0.65, g.WIDTH//6, g.HEIGHT//15)
-            , g.HEIGHT//22, (255, 215, 0)) and coinsm < 1.9 and g.COINS > price_coinsm[f"{coinsm + 0.2:.1f}"]:
+            , g.HEIGHT//22, (255, 215, 0)) and g.COINSM < 1.9 and g.COINS >= price_coinsm[f"{g.COINSM + 0.2:.1f}"]:
         pygame.time.wait(50)
-        coinsm += 0.2
-        save_stats(-price_coinsm[f"{coinsm:.1f}"])
+        g.COINSM += 0.2
+        save_stats(-price_coinsm[f"{g.COINSM:.1f}"])
 
     # Button for the immunity:
-    if immunity:
+    if g.IMMUNITY:
         text_size1 = g.HEIGHT//24
         text_size2 = g.HEIGHT//22
         text = "max."
@@ -141,10 +136,10 @@ def draw(screen: pygame.Surface) -> None:
     menu.draw_button(screen, text, (icon_3[0]//1.05, icon_3[1]//0.65, g.WIDTH //6, g.HEIGHT // 15)
                      , text_size1, (211, 211, 211))
     if menu.check_button_collide(screen, text, (icon_3[0]//1.05, icon_3[1]//0.65, g.WIDTH // 6, g.HEIGHT // 15)
-            , text_size2, (255, 215, 0)) and not immunity and g.COINS > 1000:
-        pygame.time.wait(50)
+            , text_size2, (255, 215, 0)) and not g.IMMUNITY and g.COINS >= 1000:
+        g.IMMUNITY = True
         save_stats(-1000)
-        immunity = True
+        pygame.time.wait(50)
 
 
 def shop(screen: pygame.Surface) -> str:

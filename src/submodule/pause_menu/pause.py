@@ -138,6 +138,7 @@ def pause(screen: pygame.Surface, esc: bool, events: list[pygame.event.Event]) -
     The pause-menu in the game
     :param screen: pygame.Surface -> where the menu should be drawn
     :param esc: True -> esc gets pressed -> false esc doesn't get pressed
+    :param events: the keys the player pressed
     :return: the mode in which the game is right now (pause, start-menu, play...)
     """
     global last_timestamp
@@ -152,7 +153,7 @@ def pause(screen: pygame.Surface, esc: bool, events: list[pygame.event.Event]) -
     mode = draw(pause_screen)
     if mode == "play":
         last_timestamp = 0
-        return "play"
+        return g.LEVEL
     elif mode == "menu":
         return "menu"
     screen.blit(pause_screen, (0, 0))
@@ -160,6 +161,6 @@ def pause(screen: pygame.Surface, esc: bool, events: list[pygame.event.Event]) -
     # Check for button klicks pr esc
     if esc or check_menu_button_pressed(screen, events, True):
         last_timestamp = 0
-        return "play"
+        return g.LEVEL
 
     return "pause"
