@@ -1,0 +1,114 @@
+\doxysection{start\+\_\+animation.\+start\+\_\+animation Namespace Reference}
+\hypertarget{namespacestart__animation_1_1start__animation}{}\label{namespacestart__animation_1_1start__animation}\index{start\_animation.start\_animation@{start\_animation.start\_animation}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+None \mbox{\hyperlink{namespacestart__animation_1_1start__animation_ae3f220b0dddab903f7cfaf0d691c11c9}{init}} ()
+\item 
+str \mbox{\hyperlink{namespacestart__animation_1_1start__animation_a1c5c619a2437beaffc13e3689d94dc3c}{ask\+\_\+for\+\_\+username}} (pygame.\+Surface screen, list\mbox{[}pygame.\+event.\+Event\mbox{]} events)
+\item 
+str \mbox{\hyperlink{namespacestart__animation_1_1start__animation_a7a0a4a436f18bc9649e21dcbb1e00bae}{animation}} (pygame.\+Surface screen, list\mbox{[}pygame.\+event.\+Event\mbox{]} events)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+pygame \mbox{\hyperlink{namespacestart__animation_1_1start__animation_a8cf176abfff85d27ee7195c49a12e412}{original\+\_\+logo}} = ...
+\item 
+pygame \mbox{\hyperlink{namespacestart__animation_1_1start__animation_a67cb21ab5d80142916c23a9a50d6515e}{background}} = ...
+\item 
+int \mbox{\hyperlink{namespacestart__animation_1_1start__animation_a4ab657a18e1256140a2d196dceeecbf2}{logo\+\_\+size}} = g.\+ASSETS\+\_\+\+SIZE \texorpdfstring{$\ast$}{*} 5
+\item 
+bool \mbox{\hyperlink{namespacestart__animation_1_1start__animation_ae4b9ce3e453f784ab0d8b56f9966507e}{ask\+\_\+username}} = False
+\item 
+bool \mbox{\hyperlink{namespacestart__animation_1_1start__animation_ac31071219dd96e3263b42c2abea71d48}{wait\+\_\+screen}} = False
+\item 
+bool \mbox{\hyperlink{namespacestart__animation_1_1start__animation_a71afc375d941dbc244fa07e2e26cfd7d}{animation\+\_\+}} = True
+\item 
+bool \mbox{\hyperlink{namespacestart__animation_1_1start__animation_a2595f4ae99f116ec8e38c6cd10e8f332}{button\+\_\+activated}} = False
+\item 
+str \mbox{\hyperlink{namespacestart__animation_1_1start__animation_ac07045a8e5a07eebb4bb45d282f25edf}{text}} = "{}"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacestart__animation_1_1start__animation_a7a0a4a436f18bc9649e21dcbb1e00bae}\index{start\_animation.start\_animation@{start\_animation.start\_animation}!animation@{animation}}
+\index{animation@{animation}!start\_animation.start\_animation@{start\_animation.start\_animation}}
+\doxysubsubsection{\texorpdfstring{animation()}{animation()}}
+{\footnotesize\ttfamily \label{namespacestart__animation_1_1start__animation_a7a0a4a436f18bc9649e21dcbb1e00bae} 
+ str start\+\_\+animation.\+start\+\_\+animation.\+animation (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{, }\item[{list\mbox{[}pygame.\+event.\+Event\mbox{]}}]{events}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Animation for the game start
+:param screen: pygame.Surface -> where the animation shall be drawn
+:param events: pygame.event.Event -> the events the player pressed
+:return: current game mode
+\end{DoxyVerb}
+ \Hypertarget{namespacestart__animation_1_1start__animation_a1c5c619a2437beaffc13e3689d94dc3c}\index{start\_animation.start\_animation@{start\_animation.start\_animation}!ask\_for\_username@{ask\_for\_username}}
+\index{ask\_for\_username@{ask\_for\_username}!start\_animation.start\_animation@{start\_animation.start\_animation}}
+\doxysubsubsection{\texorpdfstring{ask\_for\_username()}{ask\_for\_username()}}
+{\footnotesize\ttfamily \label{namespacestart__animation_1_1start__animation_a1c5c619a2437beaffc13e3689d94dc3c} 
+ str start\+\_\+animation.\+start\+\_\+animation.\+ask\+\_\+for\+\_\+username (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{, }\item[{list\mbox{[}pygame.\+event.\+Event\mbox{]}}]{events}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Ask for the username
+:param screen: pygame.Surface -> where the menu shall be drawn
+:param events: the pressed keys of the player
+:return: current game mode
+\end{DoxyVerb}
+ \Hypertarget{namespacestart__animation_1_1start__animation_ae3f220b0dddab903f7cfaf0d691c11c9}\index{start\_animation.start\_animation@{start\_animation.start\_animation}!init@{init}}
+\index{init@{init}!start\_animation.start\_animation@{start\_animation.start\_animation}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{namespacestart__animation_1_1start__animation_ae3f220b0dddab903f7cfaf0d691c11c9} 
+ None start\+\_\+animation.\+start\+\_\+animation.\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Init the logo.png for the animation
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacestart__animation_1_1start__animation_a71afc375d941dbc244fa07e2e26cfd7d}\index{start\_animation.start\_animation@{start\_animation.start\_animation}!animation\_@{animation\_}}
+\index{animation\_@{animation\_}!start\_animation.start\_animation@{start\_animation.start\_animation}}
+\doxysubsubsection{\texorpdfstring{animation\_}{animation\_}}
+{\footnotesize\ttfamily \label{namespacestart__animation_1_1start__animation_a71afc375d941dbc244fa07e2e26cfd7d} 
+bool start\+\_\+animation.\+start\+\_\+animation.\+animation\+\_\+ = True}
+
+\Hypertarget{namespacestart__animation_1_1start__animation_ae4b9ce3e453f784ab0d8b56f9966507e}\index{start\_animation.start\_animation@{start\_animation.start\_animation}!ask\_username@{ask\_username}}
+\index{ask\_username@{ask\_username}!start\_animation.start\_animation@{start\_animation.start\_animation}}
+\doxysubsubsection{\texorpdfstring{ask\_username}{ask\_username}}
+{\footnotesize\ttfamily \label{namespacestart__animation_1_1start__animation_ae4b9ce3e453f784ab0d8b56f9966507e} 
+bool start\+\_\+animation.\+start\+\_\+animation.\+ask\+\_\+username = False}
+
+\Hypertarget{namespacestart__animation_1_1start__animation_a67cb21ab5d80142916c23a9a50d6515e}\index{start\_animation.start\_animation@{start\_animation.start\_animation}!background@{background}}
+\index{background@{background}!start\_animation.start\_animation@{start\_animation.start\_animation}}
+\doxysubsubsection{\texorpdfstring{background}{background}}
+{\footnotesize\ttfamily \label{namespacestart__animation_1_1start__animation_a67cb21ab5d80142916c23a9a50d6515e} 
+pygame start\+\_\+animation.\+start\+\_\+animation.\+background = ...}
+
+\Hypertarget{namespacestart__animation_1_1start__animation_a2595f4ae99f116ec8e38c6cd10e8f332}\index{start\_animation.start\_animation@{start\_animation.start\_animation}!button\_activated@{button\_activated}}
+\index{button\_activated@{button\_activated}!start\_animation.start\_animation@{start\_animation.start\_animation}}
+\doxysubsubsection{\texorpdfstring{button\_activated}{button\_activated}}
+{\footnotesize\ttfamily \label{namespacestart__animation_1_1start__animation_a2595f4ae99f116ec8e38c6cd10e8f332} 
+bool start\+\_\+animation.\+start\+\_\+animation.\+button\+\_\+activated = False}
+
+\Hypertarget{namespacestart__animation_1_1start__animation_a4ab657a18e1256140a2d196dceeecbf2}\index{start\_animation.start\_animation@{start\_animation.start\_animation}!logo\_size@{logo\_size}}
+\index{logo\_size@{logo\_size}!start\_animation.start\_animation@{start\_animation.start\_animation}}
+\doxysubsubsection{\texorpdfstring{logo\_size}{logo\_size}}
+{\footnotesize\ttfamily \label{namespacestart__animation_1_1start__animation_a4ab657a18e1256140a2d196dceeecbf2} 
+int start\+\_\+animation.\+start\+\_\+animation.\+logo\+\_\+size = g.\+ASSETS\+\_\+\+SIZE \texorpdfstring{$\ast$}{*} 5}
+
+\Hypertarget{namespacestart__animation_1_1start__animation_a8cf176abfff85d27ee7195c49a12e412}\index{start\_animation.start\_animation@{start\_animation.start\_animation}!original\_logo@{original\_logo}}
+\index{original\_logo@{original\_logo}!start\_animation.start\_animation@{start\_animation.start\_animation}}
+\doxysubsubsection{\texorpdfstring{original\_logo}{original\_logo}}
+{\footnotesize\ttfamily \label{namespacestart__animation_1_1start__animation_a8cf176abfff85d27ee7195c49a12e412} 
+pygame start\+\_\+animation.\+start\+\_\+animation.\+original\+\_\+logo = ...}
+
+\Hypertarget{namespacestart__animation_1_1start__animation_ac07045a8e5a07eebb4bb45d282f25edf}\index{start\_animation.start\_animation@{start\_animation.start\_animation}!text@{text}}
+\index{text@{text}!start\_animation.start\_animation@{start\_animation.start\_animation}}
+\doxysubsubsection{\texorpdfstring{text}{text}}
+{\footnotesize\ttfamily \label{namespacestart__animation_1_1start__animation_ac07045a8e5a07eebb4bb45d282f25edf} 
+str start\+\_\+animation.\+start\+\_\+animation.\+text = "{}"{}}
+
+\Hypertarget{namespacestart__animation_1_1start__animation_ac31071219dd96e3263b42c2abea71d48}\index{start\_animation.start\_animation@{start\_animation.start\_animation}!wait\_screen@{wait\_screen}}
+\index{wait\_screen@{wait\_screen}!start\_animation.start\_animation@{start\_animation.start\_animation}}
+\doxysubsubsection{\texorpdfstring{wait\_screen}{wait\_screen}}
+{\footnotesize\ttfamily \label{namespacestart__animation_1_1start__animation_ac31071219dd96e3263b42c2abea71d48} 
+bool start\+\_\+animation.\+start\+\_\+animation.\+wait\+\_\+screen = False}
+

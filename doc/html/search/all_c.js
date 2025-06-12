@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['last_5fdirection_0',['last_direction',['../namespaceskater_1_1skater.html#a5b4c42e6881cd39dbc07f0a502b2c1f9',1,'skater::skater']]],
+  ['last_5ftimestamp_1',['last_timestamp',['../namespacepause__menu_1_1pause.html#a45726e63a6d61ba2adea3bf469c0e3ff',1,'pause_menu.pause.last_timestamp'],['../namespaceskater_1_1skater.html#acaf2107718827bb2daea9eb7a5cdd941',1,'skater.skater.last_timestamp']]],
+  ['last_5ftimestamp_5fclock_2',['last_timestamp_clock',['../namespacelevel1_1_1place__assets.html#a64d8b714ea044cf4b94264df2e508a71',1,'level1.place_assets.last_timestamp_clock'],['../namespacelevel2_1_1place__assets.html#a3c41c0afbac994c61eb593d58aea7a2c',1,'level2.place_assets.last_timestamp_clock']]],
+  ['last_5ftimestamp_5fcoins_3',['last_timestamp_coins',['../namespacelevel1_1_1place__assets.html#acf04772cdd941e8adfeb8fc37213636d',1,'level1.place_assets.last_timestamp_coins'],['../namespacelevel2_1_1place__assets.html#ae39ffb5da79d7463365972f71e1d12a1',1,'level2.place_assets.last_timestamp_coins']]],
+  ['last_5ftimestamp_5fdrop_4',['last_timestamp_drop',['../namespacerain_1_1rain.html#acd620f8f73dba04491c7992799e9e14f',1,'rain::rain']]],
+  ['last_5ftimestamp_5fjump_5',['last_timestamp_jump',['../namespaceskater_1_1skater.html#a51159b9f6070d3e7de9c0141ec6bee34',1,'skater::skater']]],
+  ['last_5ftimestamp_5fpower_6',['last_timestamp_power',['../namespacelevel1_1_1place__assets.html#a667c2c7852915cb55d1902e18a0ad0b8',1,'level1.place_assets.last_timestamp_power'],['../namespacelevel2_1_1place__assets.html#af0a23b238e9708d24cc94844e791c080',1,'level2.place_assets.last_timestamp_power']]],
+  ['last_5ftimestamp_5fspeed_7',['last_timestamp_speed',['../namespaceskater_1_1skater.html#a36485c0980520d23a95d7c6f0d2400a8',1,'skater::skater']]],
+  ['letters_8',['letters',['../namespacelevel1_1_1place__assets.html#a57f496a505f60114bab9878bc03aff62',1,'level1::place_assets']]],
+  ['letters_5fcollected_9',['letters_collected',['../namespacelevel1_1_1play.html#a524cf2a80e308c150c3ec09134fe365a',1,'level1.play.letters_collected'],['../namespacelevel2_1_1play.html#a044a911d1b6ea9749bc4d54ade4c2de1',1,'level2.play.letters_collected']]],
+  ['letters_5fposition_10',['letters_position',['../namespacelevel1_1_1place__assets.html#ac2c12944357b49e070051a9a3ce2f4ec',1,'level1.place_assets.letters_position'],['../namespacelevel2_1_1place__assets.html#a2fa4e14de5345d8c39c4bb33ffabc755',1,'level2.place_assets.letters_position']]],
+  ['level_11',['LEVEL',['../namespaceglobals.html#ac9acc7a949ae336ba53bd9890bf6c50e',1,'globals']]],
+  ['level1_12',['level1',['../namespacelevel1.html',1,'']]],
+  ['level1_3a_3aplace_5fassets_13',['place_assets',['../namespacelevel1_1_1place__assets.html',1,'level1']]],
+  ['level1_3a_3aplay_14',['play',['../namespacelevel1_1_1play.html',1,'level1']]],
+  ['level2_15',['level2',['../namespacelevel2.html',1,'']]],
+  ['level2_3a_3aplace_5fassets_16',['place_assets',['../namespacelevel2_1_1place__assets.html',1,'level2']]],
+  ['level2_3a_3aplay_17',['play',['../namespacelevel2_1_1play.html',1,'level2']]],
+  ['logo_5fsize_18',['logo_size',['../namespacestart__animation_1_1start__animation.html#a4ab657a18e1256140a2d196dceeecbf2',1,'start_animation::start_animation']]]
+];

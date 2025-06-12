@@ -1,0 +1,139 @@
+\doxysection{menu.\+menu Namespace Reference}
+\hypertarget{namespacemenu_1_1menu}{}\label{namespacemenu_1_1menu}\index{menu.menu@{menu.menu}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+None \mbox{\hyperlink{namespacemenu_1_1menu_a16000fbea8c266cd5871dd377d0f267c}{init}} ()
+\item 
+None \mbox{\hyperlink{namespacemenu_1_1menu_ac237b99efdd482c3976095de4cc82d37}{read\+\_\+coins}} ()
+\item 
+None \mbox{\hyperlink{namespacemenu_1_1menu_a60d938823878878b6a9d3ed41733b4ed}{draw\+\_\+button}} (pygame.\+Surface screen, str text, tuple\mbox{[}float, float, float, float\mbox{]} button, int text\+\_\+size, int or str color)
+\item 
+bool \mbox{\hyperlink{namespacemenu_1_1menu_a1e005473b590981fa242c8e1e3bc4775}{check\+\_\+button\+\_\+collide}} (pygame.\+Surface screen, str text, tuple\mbox{[}float, float, float, float\mbox{]} button, int text\+\_\+size, int or str color)
+\item 
+None \mbox{\hyperlink{namespacemenu_1_1menu_a6a84c020cf339b37b0af29fe5e60eb33}{draw\+\_\+flip\+\_\+happens}} (pygame.\+Surface screen)
+\item 
+None \mbox{\hyperlink{namespacemenu_1_1menu_a9b56e20783c2fdc1baca1a191bb48931}{draw\+\_\+ranked}} (pygame.\+Surface screen)
+\item 
+None \mbox{\hyperlink{namespacemenu_1_1menu_adfd3b5d789c3f7bab9ebb4d959b0d696}{move\+\_\+background}} (str menu\+\_\+type)
+\item 
+str \mbox{\hyperlink{namespacemenu_1_1menu_a3582b622fe6174b877950033abaf0e50}{ask\+\_\+for\+\_\+level}} (pygame.\+Surface screen)
+\item 
+str \mbox{\hyperlink{namespacemenu_1_1menu_a0f9df3306adfe28bb60b8d8f4592ab86}{menu}} (pygame.\+Surface screen)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+pygame \mbox{\hyperlink{namespacemenu_1_1menu_a643ee3ec306ee66acc8115fbce278262}{background}} = ...
+\item 
+bool \mbox{\hyperlink{namespacemenu_1_1menu_a9a7db7067e95cdd2960635dbb49426b7}{ask\+\_\+for\+\_\+level\+\_\+}} = False
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacemenu_1_1menu_a3582b622fe6174b877950033abaf0e50}\index{menu.menu@{menu.menu}!ask\_for\_level@{ask\_for\_level}}
+\index{ask\_for\_level@{ask\_for\_level}!menu.menu@{menu.menu}}
+\doxysubsubsection{\texorpdfstring{ask\_for\_level()}{ask\_for\_level()}}
+{\footnotesize\ttfamily \label{namespacemenu_1_1menu_a3582b622fe6174b877950033abaf0e50} 
+ str menu.\+menu.\+ask\+\_\+for\+\_\+level (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Ask the player which level wants to play
+:param screen: pygame.Surface -> where the buttons shall be drawn
+:return: the current game mode
+\end{DoxyVerb}
+ \Hypertarget{namespacemenu_1_1menu_a1e005473b590981fa242c8e1e3bc4775}\index{menu.menu@{menu.menu}!check\_button\_collide@{check\_button\_collide}}
+\index{check\_button\_collide@{check\_button\_collide}!menu.menu@{menu.menu}}
+\doxysubsubsection{\texorpdfstring{check\_button\_collide()}{check\_button\_collide()}}
+{\footnotesize\ttfamily \label{namespacemenu_1_1menu_a1e005473b590981fa242c8e1e3bc4775} 
+ bool menu.\+menu.\+check\+\_\+button\+\_\+collide (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{, }\item[{str}]{text}{, }\item[{tuple\mbox{[}float, float, float, float\mbox{]}}]{button}{, }\item[{int}]{text\+\_\+size}{, }\item[{int or str}]{color}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Check if the player clicks on a button or just hovers it.
+:param screen: pygame.Surface -> where the new button (different color) should be drawn
+:param text: text, which is on the new button (different color)
+:param button:  with all the information about the new button(x_position, y_position, width and height)(different color)
+:param text_size: the size of the text on the new button (different color)
+:param color: the color of the new button (different color)
+:return: True, if the button gets clicked. False, if the button only gets hovered
+\end{DoxyVerb}
+ \Hypertarget{namespacemenu_1_1menu_a60d938823878878b6a9d3ed41733b4ed}\index{menu.menu@{menu.menu}!draw\_button@{draw\_button}}
+\index{draw\_button@{draw\_button}!menu.menu@{menu.menu}}
+\doxysubsubsection{\texorpdfstring{draw\_button()}{draw\_button()}}
+{\footnotesize\ttfamily \label{namespacemenu_1_1menu_a60d938823878878b6a9d3ed41733b4ed} 
+ None menu.\+menu.\+draw\+\_\+button (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{, }\item[{str}]{text}{, }\item[{tuple\mbox{[}float, float, float, float\mbox{]}}]{button}{, }\item[{int}]{text\+\_\+size}{, }\item[{int or str}]{color}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Draw a button
+:param screen: pygame.Surface -> where the button should be drawn
+:param text: text, which is on the button
+:param button:  with all the information about the button(x_position, y_position, width and height)
+:param text_size: the size of the text on the button
+:param color: the color of the button
+:return: None
+\end{DoxyVerb}
+ \Hypertarget{namespacemenu_1_1menu_a6a84c020cf339b37b0af29fe5e60eb33}\index{menu.menu@{menu.menu}!draw\_flip\_happens@{draw\_flip\_happens}}
+\index{draw\_flip\_happens@{draw\_flip\_happens}!menu.menu@{menu.menu}}
+\doxysubsubsection{\texorpdfstring{draw\_flip\_happens()}{draw\_flip\_happens()}}
+{\footnotesize\ttfamily \label{namespacemenu_1_1menu_a6a84c020cf339b37b0af29fe5e60eb33} 
+ None menu.\+menu.\+draw\+\_\+flip\+\_\+happens (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Draw the "Flip Happens" text on left side of the menu
+:param screen: pygame.Surface -> the Surface on which the text should be written
+\end{DoxyVerb}
+ \Hypertarget{namespacemenu_1_1menu_a9b56e20783c2fdc1baca1a191bb48931}\index{menu.menu@{menu.menu}!draw\_ranked@{draw\_ranked}}
+\index{draw\_ranked@{draw\_ranked}!menu.menu@{menu.menu}}
+\doxysubsubsection{\texorpdfstring{draw\_ranked()}{draw\_ranked()}}
+{\footnotesize\ttfamily \label{namespacemenu_1_1menu_a9b56e20783c2fdc1baca1a191bb48931} 
+ None menu.\+menu.\+draw\+\_\+ranked (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Draw the ranked-list in the downer-right corner of the pygame.Surface
+:param screen: pygame.Surface -> where the list shall be drawn
+\end{DoxyVerb}
+ \Hypertarget{namespacemenu_1_1menu_a16000fbea8c266cd5871dd377d0f267c}\index{menu.menu@{menu.menu}!init@{init}}
+\index{init@{init}!menu.menu@{menu.menu}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{namespacemenu_1_1menu_a16000fbea8c266cd5871dd377d0f267c} 
+ None menu.\+menu.\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Load the background-picture from the "assets/menu/city-background.png" path.
+\end{DoxyVerb}
+ \Hypertarget{namespacemenu_1_1menu_a0f9df3306adfe28bb60b8d8f4592ab86}\index{menu.menu@{menu.menu}!menu@{menu}}
+\index{menu@{menu}!menu.menu@{menu.menu}}
+\doxysubsubsection{\texorpdfstring{menu()}{menu()}}
+{\footnotesize\ttfamily \label{namespacemenu_1_1menu_a0f9df3306adfe28bb60b8d8f4592ab86} 
+ str menu.\+menu.\+menu (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Blit the menu and check button collides-> in the game: select between PLAY, ERKLÄRUNG or STOP
+:param screen: pygame.Surface -> the Surface where the menu shall be drawn
+:return: str -> current game mode
+\end{DoxyVerb}
+ \Hypertarget{namespacemenu_1_1menu_adfd3b5d789c3f7bab9ebb4d959b0d696}\index{menu.menu@{menu.menu}!move\_background@{move\_background}}
+\index{move\_background@{move\_background}!menu.menu@{menu.menu}}
+\doxysubsubsection{\texorpdfstring{move\_background()}{move\_background()}}
+{\footnotesize\ttfamily \label{namespacemenu_1_1menu_adfd3b5d789c3f7bab9ebb4d959b0d696} 
+ None menu.\+menu.\+move\+\_\+background (\begin{DoxyParamCaption}\item[{str}]{menu\+\_\+type}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Move the background x-pixel to the left
+:param menu_type: current game mode
+\end{DoxyVerb}
+ \Hypertarget{namespacemenu_1_1menu_ac237b99efdd482c3976095de4cc82d37}\index{menu.menu@{menu.menu}!read\_coins@{read\_coins}}
+\index{read\_coins@{read\_coins}!menu.menu@{menu.menu}}
+\doxysubsubsection{\texorpdfstring{read\_coins()}{read\_coins()}}
+{\footnotesize\ttfamily \label{namespacemenu_1_1menu_ac237b99efdd482c3976095de4cc82d37} 
+ None menu.\+menu.\+read\+\_\+coins (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Read the coins of the user if he played before
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacemenu_1_1menu_a9a7db7067e95cdd2960635dbb49426b7}\index{menu.menu@{menu.menu}!ask\_for\_level\_@{ask\_for\_level\_}}
+\index{ask\_for\_level\_@{ask\_for\_level\_}!menu.menu@{menu.menu}}
+\doxysubsubsection{\texorpdfstring{ask\_for\_level\_}{ask\_for\_level\_}}
+{\footnotesize\ttfamily \label{namespacemenu_1_1menu_a9a7db7067e95cdd2960635dbb49426b7} 
+bool menu.\+menu.\+ask\+\_\+for\+\_\+level\+\_\+ = False}
+
+\Hypertarget{namespacemenu_1_1menu_a643ee3ec306ee66acc8115fbce278262}\index{menu.menu@{menu.menu}!background@{background}}
+\index{background@{background}!menu.menu@{menu.menu}}
+\doxysubsubsection{\texorpdfstring{background}{background}}
+{\footnotesize\ttfamily \label{namespacemenu_1_1menu_a643ee3ec306ee66acc8115fbce278262} 
+pygame menu.\+menu.\+background = ...}
+

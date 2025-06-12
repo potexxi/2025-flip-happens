@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['s_5fkey_0',['s_key',['../namespacepause__menu_1_1pause.html#a48aedd65e3c00a7254810710b7c43d6f',1,'pause_menu::pause']]],
+  ['save_5fstats_1',['save_stats',['../namespacelevel1_1_1play.html#a9e9f099086aea338240723e2ca7595f0',1,'level1::play']]],
+  ['screen_5fsize_2',['screen_size',['../namespacepause__menu_1_1pause.html#a628bc90de4291684dd8216448f6edb20',1,'pause_menu::pause']]],
+  ['shop_3',['shop',['../namespaceshop.html',1,'shop'],['../namespaceshop_1_1shop.html#ad1b8eb23767589ebbfe06e32ae3591f8',1,'shop.shop.shop()']]],
+  ['shop_2epy_4',['shop.py',['../shop_8py.html',1,'']]],
+  ['shop_3a_3ashop_5',['shop',['../namespaceshop_1_1shop.html',1,'shop']]],
+  ['skater_6',['skater',['../namespaceskater.html',1,'']]],
+  ['skater_2epy_7',['skater.py',['../skater_8py.html',1,'']]],
+  ['skater_3a_3askater_8',['skater',['../namespaceskater_1_1skater.html',1,'skater']]],
+  ['sort_5fusers_5fby_5fscore_9',['sort_users_by_score',['../namespacelevel1_1_1play.html#a0febb5880e40541c4b1d2a1973e703b7',1,'level1::play']]],
+  ['space_5fkey_10',['space_key',['../namespacepause__menu_1_1pause.html#ab9dc93a5c7eda1e2011d24e2d8ec0eef',1,'pause_menu::pause']]],
+  ['speed_11',['SPEED',['../namespaceglobals.html#a8596b87b20b0d09e82221379de22df72',1,'globals']]],
+  ['speed_12',['speed',['../namespaceskater_1_1skater.html#afe20fd5cc94b747c240f9396e0a25747',1,'skater::skater']]],
+  ['speedm_13',['SPEEDM',['../namespaceglobals.html#a6b68584d8eee49f037e1c0498bef1980',1,'globals']]],
+  ['start_5fanimation_14',['start_animation',['../namespacestart__animation.html',1,'']]],
+  ['start_5fanimation_2epy_15',['start_animation.py',['../start__animation_8py.html',1,'']]],
+  ['start_5fanimation_3a_3astart_5fanimation_16',['start_animation',['../namespacestart__animation_1_1start__animation.html',1,'start_animation']]]
+];

@@ -1,0 +1,143 @@
+\doxysection{pause\+\_\+menu.\+pause Namespace Reference}
+\hypertarget{namespacepause__menu_1_1pause}{}\label{namespacepause__menu_1_1pause}\index{pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+None \mbox{\hyperlink{namespacepause__menu_1_1pause_a2ebea0dd636a146f19094c0d0006aa50}{init}} ()
+\item 
+str \mbox{\hyperlink{namespacepause__menu_1_1pause_a6b1475930f303c070cdf0739887ef38e}{draw}} (pygame.\+Surface screen)
+\item 
+bool \mbox{\hyperlink{namespacepause__menu_1_1pause_a9734c2b29c1cfd8ae520bd9c7affe40f}{check\+\_\+menu\+\_\+button\+\_\+pressed}} (pygame.\+Surface screen, list\mbox{[}pygame.\+event.\+Event\mbox{]} events, bool \mbox{\hyperlink{namespacepause__menu_1_1pause_ad6eef255f37cecf7b6bde0331f224adc}{pause}})
+\item 
+str \mbox{\hyperlink{namespacepause__menu_1_1pause_ad6eef255f37cecf7b6bde0331f224adc}{pause}} (pygame.\+Surface screen, bool esc, list\mbox{[}pygame.\+event.\+Event\mbox{]} events)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+tuple \mbox{\hyperlink{namespacepause__menu_1_1pause_a628bc90de4291684dd8216448f6edb20}{screen\+\_\+size}} = (g.\+WIDTH//2, g.\+HEIGHT//2)
+\item 
+int \mbox{\hyperlink{namespacepause__menu_1_1pause_a45726e63a6d61ba2adea3bf469c0e3ff}{last\+\_\+timestamp}} = 0
+\item 
+pygame \mbox{\hyperlink{namespacepause__menu_1_1pause_a2738d54f596853a00e193b9fb5faef96}{w\+\_\+key}} = ...
+\item 
+pygame \mbox{\hyperlink{namespacepause__menu_1_1pause_ad95280273bc95cb97a1133f9fc110e25}{a\+\_\+key}} = ...
+\item 
+pygame \mbox{\hyperlink{namespacepause__menu_1_1pause_a5ae639214f45141cecd5f8c028febd2b}{d\+\_\+key}} = ...
+\item 
+pygame \mbox{\hyperlink{namespacepause__menu_1_1pause_a48aedd65e3c00a7254810710b7c43d6f}{s\+\_\+key}} = ...
+\item 
+pygame \mbox{\hyperlink{namespacepause__menu_1_1pause_ab9dc93a5c7eda1e2011d24e2d8ec0eef}{space\+\_\+key}} = ...
+\item 
+pygame \mbox{\hyperlink{namespacepause__menu_1_1pause_aa244d14fa681853134c1f978a5d51c3e}{esc\+\_\+key}} = ...
+\item 
+pygame \mbox{\hyperlink{namespacepause__menu_1_1pause_ac1698eeb083c2084b51650c7cf9e5e24}{ui\+\_\+pause}} = ...
+\item 
+tuple \mbox{\hyperlink{namespacepause__menu_1_1pause_a2b2b39532783288b9e81edaa19ddcedc}{pause\+\_\+button}} = (g.\+WIDTH -\/ g.\+WIDTH / 50 -\/5, 5, g.\+WIDTH / 50, g.\+WIDTH / 50)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacepause__menu_1_1pause_a9734c2b29c1cfd8ae520bd9c7affe40f}\index{pause\_menu.pause@{pause\_menu.pause}!check\_menu\_button\_pressed@{check\_menu\_button\_pressed}}
+\index{check\_menu\_button\_pressed@{check\_menu\_button\_pressed}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{check\_menu\_button\_pressed()}{check\_menu\_button\_pressed()}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_a9734c2b29c1cfd8ae520bd9c7affe40f} 
+ bool pause\+\_\+menu.\+pause.\+check\+\_\+menu\+\_\+button\+\_\+pressed (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{, }\item[{list\mbox{[}pygame.\+event.\+Event\mbox{]}}]{events}{, }\item[{bool}]{pause}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Check if the user presses the menu-button
+:param screen: pygame.Surface -> where the icon should be drawn
+:param events: list of pygame events
+:return: bool -> if the button gets pressed
+\end{DoxyVerb}
+ \Hypertarget{namespacepause__menu_1_1pause_a6b1475930f303c070cdf0739887ef38e}\index{pause\_menu.pause@{pause\_menu.pause}!draw@{draw}}
+\index{draw@{draw}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_a6b1475930f303c070cdf0739887ef38e} 
+ str pause\+\_\+menu.\+pause.\+draw (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Draw the pause menu
+:param screen: pygame.Surface -> where the menu should be drawn
+:return: str -> in which mode the games is in right now
+\end{DoxyVerb}
+ \Hypertarget{namespacepause__menu_1_1pause_a2ebea0dd636a146f19094c0d0006aa50}\index{pause\_menu.pause@{pause\_menu.pause}!init@{init}}
+\index{init@{init}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_a2ebea0dd636a146f19094c0d0006aa50} 
+ None pause\+\_\+menu.\+pause.\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Init the pictures , which are use for the pause-menu
+\end{DoxyVerb}
+ \Hypertarget{namespacepause__menu_1_1pause_ad6eef255f37cecf7b6bde0331f224adc}\index{pause\_menu.pause@{pause\_menu.pause}!pause@{pause}}
+\index{pause@{pause}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_ad6eef255f37cecf7b6bde0331f224adc} 
+ str pause\+\_\+menu.\+pause.\+pause (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{, }\item[{bool}]{esc}{, }\item[{list\mbox{[}pygame.\+event.\+Event\mbox{]}}]{events}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}The pause-menu in the game
+:param screen: pygame.Surface -> where the menu should be drawn
+:param esc: True -> esc gets pressed -> false esc doesn't get pressed
+:param events: the keys the player pressed
+:return: the mode in which the game is right now (pause, start-menu, play...)
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacepause__menu_1_1pause_ad95280273bc95cb97a1133f9fc110e25}\index{pause\_menu.pause@{pause\_menu.pause}!a\_key@{a\_key}}
+\index{a\_key@{a\_key}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{a\_key}{a\_key}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_ad95280273bc95cb97a1133f9fc110e25} 
+pygame pause\+\_\+menu.\+pause.\+a\+\_\+key = ...}
+
+\Hypertarget{namespacepause__menu_1_1pause_a5ae639214f45141cecd5f8c028febd2b}\index{pause\_menu.pause@{pause\_menu.pause}!d\_key@{d\_key}}
+\index{d\_key@{d\_key}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{d\_key}{d\_key}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_a5ae639214f45141cecd5f8c028febd2b} 
+pygame pause\+\_\+menu.\+pause.\+d\+\_\+key = ...}
+
+\Hypertarget{namespacepause__menu_1_1pause_aa244d14fa681853134c1f978a5d51c3e}\index{pause\_menu.pause@{pause\_menu.pause}!esc\_key@{esc\_key}}
+\index{esc\_key@{esc\_key}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{esc\_key}{esc\_key}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_aa244d14fa681853134c1f978a5d51c3e} 
+pygame pause\+\_\+menu.\+pause.\+esc\+\_\+key = ...}
+
+\Hypertarget{namespacepause__menu_1_1pause_a45726e63a6d61ba2adea3bf469c0e3ff}\index{pause\_menu.pause@{pause\_menu.pause}!last\_timestamp@{last\_timestamp}}
+\index{last\_timestamp@{last\_timestamp}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{last\_timestamp}{last\_timestamp}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_a45726e63a6d61ba2adea3bf469c0e3ff} 
+int pause\+\_\+menu.\+pause.\+last\+\_\+timestamp = 0}
+
+\Hypertarget{namespacepause__menu_1_1pause_a2b2b39532783288b9e81edaa19ddcedc}\index{pause\_menu.pause@{pause\_menu.pause}!pause\_button@{pause\_button}}
+\index{pause\_button@{pause\_button}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{pause\_button}{pause\_button}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_a2b2b39532783288b9e81edaa19ddcedc} 
+tuple pause\+\_\+menu.\+pause.\+pause\+\_\+button = (g.\+WIDTH -\/ g.\+WIDTH / 50 -\/5, 5, g.\+WIDTH / 50, g.\+WIDTH / 50)}
+
+\Hypertarget{namespacepause__menu_1_1pause_a48aedd65e3c00a7254810710b7c43d6f}\index{pause\_menu.pause@{pause\_menu.pause}!s\_key@{s\_key}}
+\index{s\_key@{s\_key}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{s\_key}{s\_key}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_a48aedd65e3c00a7254810710b7c43d6f} 
+pygame pause\+\_\+menu.\+pause.\+s\+\_\+key = ...}
+
+\Hypertarget{namespacepause__menu_1_1pause_a628bc90de4291684dd8216448f6edb20}\index{pause\_menu.pause@{pause\_menu.pause}!screen\_size@{screen\_size}}
+\index{screen\_size@{screen\_size}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{screen\_size}{screen\_size}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_a628bc90de4291684dd8216448f6edb20} 
+tuple pause\+\_\+menu.\+pause.\+screen\+\_\+size = (g.\+WIDTH//2, g.\+HEIGHT//2)}
+
+\Hypertarget{namespacepause__menu_1_1pause_ab9dc93a5c7eda1e2011d24e2d8ec0eef}\index{pause\_menu.pause@{pause\_menu.pause}!space\_key@{space\_key}}
+\index{space\_key@{space\_key}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{space\_key}{space\_key}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_ab9dc93a5c7eda1e2011d24e2d8ec0eef} 
+pygame pause\+\_\+menu.\+pause.\+space\+\_\+key = ...}
+
+\Hypertarget{namespacepause__menu_1_1pause_ac1698eeb083c2084b51650c7cf9e5e24}\index{pause\_menu.pause@{pause\_menu.pause}!ui\_pause@{ui\_pause}}
+\index{ui\_pause@{ui\_pause}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{ui\_pause}{ui\_pause}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_ac1698eeb083c2084b51650c7cf9e5e24} 
+pygame pause\+\_\+menu.\+pause.\+ui\+\_\+pause = ...}
+
+\Hypertarget{namespacepause__menu_1_1pause_a2738d54f596853a00e193b9fb5faef96}\index{pause\_menu.pause@{pause\_menu.pause}!w\_key@{w\_key}}
+\index{w\_key@{w\_key}!pause\_menu.pause@{pause\_menu.pause}}
+\doxysubsubsection{\texorpdfstring{w\_key}{w\_key}}
+{\footnotesize\ttfamily \label{namespacepause__menu_1_1pause_a2738d54f596853a00e193b9fb5faef96} 
+pygame pause\+\_\+menu.\+pause.\+w\+\_\+key = ...}
+
