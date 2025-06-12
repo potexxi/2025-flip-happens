@@ -2,7 +2,7 @@
 1AHIF HTL Rankweil 24/25
 
 \
-"Flip Happens" is a fast-paced platformer where you play as a stylish skater doing cool tricks and reacting fast through creative levels full of obstacles.
+_"Flip Happens"_ is a fast-paced platformer where you play as a stylish skater doing cool tricks and reacting fast through creative levels full of obstacles.
 
 Your goal: collect all the letters (A, B, C, D...) in the correct alphabetical order – as fast as possible!\
 But watch out: you can only collect a letter if it's the correct next one. If you try to grab the wrong one, nothing happens. So every jump and grind counts – timing and awareness are super important!
