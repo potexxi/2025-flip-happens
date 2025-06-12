@@ -16,7 +16,7 @@ power_counter: int = 0
 last_timestamp_coins: int = None
 last_timestamp_power: int = None
 last_timestamp_clock: int = 0
-time = 180
+time = 120
 assets_original = [
     [0,0,0,0,0,1,1,1,1,1,1,1,4,4,0,4,4,4,1,1,1,1,1,1,1,1,1,1,1,1],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],

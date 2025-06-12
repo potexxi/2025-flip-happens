@@ -45,7 +45,7 @@ def draw(screen: pygame.Surface) -> str:
         "3. Features  im  Level:", "   Bezwinge  Rampen,  grinde  Slides  und  nutze  jede  Chance  für  Tempo  und  Flow!",
         "4. Coins  sammeln:", "   Jeder  Coin  zählt  –  je  mehr  du  hast,  desto  höher  dein  Rang  in  der  Rangliste.",
         "5. Bestenliste:", "   Nur  die  mit  den  meisten  Coins  thronen  an  der  Spitze  der  Rangliste.",
-        "6. Shop:", "   Tausch  Reichtum  gegen  Skill  –  doch  sei  bereit,  in  der  Rangliste  abzusteigen.",
+        "6. Shop:", "   Tausch  Coins  gegen  Skill  –  doch  sei  bereit,  in  der  Rangliste  abzusteigen.",
         "7. Taktik  zählt:", "   Wähle  deinen  Weg:  Ewiger  Ruhm  oder  krasse  Extras  –  du  entscheidest!",
         "8. Steuerung:", "   Drücke  ESC,  um  in  das  Pausemenü  zu  finden,  in  dem  du  auch  die  Tastenbelegung  findest."
     ]

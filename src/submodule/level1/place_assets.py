@@ -23,7 +23,7 @@ power_counter: int = 0
 last_timestamp_coins: int = None
 last_timestamp_power: int = None
 last_timestamp_clock: int = 0
-time: int = 120
+time: int = 105
 first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2) - g.ASSETS_SIZE)
 first_asset: tuple[float,float] = (first_block_floor[0] + (g.ASSETS_SIZE - g.POWER_UPS_SIZE) / 2,
     first_block_floor[1] + (g.ASSETS_SIZE//2.5))
