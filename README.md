@@ -1,5 +1,5 @@
 # Flip Happens
-by Maximilian Schreiter, Yamen Chihadeh
+by Maximilian Schreiter, Yamen Chihadeh | 1AHIF HTL Rankweil 24/25
 
 Flip Happens is a fast-paced platformer where you play as a stylish skater doing cool tricks and reacting fast through creative levels full of obstacles.
 
