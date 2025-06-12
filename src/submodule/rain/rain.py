@@ -1,5 +1,5 @@
 import pygame
-import src.submodule.globals as g
+import submodule.globals as g
 
 drops = []
 drop_counter = 0

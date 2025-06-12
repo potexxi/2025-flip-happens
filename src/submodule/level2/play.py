@@ -1,14 +1,14 @@
 import copy
 import pygame
 import random
-import src.submodule.level1.play as level1
-import src.submodule.globals as g
-import src.submodule.level2.place_assets as assets2
-import src.submodule.skater.skater as player
-from src.submodule.rain.rain import rain
-import src.submodule.level1.place_assets as assets1
-import src.submodule.menu.menu as menu
-import src.submodule.pause_menu.pause as pause
+import submodule.level1.play as level1
+import submodule.globals as g
+import submodule.level2.place_assets as assets2
+import submodule.skater.skater as player
+from submodule.rain.rain import rain
+import submodule.level1.place_assets as assets1
+import submodule.menu.menu as menu
+import submodule.pause_menu.pause as pause
 
 coins_collected: int = 0
 rain_bool: bool = False

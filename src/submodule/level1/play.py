@@ -1,14 +1,14 @@
 import random
 import pygame
 import copy
-import src.submodule.globals as g
-import src.submodule.pause_menu.pause as pause
-import src.submodule.level1.place_assets as assets
-import src.submodule.skater.skater as player
-from src.submodule.menu.menu import draw_button, check_button_collide
-from src.submodule.rain.rain import rain
-import src.submodule.level2.place_assets as assets2
-import src.submodule.level2.play as play2
+import submodule.globals as g
+import submodule.pause_menu.pause as pause
+import submodule.level1.place_assets as assets
+import submodule.skater.skater as player
+from submodule.menu.menu import draw_button, check_button_collide
+from submodule.rain.rain import rain
+import submodule.level2.place_assets as assets2
+import submodule.level2.play as play2
 
 letters_collected: int = 0
 coins_collected: int = 0
@@ -82,7 +82,7 @@ def save_stats(_coins_collected: int) -> None:
     """
     users = []
     # open the file and safe the entry in users
-    with open("submodule/menu/ranked.txt", "r", encoding="utf-8") as file:
+    with open(g.save, "r", encoding="utf-8") as file:
         content = file.readlines()
     for line in content:
         lines_content = line.strip().split(";")
@@ -90,7 +90,7 @@ def save_stats(_coins_collected: int) -> None:
                       lines_content[4]])
 
     # clear the file
-    with open("submodule/menu/ranked.txt", "w", encoding="utf-8") as file:
+    with open(g.save, "w", encoding="utf-8") as file:
         file.write("")
 
     # Check if the user is already in the file and when not then append him
@@ -110,7 +110,7 @@ def save_stats(_coins_collected: int) -> None:
     users = sort_users_by_score(users)
     # write the file
     for entry in users:
-        with open("submodule/menu/ranked.txt", "a", encoding="utf-8") as file:
+        with open(g.save, "a", encoding="utf-8") as file:
             file.write(f"{entry[0]};{entry[1]};{entry[2]};{entry[3]};{entry[4]}\n")
 
 

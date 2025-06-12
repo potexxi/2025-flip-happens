@@ -1,16 +1,16 @@
 import pygame
 import submodule.menu.menu as menu
-import src.submodule.globals as g
-import src.submodule.explain_menu.explain_menu as explain
-import src.submodule.level1.play as level1
-import src.submodule.level2.play as level2
-import src.submodule.skater.skater as player
-import src.submodule.pause_menu.pause as pause
-import src.submodule.start_animation.start_animation as start
-import src.submodule.shop.shop as shop
-from src.submodule.level1.place_assets import init_assets as init_assets1
-from src.submodule.level2.place_assets import init_assets as init_assets2
-from src.submodule.rain.rain import init as init_rain
+import submodule.globals as g
+import submodule.explain_menu.explain_menu as explain
+import submodule.level1.play as level1
+import submodule.level2.play as level2
+import submodule.skater.skater as player
+import submodule.pause_menu.pause as pause
+import submodule.start_animation.start_animation as start
+import submodule.shop.shop as shop
+from submodule.level1.place_assets import init_assets as init_assets1
+from submodule.level2.place_assets import init_assets as init_assets2
+from submodule.rain.rain import init as init_rain
 
 
 def main() -> None:

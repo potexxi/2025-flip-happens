@@ -1,6 +1,6 @@
 import pygame
-import src.submodule.globals as g
-from src.submodule.menu.menu import draw_button, check_button_collide, move_background
+import submodule.globals as g
+from submodule.menu.menu import draw_button, check_button_collide, move_background
 
 
 def draw(screen: pygame.Surface) -> str:

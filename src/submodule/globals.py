@@ -37,5 +37,8 @@ IMMUNITY: bool = False
 # Active level
 LEVEL = ...
 
+# Where the ranked.txt is saved
+save: str = "submodule/menu/ranked.txt"
+
 
 FPS = 65

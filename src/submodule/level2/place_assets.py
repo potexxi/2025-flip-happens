@@ -1,8 +1,8 @@
 import pygame
 import copy
-import src.submodule.globals as g
-import src.submodule.skater.skater as player
-import src.submodule.level1.place_assets as level1
+import submodule.globals as g
+import submodule.skater.skater as player
+import submodule.level1.place_assets as level1
 
 
 background: pygame.Surface = ...

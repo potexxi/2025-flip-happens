@@ -1,5 +1,6 @@
 import pygame
-import src.submodule.globals as g
+import sys
+import submodule.globals as g
 
 background: pygame.Surface = ...
 ask_for_level_: bool = False
@@ -18,7 +19,7 @@ def read_coins() -> None:
     """
     Read the coins of the user if he played before
     """
-    with open("submodule/menu/ranked.txt", "r", encoding='utf-8') as file:
+    with open(g.save, "r", encoding='utf-8') as file:
         content = file.readlines()
     for line in content:
         entrys = line.strip().split(';')
@@ -122,7 +123,7 @@ def draw_ranked(screen: pygame.Surface) -> None:
     font_down = pygame.font.Font("assets/fonts/normal.otf", box_rect[4]+g.HEIGHT//140)
     msg1 = font_top.render("FLIP-HAPPENS Bestenliste", True, (255, 215, 0))
     screen.blit(msg1, (box_rect[0] + 10, box_rect[1] + 5))
-    with open("submodule/menu/ranked.txt", "r",encoding="utf-8") as file:
+    with open(g.save, "r",encoding="utf-8") as file:
         content = file.readlines()
     counter = 1
     for line in content:
@@ -241,7 +242,8 @@ def menu(screen: pygame.Surface) -> str:
                             "X",
                             (exit_button[0],exit_button[1],exit_button[2],exit_button[3]), exit_button[4],
                             "red"):
-        exit("FLIP HAPPENS!")
+        pygame.quit()
+        sys.exit()
 
     if check_button_collide(screen,
                             "START",

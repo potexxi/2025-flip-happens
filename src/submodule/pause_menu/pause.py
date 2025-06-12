@@ -1,7 +1,7 @@
 import pygame
-import src.submodule.globals as g
-import src.submodule.level1.play as play
-from src.submodule.menu.menu import draw_button, check_button_collide
+import submodule.globals as g
+import submodule.level1.play as play
+from submodule.menu.menu import draw_button, check_button_collide
 
 
 screen_size: tuple[float, float] = (g.WIDTH//2, g.HEIGHT//2)

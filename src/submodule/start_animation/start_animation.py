@@ -1,7 +1,7 @@
 import pygame
 import math
-import src.submodule.globals as g
-from src.submodule.menu.menu import check_button_collide, draw_button, move_background, read_coins
+import submodule.globals as g
+from submodule.menu.menu import check_button_collide, draw_button, move_background, read_coins
 
 original_logo: pygame.Surface = ...
 background: pygame.Surface = ...

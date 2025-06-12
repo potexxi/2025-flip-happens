@@ -1,6 +1,6 @@
 import pygame
 import random
-import src.submodule.globals as g
+import submodule.globals as g
 
 images_drive_left: list[pygame.Surface] = []
 images_drive_right: list[pygame.Surface] = []

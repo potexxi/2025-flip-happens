@@ -1,8 +1,7 @@
 import pygame
-import src.submodule.globals as g
-import src.submodule.menu.menu as menu
-import src.submodule.level1.play as level1
-from src.submodule.level1.play import save_stats
+import submodule.globals as g
+import submodule.menu.menu as menu
+from submodule.level1.play import save_stats
 
 weather_immun: pygame.Surface = ...
 faster: pygame.Surface = ...
