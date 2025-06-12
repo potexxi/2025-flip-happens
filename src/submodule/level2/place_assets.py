@@ -54,7 +54,7 @@ letters_position: list[tuple] = [
 
 def init_assets():
     """
-    Init the assets and scale them.
+    Init the pictures of the assets and scale them.
     """
     global background, brick
     # Background:
@@ -69,7 +69,7 @@ def init_assets():
 
 def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
     """
-    Draw the assets of the level2
+    Go through the defined matrix, which contains all the numbers of the assets
     :param screen: pygame.Surface -> where the assets shall be drawn
     :param player_rect: pygame.Rect -> the rect of the player
     """

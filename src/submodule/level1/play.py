@@ -77,8 +77,8 @@ def sort_users_by_score(users: list[list[str]]) -> list[list[str]]:
 
 def save_stats(_coins_collected: int) -> None:
     """
-    Save the stats (coins, time...) of the player
-    :param _coins_collected: the coins the player collected
+    Save the stats (coins, time...) of the player in the right .txt file
+    :param _coins_collected: how many coins the player collected
     """
     users = []
     # open the file and safe the entry in users
@@ -114,10 +114,10 @@ def save_stats(_coins_collected: int) -> None:
             file.write(f"{entry[0]};{entry[1]};{entry[2]};{entry[3]};{entry[4]}\n")
 
 
-def draw_coins_collected(screen: pygame.Surface, _coins_collected) -> None:
+def draw_coins_collected(screen: pygame.Surface, _coins_collected: int) -> None:
     """
-    Draw the collected coins on the screen
-    :param screen: pygame.Surface -> Where the coins shall be drawn
+    Draw the cointer of the collected coins on the screen
+    :param screen: pygame.Surface -> where the coins shall be drawn
     :param _coins_collected: how many coins the player collected
     """
     font = pygame.font.Font("assets/fonts/normal.otf", g.HEIGHT//45)
@@ -125,7 +125,7 @@ def draw_coins_collected(screen: pygame.Surface, _coins_collected) -> None:
     screen.blit(text, (5, g.HEIGHT//50 + 10))
 
 
-def draw_letter_percentage(screen: pygame.Surface, _letters_collected) -> None:
+def draw_letter_percentage(screen: pygame.Surface, _letters_collected: int) -> None:
     """
     Draw a percentage beam, how many letters the player collected
     :param screen: pygame.Surface ->  where the beam shall be drawn
@@ -145,7 +145,7 @@ def draw_letter_percentage(screen: pygame.Surface, _letters_collected) -> None:
     screen.blit(text, (g.WIDTH//13 + 10, 5))
 
 
-def check_for_win_lose(screen: pygame.Surface, time, _letters_collected) -> tuple[bool, bool]:
+def check_for_win_lose(screen: pygame.Surface, time, _letters_collected: int) -> tuple[bool, bool]:
     """
     Check if the player won/lost the game and draw it
     :param screen: pygame.Surface -> where the pictures shall be drawn
@@ -172,7 +172,7 @@ def check_for_win_lose(screen: pygame.Surface, time, _letters_collected) -> tupl
 
 def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     """
-    Play level1
+    Funktion to call in game loop, contains all the button checks and blit all the stuff to blit
     :param screen: pygame.Surface -> where the game should be drawn
     :param events: the keys the player pressed
     :return: str -> in which mode the game is in

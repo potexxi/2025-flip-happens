@@ -19,7 +19,7 @@ end: bool = False
 
 def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     """
-    play the level2 funktion
+    Funktion to call in the game loop, contains all the button checks and blit all the assets stuff
     :param screen: pygame.Surface -> where the level2 shall be drawn
     :param events: the keys the player pressed
     :return: the current game mode

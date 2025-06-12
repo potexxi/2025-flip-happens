@@ -5,9 +5,9 @@ from src.submodule.menu.menu import draw_button, check_button_collide, move_back
 
 def draw(screen: pygame.Surface) -> str:
     """
-    Draw the explain-menu
-    :param screen: pygame.Surface -> where the elements of the explain-menu should be drawn
-    :return: the mode in which the game is right now
+    Draw the explain-menu and Check all the button actions
+    :param screen: pygame.Surface -> where the elements of the explain-menu shall be drawn
+    :return: current game mode, changes if the player presses the right button
     """
     # Background zeichnen
     background = pygame.image.load("assets/menu/blue_unsharp.png").convert_alpha()
@@ -65,9 +65,9 @@ def draw(screen: pygame.Surface) -> str:
 
 def menu(screen: pygame.Surface) -> str:
     """
-    Runs the explain-menu
-    :param screen: pygame.Surface -> where the explain-menu should be drawn
-    :return: the mode in which the game is in right now
+    Runs the explain-menu, the funktion which to call in the game loop
+    :param screen: pygame.Surface -> where the explain-menu shall be drawn
+    :return: current gamemode, changes if the player presses the right button
     """
     surface_explain = pygame.Surface((g.WIDTH, g.HEIGHT), pygame.SRCALPHA).convert_alpha()
     mode = draw(surface_explain)

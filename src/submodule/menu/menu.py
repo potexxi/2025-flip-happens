@@ -86,7 +86,6 @@ def draw_flip_happens(screen: pygame.Surface) -> None:
     """
     Draw the "Flip Happens" text on left side of the menu
     :param screen: pygame.Surface -> the Surface on which the text should be written
-    :return None
     """
     # KI-Anfang
     # KI: ChatGPT
@@ -110,7 +109,7 @@ def draw_flip_happens(screen: pygame.Surface) -> None:
 def draw_ranked(screen: pygame.Surface) -> None:
     """
     Draw the ranked-list in the downer-right corner of the pygame.Surface
-    :param screen: pygame.Surface -> where the list should be drawn
+    :param screen: pygame.Surface -> where the list shall be drawn
     """
     # Read the list from the .txt file
 
@@ -146,8 +145,7 @@ def draw_ranked(screen: pygame.Surface) -> None:
 def move_background(menu_type: str) -> None:
     """
     Move the background x-pixel to the left
-    :param menu_type: which type the menu is (start menu or explain menu)
-    :return: None
+    :param menu_type: current game mode
     """
     if menu_type == "explain":
         speed = 1.3
@@ -164,7 +162,7 @@ def move_background(menu_type: str) -> None:
 
 def ask_for_level(screen: pygame.Surface) -> str:
     """
-    Ask the player which level he/she wants to play
+    Ask the player which level wants to play
     :param screen: pygame.Surface -> where the buttons shall be drawn
     :return: the current game mode
     """
@@ -186,9 +184,9 @@ def ask_for_level(screen: pygame.Surface) -> str:
 
 def menu(screen: pygame.Surface) -> str:
     """
-    Make the menu -> in the game: select between PLAY, ERKLÄRUNG or STOP
-    :param screen: pygame.Surface -> the Surface where the menu should be drawn
-    :return: str -> the mode in which the game is right now, play, menu or explain
+    Blit the menu and check button collides-> in the game: select between PLAY, ERKLÄRUNG or STOP
+    :param screen: pygame.Surface -> the Surface where the menu shall be drawn
+    :return: str -> current game mode
     """
     global ask_for_level_
     # Move the background and blit it

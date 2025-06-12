@@ -66,7 +66,7 @@ next_letter_idx: int = 0
 
 def init_assets() -> None:
     """
-    Load all the assets-images which the level1 needs
+    Init the pictures, which the game needs
     """
     global coins, letters, power_up, you_won, you_lost, background, brick, halfpipes, fast_ramp, high_ramps, pipe
     # Coins:
@@ -156,7 +156,7 @@ def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y
 
 def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
     """
-    Draw the collectables
+    Go through the defined matrix with the collectables and blit them
     :param screen: pygame.Surface -> where the collectables shall be drawn
     :param player_rect: the pygame.Rect of the player
     """
@@ -230,11 +230,11 @@ def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:
         last_timestamp_power = timestamp
 
 
-def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect, _letters_position) -> None:
+def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect, _letters_position: list[tuple]) -> None:
     """
-    Draw the letters
+    Blit the letters at their positions, the positions are defined already
     :param screen: pygame.Surface: where the letters should be drawn
-    :param player_rect: pygame.Rect -> the rect of the player
+    :param player_rect: pygame.Rect -> the rect "hit box" of the player
     :param _letters_position: letters position
     """
     global next_letter_idx

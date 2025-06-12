@@ -15,7 +15,7 @@ from src.submodule.rain.rain import init as init_rain
 
 def main() -> None:
     """
-    Main-funktion and entrance of the game
+    Main-funktion and entrance of the game, game loop
     """
     # Init-PyGame
     pygame.init()
