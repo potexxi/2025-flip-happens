@@ -19,6 +19,7 @@ def main() -> None:
     """
     # Init-PyGame
     pygame.init()
+    pygame.mixer.init()
 
     # Screen and Caption
     pygame.display.set_caption("Flip Happens")

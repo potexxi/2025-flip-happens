@@ -104,3 +104,14 @@ last save: 03.06.2025
 - ka1.ttf by Vic Fieger:
     - link: <https://www.1001fonts.com/karmatic-arcade-font.html>
     - license: 1001Fonts Free For Commercial Use License (FFC) <https://www.1001fonts.com/licenses/ffc.html>
+
+
+# # Sounds
+
+- button.mp3 by SoundReality:
+    - link: <https://pixabay.com/sound-effects/button-202966/>
+    - license: Pixabay Content License <https://pixabay.com/service/license-summary/>
+
+- menu.mp3 by Nicholas Panek:
+    - link: <https://pixabay.com/music/search/genre/video%20games/>
+    - license: Pixabay Content License <https://pixabay.com/service/license-summary/>

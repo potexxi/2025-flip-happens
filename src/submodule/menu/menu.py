@@ -3,16 +3,22 @@ import sys
 import submodule.globals as g
 
 background: pygame.Surface = ...
+button_sound: pygame.mixer.Sound = ...
+menu_sound: pygame.mixer.Sound = ...
 ask_for_level_: bool = False
+last_timestamp: int = None
 
 
 def init() -> None:
     """
     Load the background-picture from the "assets/menu/city-background.png" path.
     """
-    global background
+    global background, button_sound, menu_sound
     background = pygame.image.load("assets/menu/blue_unsharp.png").convert_alpha()
     background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
+    # Sounds
+    button_sound = pygame.mixer.Sound("assets/sounds/button.mp3")
+    menu_sound = pygame.mixer.Sound("assets/sounds/menu.mp3")
 
 
 def read_coins() -> None:
@@ -76,9 +82,11 @@ def check_button_collide(screen: pygame.Surface, text: str, button: tuple[float,
         draw_button(screen, text, button, text_size, color)
         if click:
             if text == "START":
+                button_sound.play()
                 pygame.time.wait(100)
             else:
-                pygame.time.wait(20)
+                button_sound.play()
+                pygame.time.wait(25)
             return True
     return False
 
@@ -189,7 +197,12 @@ def menu(screen: pygame.Surface) -> str:
     :param screen: pygame.Surface -> the Surface where the menu shall be drawn
     :return: str -> current game mode
     """
-    global ask_for_level_
+    global ask_for_level_, last_timestamp
+    # music
+    timestamp = pygame.time.get_ticks()
+    if last_timestamp is None or timestamp - last_timestamp > menu_sound.get_length() * 1000:
+        menu_sound.play(fade_ms=10000)
+        last_timestamp = timestamp
     # Move the background and blit it
     move_background("menu")
     screen.blit(background, g.POSITION_WORLD)
