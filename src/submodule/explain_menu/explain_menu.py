@@ -3,10 +3,11 @@ import submodule.globals as g
 from submodule.menu.menu import draw_button, check_button_collide, move_background
 
 
-def draw(screen: pygame.Surface) -> str:
+def draw(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     """
     Draw the explain-menu and Check all the button actions
     :param screen: pygame.Surface -> where the elements of the explain-menu shall be drawn
+    :param events: the pressed keys of the player
     :return: current game mode, changes if the player presses the right button
     """
     # Background zeichnen
@@ -23,7 +24,7 @@ def draw(screen: pygame.Surface) -> str:
     if check_button_collide(screen,
                             "X",
                             (exit_button[0],exit_button[1],exit_button[2],exit_button[3]), exit_button[4],
-                            "red"):
+                            "red", events):
         exit("FLIP HAPPENS!")
     # KI-Start
     # KI: ChatGPT
@@ -37,7 +38,7 @@ def draw(screen: pygame.Surface) -> str:
                      ,(surface_x, surface_y, g.WIDTH // 1.2, g.HEIGHT // 1.2), border_radius=10)
     back_button = (surface_x + g.WIDTH // 1.2 - g.WIDTH//14.2, surface_y , g.HEIGHT / 8, g.HEIGHT // 25)
     draw_button(screen, "Zurück", back_button, g.HEIGHT//45, "white")
-    if check_button_collide(screen,"Zurück",back_button, g.HEIGHT//40, (255, 215, 0)):
+    if check_button_collide(screen,"Zurück",back_button, g.HEIGHT//40, (255, 215, 0), events):
         return "menu"
     explain_text = [
         "1. Ziel  des  Spiels:", "   Meistere  das  Level  mit  deinem  Skater  –  so  schnell,  so  stylisch  wie  möglich!",
@@ -63,13 +64,14 @@ def draw(screen: pygame.Surface) -> str:
     return "explain"
 
 
-def menu(screen: pygame.Surface) -> str:
+def menu(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     """
     Runs the explain-menu, the funktion which to call in the game loop
     :param screen: pygame.Surface -> where the explain-menu shall be drawn
+    :param events: the pressed keys of the player
     :return: current gamemode, changes if the player presses the right button
     """
     surface_explain = pygame.Surface((g.WIDTH, g.HEIGHT), pygame.SRCALPHA).convert_alpha()
-    mode = draw(surface_explain)
+    mode = draw(surface_explain, events)
     screen.blit(surface_explain, (0,0))
     return mode

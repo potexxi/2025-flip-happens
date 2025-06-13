@@ -38,7 +38,7 @@ def main() -> None:
     init_rain()
     shop.init()
 
-    mode = "start"
+    mode = "menu"
 
     esc_pressed = False
 
@@ -58,7 +58,7 @@ def main() -> None:
             mode = start.animation(screen, events)
 
         if mode == "menu":
-            mode = menu.menu(screen)
+            mode = menu.menu(screen, events)
 
         if mode == "level1":
             g.LEVEL = "level1"
@@ -81,13 +81,13 @@ def main() -> None:
                 continue
 
         if mode == "explain":
-            mode = explain.menu(screen)
+            mode = explain.menu(screen, events)
 
         if mode == "pause":
             mode = pause.pause(screen, esc_pressed, events)
 
         if mode == "shop":
-            mode = shop.shop(screen)
+            mode = shop.shop(screen, events)
 
 
         # Update the display

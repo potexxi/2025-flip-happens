@@ -7,6 +7,7 @@ import submodule.level1.place_assets as level1
 
 background: pygame.Surface = ...
 brick: pygame.Surface = ...
+music: pygame.mixer.Sound = ...
 first_block_floor: tuple[float,float] = (-30, g.HEIGHT - (g.ASSETS_SIZE - g.ASSETS_SIZE // 2) - g.ASSETS_SIZE)
 first_asset: tuple[float,float] = (first_block_floor[0] + (g.ASSETS_SIZE - g.POWER_UPS_SIZE) / 2,
     first_block_floor[1] + (g.ASSETS_SIZE//2.5))
@@ -56,7 +57,7 @@ def init_assets():
     """
     Init the pictures of the assets and scale them.
     """
-    global background, brick
+    global background, brick, music
     # Background:
     background = pygame.image.load("assets/level2/background.png").convert_alpha()
     background = pygame.transform.scale(background, (g.WIDTH, g.HEIGHT))
@@ -65,6 +66,10 @@ def init_assets():
     brick = pygame.image.load("assets/level2/brick.png").convert_alpha()
     brick = brick.subsurface((3 * 16,3 * 16,16,16))
     brick = pygame.transform.scale(brick, (g.ASSETS_SIZE, g.ASSETS_SIZE))
+
+    # Music
+    music = pygame.mixer.Sound("assets/sounds/level2.mp3")
+    music.set_volume(0.2)
 
 
 def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:

@@ -26,6 +26,7 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     """
     global rain_bool, end, begin
     if begin:
+        assets2.music.play(fade_ms=500)
         if random.random() < 0.4:
             rain_bool = True
     if end is False:
@@ -60,7 +61,9 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
         menu.draw_button(screen, "Hauptmenü",
                     (button[0], button[1], button[2], button[3]), button[4], (211, 211, 211))
         if menu.check_button_collide(screen, "Hauptmenü",
-                                (button[0], button[1], button[2], button[3]), button[4] + 5, (255, 215, 0)):
+                                (button[0], button[1], button[2], button[3]), button[4] + 5, (255, 215, 0), events):
+            menu.menu_sound.play(fade_ms=5000)
+            assets2.music.fadeout(500)
             if win:
                 level1.save_stats(int(f"{coins_collected * g.COINSM:.0f}"))
             level1.reset_stats()

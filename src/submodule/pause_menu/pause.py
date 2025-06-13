@@ -1,7 +1,10 @@
 import pygame
+import random
 import submodule.globals as g
 import submodule.level1.play as play
-from submodule.menu.menu import draw_button, check_button_collide
+import submodule.menu.menu as menu
+import submodule.level1.place_assets as assets1
+import submodule.level2.place_assets as assets2
 
 
 screen_size: tuple[float, float] = (g.WIDTH//2, g.HEIGHT//2)
@@ -47,10 +50,11 @@ def init() -> None:
     ui_pause = pygame.transform.scale(ui_pause, (pause_button[2], pause_button[3]))
 
 
-def draw(screen: pygame.Surface) -> str:
+def draw(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     """
     Draw the pause menu
     :param screen: pygame.Surface -> where the menu should be drawn
+    :param events: the pressed keys of the player
     :return: str -> in which mode the games is in right now
     """
     # Buttons
@@ -62,16 +66,16 @@ def draw(screen: pygame.Surface) -> str:
     pygame.draw.rect(screen, (20, 20, 60, 180), (g.WIDTH//2 - screen_size[0]//2,g.HEIGHT//2 - screen_size[1]//2
                                                      ,screen_size[0], screen_size[1]), border_radius=10)
 
-    draw_button(screen, "Weiter", (weiter_button[0], weiter_button[1], weiter_button[2], weiter_button[3]),
+    menu.draw_button(screen, "Weiter", (weiter_button[0], weiter_button[1], weiter_button[2], weiter_button[3]),
                 weiter_button[4],  (211, 211, 211))
-    draw_button(screen, "Hauptmenü", (stop_button[0], stop_button[1], stop_button[2], stop_button[3]),
+    menu.draw_button(screen, "Hauptmenü", (stop_button[0], stop_button[1], stop_button[2], stop_button[3]),
                 stop_button[4], (211, 211, 211))
 
-    if check_button_collide(screen, "Weiter", (weiter_button[0], weiter_button[1], weiter_button[2]
-                                            , weiter_button[3]), weiter_button[4] + 5, (255, 215, 0)):
+    if menu.check_button_collide(screen, "Weiter", (weiter_button[0], weiter_button[1], weiter_button[2]
+                                            , weiter_button[3]), weiter_button[4] + 5, (255, 215, 0), events):
         return "play"
-    if check_button_collide(screen, "Hauptmenü", (stop_button[0], stop_button[1], stop_button[2]
-                                            , stop_button[3]), stop_button[4] + 5, (255, 215, 0)):
+    if menu.check_button_collide(screen, "Hauptmenü", (stop_button[0], stop_button[1], stop_button[2]
+                                            , stop_button[3]), stop_button[4] + 5, (255, 215, 0), events):
         play.reset_stats()
         return "menu"
     # Pause-Schrift
@@ -120,6 +124,7 @@ def check_menu_button_pressed(screen: pygame.Surface, events: list[pygame.event.
     Check if the user presses the menu-button
     :param screen: pygame.Surface -> where the icon should be drawn
     :param events: list of pygame events
+    :param pause: if right now the player is in the pause menu
     :return: bool -> if the button gets pressed
     """
     if not pause:
@@ -129,6 +134,7 @@ def check_menu_button_pressed(screen: pygame.Surface, events: list[pygame.event.
     for event in events:
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if rect.collidepoint(pygame.mouse.get_pos()):
+                menu.button_sound.play()
                 return True
     return False
 
@@ -150,11 +156,21 @@ def pause(screen: pygame.Surface, esc: bool, events: list[pygame.event.Event]) -
 
     # Draw the menu
     pause_screen: pygame.Surface = pygame.Surface((g.WIDTH, g.HEIGHT), pygame.SRCALPHA)
-    mode = draw(pause_screen)
+    mode = draw(pause_screen, events)
     if mode == "play":
         last_timestamp = 0
         return g.LEVEL
     elif mode == "menu":
+        song_number = random.randint(1, 3)
+        if song_number == 1: menu.menu_sound = menu.menu_sound1
+        elif song_number == 2: menu.menu_sound = menu.menu_sound2
+        elif song_number == 3: menu.menu_sound = menu.menu_sound3
+        menu.menu_sound.play(fade_ms=5000)
+        menu.change_phrase = True
+        if g.LEVEL == "level1":
+            assets1.music.fadeout(500)
+        if g.LEVEL == "level2":
+            assets2.music.fadeout(500)
         return "menu"
     screen.blit(pause_screen, (0, 0))
 

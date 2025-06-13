@@ -27,10 +27,11 @@ def init() -> None:
     coins_multi = pygame.transform.scale(coins_multi, icon_size)
 
 
-def draw(screen: pygame.Surface) -> None:
+def draw(screen: pygame.Surface, events: list[pygame.event.Event]) -> None:
     """
     Draw the shop on the screen
     :param screen: pygame.Surface -> where the shop shall be drawm
+    :param events: the pressed keys of the player
     """
     # Background:
     menu.move_background("shop")
@@ -107,7 +108,7 @@ def draw(screen: pygame.Surface) -> None:
     menu.draw_button(screen, text, (icon_1[0]//1.25, icon_1[1]//0.65, g.WIDTH//6, g.HEIGHT//15)
                      , g.HEIGHT//24, (211,211,211))
     if menu.check_button_collide(screen, text, (icon_1[0]//1.25, icon_1[1]//0.65, g.WIDTH//6, g.HEIGHT//15)
-            , g.HEIGHT//22, (255, 215, 0)) and g.SPEEDM < 1.45 and g.COINS >= price_speed[f"{g.SPEEDM + 0.1:.1f}"]:
+            , g.HEIGHT//22, (255, 215, 0), events) and g.SPEEDM < 1.45 and g.COINS >= price_speed[f"{g.SPEEDM + 0.1:.1f}"]:
         pygame.time.wait(50)
         g.SPEEDM += 0.1
         save_stats(-price_speed[f"{g.SPEEDM:.1f}"])
@@ -118,7 +119,7 @@ def draw(screen: pygame.Surface) -> None:
     menu.draw_button(screen, text, (icon_2[0]//1.1, icon_2[1]//0.65, g.WIDTH//6, g.HEIGHT//15)
                      , g.HEIGHT//24, (211,211,211))
     if menu.check_button_collide(screen, text, (icon_2[0]//1.1, icon_2[1]//0.65, g.WIDTH//6, g.HEIGHT//15)
-            , g.HEIGHT//22, (255, 215, 0)) and g.COINSM < 1.9 and g.COINS >= price_coinsm[f"{g.COINSM + 0.2:.1f}"]:
+            , g.HEIGHT//22, (255, 215, 0), events) and g.COINSM < 1.9 and g.COINS >= price_coinsm[f"{g.COINSM + 0.2:.1f}"]:
         pygame.time.wait(50)
         g.COINSM += 0.2
         save_stats(-price_coinsm[f"{g.COINSM:.1f}"])
@@ -135,21 +136,23 @@ def draw(screen: pygame.Surface) -> None:
     menu.draw_button(screen, text, (icon_3[0]//1.05, icon_3[1]//0.65, g.WIDTH //6, g.HEIGHT // 15)
                      , text_size1, (211, 211, 211))
     if menu.check_button_collide(screen, text, (icon_3[0]//1.05, icon_3[1]//0.65, g.WIDTH // 6, g.HEIGHT // 15)
-            , text_size2, (255, 215, 0)) and not g.IMMUNITY and g.COINS >= 1000:
+            , text_size2, (255, 215, 0), events) and not g.IMMUNITY and g.COINS >= 1000:
         g.IMMUNITY = True
         save_stats(-1000)
         pygame.time.wait(50)
 
 
-def shop(screen: pygame.Surface) -> str:
+def shop(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     """
     Draw the shop and check if the buttons get pressed
     :param screen: pygame.Surface -> where the shop shall be drawm
+    :param events: the pressed keys of the player
     :return: current game mode
     """
-    draw(screen)
+    draw(screen, events)
     # Check if the buttons get pressed
     if menu.check_button_collide(screen, "Zurück", (g.WIDTH-g.WIDTH/17, 3 ,g.WIDTH/18, g.HEIGHT/35), 20,
-                     (255, 215, 0)):
+                     (255, 215, 0), events):
+        menu.change_phrase = True
         return "menu"
     return "shop"

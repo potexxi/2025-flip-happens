@@ -79,13 +79,13 @@ def ask_for_username(screen: pygame.Surface, events: list[pygame.event.Event]) -
 
     pygame.draw.rect(screen, button_color, text_button, border_radius=10)
     draw_button(screen, button_text, text_button, text_size, button_color)
-    if check_button_collide(screen, button_text, text_button, text_size, (255, 215, 0)):
+    if check_button_collide(screen, button_text, text_button, text_size, (255, 215, 0), events):
         button_activated = True
 
     # continue button
     continue_button = (g.WIDTH// 2 - g.WIDTH//6 / 2,g.HEIGHT - g.HEIGHT//3, g.WIDTH//6, g.HEIGHT//10)
     draw_button(screen, "Weiter", continue_button, g.HEIGHT//30, (211, 211, 211))
-    if check_button_collide(screen, "Weiter", continue_button, g.HEIGHT//30 + 5, (255, 215, 0)):
+    if check_button_collide(screen, "Weiter", continue_button, g.HEIGHT//30 + 5, (255, 215, 0), events):
         if 2 < len(text) < 16:
             g.USERNAME = text
             read_coins()

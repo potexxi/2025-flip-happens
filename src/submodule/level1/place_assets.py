@@ -12,6 +12,8 @@ ui_pause: pygame.Surface = ...
 halfpipes: list[pygame.Surface] = []
 pipe: pygame.Surface = ...
 fast_ramp: pygame.Surface = ...
+music: pygame.mixer.Sound = ...
+coin: pygame.mixer.Sound = ...
 high_ramps: list[pygame.Surface] = []
 coins: list[pygame.Surface] = []
 letters: list[pygame.Surface] = []
@@ -68,7 +70,8 @@ def init_assets() -> None:
     """
     Init the pictures, which the game needs
     """
-    global coins, letters, power_up, you_won, you_lost, background, brick, halfpipes, fast_ramp, high_ramps, pipe
+    global coins, letters, power_up, you_won, you_lost, background, brick, halfpipes, fast_ramp, high_ramps, pipe, music
+    global coin
     # Coins:
     image = pygame.image.load("assets/level1/coin_sprite.png").convert_alpha()
     for i in range(5):
@@ -127,6 +130,12 @@ def init_assets() -> None:
     fast_ramp = pygame.image.load("assets/level1/wide_ramp.png").convert_alpha()
     fast_ramp = pygame.transform.scale(fast_ramp, (g.ASSETS_SIZE, g.ASSETS_SIZE))
 
+    # Music
+    music = pygame.mixer.Sound("assets/sounds/level1.mp3")
+    music.set_volume(0.4)
+    coin = pygame.mixer.Sound("assets/sounds/coin.mp3")
+    coin.set_volume(0.45)
+
 
 def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y_position: float) -> bool:
     """
@@ -141,6 +150,7 @@ def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y
         coin_rect = pygame.Rect((x_position, y_position, g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
         if player_rect.colliderect(coin_rect):
             if g.LEVEL == "level1":
+                coin.play()
                 play1.coins_collected += 1
             if g.LEVEL == "level2":
                 play2.coins_collected += 1

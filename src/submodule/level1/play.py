@@ -5,7 +5,7 @@ import submodule.globals as g
 import submodule.pause_menu.pause as pause
 import submodule.level1.place_assets as assets
 import submodule.skater.skater as player
-from submodule.menu.menu import draw_button, check_button_collide
+import submodule.menu.menu as menu
 from submodule.rain.rain import rain
 import submodule.level2.place_assets as assets2
 import submodule.level2.play as play2
@@ -32,7 +32,7 @@ def reset_stats() -> None:
         rain_bool = False
         begin = True
     if g.LEVEL == "level2":
-        assets2.time = 180
+        assets2.time = 120
         assets2.assets = copy.deepcopy(assets2.assets_original)
         assets2.assets.reverse()
         play2.coins_collected = 0
@@ -179,6 +179,7 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     """
     global end, rain_bool, begin
     if begin:
+        assets.music.play(fade_ms=500)
         if random.random() < 0.4:
             rain_bool = True
     if end is False:
@@ -213,10 +214,12 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     if end:
         button = [g.WIDTH // 2 - (g.WIDTH / 8)//2, g.HEIGHT / 1.5,
                        g.WIDTH / 8, g.HEIGHT / 12, g.HEIGHT // 35]
-        draw_button(screen, "Hauptmenü",
+        menu.draw_button(screen, "Hauptmenü",
                     (button[0], button[1], button[2], button[3]), button[4], (211, 211, 211))
-        if check_button_collide(screen, "Hauptmenü",
-                             (button[0], button[1], button[2], button[3]), button[4]+5, (255, 215, 0)):
+        if menu.check_button_collide(screen, "Hauptmenü",
+                             (button[0], button[1], button[2], button[3]), button[4]+5, (255, 215, 0), events):
+            menu.menu_sound.play(fade_ms=5000)
+            assets.music.fadeout(500)
             if win:
                 save_stats(int(f"{coins_collected * g.COINSM:.0f}"))
             reset_stats()
