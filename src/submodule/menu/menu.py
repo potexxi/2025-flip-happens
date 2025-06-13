@@ -7,6 +7,8 @@ button_sound: pygame.mixer.Sound = ...
 menu_sound: pygame.mixer.Sound = ...
 ask_for_level_: bool = False
 last_timestamp: int = None
+last_timestamp_click: int = 0
+first_click: bool = True
 
 
 def init() -> None:
@@ -73,21 +75,27 @@ def check_button_collide(screen: pygame.Surface, text: str, button: tuple[float,
     :param color: the color of the new button (different color)
     :return: True, if the button gets clicked. False, if the button only gets hovered
     """
+    global last_timestamp_click, first_click
     mouse_pos = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()[0]
 
     rect = pygame.Rect(button)
-    true_or_false = rect.collidepoint(mouse_pos)
-    if true_or_false:
+    if rect.collidepoint(mouse_pos):
         draw_button(screen, text, button, text_size, color)
-        if click:
+        if click and not first_click:
+            first_click = True
+        if not click and first_click:
             if text == "START":
                 button_sound.play()
                 pygame.time.wait(100)
             else:
                 button_sound.play()
                 pygame.time.wait(25)
+            if click and first_click:
+                first_click = False
             return True
+    if not click:
+        first_click = False
     return False
 
 
