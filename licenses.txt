@@ -125,5 +125,13 @@ last save: 03.06.2025
     - license: Pixabay Content License <https://pixabay.com/service/license-summary/>
 
 - coin.mp3:
-    - link: <https://pixabay.com/sound-effects/search/coin/>
+    - link: <https://pixabay.com/sound-effects/search/collect/>
     - license: Pixabay Content License <https://pixabay.com/service/license-summary/>
+
+- powerup.wav by LiveV1one_DieV1one 1993:
+    - link: <https://samplefocus.com/samples/essential-effects-fx-power-up>
+    - license: SampleFocus Standart License <https://samplefocus.com/license>
+
+- letter.wav by PublicDomain:
+    - link: <https://samplefocus.com/samples/power-up>
+    - license: CC0 1.0 Universal <https://creativecommons.org/publicdomain/zero/1.0/>

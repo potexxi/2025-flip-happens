@@ -14,6 +14,8 @@ pipe: pygame.Surface = ...
 fast_ramp: pygame.Surface = ...
 music: pygame.mixer.Sound = ...
 coin: pygame.mixer.Sound = ...
+powerup: pygame.mixer.Sound = ...
+letter: pygame.mixer.Sound = ...
 high_ramps: list[pygame.Surface] = []
 coins: list[pygame.Surface] = []
 letters: list[pygame.Surface] = []
@@ -71,7 +73,7 @@ def init_assets() -> None:
     Init the pictures, which the game needs
     """
     global coins, letters, power_up, you_won, you_lost, background, brick, halfpipes, fast_ramp, high_ramps, pipe, music
-    global coin
+    global coin, powerup, letter
     # Coins:
     image = pygame.image.load("assets/level1/coin_sprite.png").convert_alpha()
     for i in range(5):
@@ -132,9 +134,11 @@ def init_assets() -> None:
 
     # Music
     music = pygame.mixer.Sound("assets/sounds/level1.mp3")
-    music.set_volume(0.4)
+    music.set_volume(0.3)
     coin = pygame.mixer.Sound("assets/sounds/coin.mp3")
-    coin.set_volume(0.45)
+    powerup = pygame.mixer.Sound("assets/sounds/powerup.wav")
+    powerup.set_volume(0.6)
+    letter = pygame.mixer.Sound("assets/sounds/letter.wav")
 
 
 def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y_position: float) -> bool:
@@ -149,8 +153,8 @@ def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y
     if type_ == 1:
         coin_rect = pygame.Rect((x_position, y_position, g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
         if player_rect.colliderect(coin_rect):
+            coin.play()
             if g.LEVEL == "level1":
-                coin.play()
                 play1.coins_collected += 1
             if g.LEVEL == "level2":
                 play2.coins_collected += 1
@@ -158,6 +162,7 @@ def check_for_collect(type_: int, player_rect: pygame.Rect, x_position: float, y
     if type_ == 2:
         power_rect = pygame.Rect((x_position, y_position, g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
         if player_rect.colliderect(power_rect):
+            powerup.play()
             player.power_up = True
             player.power_up_start_time = pygame.time.get_ticks()
             return True
@@ -255,6 +260,7 @@ def draw_letters(screen: pygame.Surface, player_rect: pygame.Rect, _letters_posi
 
         letter_rect = pygame.Rect((letter_position[0], letter_position[1], g.POWER_UPS_SIZE, g.POWER_UPS_SIZE))
         if player_rect.colliderect(letter_rect) and idx == next_letter_idx:
+            letter.play()
             if g.LEVEL == "level1":
                 play1.letters_collected += 1
             else:
