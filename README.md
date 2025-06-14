@@ -23,3 +23,9 @@ But watch out: you can only collect a letter if it's the correct next one. If yo
 
 - [@potexxi](https://www.github.com/potexxi)
 - [@PTSxSafed](https://github.com/PTSxSafed)
+
+# Screenshots
+
+![Screenshot 2025-06-14 230237](https://github.com/user-attachments/assets/1af2bd1a-4a89-447a-899a-d59b95c0042a)
+![Screenshot 2025-06-14 230252](https://github.com/user-attachments/assets/fff598fa-14c5-4b76-b6bb-79d652443ac2)
+![Screenshot 2025-06-14 230302](https://github.com/user-attachments/assets/4d2b457e-285a-49f1-8dbb-67c951470ac8)
