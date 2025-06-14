@@ -69,7 +69,7 @@ def init_assets():
 
     # Music
     music = pygame.mixer.Sound("assets/sounds/level2.mp3")
-    music.set_volume(0.1)
+    music.set_volume(0.3)
 
 
 def draw_assets(screen: pygame.Surface, player_rect: pygame.Rect) -> None:

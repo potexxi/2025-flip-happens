@@ -32,9 +32,9 @@ def init() -> None:
     button_sound = pygame.mixer.Sound("assets/sounds/button.mp3")
     button_sound.set_volume(0.4)
     menu_sound1 = pygame.mixer.Sound(f"assets/sounds/menu1.mp3")
-    menu_sound1.set_volume(0.2)
+    menu_sound1.set_volume(0.1)
     menu_sound2 = pygame.mixer.Sound("assets/sounds/menu2.mp3")
-    menu_sound2.set_volume(0.2)
+    menu_sound2.set_volume(0.1)
     menu_sound3 = pygame.mixer.Sound("assets/sounds/menu3.mp3")
     menu_sound3.set_volume(0.1)
 
@@ -235,7 +235,7 @@ def menu(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
     timestamp = pygame.time.get_ticks()
     if last_timestamp is None or timestamp - last_timestamp > menu_sound.get_length() * 1000 + 5000:
         # Get a random song of the menu songs
-        sound_number = random.randint(1,2)
+        sound_number = random.randint(1,3)
         if sound_number == 1: menu_sound = menu_sound1
         elif sound_number == 2: menu_sound = menu_sound2
         elif sound_number == 3: menu_sound = menu_sound3

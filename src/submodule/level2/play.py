@@ -1,4 +1,3 @@
-import copy
 import pygame
 import random
 import submodule.level1.play as level1
@@ -62,7 +61,15 @@ def play(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
                     (button[0], button[1], button[2], button[3]), button[4], (211, 211, 211))
         if menu.check_button_collide(screen, "Hauptmenü",
                                 (button[0], button[1], button[2], button[3]), button[4] + 5, (255, 215, 0), events):
+            song_number = random.randint(1, 3)
+            if song_number == 1:
+                menu.menu_sound = menu.menu_sound1
+            elif song_number == 2:
+                menu.menu_sound = menu.menu_sound2
+            elif song_number == 3:
+                menu.menu_sound = menu.menu_sound3
             menu.menu_sound.play(fade_ms=5000)
+            menu.change_phrase = True
             assets2.music.fadeout(500)
             if win:
                 level1.save_stats(int(f"{coins_collected * g.COINSM:.0f}"))

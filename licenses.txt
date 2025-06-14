@@ -112,11 +112,7 @@ last save: 03.06.2025
     - link: <https://pixabay.com/sound-effects/button-202966/>
     - license: Pixabay Content License <https://pixabay.com/service/license-summary/>
 
-- menu1.mp3 and level1.mp3 by Nicholas Panek:
-    - link: <https://pixabay.com/music/search/genre/video%20games/>
-    - license: Pixabay Content License <https://pixabay.com/service/license-summary/>
-
-- level2.mp3 by Maksym Dudchyk:
+- menu1.mp3, level2.mp3 and level1.mp3 by Nicholas Panek:
     - link: <https://pixabay.com/music/search/genre/video%20games/>
     - license: Pixabay Content License <https://pixabay.com/service/license-summary/>
 

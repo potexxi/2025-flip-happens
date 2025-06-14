@@ -1,7 +1,7 @@
 var searchData=
 [
   ['main_0',['main',['../namespacemain.html#aa7a58ac748c5293faa4d77a82b94d161',1,'main']]],
-  ['menu_1',['menu',['../namespaceexplain__menu_1_1explain__menu.html#afe337695562d575c7591bb643edf0e8b',1,'explain_menu.explain_menu.menu()'],['../namespacemenu_1_1menu.html#a0f9df3306adfe28bb60b8d8f4592ab86',1,'menu.menu.menu()']]],
-  ['move_2',['move',['../namespaceskater_1_1skater.html#aa09eefc8aadee8819000a580827db8f8',1,'skater::skater']]],
-  ['move_5fbackground_3',['move_background',['../namespacemenu_1_1menu.html#adfd3b5d789c3f7bab9ebb4d959b0d696',1,'menu::menu']]]
+  ['menu_1',['menu',['../namespacesubmodule_1_1explain__menu_1_1explain__menu.html#a2b0c552a13cf6b7a046a38710c188d9e',1,'submodule.explain_menu.explain_menu.menu()'],['../namespacesubmodule_1_1menu_1_1menu.html#af9203e7af642f9c06b8b84cb5df1b051',1,'submodule.menu.menu.menu()']]],
+  ['move_2',['move',['../namespacesubmodule_1_1skater_1_1skater.html#add6cc07eeedc9512dff9d05516ffd2a4',1,'submodule::skater::skater']]],
+  ['move_5fbackground_3',['move_background',['../namespacesubmodule_1_1menu_1_1menu.html#a8a4f5cbb0e15f6ff02dcfb66a71f421b',1,'submodule::menu::menu']]]
 ];

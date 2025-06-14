@@ -1,9 +1,9 @@
 var level2_2play_8py =
 [
-    [ "level2.play.play", "namespacelevel2_1_1play.html#a641d6863228e6b3310f8a6823e59ef0d", null ],
-    [ "level2.play.begin", "namespacelevel2_1_1play.html#ac95ae37f1437ab1e52af7739b93111f6", null ],
-    [ "level2.play.coins_collected", "namespacelevel2_1_1play.html#aea1abf23b4b3c5e93caea7e6b0da7c07", null ],
-    [ "level2.play.end", "namespacelevel2_1_1play.html#a567c49dc0a3ce3a8f9d70f5aebc93f47", null ],
-    [ "level2.play.letters_collected", "namespacelevel2_1_1play.html#a044a911d1b6ea9749bc4d54ade4c2de1", null ],
-    [ "level2.play.rain_bool", "namespacelevel2_1_1play.html#aabc312c238ff4788cb65829164a16342", null ]
+    [ "submodule.level2.play.play", "namespacesubmodule_1_1level2_1_1play.html#a0d6729cf397ffbefd8705ba1c3d9c875", null ],
+    [ "submodule.level2.play.begin", "namespacesubmodule_1_1level2_1_1play.html#a4f6739a14eee6a43be797e754cb9dc7f", null ],
+    [ "submodule.level2.play.coins_collected", "namespacesubmodule_1_1level2_1_1play.html#a8b66823d0c4df9b16637e81e4920f7e4", null ],
+    [ "submodule.level2.play.end", "namespacesubmodule_1_1level2_1_1play.html#a78bf33adf5d811ecc04a49983a4947fa", null ],
+    [ "submodule.level2.play.letters_collected", "namespacesubmodule_1_1level2_1_1play.html#a8a4542d27505483824bb3c73bd25334c", null ],
+    [ "submodule.level2.play.rain_bool", "namespacesubmodule_1_1level2_1_1play.html#a1f5fb768fc84bac6a18cfca0254aabe6", null ]
 ];

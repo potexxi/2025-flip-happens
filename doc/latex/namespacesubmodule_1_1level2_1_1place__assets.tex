@@ -1,0 +1,208 @@
+\doxysection{submodule.\+level2.\+place\+\_\+assets Namespace Reference}
+\hypertarget{namespacesubmodule_1_1level2_1_1place__assets}{}\label{namespacesubmodule_1_1level2_1_1place__assets}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a96def87ed4dd130ffde5489769467d70}{init\+\_\+assets}} ()
+\item 
+None \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a2a19c592f76c61cc33861b644359b529}{draw\+\_\+assets}} (pygame.\+Surface screen, pygame.\+Rect player\+\_\+rect)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+pygame \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a43c249e608d332ba9b04946980c1156d}{background}} = ...
+\item 
+pygame \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a24038677ad44fddb618e21614a7a9557}{brick}} = ...
+\item 
+pygame \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a405bdc491eddb81ba806ba5a6f9ce534}{music}} = ...
+\item 
+tuple \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a2e025ee99a378b73b5a384349ecde8ed}{first\+\_\+block\+\_\+floor}} = (-\/30, g.\+HEIGHT -\/ (g.\+ASSETS\+\_\+\+SIZE -\/ g.\+ASSETS\+\_\+\+SIZE // 2) -\/ g.\+ASSETS\+\_\+\+SIZE)
+\item 
+tuple \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_afca1874768d20166fc73a0d8dbe68d5b}{first\+\_\+asset}}
+\item 
+tuple \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a61a74f5c999f0b7a8738837ac495f6f1}{first\+\_\+power\+\_\+up}} = (\mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_afca1874768d20166fc73a0d8dbe68d5b}{first\+\_\+asset}}\mbox{[}0\mbox{]} -\/ g.\+POWER\+\_\+\+UPS\+\_\+\+SIZE//4, \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_afca1874768d20166fc73a0d8dbe68d5b}{first\+\_\+asset}}\mbox{[}1\mbox{]} -\/ g.\+POWER\+\_\+\+UPS\+\_\+\+SIZE//2)
+\item 
+int \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_aac6063d549a4cf2170ee5eccb2ea3229}{coins\+\_\+counter}} = 0
+\item 
+int \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a67d67e9d19b1ecb9afbf198f925591ae}{power\+\_\+counter}} = 0
+\item 
+int \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a98403b1672ca2e505b21c6d53340597d}{last\+\_\+timestamp\+\_\+coins}} = None
+\item 
+int \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_aabe02dde1e74b3cf0e5ee39580cca14f}{last\+\_\+timestamp\+\_\+power}} = None
+\item 
+int \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a9bbd2f2c9bb45d7e84e95135c6ed7015}{last\+\_\+timestamp\+\_\+clock}} = 0
+\item 
+int \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_af4ba7a036fc67e53721fc5807614a7ea}{time}} = 120
+\item 
+list \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a90d520ac46e8d039d3001be0b23007e1}{assets\+\_\+original}}
+\item 
+\mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a386a9746445013634e1f19567bf3e280}{assets}} = copy.\+deepcopy(\mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a90d520ac46e8d039d3001be0b23007e1}{assets\+\_\+original}})
+\item 
+bool \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a12b24cc30b33a6a2ef78786b25eeda3b}{append\+\_\+elements}} = True
+\item 
+list \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a7885d8000f929c33b6311678eb1ab723}{letters\+\_\+position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a2a19c592f76c61cc33861b644359b529}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!draw\_assets@{draw\_assets}}
+\index{draw\_assets@{draw\_assets}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{draw\_assets()}{draw\_assets()}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a2a19c592f76c61cc33861b644359b529} 
+ None submodule.\+level2.\+place\+\_\+assets.\+draw\+\_\+assets (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{, }\item[{pygame.\+Rect}]{player\+\_\+rect}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Go through the defined matrix, which contains all the numbers of the assets
+:param screen: pygame.Surface -> where the assets shall be drawn
+:param player_rect: pygame.Rect -> the rect of the player
+\end{DoxyVerb}
+ \Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a96def87ed4dd130ffde5489769467d70}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!init\_assets@{init\_assets}}
+\index{init\_assets@{init\_assets}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{init\_assets()}{init\_assets()}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a96def87ed4dd130ffde5489769467d70} 
+submodule.\+level2.\+place\+\_\+assets.\+init\+\_\+assets (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Init the pictures of the assets and scale them.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a12b24cc30b33a6a2ef78786b25eeda3b}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!append\_elements@{append\_elements}}
+\index{append\_elements@{append\_elements}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{append\_elements}{append\_elements}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a12b24cc30b33a6a2ef78786b25eeda3b} 
+bool submodule.\+level2.\+place\+\_\+assets.\+append\+\_\+elements = True}
+
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a386a9746445013634e1f19567bf3e280}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!assets@{assets}}
+\index{assets@{assets}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{assets}{assets}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a386a9746445013634e1f19567bf3e280} 
+submodule.\+level2.\+place\+\_\+assets.\+assets = copy.\+deepcopy(\mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_a90d520ac46e8d039d3001be0b23007e1}{assets\+\_\+original}})}
+
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a90d520ac46e8d039d3001be0b23007e1}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!assets\_original@{assets\_original}}
+\index{assets\_original@{assets\_original}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{assets\_original}{assets\_original}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a90d520ac46e8d039d3001be0b23007e1} 
+list submodule.\+level2.\+place\+\_\+assets.\+assets\+\_\+original}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ [}
+\DoxyCodeLine{00002\ \ \ \ \ [0,0,0,0,0,1,1,1,1,1,1,1,4,4,0,4,4,4,1,1,1,1,1,1,1,1,1,1,1,1],}
+\DoxyCodeLine{00003\ \ \ \ \ [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],}
+\DoxyCodeLine{00004\ \ \ \ \ [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1],}
+\DoxyCodeLine{00005\ \ \ \ \ [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,4,4,0,0,0,0,0,1,1,1],}
+\DoxyCodeLine{00006\ \ \ \ \ [1,0,0,4,0,0,0,2,2,0,0,2,2,0,0,2,2,0,1,1,0,0,0,0,0,0,0,0,0,1],}
+\DoxyCodeLine{00007\ \ \ \ \ [1,2,2,0,5,0,0,4,4,0,0,4,4,0,0,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0],}
+\DoxyCodeLine{00008\ \ \ \ \ [1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],}
+\DoxyCodeLine{00009\ \ \ \ \ [1,6,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],}
+\DoxyCodeLine{00010\ \ \ \ \ [1,1,4,4,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],}
+\DoxyCodeLine{00011\ \ \ \ \ [0,0,0,0,0,0,0,6,0,3,0,0,0,0,2,2,7,2,2,0,0,0,0,0,0,0,0,0,0,0],}
+\DoxyCodeLine{00012\ \ \ \ \ [1,0,0,0,0,0,0,4,4,4,0,0,0,5,1,1,1,1,1,0,0,2,2,3,2,0,0,0,0,0],}
+\DoxyCodeLine{00013\ \ \ \ \ [1,1,2,2,2,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,4,4,4,4,0,0,0,2,0],}
+\DoxyCodeLine{00014\ \ \ \ \ [1,1,1,1,1,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1],}
+\DoxyCodeLine{00015\ \ \ \ \ [0,0,0,0,0,4,4,0,2,2,0,0,0,0,0,0,1,1,1,0,0,0,0,0,2,2,1,1,1,1],}
+\DoxyCodeLine{00016\ \ \ \ \ [0,0,0,0,0,0,0,0,1,1,1,6,2,2,2,5,0,0,0,0,0,0,0,0,4,4,1,1,1,1],}
+\DoxyCodeLine{00017\ \ \ \ \ [0,0,0,2,2,2,0,5,1,1,1,1,4,4,4,1,0,2,2,2,0,5,1,1,0,0,1,0,0,0],}
+\DoxyCodeLine{00018\ \ \ \ \ [1,1,4,4,4,1,1,1,1,1,1,1,0,0,0,1,1,4,4,4,1,1,1,1,0,1,1,0,0,0],}
+\DoxyCodeLine{00019\ ]}
+
+\end{DoxyCode}
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a43c249e608d332ba9b04946980c1156d}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!background@{background}}
+\index{background@{background}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{background}{background}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a43c249e608d332ba9b04946980c1156d} 
+pygame submodule.\+level2.\+place\+\_\+assets.\+background = ...}
+
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a24038677ad44fddb618e21614a7a9557}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!brick@{brick}}
+\index{brick@{brick}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{brick}{brick}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a24038677ad44fddb618e21614a7a9557} 
+pygame submodule.\+level2.\+place\+\_\+assets.\+brick = ...}
+
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_aac6063d549a4cf2170ee5eccb2ea3229}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!coins\_counter@{coins\_counter}}
+\index{coins\_counter@{coins\_counter}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{coins\_counter}{coins\_counter}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_aac6063d549a4cf2170ee5eccb2ea3229} 
+int submodule.\+level2.\+place\+\_\+assets.\+coins\+\_\+counter = 0}
+
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_afca1874768d20166fc73a0d8dbe68d5b}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!first\_asset@{first\_asset}}
+\index{first\_asset@{first\_asset}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{first\_asset}{first\_asset}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_afca1874768d20166fc73a0d8dbe68d5b} 
+tuple submodule.\+level2.\+place\+\_\+assets.\+first\+\_\+asset}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ (first\_block\_floor[0]\ +\ (g.ASSETS\_SIZE\ -\/\ g.POWER\_UPS\_SIZE)\ /\ 2,}
+\DoxyCodeLine{00002\ \ \ \ \ first\_block\_floor[1]\ +\ (g.ASSETS\_SIZE//2.5))}
+
+\end{DoxyCode}
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a2e025ee99a378b73b5a384349ecde8ed}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!first\_block\_floor@{first\_block\_floor}}
+\index{first\_block\_floor@{first\_block\_floor}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{first\_block\_floor}{first\_block\_floor}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a2e025ee99a378b73b5a384349ecde8ed} 
+tuple submodule.\+level2.\+place\+\_\+assets.\+first\+\_\+block\+\_\+floor = (-\/30, g.\+HEIGHT -\/ (g.\+ASSETS\+\_\+\+SIZE -\/ g.\+ASSETS\+\_\+\+SIZE // 2) -\/ g.\+ASSETS\+\_\+\+SIZE)}
+
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a61a74f5c999f0b7a8738837ac495f6f1}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!first\_power\_up@{first\_power\_up}}
+\index{first\_power\_up@{first\_power\_up}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{first\_power\_up}{first\_power\_up}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a61a74f5c999f0b7a8738837ac495f6f1} 
+tuple submodule.\+level2.\+place\+\_\+assets.\+first\+\_\+power\+\_\+up = (\mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_afca1874768d20166fc73a0d8dbe68d5b}{first\+\_\+asset}}\mbox{[}0\mbox{]} -\/ g.\+POWER\+\_\+\+UPS\+\_\+\+SIZE//4, \mbox{\hyperlink{namespacesubmodule_1_1level2_1_1place__assets_afca1874768d20166fc73a0d8dbe68d5b}{first\+\_\+asset}}\mbox{[}1\mbox{]} -\/ g.\+POWER\+\_\+\+UPS\+\_\+\+SIZE//2)}
+
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a9bbd2f2c9bb45d7e84e95135c6ed7015}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!last\_timestamp\_clock@{last\_timestamp\_clock}}
+\index{last\_timestamp\_clock@{last\_timestamp\_clock}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{last\_timestamp\_clock}{last\_timestamp\_clock}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a9bbd2f2c9bb45d7e84e95135c6ed7015} 
+int submodule.\+level2.\+place\+\_\+assets.\+last\+\_\+timestamp\+\_\+clock = 0}
+
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a98403b1672ca2e505b21c6d53340597d}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!last\_timestamp\_coins@{last\_timestamp\_coins}}
+\index{last\_timestamp\_coins@{last\_timestamp\_coins}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{last\_timestamp\_coins}{last\_timestamp\_coins}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a98403b1672ca2e505b21c6d53340597d} 
+int submodule.\+level2.\+place\+\_\+assets.\+last\+\_\+timestamp\+\_\+coins = None}
+
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_aabe02dde1e74b3cf0e5ee39580cca14f}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!last\_timestamp\_power@{last\_timestamp\_power}}
+\index{last\_timestamp\_power@{last\_timestamp\_power}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{last\_timestamp\_power}{last\_timestamp\_power}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_aabe02dde1e74b3cf0e5ee39580cca14f} 
+int submodule.\+level2.\+place\+\_\+assets.\+last\+\_\+timestamp\+\_\+power = None}
+
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a7885d8000f929c33b6311678eb1ab723}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!letters\_position@{letters\_position}}
+\index{letters\_position@{letters\_position}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{letters\_position}{letters\_position}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a7885d8000f929c33b6311678eb1ab723} 
+list submodule.\+level2.\+place\+\_\+assets.\+letters\+\_\+position}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ [}
+\DoxyCodeLine{00002\ \ \ \ \ (first\_asset[0]\ +\ 2\ *\ g.ASSETS\_SIZE,first\_asset[1]\ \ -\/\ 1\ *\ g.ASSETS\_SIZE),}
+\DoxyCodeLine{00003\ \ \ \ \ (first\_asset[0]\ +\ 1\ *\ g.ASSETS\_SIZE,\ first\_asset[1]\ -\/\ 5\ *\ g.ASSETS\_SIZE),}
+\DoxyCodeLine{00004\ \ \ \ \ (first\_asset[0]\ +\ 17\ *\ g.ASSETS\_SIZE,\ first\_asset[1]\ \ -\/\ g.ASSETS\_SIZE),}
+\DoxyCodeLine{00005\ \ \ \ \ (first\_asset[0]\ +\ 12\ *\ g.ASSETS\_SIZE,\ first\_asset[1]\ -\/\ 5\ *\ g.ASSETS\_SIZE),}
+\DoxyCodeLine{00006\ \ \ \ \ (first\_asset[0]\ +\ 27\ *\ g.ASSETS\_SIZE,first\_asset[1]\ -\/\ 4\ *\ g.ASSETS\_SIZE),}
+\DoxyCodeLine{00007\ \ \ \ \ (first\_asset[0]\ +\ 3\ *\ g.ASSETS\_SIZE,\ first\_asset[1]\ -\/\ 10\ *\ g.ASSETS\_SIZE),}
+\DoxyCodeLine{00008\ \ \ \ \ (first\_asset[0]\ +\ 20\ *\ g.ASSETS\_SIZE,\ first\_asset[1]\ -\/\ 13\ *\ g.ASSETS\_SIZE),}
+\DoxyCodeLine{00009\ \ \ \ \ (first\_asset[0]\ +\ 1\ *\ g.ASSETS\_SIZE,\ first\_asset[1]\ -\/\ 13\ *\ g.ASSETS\_SIZE),}
+\DoxyCodeLine{00010\ \ \ \ \ (first\_asset[0]\ +\ 10\ *\ g.ASSETS\_SIZE,\ first\_asset[1]\ -\/\ 2\ *\ g.ASSETS\_SIZE),}
+\DoxyCodeLine{00011\ ]}
+
+\end{DoxyCode}
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a405bdc491eddb81ba806ba5a6f9ce534}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!music@{music}}
+\index{music@{music}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{music}{music}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a405bdc491eddb81ba806ba5a6f9ce534} 
+pygame submodule.\+level2.\+place\+\_\+assets.\+music = ...}
+
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_a67d67e9d19b1ecb9afbf198f925591ae}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!power\_counter@{power\_counter}}
+\index{power\_counter@{power\_counter}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{power\_counter}{power\_counter}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_a67d67e9d19b1ecb9afbf198f925591ae} 
+int submodule.\+level2.\+place\+\_\+assets.\+power\+\_\+counter = 0}
+
+\Hypertarget{namespacesubmodule_1_1level2_1_1place__assets_af4ba7a036fc67e53721fc5807614a7ea}\index{submodule.level2.place\_assets@{submodule.level2.place\_assets}!time@{time}}
+\index{time@{time}!submodule.level2.place\_assets@{submodule.level2.place\_assets}}
+\doxysubsubsection{\texorpdfstring{time}{time}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level2_1_1place__assets_af4ba7a036fc67e53721fc5807614a7ea} 
+int submodule.\+level2.\+place\+\_\+assets.\+time = 120}
+

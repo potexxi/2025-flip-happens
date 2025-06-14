@@ -1,0 +1,36 @@
+var namespacesubmodule =
+[
+    [ "explain_menu", "namespacesubmodule_1_1explain__menu.html", "namespacesubmodule_1_1explain__menu" ],
+    [ "globals", "namespacesubmodule_1_1globals.html", [
+      [ "ASSETS_SIZE", "namespacesubmodule_1_1globals.html#aa315f1d6f7ca4cd70f9f9b1c8c611759", null ],
+      [ "COINS", "namespacesubmodule_1_1globals.html#a5ade8e752589e6a315db0151e85905e3", null ],
+      [ "COINSM", "namespacesubmodule_1_1globals.html#a4ec1726f0f0c401512eace19fdf28e86", null ],
+      [ "FPS", "namespacesubmodule_1_1globals.html#a3e589e1f920111cfba841305739bc80e", null ],
+      [ "GRAVITATION", "namespacesubmodule_1_1globals.html#a6fc4731926ba7fbd768abf0a296f16e7", null ],
+      [ "HEIGHT", "namespacesubmodule_1_1globals.html#a9df6d92ad044dd363c27804b0805637b", null ],
+      [ "IMMUNITY", "namespacesubmodule_1_1globals.html#a75a5d4690dd29e6202be27ada550eb9f", null ],
+      [ "JUMP", "namespacesubmodule_1_1globals.html#a41ddb8e13e4d1f8fad2262416a9a5b89", null ],
+      [ "KEY_SIZE", "namespacesubmodule_1_1globals.html#ac5b3b4402332a694c179161be397d56c", null ],
+      [ "LEVEL", "namespacesubmodule_1_1globals.html#a98c2107ead4d0652f67434d6262ac5dd", null ],
+      [ "MAX_FALL_SPEED", "namespacesubmodule_1_1globals.html#ae085e952e7a24650f880f86c1b8e662e", null ],
+      [ "PLAYER_SIZE", "namespacesubmodule_1_1globals.html#a50f11915d742ff4b91010197e9ff87a8", null ],
+      [ "POSITION_WORLD", "namespacesubmodule_1_1globals.html#a23138d47b1fe9febef75b069b3306ae9", null ],
+      [ "POWER_UPS_SIZE", "namespacesubmodule_1_1globals.html#a1cc1c7fb9f11891c25071b1e6ef8382d", null ],
+      [ "RAMP_JUMP", "namespacesubmodule_1_1globals.html#a41a51d88b0a2d58529a0f19104347ce8", null ],
+      [ "RAMP_JUMP2", "namespacesubmodule_1_1globals.html#abd7042cb154072900354665ba158919d", null ],
+      [ "RAMP_SPEED", "namespacesubmodule_1_1globals.html#ac52ec4ce3f4cb858b237b8b4d7b4f791", null ],
+      [ "save", "namespacesubmodule_1_1globals.html#a30742592efc993d04aefd56aa2f36145", null ],
+      [ "SPEED", "namespacesubmodule_1_1globals.html#a2a72ff9c5fdaf65c801fa8fb80d699eb", null ],
+      [ "SPEEDM", "namespacesubmodule_1_1globals.html#a810cb19899064fb12929eccf01d4c935", null ],
+      [ "USERNAME", "namespacesubmodule_1_1globals.html#a0085b74fb0f5ccbf3f4f90e8e0a87216", null ],
+      [ "WIDTH", "namespacesubmodule_1_1globals.html#a06528b08fc7d7b60e11e7fab26bb311d", null ]
+    ] ],
+    [ "level1", "namespacesubmodule_1_1level1.html", "namespacesubmodule_1_1level1" ],
+    [ "level2", "namespacesubmodule_1_1level2.html", "namespacesubmodule_1_1level2" ],
+    [ "menu", "namespacesubmodule_1_1menu.html", "namespacesubmodule_1_1menu" ],
+    [ "pause_menu", "namespacesubmodule_1_1pause__menu.html", "namespacesubmodule_1_1pause__menu" ],
+    [ "rain", "namespacesubmodule_1_1rain.html", "namespacesubmodule_1_1rain" ],
+    [ "shop", "namespacesubmodule_1_1shop.html", "namespacesubmodule_1_1shop" ],
+    [ "skater", "namespacesubmodule_1_1skater.html", "namespacesubmodule_1_1skater" ],
+    [ "start_animation", "namespacesubmodule_1_1start__animation.html", "namespacesubmodule_1_1start__animation" ]
+];

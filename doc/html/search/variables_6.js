@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gravitation_0',['GRAVITATION',['../namespaceglobals.html#a21737c085cd758f8ca6dfbfb8396a297',1,'globals']]]
+  ['gravitation_0',['GRAVITATION',['../namespacesubmodule_1_1globals.html#a6fc4731926ba7fbd768abf0a296f16e7',1,'submodule::globals']]]
 ];

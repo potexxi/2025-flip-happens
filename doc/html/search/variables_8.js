@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['icon_5fsize_0',['icon_size',['../namespaceshop_1_1shop.html#aead2d48c557f2db4321573fb98bc5578',1,'shop::shop']]],
-  ['image_5fcounter_1',['image_counter',['../namespaceskater_1_1skater.html#a92a2f8f491056f1d52ded99b7ca554dd',1,'skater::skater']]],
-  ['images_5fdrive_5fleft_2',['images_drive_left',['../namespaceskater_1_1skater.html#a91fbd7b58b70cf44fbc4ed077fa7a5f6',1,'skater::skater']]],
-  ['images_5fdrive_5fright_3',['images_drive_right',['../namespaceskater_1_1skater.html#af8c6d964529228f31c9317fd423df126',1,'skater::skater']]],
-  ['images_5fleft_4',['images_left',['../namespaceskater_1_1skater.html#a7e2907c148af20451c5edf9dc55513d2',1,'skater::skater']]],
-  ['images_5fright_5',['images_right',['../namespaceskater_1_1skater.html#a6dc011840412045b9130ae75306782bb',1,'skater::skater']]],
-  ['immunity_6',['IMMUNITY',['../namespaceglobals.html#a878b52257cd8df8c66c39ef6ec9a48f1',1,'globals']]]
+  ['icon_5fsize_0',['icon_size',['../namespacesubmodule_1_1shop_1_1shop.html#ac6f2c622fb4ba86fdca8d6abece3d6be',1,'submodule::shop::shop']]],
+  ['image_5fcounter_1',['image_counter',['../namespacesubmodule_1_1skater_1_1skater.html#aab2cbbf07b7434ba499d61d77167c6e5',1,'submodule::skater::skater']]],
+  ['images_5fdrive_5fleft_2',['images_drive_left',['../namespacesubmodule_1_1skater_1_1skater.html#affadae73d7400a94fac6c98969271ac9',1,'submodule::skater::skater']]],
+  ['images_5fdrive_5fright_3',['images_drive_right',['../namespacesubmodule_1_1skater_1_1skater.html#a5f66f4cb2abb613adb3eaefeb64ef1aa',1,'submodule::skater::skater']]],
+  ['images_5fleft_4',['images_left',['../namespacesubmodule_1_1skater_1_1skater.html#a14609e58ece82d6ab5b06a53ad5ca101',1,'submodule::skater::skater']]],
+  ['images_5fright_5',['images_right',['../namespacesubmodule_1_1skater_1_1skater.html#aa5cc07388715a522eb447bdfb38d23ee',1,'submodule::skater::skater']]],
+  ['immunity_6',['IMMUNITY',['../namespacesubmodule_1_1globals.html#a75a5d4690dd29e6202be27ada550eb9f',1,'submodule::globals']]]
 ];

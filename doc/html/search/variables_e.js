@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['original_5flogo_0',['original_logo',['../namespacestart__animation_1_1start__animation.html#a8cf176abfff85d27ee7195c49a12e412',1,'start_animation::start_animation']]]
+  ['original_5flogo_0',['original_logo',['../namespacesubmodule_1_1start__animation_1_1start__animation.html#a16096836a20cc8008ecf218689c1bd16',1,'submodule::start_animation::start_animation']]]
 ];

@@ -48,11 +48,12 @@ def draw(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
         "5. Bestenliste:", "   Nur  die  mit  den  meisten  Coins  thronen  an  der  Spitze  der  Rangliste.",
         "6. Shop:", "   Tausch  Coins  gegen  Skill  –  doch  sei  bereit,  in  der  Rangliste  abzusteigen.",
         "7. Taktik  zählt:", "   Wähle  deinen  Weg:  Ewiger  Ruhm  oder  krasse  Extras  –  du  entscheidest!",
-        "8. Steuerung:", "   Drücke  ESC,  um  in  das  Pausemenü  zu  finden,  in  dem  du  auch  die  Tastenbelegung  findest."
+        "8. Steuerung:", "   Drücke  ESC,  um  in  das  Pausemenü  zu  finden,  in  dem  du  auch  die  Tastenbelegung  findest.",
+        "WICHTIG:  Schalte  deinen  Ton  an,  um  den  Sound  zu  hören!"
     ]
     font = pygame.font.Font("assets/fonts/normal.otf", g.HEIGHT // 45)
     counter = 0
-    distance = g.HEIGHT // 20
+    distance = g.HEIGHT // 23.5
     for idx, entry in enumerate(explain_text):
         if idx % 2 == 0:
             surface = font.render(entry, True, "black")
@@ -60,7 +61,7 @@ def draw(screen: pygame.Surface, events: list[pygame.event.Event]) -> str:
         else:
             surface = font.render(entry, True, "black")
         surface_width, surface_height = surface.get_size()
-        screen.blit(surface, (surface_x+g.WIDTH//100, surface_y +  idx * surface_height + counter * distance))
+        screen.blit(surface, (surface_x+g.WIDTH//100, surface_y + idx * surface_height + counter * distance))
     return "explain"
 
 

@@ -1,17 +1,17 @@
 var pause_8py =
 [
-    [ "pause_menu.pause.check_menu_button_pressed", "namespacepause__menu_1_1pause.html#a9734c2b29c1cfd8ae520bd9c7affe40f", null ],
-    [ "pause_menu.pause.draw", "namespacepause__menu_1_1pause.html#a6b1475930f303c070cdf0739887ef38e", null ],
-    [ "pause_menu.pause.init", "namespacepause__menu_1_1pause.html#a2ebea0dd636a146f19094c0d0006aa50", null ],
-    [ "pause_menu.pause.pause", "namespacepause__menu_1_1pause.html#ad6eef255f37cecf7b6bde0331f224adc", null ],
-    [ "pause_menu.pause.a_key", "namespacepause__menu_1_1pause.html#ad95280273bc95cb97a1133f9fc110e25", null ],
-    [ "pause_menu.pause.d_key", "namespacepause__menu_1_1pause.html#a5ae639214f45141cecd5f8c028febd2b", null ],
-    [ "pause_menu.pause.esc_key", "namespacepause__menu_1_1pause.html#aa244d14fa681853134c1f978a5d51c3e", null ],
-    [ "pause_menu.pause.last_timestamp", "namespacepause__menu_1_1pause.html#a45726e63a6d61ba2adea3bf469c0e3ff", null ],
-    [ "pause_menu.pause.pause_button", "namespacepause__menu_1_1pause.html#a2b2b39532783288b9e81edaa19ddcedc", null ],
-    [ "pause_menu.pause.s_key", "namespacepause__menu_1_1pause.html#a48aedd65e3c00a7254810710b7c43d6f", null ],
-    [ "pause_menu.pause.screen_size", "namespacepause__menu_1_1pause.html#a628bc90de4291684dd8216448f6edb20", null ],
-    [ "pause_menu.pause.space_key", "namespacepause__menu_1_1pause.html#ab9dc93a5c7eda1e2011d24e2d8ec0eef", null ],
-    [ "pause_menu.pause.ui_pause", "namespacepause__menu_1_1pause.html#ac1698eeb083c2084b51650c7cf9e5e24", null ],
-    [ "pause_menu.pause.w_key", "namespacepause__menu_1_1pause.html#a2738d54f596853a00e193b9fb5faef96", null ]
+    [ "submodule.pause_menu.pause.check_menu_button_pressed", "namespacesubmodule_1_1pause__menu_1_1pause.html#a297d7e9e92883433213eb957c95bba6c", null ],
+    [ "submodule.pause_menu.pause.draw", "namespacesubmodule_1_1pause__menu_1_1pause.html#a26b27706ba6bdc34d2596f59cee2ee01", null ],
+    [ "submodule.pause_menu.pause.init", "namespacesubmodule_1_1pause__menu_1_1pause.html#a027e936aceb884ad7c5be384953de8f9", null ],
+    [ "submodule.pause_menu.pause.pause", "namespacesubmodule_1_1pause__menu_1_1pause.html#a348c15bac3f5e02b1fbbb14aa2a78282", null ],
+    [ "submodule.pause_menu.pause.a_key", "namespacesubmodule_1_1pause__menu_1_1pause.html#a644679f06cee0c2699d6084384d18907", null ],
+    [ "submodule.pause_menu.pause.d_key", "namespacesubmodule_1_1pause__menu_1_1pause.html#ab1a29010c39b0581a6865d21cfd7b1b5", null ],
+    [ "submodule.pause_menu.pause.esc_key", "namespacesubmodule_1_1pause__menu_1_1pause.html#a846b53895b35622d72cc6aed60dc50ff", null ],
+    [ "submodule.pause_menu.pause.last_timestamp", "namespacesubmodule_1_1pause__menu_1_1pause.html#a713a14aceb501c06a20e5865e6ee9ce5", null ],
+    [ "submodule.pause_menu.pause.pause_button", "namespacesubmodule_1_1pause__menu_1_1pause.html#ae3cdd28feac9ec8b53f69faeba55b184", null ],
+    [ "submodule.pause_menu.pause.s_key", "namespacesubmodule_1_1pause__menu_1_1pause.html#aa51fd2dd4d6365d7c6680833b64e1412", null ],
+    [ "submodule.pause_menu.pause.screen_size", "namespacesubmodule_1_1pause__menu_1_1pause.html#ac30bc93e1929f24f5d3e96a1957ea1a7", null ],
+    [ "submodule.pause_menu.pause.space_key", "namespacesubmodule_1_1pause__menu_1_1pause.html#a63e7dc6e365eb454203d540aa906424c", null ],
+    [ "submodule.pause_menu.pause.ui_pause", "namespacesubmodule_1_1pause__menu_1_1pause.html#a69211b624be1246f8c3d254a4118e289", null ],
+    [ "submodule.pause_menu.pause.w_key", "namespacesubmodule_1_1pause__menu_1_1pause.html#ac7849c0548b60461789b860379445a72", null ]
 ];

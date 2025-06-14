@@ -1,5 +1,5 @@
 var explain__menu_8py =
 [
-    [ "explain_menu.explain_menu.draw", "namespaceexplain__menu_1_1explain__menu.html#a3fb5d95cf6789dc5e43e35e9a4c6c951", null ],
-    [ "explain_menu.explain_menu.menu", "namespaceexplain__menu_1_1explain__menu.html#afe337695562d575c7591bb643edf0e8b", null ]
+    [ "submodule.explain_menu.explain_menu.draw", "namespacesubmodule_1_1explain__menu_1_1explain__menu.html#af113367b0af986660f0094eceeea80c8", null ],
+    [ "submodule.explain_menu.explain_menu.menu", "namespacesubmodule_1_1explain__menu_1_1explain__menu.html#a2b0c552a13cf6b7a046a38710c188d9e", null ]
 ];

@@ -9,5 +9,6 @@ var dir_7c51f5cf012b075b09a708f5c6d2ddcb =
     [ "shop", "dir_bfcc32e4fbffec07c44d40be2cccefbc.html", "dir_bfcc32e4fbffec07c44d40be2cccefbc" ],
     [ "skater", "dir_c582e9b02cb9e7ee3353fc2251dd2f38.html", "dir_c582e9b02cb9e7ee3353fc2251dd2f38" ],
     [ "start_animation", "dir_596ee6e5a99a655182f7695027d38909.html", "dir_596ee6e5a99a655182f7695027d38909" ],
+    [ "__init__.py", "____init_____8py.html", null ],
     [ "globals.py", "globals_8py.html", "globals_8py" ]
 ];

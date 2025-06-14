@@ -1,0 +1,138 @@
+\doxysection{submodule.\+level1.\+play Namespace Reference}
+\hypertarget{namespacesubmodule_1_1level1_1_1play}{}\label{namespacesubmodule_1_1level1_1_1play}\index{submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+None \mbox{\hyperlink{namespacesubmodule_1_1level1_1_1play_ad3d27a4a9b6a1924f649ff0f2d879706}{reset\+\_\+stats}} ()
+\item 
+list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]} \mbox{\hyperlink{namespacesubmodule_1_1level1_1_1play_a0291377ff8536247e651f8f579a07a07}{sort\+\_\+users\+\_\+by\+\_\+score}} (list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]} users)
+\item 
+None \mbox{\hyperlink{namespacesubmodule_1_1level1_1_1play_a4c93000c9771be7b7e80877a718059c7}{save\+\_\+stats}} (int \+\_\+coins\+\_\+collected)
+\item 
+None \mbox{\hyperlink{namespacesubmodule_1_1level1_1_1play_aa46340d151a68af8a98da61e8da6757c}{draw\+\_\+coins\+\_\+collected}} (pygame.\+Surface screen, int \+\_\+coins\+\_\+collected)
+\item 
+None \mbox{\hyperlink{namespacesubmodule_1_1level1_1_1play_a164cfc2f709403f1edfee957429b7e1f}{draw\+\_\+letter\+\_\+percentage}} (pygame.\+Surface screen, int \+\_\+letters\+\_\+collected)
+\item 
+tuple\mbox{[}bool, bool\mbox{]} \mbox{\hyperlink{namespacesubmodule_1_1level1_1_1play_a469c4825d30882b6cac3e414683c9025}{check\+\_\+for\+\_\+win\+\_\+lose}} (pygame.\+Surface screen, time, int \+\_\+letters\+\_\+collected)
+\item 
+str \mbox{\hyperlink{namespacesubmodule_1_1level1_1_1play_a2571ccf25d3f4589b34b8e2398963f5c}{play}} (pygame.\+Surface screen, list\mbox{[}pygame.\+event.\+Event\mbox{]} events)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacesubmodule_1_1level1_1_1play_a0dc40066d1c56c55aeff9140ea0ca5dd}{letters\+\_\+collected}} = 0
+\item 
+int \mbox{\hyperlink{namespacesubmodule_1_1level1_1_1play_adede2fc2fb6ea429bf920ad145b7bd42}{coins\+\_\+collected}} = 0
+\item 
+bool \mbox{\hyperlink{namespacesubmodule_1_1level1_1_1play_a03aa4d6ccdb4d8e7dcabe277afdabd97}{end}} = False
+\item 
+bool \mbox{\hyperlink{namespacesubmodule_1_1level1_1_1play_a4adb65de54d05f2b5cb3cc0bb14babf5}{begin}} = True
+\item 
+bool \mbox{\hyperlink{namespacesubmodule_1_1level1_1_1play_a98ada836522c0d847e796dd76ae86c7c}{rain\+\_\+bool}} = False
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacesubmodule_1_1level1_1_1play_a469c4825d30882b6cac3e414683c9025}\index{submodule.level1.play@{submodule.level1.play}!check\_for\_win\_lose@{check\_for\_win\_lose}}
+\index{check\_for\_win\_lose@{check\_for\_win\_lose}!submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection{\texorpdfstring{check\_for\_win\_lose()}{check\_for\_win\_lose()}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level1_1_1play_a469c4825d30882b6cac3e414683c9025} 
+ tuple\mbox{[}bool, bool\mbox{]} submodule.\+level1.\+play.\+check\+\_\+for\+\_\+win\+\_\+lose (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{, }\item[{}]{time}{, }\item[{int}]{\+\_\+letters\+\_\+collected}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Check if the player won/lost the game and draw it
+:param screen: pygame.Surface -> where the pictures shall be drawn
+:param time: how much time is left
+:param _letters_collected: how many letters the player already collected
+:return: 1. bool -> if the game is over, 2.bool -> if the player won
+\end{DoxyVerb}
+ \Hypertarget{namespacesubmodule_1_1level1_1_1play_aa46340d151a68af8a98da61e8da6757c}\index{submodule.level1.play@{submodule.level1.play}!draw\_coins\_collected@{draw\_coins\_collected}}
+\index{draw\_coins\_collected@{draw\_coins\_collected}!submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection{\texorpdfstring{draw\_coins\_collected()}{draw\_coins\_collected()}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level1_1_1play_aa46340d151a68af8a98da61e8da6757c} 
+ None submodule.\+level1.\+play.\+draw\+\_\+coins\+\_\+collected (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{, }\item[{int}]{\+\_\+coins\+\_\+collected}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Draw the cointer of the collected coins on the screen
+:param screen: pygame.Surface -> where the coins shall be drawn
+:param _coins_collected: how many coins the player collected
+\end{DoxyVerb}
+ \Hypertarget{namespacesubmodule_1_1level1_1_1play_a164cfc2f709403f1edfee957429b7e1f}\index{submodule.level1.play@{submodule.level1.play}!draw\_letter\_percentage@{draw\_letter\_percentage}}
+\index{draw\_letter\_percentage@{draw\_letter\_percentage}!submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection{\texorpdfstring{draw\_letter\_percentage()}{draw\_letter\_percentage()}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level1_1_1play_a164cfc2f709403f1edfee957429b7e1f} 
+ None submodule.\+level1.\+play.\+draw\+\_\+letter\+\_\+percentage (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{, }\item[{int}]{\+\_\+letters\+\_\+collected}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Draw a percentage beam, how many letters the player collected
+:param screen: pygame.Surface ->  where the beam shall be drawn
+:param _letters_collected: how many letters the player collected
+\end{DoxyVerb}
+ \Hypertarget{namespacesubmodule_1_1level1_1_1play_a2571ccf25d3f4589b34b8e2398963f5c}\index{submodule.level1.play@{submodule.level1.play}!play@{play}}
+\index{play@{play}!submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level1_1_1play_a2571ccf25d3f4589b34b8e2398963f5c} 
+ str submodule.\+level1.\+play.\+play (\begin{DoxyParamCaption}\item[{pygame.\+Surface}]{screen}{, }\item[{list\mbox{[}pygame.\+event.\+Event\mbox{]}}]{events}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Funktion to call in game loop, contains all the button checks and blit all the stuff to blit
+:param screen: pygame.Surface -> where the game should be drawn
+:param events: the keys the player pressed
+:return: str -> in which mode the game is in
+\end{DoxyVerb}
+ \Hypertarget{namespacesubmodule_1_1level1_1_1play_ad3d27a4a9b6a1924f649ff0f2d879706}\index{submodule.level1.play@{submodule.level1.play}!reset\_stats@{reset\_stats}}
+\index{reset\_stats@{reset\_stats}!submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection{\texorpdfstring{reset\_stats()}{reset\_stats()}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level1_1_1play_ad3d27a4a9b6a1924f649ff0f2d879706} 
+ None submodule.\+level1.\+play.\+reset\+\_\+stats (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reset the stats of the player (coins, letters, time...)
+\end{DoxyVerb}
+ \Hypertarget{namespacesubmodule_1_1level1_1_1play_a4c93000c9771be7b7e80877a718059c7}\index{submodule.level1.play@{submodule.level1.play}!save\_stats@{save\_stats}}
+\index{save\_stats@{save\_stats}!submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection{\texorpdfstring{save\_stats()}{save\_stats()}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level1_1_1play_a4c93000c9771be7b7e80877a718059c7} 
+ None submodule.\+level1.\+play.\+save\+\_\+stats (\begin{DoxyParamCaption}\item[{int}]{\+\_\+coins\+\_\+collected}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Save the stats (coins, time...) of the player in the right .txt file
+:param _coins_collected: how many coins the player collected
+\end{DoxyVerb}
+ \Hypertarget{namespacesubmodule_1_1level1_1_1play_a0291377ff8536247e651f8f579a07a07}\index{submodule.level1.play@{submodule.level1.play}!sort\_users\_by\_score@{sort\_users\_by\_score}}
+\index{sort\_users\_by\_score@{sort\_users\_by\_score}!submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection{\texorpdfstring{sort\_users\_by\_score()}{sort\_users\_by\_score()}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level1_1_1play_a0291377ff8536247e651f8f579a07a07} 
+ list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]} submodule.\+level1.\+play.\+sort\+\_\+users\+\_\+by\+\_\+score (\begin{DoxyParamCaption}\item[{list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]}}]{users}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Sort the users list from the score of the users
+:param users: the list with all users and their coins
+:return: the sorted list
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacesubmodule_1_1level1_1_1play_a4adb65de54d05f2b5cb3cc0bb14babf5}\index{submodule.level1.play@{submodule.level1.play}!begin@{begin}}
+\index{begin@{begin}!submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection{\texorpdfstring{begin}{begin}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level1_1_1play_a4adb65de54d05f2b5cb3cc0bb14babf5} 
+bool submodule.\+level1.\+play.\+begin = True}
+
+\Hypertarget{namespacesubmodule_1_1level1_1_1play_adede2fc2fb6ea429bf920ad145b7bd42}\index{submodule.level1.play@{submodule.level1.play}!coins\_collected@{coins\_collected}}
+\index{coins\_collected@{coins\_collected}!submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection{\texorpdfstring{coins\_collected}{coins\_collected}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level1_1_1play_adede2fc2fb6ea429bf920ad145b7bd42} 
+int submodule.\+level1.\+play.\+coins\+\_\+collected = 0}
+
+\Hypertarget{namespacesubmodule_1_1level1_1_1play_a03aa4d6ccdb4d8e7dcabe277afdabd97}\index{submodule.level1.play@{submodule.level1.play}!end@{end}}
+\index{end@{end}!submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection{\texorpdfstring{end}{end}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level1_1_1play_a03aa4d6ccdb4d8e7dcabe277afdabd97} 
+bool submodule.\+level1.\+play.\+end = False}
+
+\Hypertarget{namespacesubmodule_1_1level1_1_1play_a0dc40066d1c56c55aeff9140ea0ca5dd}\index{submodule.level1.play@{submodule.level1.play}!letters\_collected@{letters\_collected}}
+\index{letters\_collected@{letters\_collected}!submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection{\texorpdfstring{letters\_collected}{letters\_collected}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level1_1_1play_a0dc40066d1c56c55aeff9140ea0ca5dd} 
+int submodule.\+level1.\+play.\+letters\+\_\+collected = 0}
+
+\Hypertarget{namespacesubmodule_1_1level1_1_1play_a98ada836522c0d847e796dd76ae86c7c}\index{submodule.level1.play@{submodule.level1.play}!rain\_bool@{rain\_bool}}
+\index{rain\_bool@{rain\_bool}!submodule.level1.play@{submodule.level1.play}}
+\doxysubsubsection{\texorpdfstring{rain\_bool}{rain\_bool}}
+{\footnotesize\ttfamily \label{namespacesubmodule_1_1level1_1_1play_a98ada836522c0d847e796dd76ae86c7c} 
+bool submodule.\+level1.\+play.\+rain\+\_\+bool = False}
+

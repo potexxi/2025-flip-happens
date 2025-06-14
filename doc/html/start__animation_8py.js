@@ -1,14 +1,14 @@
 var start__animation_8py =
 [
-    [ "start_animation.start_animation.animation", "namespacestart__animation_1_1start__animation.html#a7a0a4a436f18bc9649e21dcbb1e00bae", null ],
-    [ "start_animation.start_animation.ask_for_username", "namespacestart__animation_1_1start__animation.html#a1c5c619a2437beaffc13e3689d94dc3c", null ],
-    [ "start_animation.start_animation.init", "namespacestart__animation_1_1start__animation.html#ae3f220b0dddab903f7cfaf0d691c11c9", null ],
-    [ "start_animation.start_animation.animation_", "namespacestart__animation_1_1start__animation.html#a71afc375d941dbc244fa07e2e26cfd7d", null ],
-    [ "start_animation.start_animation.ask_username", "namespacestart__animation_1_1start__animation.html#ae4b9ce3e453f784ab0d8b56f9966507e", null ],
-    [ "start_animation.start_animation.background", "namespacestart__animation_1_1start__animation.html#a67cb21ab5d80142916c23a9a50d6515e", null ],
-    [ "start_animation.start_animation.button_activated", "namespacestart__animation_1_1start__animation.html#a2595f4ae99f116ec8e38c6cd10e8f332", null ],
-    [ "start_animation.start_animation.logo_size", "namespacestart__animation_1_1start__animation.html#a4ab657a18e1256140a2d196dceeecbf2", null ],
-    [ "start_animation.start_animation.original_logo", "namespacestart__animation_1_1start__animation.html#a8cf176abfff85d27ee7195c49a12e412", null ],
-    [ "start_animation.start_animation.text", "namespacestart__animation_1_1start__animation.html#ac07045a8e5a07eebb4bb45d282f25edf", null ],
-    [ "start_animation.start_animation.wait_screen", "namespacestart__animation_1_1start__animation.html#ac31071219dd96e3263b42c2abea71d48", null ]
+    [ "submodule.start_animation.start_animation.animation", "namespacesubmodule_1_1start__animation_1_1start__animation.html#a402ceaed94beee1888f1c97e56e8097c", null ],
+    [ "submodule.start_animation.start_animation.ask_for_username", "namespacesubmodule_1_1start__animation_1_1start__animation.html#ad7930f94f0c2f9eda030b19007f61293", null ],
+    [ "submodule.start_animation.start_animation.init", "namespacesubmodule_1_1start__animation_1_1start__animation.html#af6d06cc967104beaf43b18d201db0b83", null ],
+    [ "submodule.start_animation.start_animation.animation_", "namespacesubmodule_1_1start__animation_1_1start__animation.html#a9b50ff15c2e6e8d3c261d630e9174a31", null ],
+    [ "submodule.start_animation.start_animation.ask_username", "namespacesubmodule_1_1start__animation_1_1start__animation.html#a3fc2b307304a5cfdcd7fff25e35f20e4", null ],
+    [ "submodule.start_animation.start_animation.background", "namespacesubmodule_1_1start__animation_1_1start__animation.html#a293121963a74b9dac8053d307bdc9711", null ],
+    [ "submodule.start_animation.start_animation.button_activated", "namespacesubmodule_1_1start__animation_1_1start__animation.html#a6374ac2fb27c4a3e8518c83089c01f71", null ],
+    [ "submodule.start_animation.start_animation.logo_size", "namespacesubmodule_1_1start__animation_1_1start__animation.html#a8229baa04decde8c570dd19dd903ab06", null ],
+    [ "submodule.start_animation.start_animation.original_logo", "namespacesubmodule_1_1start__animation_1_1start__animation.html#a16096836a20cc8008ecf218689c1bd16", null ],
+    [ "submodule.start_animation.start_animation.text", "namespacesubmodule_1_1start__animation_1_1start__animation.html#a2b497739dee5855e2695b3a3fd6bfdd5", null ],
+    [ "submodule.start_animation.start_animation.wait_screen", "namespacesubmodule_1_1start__animation_1_1start__animation.html#a9d8d8f0c514f9fc51fd177cdc344e616", null ]
 ];

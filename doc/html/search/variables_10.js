@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['rain_5fbool_0',['rain_bool',['../namespacelevel1_1_1play.html#a791859c849fd4b25f8991f3ca7714b3b',1,'level1.play.rain_bool'],['../namespacelevel2_1_1play.html#aabc312c238ff4788cb65829164a16342',1,'level2.play.rain_bool']]],
-  ['ramp_5fjump_1',['RAMP_JUMP',['../namespaceglobals.html#ad7e1d7eb5f8a2c5b87d9cdd9be63dc48',1,'globals']]],
-  ['ramp_5fjump2_2',['RAMP_JUMP2',['../namespaceglobals.html#ac33a18d82f553a8c2dd0471206d7b22c',1,'globals']]],
-  ['ramp_5fspeed_3',['RAMP_SPEED',['../namespaceglobals.html#a1a3cb9c2bd61ecd9b3a682aec165479d',1,'globals']]]
+  ['rain_5fbool_0',['rain_bool',['../namespacesubmodule_1_1level1_1_1play.html#a98ada836522c0d847e796dd76ae86c7c',1,'submodule.level1.play.rain_bool'],['../namespacesubmodule_1_1level2_1_1play.html#a1f5fb768fc84bac6a18cfca0254aabe6',1,'submodule.level2.play.rain_bool']]],
+  ['ramp_5fjump_1',['RAMP_JUMP',['../namespacesubmodule_1_1globals.html#a41a51d88b0a2d58529a0f19104347ce8',1,'submodule::globals']]],
+  ['ramp_5fjump2_2',['RAMP_JUMP2',['../namespacesubmodule_1_1globals.html#abd7042cb154072900354665ba158919d',1,'submodule::globals']]],
+  ['ramp_5fspeed_3',['RAMP_SPEED',['../namespacesubmodule_1_1globals.html#ac52ec4ce3f4cb858b237b8b4d7b4f791',1,'submodule::globals']]]
 ];
