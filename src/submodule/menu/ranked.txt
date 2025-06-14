@@ -1,1 +1,2 @@
-admin;999995775;1.5;2.0;True
+potexxi;167;1.0;1.0;True
+kari@deb;158;1.0;1.0;False
